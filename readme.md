@@ -35,6 +35,11 @@ php artisan migrate --path=vendor/gzero/cms/src/migrations/
 ```
 php artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
+ - publish vendor assets
+ 
+```
+php artisan vendor:publish --tag=public --force
+```
  - run php build in server
   
 ```
