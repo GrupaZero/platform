@@ -48,7 +48,7 @@
                             {{--</li>--}}
                             <li class="divider"></li>
                             <li>
-                                <a href="{{ route('/auth/logout') }}">
+                                <a href="{{ route('logout') }}">
                                     @lang('common.logout') <i class="fa fa-sign-out fa-fw pull-right"></i>
                                 </a>
                             </li>

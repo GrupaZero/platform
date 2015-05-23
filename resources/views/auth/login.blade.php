@@ -1,61 +1,56 @@
-@extends('app')
+@extends('layouts.default')
+
+@section('title')
+    @lang('common.login')
+@stop
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+    <div class="col-md-4 col-md-offset-4">
+        <h1 class="page-header">@lang('common.login')</h1>
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+        <form method="POST" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
+                <label class="control-label" for="email">@choice('common.email', 1)</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       value="{{Input::old('email')}}"
+                       placeholder="@choice('common.email', 1)">
+                @if($errors->first('email'))
+                    <p class="help-block">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
+            <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
+                <label class="control-label" for="password">@lang('common.password')</label>
+                <input type="password" id="password" name="password" class="form-control"
+                       placeholder="@lang('common.password')">
+                @if($errors->first('password'))
+                    <p class="help-block">{{ $errors->first('password') }}</p>
+                @endif
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" checked="true">@lang('common.remember')
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="checkbox text-right">
+                            <a href="{{ route('password.remind') }}">@lang('common.forgotPassword')</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
+        </form>
+        @if(App::bound('oauth'))
+            @include('includes.socialLogin')
+        @endif
+        <hr/>
+        <div class="text-center">
+            @lang('common.notAMember') <a href="{{ route('register') }}"> @lang('common.register')</a>
+        </div>
+    </div>
+@stop

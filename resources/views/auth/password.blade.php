@@ -1,50 +1,31 @@
-@extends('app')
+@extends('layouts.default')
+
+@section('title')
+    @lang('common.forgotPassword')
+@stop
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-					@endif
+    <div class="col-md-4 col-md-offset-4">
+        <h1 class="page-header">@lang('common.forgotPassword')</h1>
 
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+        <p>@lang('common.forgotPasswordHint')</p>
+        <form action="{{ URL::route('post.password.remind') }}" method="POST" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
+                <label class="control-label" for="email">@choice('common.email', 1)</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       value="{{Input::old('email')}}"
+                       placeholder="@choice('common.email', 1)">
+                @if($errors->first('email'))
+                    <p class="help-block">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Send Password Reset Link
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.send')</button>
+        </form>
+        <div class="text-center">
+            <hr/>
+            <a href="{{ URL::route('login') }}">@lang('common.returnToSignIn')</a>
+        </div>
+    </div>
+@stop
