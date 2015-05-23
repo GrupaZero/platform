@@ -136,6 +136,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
         'Barryvdh\Cors\CorsServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
         'Gzero\Core\ServiceProvider',
         'Gzero\Api\ServiceProvider',
         'Gzero\Admin\ServiceProvider',
@@ -197,6 +199,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];
