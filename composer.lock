@@ -104,12 +104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ClassPreloader/ClassPreloader.git",
-                "reference": "1f92ba13688e7871498540108f0aaabc02c1afa3"
+                "reference": "c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ClassPreloader/ClassPreloader/zipball/1f92ba13688e7871498540108f0aaabc02c1afa3",
-                "reference": "1f92ba13688e7871498540108f0aaabc02c1afa3",
+                "url": "https://api.github.com/repos/ClassPreloader/ClassPreloader/zipball/c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab",
+                "reference": "c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab",
                 "shasum": ""
             },
             "require": {
@@ -142,12 +142,12 @@
             ],
             "authors": [
                 {
-                    "name": "Graham Campbell",
-                    "email": "graham@mineuk.com"
-                },
-                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@cachethq.io"
                 }
             ],
             "description": "Helps class loading performance by generating a single PHP file containing all of the autoloaded files for a specific use case",
@@ -156,7 +156,7 @@
                 "class",
                 "preload"
             ],
-            "time": "2015-05-17 22:35:15"
+            "time": "2015-05-23 13:43:47"
         },
         {
             "name": "danielstjules/stringy",
@@ -366,12 +366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "2071f5a0f74ccaa019e20c442a841e6205729c47"
+                "reference": "62b09d3615c7df3aa2ad28c2aa803e37b2395ef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/2071f5a0f74ccaa019e20c442a841e6205729c47",
-                "reference": "2071f5a0f74ccaa019e20c442a841e6205729c47",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/62b09d3615c7df3aa2ad28c2aa803e37b2395ef8",
+                "reference": "62b09d3615c7df3aa2ad28c2aa803e37b2395ef8",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +415,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-05-23 11:18:59"
+            "time": "2015-05-23 14:14:23"
         },
         {
             "name": "gzero/cms",
