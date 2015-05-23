@@ -14,7 +14,7 @@
             <div class="col-lg-4 col-md-6">
                 <h2>@lang('common.sorry')<br>@lang('common.pageNotFound')</h2>
                 <p>@lang('common.404Message')</p>
-                <a href="{{ URL::route('home') }}" class="btn btn-primary">@lang('common.backtoHomepage')</a>
+                <a href="{{ route('home') }}" class="btn btn-primary">@lang('common.backtoHomepage')</a>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
             tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
 
         <p>
-            <a class="btn btn-lg btn-success" href="{{ URL::route('register') }}" role="button">Get started today</a>
+            <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">Get started today</a>
         </p>
     </div>
 @stop
