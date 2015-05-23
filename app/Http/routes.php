@@ -41,7 +41,7 @@ Route::group(
         Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'UserController@reset']);
         Route::post('password/reset', ['as' => 'post.password.reset', 'uses' => 'UserController@postReset']);
         Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
-        Route::get('/', ['as' => 'home', 'uses' => 'WelcomeController@index']);
+        Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
         // dev links
         Route::get('_dev', ['as' => '_dev', 'uses' => 'DevController@index']);
