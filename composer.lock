@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "06c3fdff5a1b25b86f6a9e65aea801a4",
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "e7fdf175e08a919a82ef82287f645edfd123617c"
+                "reference": "342f2210c02797cabac0d9ff4a70a70276a0cb76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/e7fdf175e08a919a82ef82287f645edfd123617c",
-                "reference": "e7fdf175e08a919a82ef82287f645edfd123617c",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/342f2210c02797cabac0d9ff4a70a70276a0cb76",
+                "reference": "342f2210c02797cabac0d9ff4a70a70276a0cb76",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-23 11:05:17"
+            "time": "2015-05-23 13:42:14"
         },
         {
             "name": "gzero/eloquent-tree",
