@@ -3,8 +3,10 @@
 use Gzero\Repository\UserRepository;
 use Gzero\Validator\BaseUserValidator;
 use Gzero\Validator\ValidationException;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 
-class AccountApiController extends \BaseController {
+class AccountApiController extends BaseController {
 
     /**
      * @var UserRepository
