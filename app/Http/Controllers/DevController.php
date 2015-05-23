@@ -1,4 +1,5 @@
-<?php
+<?php namespace App\Http\Controllers;
+
 use Gzero\Repository\ContentRepository;
 
 /**
@@ -31,7 +32,7 @@ class DevController extends BaseController {
             null
         );
 
-        return View::make(
+        return view(
             'dev.index',
             [
                 'tree' => $this->repository->buildTree($nodes),
@@ -49,7 +50,7 @@ class DevController extends BaseController {
      */
     public function emails($email)
     {
-        return View::make(
+        return view(
             'emails.' . $email,
             ['token' => 'dummy-token'] // auth reminder view dummy data
         );

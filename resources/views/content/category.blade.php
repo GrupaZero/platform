@@ -34,7 +34,7 @@
                                 </p>
                             </div>
                             <div class="col-md-4 text-right">
-                                <p class="text-muted">@lang('common.rating') {{ $child->ratingStars() }}</p>
+                                <p class="text-muted">@lang('common.rating') {!! $child->ratingStars() !!}</p>
                             </div>
                         </div>
                        <p>
@@ -43,7 +43,7 @@
                                     width="847" height="312" alt="{{$activeTranslation->title}}">
                            </a>
                        </p>
-                        {{ $activeTranslation->teaser }}
+                        {!! $activeTranslation->teaser !!}
                     </div>
                     <hr/>
                     <div class="row">

@@ -2,6 +2,8 @@
 
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Request;
 
 /**
  * This file is part of the GZERO CMS package.

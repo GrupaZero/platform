@@ -6231,3 +6231,123 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+body {
+  background-color: #F5F5F5;
+}
+/*Navbar user menu*/
+.user-nav .dropdown-toggle {
+  /*padding : 6px 20px;*/
+}
+.user-nav .dropdown-toggle img {
+  margin-right: 6px;
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.user-nav .dropdown-menu li a i {
+  color: #EFEFEF;
+}
+.user-nav .dropdown-menu li a:hover i {
+  color: #686868;
+}
+.user-nav .dropdown-menu li.active a:hover i {
+  color: #FFF;
+}
+.sidebar .nav-stacked {
+  margin-top: 40px;
+}
+.nav-stacked li {
+  border-bottom: 1px solid #E7E7E7;
+}
+.nav-stacked ul li:last-child {
+  border-bottom: none;
+}
+.nav-stacked li a {
+  padding: 10px 20px;
+}
+.nav-stacked ul a {
+  padding: 10px 30px;
+  background: #FAFAFA;
+}
+.nav-stacked ul li.active a {
+  background-color: #EEE;
+}
+#wrapper {
+  background-color: #FFF;
+  padding-bottom: 40px;
+}
+#footer {
+  width: 100%;
+  height: 60px;
+}
+#footer .text-muted {
+  margin: 20px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+.loading {
+  background: #ffffff url('/images/loading-dark.gif') no-repeat center center;
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  z-index: 9999999;
+}
+.separator {
+  background-color: #DDD;
+  height: 1px;
+  margin: 25px 0;
+  text-align: center;
+}
+.separator span {
+  background: #FFF;
+  padding: 5px;
+  color: #999;
+  position: relative;
+  top: -9px;
+}
+/*alert error*/
+.alert-error {
+  color: #A94442;
+  background-color: #F2DEDE;
+  border-color: #EBCCD1;
+}
+/*404 page - error box*/
+.error-box {
+  overflow: hidden;
+  padding: 0;
+}
+.error-box h2 {
+  text-align: left;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.error-box .error-code {
+  font-size: 10em;
+  line-height: 1em;
+  text-align: center;
+  margin: 0;
+}
+.error-box .indent {
+  text-align: center;
+}
+.error-box .col-md-6 {
+  margin-bottom: 30px;
+}
+/* helper classes */
+.margin-zero-top {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=app.css.map */

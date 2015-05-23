@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                {{ $message['code'] == 'error' ? '<strong>' . Lang::get('common.error') . ':</strong> ' : '' }}
+                {!! $message['code'] == 'error' ? '<strong>' . Lang::get('common.error') . ':</strong> ' : '' !!}
                 {{ $message['text'] }}
             </div>
         @endforeach

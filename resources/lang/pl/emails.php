@@ -4,7 +4,7 @@
 
 return  array(
 	'passwordReminder'   =>  array(
-		'body'               => 'Aby zresetować hasło, wypełnij ten formularz: :url',
+		'body'               => 'Aby zresetować hasło, wypełnij ten formularz:',
 		'title'              => 'Resetowanie hasła',
 	),
 	'welcome'            =>  array(

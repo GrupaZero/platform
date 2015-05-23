@@ -4,7 +4,7 @@
 
 return  array(
 	'passwordReminder'   =>  array(
-		'body'               => 'To reset your password, complete this form: :url',
+		'body'               => 'To reset your password, complete this form:',
 		'title'              => 'Password Reset',
 	),
 	'welcome'            =>  array(

@@ -16,8 +16,8 @@
             </p>
         </div>
         <div class="col-md-4 text-right">
-            <p class="text-muted">@lang('common.rating') {{ $content->ratingStars() }}</p>
+            <p class="text-muted">@lang('common.rating') {!! $content->ratingStars() !!}</p>
         </div>
     </div>
-    {{ $activeTranslation->body }}
+    {!! $activeTranslation->body !!}
 @stop

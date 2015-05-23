@@ -2,6 +2,7 @@
 
 use Gzero\Core\DynamicRouter;
 use Gzero\Entity\Lang;
+use Illuminate\Support\Facades\App;
 use Gzero\Repository\RepositoryException;
 
 /**
@@ -17,12 +18,12 @@ use Gzero\Repository\RepositoryException;
  */
 class ContentController extends BaseController {
 
-    protected $router;
+    protected $dynamicRouter;
 
-    public function __construct(DynamicRouter $router)
+    public function __construct(DynamicRouter $dynamicRouter)
     {
         parent::__construct();
-        $this->router = $router;
+        $this->dynamicRouter = $dynamicRouter;
     }
 
     /**
@@ -37,7 +38,7 @@ class ContentController extends BaseController {
         }
 
         try {
-            return $this->router->handleRequest($this->getRequestedUrl(), $this->getLang());
+            return $this->dynamicRouter->handleRequest($this->getRequestedUrl(), $this->getLang());
         } catch (RepositoryException $e) {
             App::abort(404);
         }
