@@ -9,6 +9,7 @@
         <h1 class="page-header">@lang('common.register')</h1>
 
         <form id="register-account-form" method="POST" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
                 <label class="control-label" for="email">@choice('common.email', 1)</label>
                 <input type="email" id="email" name="email" class="form-control"

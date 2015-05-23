@@ -4,8 +4,13 @@ use Auth;
 use Gzero\Repository\UserRepository;
 use Gzero\Validator\BaseUserValidator;
 use Gzero\Validator\ValidationException;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Config;
 
 
 /**
