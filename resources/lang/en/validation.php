@@ -102,6 +102,7 @@ return [
 	|
 	*/
 
-	'attributes' => [],
-
+    'attributes' => [
+        'username' => 'user name'
+    ]
 ];
