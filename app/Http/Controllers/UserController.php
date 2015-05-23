@@ -96,7 +96,7 @@ class UserController extends BaseController {
 
         try {
             $input        = $this->validator->validate('register');
-            $existingUser = $this->userRepo->retrieveByEmail($input['email']);
+            $existingUser = $this->userRepo->getByEmail($input['email']);
             // duplicated user verification
             if ($existingUser === null) {
                 $input['password'] = Hash::make($input['password']);

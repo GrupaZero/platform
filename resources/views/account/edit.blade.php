@@ -13,7 +13,8 @@
 
    <div class="row">
        <div class="col-md-5">
-           <form id="edit-account-form" action="#" method="post" role="form">
+           <form id="edit-account-form" action="#" method="POST" role="form">
+               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
                    <label class="control-label" for="firstName">@lang('common.firstName')</label>
                    <input type="text" id="firstName" name="firstName" class="form-control"
