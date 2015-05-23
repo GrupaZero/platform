@@ -423,17 +423,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "1ebdb5b49c61b5096e73fd837a710dccc9503b68"
+                "reference": "66db5d1e488c40424db9eb1384784337747c257d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/1ebdb5b49c61b5096e73fd837a710dccc9503b68",
-                "reference": "1ebdb5b49c61b5096e73fd837a710dccc9503b68",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/66db5d1e488c40424db9eb1384784337747c257d",
+                "reference": "66db5d1e488c40424db9eb1384784337747c257d",
                 "shasum": ""
             },
             "require": {
                 "gzero/eloquent-tree": "1.*",
-                "laravel/framework": "5.0.16",
+                "laravel/framework": "5.0.19",
                 "php": ">=5.4.0",
                 "robclancy/presenter": "1.3.1"
             },
@@ -448,6 +448,7 @@
                 "mockery/mockery": "0.9.*",
                 "phpmd/phpmd": "2.*",
                 "phpunit/phpunit": "4.3.*",
+                "psr/log": "1.0.0",
                 "squizlabs/php_codesniffer": "1.*"
             },
             "type": "library",
@@ -475,7 +476,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-23 16:01:25"
+            "time": "2015-05-23 18:22:08"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -713,16 +714,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.16",
+            "version": "v5.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "861a1e78c84dca82fe4bd85d00349c52304eea77"
+                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/861a1e78c84dca82fe4bd85d00349c52304eea77",
-                "reference": "861a1e78c84dca82fe4bd85d00349c52304eea77",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
+                "reference": "8dcf3fe5232ac13502e335465e6ac64367bbbbe7",
                 "shasum": ""
             },
             "require": {
@@ -835,7 +836,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-03-13 13:27:55"
+            "time": "2015-03-24 13:05:26"
         },
         {
             "name": "league/flysystem",
