@@ -2,18 +2,28 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
-	/**
-	 * Creates the application.
-	 *
-	 * @return \Illuminate\Foundation\Application
-	 */
-	public function createApplication()
-	{
-		$app = require __DIR__.'/../bootstrap/app.php';
+    /**
+     * @return string
+     */
+    public function getBaseUrl()
+    {
+        return 'http://' . $this->app['config']['gzero.domain'];
+    }
 
-		$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+    /**
+     * Creates the application.
+     *
+     * @return \Illuminate\Foundation\Application
+     */
+    public function createApplication()
+    {
+        $app = require __DIR__ . '/../bootstrap/app.php';
 
-		return $app;
-	}
+        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        \App::setLocale('en'); // We're setting default locale on test env
+        $app['config']['gzero.multilang.detected'] = true;
+        $app['Illuminate\Contracts\Console\Kernel']->call('migrate', ['--path' => '/vendor/gzero/cms/src/migrations']);
+        return $app;
+    }
 
 }
