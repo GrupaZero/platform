@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "06c3fdff5a1b25b86f6a9e65aea801a4",
+    "hash": "b29eb54f3cee95ae69f321eaa842f8fe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "342f2210c02797cabac0d9ff4a70a70276a0cb76"
+                "reference": "1ebdb5b49c61b5096e73fd837a710dccc9503b68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/342f2210c02797cabac0d9ff4a70a70276a0cb76",
-                "reference": "342f2210c02797cabac0d9ff4a70a70276a0cb76",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/1ebdb5b49c61b5096e73fd837a710dccc9503b68",
+                "reference": "1ebdb5b49c61b5096e73fd837a710dccc9503b68",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-23 13:42:14"
+            "time": "2015-05-23 16:01:25"
         },
         {
             "name": "gzero/eloquent-tree",
