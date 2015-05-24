@@ -1,10 +1,15 @@
 <?php namespace App\Exceptions;
 
 use Exception;
+use Whoops\Run;
+use Whoops\Handler\PrettyPageHandler;
 use Gzero\Validator\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
+
+    const VALIDATION_ERROR = 400;   // (Bad Request)
+    const SERVER_ERROR = 500;       // (Internal Server Error)
 
     /**
      * A list of the exception types that should not be reported.
@@ -39,27 +44,49 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $e)
     {
-        if (preg_match('/^api\./', \Request::getHost())) {
+        if ($request->ajax()) {
+            $cors = app()->make('Asm89\Stack\CorsService');
             if ($e instanceof ValidationException) {
-                return \Response::json(
-                    [
-                        'code'     => 500,
-                        'messages' => $e->getErrors()
-                    ],
-                    500
+                return $cors->addActualRequestHeaders(
+                    response()->json(
+                        [
+                            'code'  => self::VALIDATION_ERROR,
+                            'error' => $e->getErrors()
+                        ],
+                        500
+                    ),
+                    $request
                 );
             } else {
-                return \Response::json(
-                    [
-                        'code'    => $e->getCode(),
-                        'message' => $e->getMessage()
-                    ],
-                    500
+                return $cors->addActualRequestHeaders(
+                    response()->json(
+                        [
+                            'code'  => self::SERVER_ERROR,
+                            'error' => [
+                                'type'    => get_class($e),
+                                'message' => $e->getMessage(),
+                                'file'    => $e->getFile(),
+                                'line'    => $e->getLine(),
+                            ]
+                        ],
+                        500
+                    ),
+                    $request
                 );
             }
         } else {
-            return parent::render($request, $e);
+            if (config('app.debug')) {
+                $whoops = new Run;
+                $whoops->pushHandler(new PrettyPageHandler);
+
+                return response(
+                    $whoops->handleException($e),
+                    $e->getStatusCode(),
+                    $e->getHeaders()
+                );
+            } else {
+                return parent::render($request, $e);
+            }
         }
     }
-
 }

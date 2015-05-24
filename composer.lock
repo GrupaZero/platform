@@ -315,6 +315,64 @@
             "time": "2015-01-01 18:34:57"
         },
         {
+            "name": "filp/whoops",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "c982fe62c44798c433229cb0425c61b487cc1883"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/c982fe62c44798c433229cb0425c61b487cc1883",
+                "reference": "c982fe62c44798c433229cb0425c61b487cc1883",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Whoops": "src/"
+                },
+                "classmap": [
+                    "src/deprecated"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://github.com/filp/whoops",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "silex-provider",
+                "whoops",
+                "zf2"
+            ],
+            "time": "2015-03-30 15:26:59"
+        },
+        {
             "name": "gzero/admin",
             "version": "dev-master",
             "source": {
@@ -366,12 +424,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "04ed4d3231eefbfb6fb44eac42109319f9b5d3ae"
+                "reference": "83b5057e2640d01395700582c6a7f7c99ab3d46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/04ed4d3231eefbfb6fb44eac42109319f9b5d3ae",
-                "reference": "04ed4d3231eefbfb6fb44eac42109319f9b5d3ae",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/83b5057e2640d01395700582c6a7f7c99ab3d46e",
+                "reference": "83b5057e2640d01395700582c6a7f7c99ab3d46e",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +473,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-05-23 19:19:23"
+            "time": "2015-05-23 19:54:19"
         },
         {
             "name": "gzero/cms",
@@ -423,15 +481,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "a7cdffe6f39c95138e9676716784e1dc69e7194b"
+                "reference": "88c83b64f95061cb1e1300982cc6163c7406d0c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/a7cdffe6f39c95138e9676716784e1dc69e7194b",
-                "reference": "a7cdffe6f39c95138e9676716784e1dc69e7194b",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/88c83b64f95061cb1e1300982cc6163c7406d0c5",
+                "reference": "88c83b64f95061cb1e1300982cc6163c7406d0c5",
                 "shasum": ""
             },
             "require": {
+                "filp/whoops": "1.1.*",
                 "gzero/eloquent-tree": "1.*",
                 "laravel/framework": "5.0.19",
                 "php": ">=5.4.0",
@@ -476,7 +535,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-23 19:20:14"
+            "time": "2015-05-24 13:13:02"
         },
         {
             "name": "gzero/eloquent-tree",

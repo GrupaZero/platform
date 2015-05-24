@@ -11,13 +11,13 @@ class Kernel extends HttpKernel {
      */
     protected $middleware = [
         'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
+        'Barryvdh\Cors\Middleware\HandleCors',
         'Illuminate\Cookie\Middleware\EncryptCookies',
         'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
         'Illuminate\Session\Middleware\StartSession',
         'Illuminate\View\Middleware\ShareErrorsFromSession',
         'Gzero\Core\Middleware\LanguageDetector',
         'App\Http\Middleware\VerifyCsrfToken',
-        'Barryvdh\Cors\Middleware\HandleCors',
     ];
 
     /**
