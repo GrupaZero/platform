@@ -4,7 +4,7 @@
     <!-- NAME: 1 COLUMN - BANDED -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ Config::get('gzero.siteName') }}</title>
+    <title>{{ config('gzero.siteName') }}</title>
 
     <style type="text/css">
         body, #bodyTable, #bodyCell {
@@ -649,8 +649,8 @@
                                                 <td valign="top" class="headerContainer" style="padding-top:15px;
                                                 padding-bottom:13px;">
                                                     <img src="{{ URL::asset('images/email-logo.png') }}"
-                                                         alt="{{ Config::get('gzero.siteName') }}"
-                                                         title="{{ Config::get('gzero.siteName') }}"/>
+                                                         alt="{{ config('gzero.siteName') }}"
+                                                         title="{{ config('gzero.siteName') }}"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -731,7 +731,7 @@
                                                                             style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
 
                                                                             <em>
-                                                                                Copyright © {{ Config::get('gzero.domain') }},
+                                                                                Copyright © {{ config('gzero.domain') }},
                                                                                 @lang('common.allRightsReserved')</em>
                                                                         </td>
                                                                     </tr>

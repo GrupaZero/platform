@@ -378,12 +378,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "20c73943a3cfce68d30644c4b5a360eba0bb38b1"
+                "reference": "8096f2616bffef107cceffc5be41ce41aaaae0a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/20c73943a3cfce68d30644c4b5a360eba0bb38b1",
-                "reference": "20c73943a3cfce68d30644c4b5a360eba0bb38b1",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/8096f2616bffef107cceffc5be41ce41aaaae0a9",
+                "reference": "8096f2616bffef107cceffc5be41ce41aaaae0a9",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +416,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-05-23 19:16:50"
+            "time": "2015-05-25 09:38:21"
         },
         {
             "name": "gzero/api",
@@ -481,17 +481,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "28aeb105bcfcfa69c18238f43144854110d1fee5"
+                "reference": "2f23a9918a6d1a62cf4c883181281001d915c4eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/28aeb105bcfcfa69c18238f43144854110d1fee5",
-                "reference": "28aeb105bcfcfa69c18238f43144854110d1fee5",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/2f23a9918a6d1a62cf4c883181281001d915c4eb",
+                "reference": "2f23a9918a6d1a62cf4c883181281001d915c4eb",
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "1.1.*",
                 "gzero/eloquent-tree": "1.*",
+                "illuminate/html": "~5.0",
                 "laravel/framework": "5.0.19",
                 "php": ">=5.4.0",
                 "robclancy/presenter": "1.3.1"
@@ -535,7 +536,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-24 14:27:32"
+            "time": "2015-05-24 14:41:33"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -584,6 +585,52 @@
                 "laravel"
             ],
             "time": "2015-03-26 10:10:11"
+        },
+        {
+            "name": "illuminate/html",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/html.git",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/html/zipball/3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Html\\": ""
+                },
+                "files": [
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2015-01-01 16:31:18"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -2737,12 +2784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "9ef4b8cbf3e839a44a9b375d8c59e109ac7aa020"
+                "reference": "38c3ae610bcec110aa6bd18feed3d1970f2995f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/9ef4b8cbf3e839a44a9b375d8c59e109ac7aa020",
-                "reference": "9ef4b8cbf3e839a44a9b375d8c59e109ac7aa020",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/38c3ae610bcec110aa6bd18feed3d1970f2995f2",
+                "reference": "38c3ae610bcec110aa6bd18feed3d1970f2995f2",
                 "shasum": ""
             },
             "require": {
@@ -2791,7 +2838,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-09 04:40:58"
+            "time": "2015-05-25 05:10:17"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2983,12 +3030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "77340ed950e26337cff024dea1669a00f43df5f6"
+                "reference": "49c2007b90b8a619e2057785e8fbc331b7b760ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/77340ed950e26337cff024dea1669a00f43df5f6",
-                "reference": "77340ed950e26337cff024dea1669a00f43df5f6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/49c2007b90b8a619e2057785e8fbc331b7b760ff",
+                "reference": "49c2007b90b8a619e2057785e8fbc331b7b760ff",
                 "shasum": ""
             },
             "require": {
@@ -3047,7 +3094,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-22 00:06:43"
+            "time": "2015-05-25 03:53:30"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

@@ -18,7 +18,7 @@
             <?php $activeTranslation = $child->translation($lang->code); ?>
             @if($activeTranslation)
                 <?php $activeRoute = $child->routeTranslation($lang->code); ?>
-                <?php $childUrl = URL::to('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
+                <?php $childUrl = url('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
                 <div class="media">
                     <h2 class="page-header">
                         <a href="{{ $childUrl }}">

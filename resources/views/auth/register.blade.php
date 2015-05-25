@@ -13,7 +13,7 @@
             <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
                 <label class="control-label" for="email">@choice('common.email', 1)</label>
                 <input type="email" id="email" name="email" class="form-control"
-                       value="{{Input::old('email')}}"
+                       value="{{old('email')}}"
                        placeholder="@choice('common.email', 1)">
                 @if($errors->first('email'))
                     <p class="help-block">{{ $errors->first('email') }}</p>
@@ -22,7 +22,7 @@
             <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
                 <label class="control-label" for="firstName">@lang('common.firstName')</label>
                 <input type="text" id="firstName" name="firstName" class="form-control"
-                       value="{{Input::old('firstName')}}"
+                       value="{{old('firstName')}}"
                        placeholder="@lang('common.firstName')">
                 @if($errors->first('firstName'))
                     <p class="help-block">{{ $errors->first('firstName') }}</p>
@@ -31,7 +31,7 @@
             <div class="form-group{{ $errors->first('lastName') ? ' has-error' : '' }}">
                 <label class="control-label" for="lastName">@lang('common.lastName')</label>
                 <input type="text" id="lastName" name="lastName" class="form-control"
-                       value="{{Input::old('lastName')}}"
+                       value="{{old('lastName')}}"
                        placeholder="@lang('common.lastName')">
                 @if($errors->first('lastName'))
                     <p class="help-block">{{ $errors->first('lastName') }}</p>
@@ -50,7 +50,7 @@
             </div>
             <input id="accountIntent" type="text" name="accountIntent" class="hidden">
         </form>
-        @if(App::bound('oauth'))
+        @if(app()->bound('oauth'))
             @include('includes.socialLogin')
         @endif
     </div>

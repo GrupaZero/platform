@@ -13,7 +13,7 @@
             <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
                 <label class="control-label" for="email">@choice('common.email', 1)</label>
                 <input type="email" id="email" name="email" class="form-control"
-                       value="{{Input::old('email')}}"
+                       value="{{old('email')}}"
                        placeholder="@choice('common.email', 1)">
                 @if($errors->first('email'))
                     <p class="help-block">{{ $errors->first('email') }}</p>
@@ -45,7 +45,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
         </form>
-        @if(App::bound('oauth'))
+        @if(app()->bound('oauth'))
             @include('includes.socialLogin')
         @endif
         <hr/>
