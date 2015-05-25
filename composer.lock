@@ -215,6 +215,55 @@
             "time": "2015-02-10 06:19:18"
         },
         {
+            "name": "davejamesmiller/laravel-breadcrumbs",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
+                "reference": "5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4",
+                "reference": "5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "illuminate/view": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "3.0.*",
+                "phpunit/phpunit": "4.*",
+                "satooshi/php-coveralls": "0.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DaveJamesMiller\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "authors": [
+                {
+                    "name": "Dave James Miller",
+                    "email": "dave@davejamesmiller.com",
+                    "homepage": "http://davejamesmiller.com/"
+                }
+            ],
+            "description": "A simple Laravel-style way to create breadcrumbs in Laravel 4+.",
+            "homepage": "https://github.com/davejamesmiller/laravel-breadcrumbs",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2015-02-08 21:44:39"
+        },
+        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -378,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "8096f2616bffef107cceffc5be41ce41aaaae0a9"
+                "reference": "0bb878f69a88442aef1945153f0bbba802c76d1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/8096f2616bffef107cceffc5be41ce41aaaae0a9",
-                "reference": "8096f2616bffef107cceffc5be41ce41aaaae0a9",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0bb878f69a88442aef1945153f0bbba802c76d1b",
+                "reference": "0bb878f69a88442aef1945153f0bbba802c76d1b",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +465,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-05-25 09:38:21"
+            "time": "2015-05-25 15:36:33"
         },
         {
             "name": "gzero/api",
@@ -424,12 +473,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "83b5057e2640d01395700582c6a7f7c99ab3d46e"
+                "reference": "79c9406e8dd07fcbf8dc850bd3ee055420b8387c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/83b5057e2640d01395700582c6a7f7c99ab3d46e",
-                "reference": "83b5057e2640d01395700582c6a7f7c99ab3d46e",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/79c9406e8dd07fcbf8dc850bd3ee055420b8387c",
+                "reference": "79c9406e8dd07fcbf8dc850bd3ee055420b8387c",
                 "shasum": ""
             },
             "require": {
@@ -473,7 +522,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-05-23 19:54:19"
+            "time": "2015-05-25 13:19:36"
         },
         {
             "name": "gzero/cms",
@@ -481,15 +530,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "2f23a9918a6d1a62cf4c883181281001d915c4eb"
+                "reference": "cbb97aacc63d24ee22fdda5025850598ff49b791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/2f23a9918a6d1a62cf4c883181281001d915c4eb",
-                "reference": "2f23a9918a6d1a62cf4c883181281001d915c4eb",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/cbb97aacc63d24ee22fdda5025850598ff49b791",
+                "reference": "cbb97aacc63d24ee22fdda5025850598ff49b791",
                 "shasum": ""
             },
             "require": {
+                "davejamesmiller/laravel-breadcrumbs": "3.0.*",
                 "filp/whoops": "1.1.*",
                 "gzero/eloquent-tree": "1.*",
                 "illuminate/html": "~5.0",
@@ -536,7 +586,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-24 14:41:33"
+            "time": "2015-05-25 16:42:51"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -2784,12 +2834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "38c3ae610bcec110aa6bd18feed3d1970f2995f2"
+                "reference": "855a7d197f35ebd59708d0e08d9852670185190f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/38c3ae610bcec110aa6bd18feed3d1970f2995f2",
-                "reference": "38c3ae610bcec110aa6bd18feed3d1970f2995f2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/855a7d197f35ebd59708d0e08d9852670185190f",
+                "reference": "855a7d197f35ebd59708d0e08d9852670185190f",
                 "shasum": ""
             },
             "require": {
@@ -2838,7 +2888,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-25 05:10:17"
+            "time": "2015-05-25 12:56:57"
         },
         {
             "name": "phpunit/php-file-iterator",
