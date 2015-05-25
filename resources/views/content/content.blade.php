@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+    {!! Breadcrumbs::render('content') !!}
     <h1 class="page-header">{{ $activeTranslation->title }}</h1>
     <div class="row">
         <div class="col-md-8">
