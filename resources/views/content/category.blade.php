@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    {!! Breadcrumbs::render('category') !!}
     <h1 class="page-header">{{ $activeTranslation->title }}</h1>
     {{ $activeTranslation->body }}
     @if($children)
