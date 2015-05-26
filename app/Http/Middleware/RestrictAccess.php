@@ -1,5 +1,7 @@
 <?php namespace App\Http\Middleware;
 
+use Closure;
+
 /**
  * This file is part of the GZERO Platform package.
  *
@@ -12,7 +14,6 @@
  * @author     Mateusz Urbanowicz <urbanowiczmateusz89@gmail.com>
  * @copyright  Copyright (c) 2015, Mateusz Urbanowicz
  */
-
 class RestrictAccess {
 
     /**
@@ -22,12 +23,13 @@ class RestrictAccess {
      *
      * @return mixed
      */
-    public function handle($request)
+    public function handle($request, Closure $next)
     {
         $auth = app()->make('auth');
         if (!$auth->check() || !$auth->user()->isAdmin) {
             abort(404, trans('HTTP.NOT_FOUND'));
         }
+        return $next($request);
     }
 
 }
