@@ -20,6 +20,7 @@ class RestrictAccess {
      * Return 404 if user is not authenticated or got no admin rights
      *
      * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
      *
      * @return mixed
      */
