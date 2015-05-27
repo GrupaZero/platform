@@ -18,7 +18,7 @@ group(
     setMultilangRouting(),
     function () {
         group(
-            ['before' => 'auth'],
+            ['middleware' => 'auth'],
             function () {
                 get('account', ['as' => 'account', 'uses' => 'AccountController@account']);
                 get('account/edit', ['as' => 'account.edit', 'uses' => 'AccountController@edit']);
