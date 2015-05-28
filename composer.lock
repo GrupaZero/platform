@@ -104,12 +104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ClassPreloader/ClassPreloader.git",
-                "reference": "c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab"
+                "reference": "b76f3f4f603ebbe7e64351a7ef973431ddaf7b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ClassPreloader/ClassPreloader/zipball/c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab",
-                "reference": "c4e3a8d61be502bd04e7cdcdc2c80d7916e15fab",
+                "url": "https://api.github.com/repos/ClassPreloader/ClassPreloader/zipball/b76f3f4f603ebbe7e64351a7ef973431ddaf7b27",
+                "reference": "b76f3f4f603ebbe7e64351a7ef973431ddaf7b27",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "class",
                 "preload"
             ],
-            "time": "2015-05-23 13:43:47"
+            "time": "2015-05-26 10:57:51"
         },
         {
             "name": "danielstjules/stringy",
@@ -427,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "0bb878f69a88442aef1945153f0bbba802c76d1b"
+                "reference": "62e7724168d926cb20e418d2b63a4e187a37bf54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0bb878f69a88442aef1945153f0bbba802c76d1b",
-                "reference": "0bb878f69a88442aef1945153f0bbba802c76d1b",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/62e7724168d926cb20e418d2b63a4e187a37bf54",
+                "reference": "62e7724168d926cb20e418d2b63a4e187a37bf54",
                 "shasum": ""
             },
             "require": {
@@ -465,7 +465,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-05-25 15:36:33"
+            "time": "2015-05-27 08:38:31"
         },
         {
             "name": "gzero/api",
@@ -473,12 +473,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "79c9406e8dd07fcbf8dc850bd3ee055420b8387c"
+                "reference": "3fc27470fc611c9be08db6f038e6930dd8855235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/79c9406e8dd07fcbf8dc850bd3ee055420b8387c",
-                "reference": "79c9406e8dd07fcbf8dc850bd3ee055420b8387c",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/3fc27470fc611c9be08db6f038e6930dd8855235",
+                "reference": "3fc27470fc611c9be08db6f038e6930dd8855235",
                 "shasum": ""
             },
             "require": {
@@ -522,7 +522,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-05-25 13:19:36"
+            "time": "2015-05-28 08:26:22"
         },
         {
             "name": "gzero/cms",
@@ -530,12 +530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "cbb97aacc63d24ee22fdda5025850598ff49b791"
+                "reference": "15d38f5f2eb621e434e8453f137dc6f8c01fc5d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/cbb97aacc63d24ee22fdda5025850598ff49b791",
-                "reference": "cbb97aacc63d24ee22fdda5025850598ff49b791",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/15d38f5f2eb621e434e8453f137dc6f8c01fc5d8",
+                "reference": "15d38f5f2eb621e434e8453f137dc6f8c01fc5d8",
                 "shasum": ""
             },
             "require": {
@@ -586,7 +586,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-25 16:42:51"
+            "time": "2015-05-27 08:38:07"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -1000,12 +1000,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "2fb702b3aec994af0274af19d03aada8a154a401"
+                "reference": "0b4acb8ca9f889e5372e90090f7f5b8cacb1f055"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2fb702b3aec994af0274af19d03aada8a154a401",
-                "reference": "2fb702b3aec994af0274af19d03aada8a154a401",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0b4acb8ca9f889e5372e90090f7f5b8cacb1f055",
+                "reference": "0b4acb8ca9f889e5372e90090f7f5b8cacb1f055",
                 "shasum": ""
             },
             "require": {
@@ -1076,7 +1076,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-05-22 10:53:03"
+            "time": "2015-05-28 07:51:17"
         },
         {
             "name": "league/fractal",
@@ -1906,12 +1906,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "397ba4f0e38fe9e0b9cd0f4446dc2fa11f741510"
+                "reference": "11b371afd72af42c574d5aeb4b3a6075f7d2775f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/397ba4f0e38fe9e0b9cd0f4446dc2fa11f741510",
-                "reference": "397ba4f0e38fe9e0b9cd0f4446dc2fa11f741510",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/11b371afd72af42c574d5aeb4b3a6075f7d2775f",
+                "reference": "11b371afd72af42c574d5aeb4b3a6075f7d2775f",
                 "shasum": ""
             },
             "require": {
@@ -1975,7 +1975,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2015-05-22 14:53:08"
+            "time": "2015-05-27 00:47:03"
         },
         {
             "name": "symfony/process",
@@ -2834,12 +2834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "855a7d197f35ebd59708d0e08d9852670185190f"
+                "reference": "672248f49a25fcca46aa6c73612d6731d6b83c4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/855a7d197f35ebd59708d0e08d9852670185190f",
-                "reference": "855a7d197f35ebd59708d0e08d9852670185190f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/672248f49a25fcca46aa6c73612d6731d6b83c4a",
+                "reference": "672248f49a25fcca46aa6c73612d6731d6b83c4a",
                 "shasum": ""
             },
             "require": {
@@ -2888,7 +2888,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-25 12:56:57"
+            "time": "2015-05-25 16:40:23"
         },
         {
             "name": "phpunit/php-file-iterator",
