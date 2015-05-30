@@ -31,7 +31,7 @@ class HomeController extends BaseController {
         $contents = $this->contentRepo->getContents(
             [
                 'isOnHome' => [
-                    'relation' => '',
+                    'relation' => null,
                     'value'    => true
                 ]
             ],
