@@ -12,16 +12,16 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li{{ (URL::full() ==  route('home')) ? ' class="active"' : '' }}>
+                <li class="{{ (URL::full() ==  route('home')) ? 'active' : '' }}">
                     <a href="{{ route('home') }}">Home</a>
                 </li>
             </ul>
             @if (!Auth::check())
                 <ul class="nav navbar-nav navbar-right">
-                    <li{{ (URL::full() ==  route('login')) ? ' class="active"' : '' }}>
+                    <li class="{{ (URL::full() ==  route('login')) ? 'active' : '' }}">
                         <a href="{{ route('login') }}">@lang('common.login')</a>
                     </li>
-                    <li{{ (URL::full() ==  route('register')) ? ' class="active"' : '' }}>
+                    <li class="{{(URL::full() ==  route('register')) ? 'active' : '' }}">
                         <a href="{{ route('register') }}">@lang('common.register')</a>
                     </li>
                 </ul>
@@ -33,12 +33,12 @@
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li{{ (URL::full() ==  route('account')) ? ' class="active"' : '' }}>
-                                  <a href="{{ route('account') }}">
+                            <li class="{{ (URL::full() ==  route('account')) ? 'active' : '' }}">
+                                <a href="{{ route('account') }}">
                                     @lang('user.my_account') <i class="fa fa-user pull-right"></i>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ (URL::full() ==  route('account.edit')) ? 'active' : '' }}">
                                 <a href="{{ route('account.edit') }}">@lang('user.edit_account')
                                     <i class="fa fa-pencil pull-right"></i>
                                 </a>
@@ -47,7 +47,7 @@
                                 {{--<a href="#">@lang('user.get_help') <i class="fa fa-question-circle pull-right"></i></a>--}}
                             {{--</li>--}}
                             <li class="divider"></li>
-                            <li>
+                            <li class="{{ (URL::full() ==  route('logout')) ? 'active' : '' }}">
                                 <a href="{{ route('logout') }}">
                                     @lang('common.logout') <i class="fa fa-sign-out fa-fw pull-right"></i>
                                 </a>
