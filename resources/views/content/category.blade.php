@@ -60,5 +60,8 @@
                 </div>
             @endif
         @endforeach
+
+        {!! $children->render() !!}
+
     @endif
 @stop
