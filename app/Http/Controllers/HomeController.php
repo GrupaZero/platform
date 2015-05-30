@@ -16,21 +16,6 @@ class HomeController extends BaseController {
     |
     */
 
-    /**
-     * @var ContentRepository
-     */
-    protected $contentRepo;
-
-    /**
-     * @var ContentValidator
-     */
-    protected $validator;
-
-    /**
-     * @var UrlParamsProcessor
-     */
-    protected $processor;
-
     public function __construct(ContentRepository $contentRepo)
     {
         parent::__construct();
