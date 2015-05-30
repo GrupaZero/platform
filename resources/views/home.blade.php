@@ -57,4 +57,6 @@
         @endif
     @endforeach
 
+    {!! $contents->render() !!}
+
 @stop

@@ -1,6 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use Gzero\Repository\ContentRepository;
+use Illuminate\Routing\Route;
+use Gzero\Api\UrlParamsProcessor;
+use Gzero\Api\Validator\ContentValidator;
 
 class HomeController extends BaseController {
 
@@ -20,18 +23,22 @@ class HomeController extends BaseController {
      */
     protected $contentRepo;
 
-    public function __construct(ContentRepository $contentRepo)
+    public function __construct(ContentRepository $contentRepo, UrlParamsProcessor $processor, ContentValidator $validator)
     {
         parent::__construct();
         $this->contentRepo = $contentRepo;
+        $this->validator   = $validator->setData(\Input::all());
+        $this->processor   = $processor;
     }
 
-    public function index()
+    public function index(Route $route)
     {
+        $input    = $this->validator->validate('list');
+        $params   = $this->processor->process($input)->getProcessedFields();
         $contents = $this->contentRepo->getContents(
             [
                 'isOnHome' => [
-                    'relation' => '',
+                    'relation' => null,
                     'value'    => true
                 ]
             ],
@@ -45,8 +52,11 @@ class HomeController extends BaseController {
                     'direction' => 'DESC'
                 ]
             ],
-            null
+            $params['page'],
+            $params['perPage']
         );
+
+        $contents->setPath($route->getPath());
 
         return view(
             'home',
