@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Gzero\Repository\ContentRepository;
+
 class HomeController extends BaseController {
 
     /*
@@ -13,14 +15,45 @@ class HomeController extends BaseController {
     |
     */
 
-    public function __construct()
+    /**
+     * @var ContentRepository
+     */
+    protected $contentRepo;
+
+    public function __construct(ContentRepository $contentRepo)
     {
         parent::__construct();
+        $this->contentRepo = $contentRepo;
     }
 
     public function index()
     {
-        return view('home');
+        $contents = $this->contentRepo->getContents(
+            [
+                'isOnHome' => [
+                    'relation' => null,
+                    'value'    => true
+                ]
+            ],
+            [
+                'isPromoted' => [
+                    'relation'  => null,
+                    'direction' => 'DESC',
+                ],
+                'isSticky'   => [
+                    'relation'  => null,
+                    'direction' => 'DESC'
+                ]
+            ],
+            null
+        );
+
+        return view(
+            'home',
+            [
+                'contents' => $contents
+            ]
+        );
     }
 
 }
