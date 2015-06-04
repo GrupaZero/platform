@@ -4,7 +4,7 @@
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
 body, label, .checkbox label {
-	font-weight: 300;
+  font-weight : 300;
 }
 
 body {
@@ -150,7 +150,60 @@ body {
 .error-box .col-md-6 {
   margin-bottom : 30px
 }
+
 /* helper classes */
 .margin-zero-top {
   margin-top : 0;
+}
+
+/* slider */
+
+.slider {
+  height   : 400px;
+  position : relative; /* required */
+  overflow : hidden;
+}
+
+.slider ul {
+  list-style : none;
+  margin     : 0;
+  padding    : 0;
+}
+
+.slider > .sequence-canvas li {
+  position : absolute;
+  width    : 100%;
+}
+
+.slider > .sequence-canvas li.animate-in {
+  position            : absolute;
+  width               : 100%;
+  animation           : fadeInLeft;
+  animation-duration  : 2s;
+  animation-fill-mode : both;
+}
+
+.slider > .sequence-canvas li.animate-out {
+  position            : absolute;
+  width               : 100%;
+  animation           : fadeOutRight;
+  animation-duration  : 2s;
+  animation-fill-mode : both;
+}
+
+.slider > .sequence-canvas li > * {
+  /* required */
+  position : absolute;
+}
+
+.slider > .sequence-canvas {
+  /* required */
+  height : 100%;
+  width  : 100%;
+}
+
+.slider > .sequence-canvas {
+  /* required */
+  height : 100%;
+  width  : 100%;
 }

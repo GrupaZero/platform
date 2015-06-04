@@ -2,27 +2,7 @@
 
 @section('content')
 
-    <div id="homeSlider" class="owl-carousel">
-        @foreach($slides as $slide)
-            <div style=" background: url(/slides/{{ $slide }});
-                    background-size: cover;
-                    background-position: center;
-                    height: 400px;">
-            </div>
-        @endforeach
-    </div>
-
-    <div class="jumbotron text-center">
-        <h1>Marketing stuff!</h1>
-
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac
-            cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p>
-            <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">Get started today</a>
-        </p>
-    </div>
-
-
+    @include('blocks.slider')
 
     @foreach($contents as $index => $child)
         <?php $activeTranslation = $child->translation($lang->code); ?>
@@ -71,22 +51,5 @@
     @endforeach
 
     {!! $contents->render() !!}
-
-@stop
-
-@section('footerScripts')
-
-    <script>
-        $(document).ready(function() {
-
-            $("#homeSlider").owlCarousel({
-                singleItem:true,
-                navigation : true,
-                slideSpeed : 300,
-                paginationSpeed : 400
-            });
-
-        });
-    </script>
 
 @stop
