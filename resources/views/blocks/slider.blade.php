@@ -1,13 +1,12 @@
 <div class="slider" id="slider">
     <ul class="sequence-canvas">
         @foreach($slides as $slide)
-            <li style=" background: url(/slides/{{ $slide }});
-                    background-size: cover;
-                    background-position: center;
-                    height: 400px;"
-                class="animated">
+            <li>
 
-                <div class="jumbotron text-center">
+                <div class="jumbotron text-center"  style=" background: url({{ config('gzero.upload.public').'/slides/'.$slide }});
+                        background-size: cover;
+                        background-position: center;
+                        height: 400px;">
                     <h1>Marketing stuff!</h1>
 
                     <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac
@@ -31,12 +30,9 @@
 
         $(document).ready(function(){
             var options = {
-                nextButton: true,
-                prevButton: true,
-                pagination: true,
-                animateStartingFrameIn: true,
+                animateStartingFrameIn: false,
                 autoPlay: true,
-                autoPlayDelay: 3000
+                autoPlayDelay: 5000
             };
 
             var mySequence = $("#slider").sequence(options).data("sequence");

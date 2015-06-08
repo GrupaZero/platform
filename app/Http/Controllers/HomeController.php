@@ -63,7 +63,7 @@ class HomeController extends BaseController {
 
         $contents->setPath($request->url());
 
-        $slides = $this->filesystem->files(public_path('/slides'));
+        $slides = $this->filesystem->files(config('gzero.upload.path').'/slides');
 
         foreach ($slides as $key => $slide) {
             $temp         = explode('/slides/', $slide);
