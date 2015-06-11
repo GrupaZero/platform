@@ -8,6 +8,10 @@ return [
         'detected'  => false, // Do not change, changes in runtime!
         'subdomain' => false
     ],
+    //'upload'       => [                       TODO: we cant use helpers here
+    //    'path'   => public_path('uploads'),
+    //    'public' => asset('uploads')
+    //],
     'block_type'      => [
         'basic' => 'Gzero\Core\Handler\Block\Basic',
         'menu'  => 'Gzero\Core\Handler\Block\Menu'
