@@ -2718,7 +2718,7 @@ select[multiple].form-group-lg .form-control {
   text-align: center;
   vertical-align: middle;
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
@@ -5397,14 +5397,12 @@ button.close {
 }
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
-  -ms-transform: translate(0, -25%);
   transform: translate(0, -25%);
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
 }
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
   transform: translate(0, 0);
 }
 .modal-open .modal {
@@ -5742,27 +5740,27 @@ button.close {
     transition: -webkit-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    backface-visibility: hidden;
     -webkit-perspective: 1000;
-            perspective: 1000;
+    perspective: 1000;
   }
   .carousel-inner > .item.next,
   .carousel-inner > .item.active.right {
     -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
     left: 0;
   }
   .carousel-inner > .item.prev,
   .carousel-inner > .item.active.left {
     -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
     left: 0;
   }
   .carousel-inner > .item.next.left,
   .carousel-inner > .item.prev.right,
   .carousel-inner > .item.active {
     -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     left: 0;
   }
 }
@@ -6245,13 +6243,43 @@ button.close {
   opacity: 0;
   transition-duration: 1s;
 }
+.slider > .sequence-canvas li div h1 {
+  opacity: 1;
+  transition-duration: 1s;
+  top: -50px;
+  left: -100px;
+  position: relative;
+}
+.slider > .sequence-canvas li div a {
+  opacity: 1;
+  transition-duration: 1s;
+  top: 50px;
+  position: relative;
+  left: 100px;
+}
 .slider > .sequence-canvas li.animate-in div {
   opacity: 1;
   transition-duration: 1s;
 }
+.slider > .sequence-canvas li.animate-in div h1 {
+  top: 0px;
+  left: 0px;
+}
+.slider > .sequence-canvas li.animate-in div a {
+  top: 0px;
+  left: 0px;
+}
 .slider > .sequence-canvas li.animate-out div {
   opacity: 0;
   transition-duration: 1s;
+}
+.slider > .sequence-canvas li.animate-out div h1 {
+  top: -50px;
+  left: 100px;
+}
+.slider > .sequence-canvas li.animate-out div a {
+  top: 50px;
+  left: -100px;
 }
 .slider > .sequence-canvas li > * {
   /* required */

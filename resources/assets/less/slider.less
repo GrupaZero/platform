@@ -20,14 +20,50 @@
   transition-duration : 1s;
 }
 
+.slider > .sequence-canvas li div h1 {
+  opacity             : 1;
+  transition-duration : 1s;
+  top                 : -50px;
+  left                : -100px;
+  position            : relative;
+}
+
+.slider > .sequence-canvas li div a {
+  opacity             : 1;
+  transition-duration : 1s;
+  top                 : 50px;
+  position            : relative;
+  left                : 100px;
+}
+
 .slider > .sequence-canvas li.animate-in div {
   opacity             : 1;
   transition-duration : 1s;
 }
 
+.slider > .sequence-canvas li.animate-in div h1 {
+  top  : 0px;
+  left : 0px;
+}
+
+.slider > .sequence-canvas li.animate-in div a {
+  top  : 0px;
+  left : 0px;
+}
+
 .slider > .sequence-canvas li.animate-out div {
   opacity             : 0;
   transition-duration : 1s;
+}
+
+.slider > .sequence-canvas li.animate-out div h1 {
+  top  : -50px;
+  left : 100px;
+}
+
+.slider > .sequence-canvas li.animate-out div a {
+  top  : 50px;
+  left : -100px;
 }
 
 .slider > .sequence-canvas li > * {
