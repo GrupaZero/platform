@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "c5c55edb48f5df7fe7b3b93c64222586",
@@ -427,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "082925cc07c01a3eb6e2545f8e5d1cb86195acb2"
+                "reference": "0302669f8e26c4eb578662808e99425a92bba1d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/082925cc07c01a3eb6e2545f8e5d1cb86195acb2",
-                "reference": "082925cc07c01a3eb6e2545f8e5d1cb86195acb2",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0302669f8e26c4eb578662808e99425a92bba1d6",
+                "reference": "0302669f8e26c4eb578662808e99425a92bba1d6",
                 "shasum": ""
             },
             "require": {
@@ -465,7 +465,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-05-30 16:37:43"
+            "time": "2015-06-03 17:49:31"
         },
         {
             "name": "gzero/api",
@@ -530,12 +530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "4f1a55f6e86ae1994f2c609008e51750cb19cd5a"
+                "reference": "ef76b70ea088b8baf4ef84911240a760f6e7762a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/4f1a55f6e86ae1994f2c609008e51750cb19cd5a",
-                "reference": "4f1a55f6e86ae1994f2c609008e51750cb19cd5a",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/ef76b70ea088b8baf4ef84911240a760f6e7762a",
+                "reference": "ef76b70ea088b8baf4ef84911240a760f6e7762a",
                 "shasum": ""
             },
             "require": {
@@ -586,7 +586,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-30 18:13:56"
+            "time": "2015-06-01 07:56:38"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -2817,16 +2817,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.0",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "ba315f46873fd6e86fdb98685a1a900e7379c886"
+                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ba315f46873fd6e86fdb98685a1a900e7379c886",
-                "reference": "ba315f46873fd6e86fdb98685a1a900e7379c886",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/28a6b34e91d789b2608072ab3c82eaae7cdb973c",
+                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c",
                 "shasum": ""
             },
             "require": {
@@ -2875,7 +2875,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-30 12:58:40"
+            "time": "2015-06-03 07:01:01"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3063,16 +3063,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.9",
+            "version": "4.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "816d12536a7a032adc3b68737f82cfbbf98b79c1"
+                "reference": "7b5fe98b28302a8b25693b2298bca74463336975"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/816d12536a7a032adc3b68737f82cfbbf98b79c1",
-                "reference": "816d12536a7a032adc3b68737f82cfbbf98b79c1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b5fe98b28302a8b25693b2298bca74463336975",
+                "reference": "7b5fe98b28302a8b25693b2298bca74463336975",
                 "shasum": ""
             },
             "require": {
@@ -3131,7 +3131,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-29 06:00:03"
+            "time": "2015-06-03 05:03:30"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
