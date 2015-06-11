@@ -8,7 +8,7 @@ return [
         'detected'  => false, // Do not change, changes in runtime!
         'subdomain' => false
     ],
-    //'upload'       => [
+    //'upload'       => [                       TODO: we cant use helpers here
     //    'path'   => public_path('uploads'),
     //    'public' => asset('uploads')
     //],

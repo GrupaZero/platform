@@ -2,6 +2,7 @@
 
 use Gzero\Repository\ContentRepository;
 use Illuminate\Http\Request;
+use Illuminate\Filesystem\Filesystem;
 
 class HomeController extends BaseController {
 
@@ -16,11 +17,21 @@ class HomeController extends BaseController {
     |
     */
 
-    public function __construct(ContentRepository $contentRepo)
+    /**
+     * @var ContentRepository
+     */
+    protected $contentRepo;
+
+    /**
+     * @var Filesystem
+     */
+    protected $filesystem;
+
+    public function __construct(ContentRepository $contentRepo, Filesystem $filesystem)
     {
         parent::__construct();
         $this->contentRepo = $contentRepo;
-
+        $this->filesystem  = $filesystem;
     }
 
     public function index(Request $request)
@@ -52,10 +63,18 @@ class HomeController extends BaseController {
 
         $contents->setPath($request->url());
 
+        $slides = $this->filesystem->files(config('gzero.upload.path').'/slides');
+
+        foreach ($slides as $key => $slide) {
+            $temp         = explode('/slides/', $slide);
+            $slides[$key] = array_pop($temp);
+        }
+
         return view(
             'home',
             [
-                'contents' => $contents
+                'contents' => $contents,
+                'slides'   => $slides
             ]
         );
     }
