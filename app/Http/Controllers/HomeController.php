@@ -38,24 +38,12 @@ class HomeController extends BaseController {
     {
         $contents = $this->contentRepo->getContents(
             [
-                'isActive' => [
-                    'value'    => true,
-                    'relation' => null
-                ],
-                'isOnHome' => [
-                    'relation' => null,
-                    'value'    => true
-                ]
+                ['isActive', '=', true],
+                ['isOnHome', '=', true]
             ],
             [
-                'isPromoted' => [
-                    'relation'  => null,
-                    'direction' => 'DESC',
-                ],
-                'isSticky'   => [
-                    'relation'  => null,
-                    'direction' => 'DESC'
-                ]
+                ['isPromoted', 'DESC'],
+                ['isSticky', 'DESC']
             ],
             $request->get('page', 1),
             config('gzero.defaultPageSize', 20)
@@ -63,7 +51,7 @@ class HomeController extends BaseController {
 
         $contents->setPath($request->url());
 
-        $slides = $this->filesystem->files(config('gzero.upload.path').'/slides');
+        $slides = $this->filesystem->files(config('gzero.upload.path') . '/slides');
 
         foreach ($slides as $key => $slide) {
             $temp         = explode('/slides/', $slide);
