@@ -3,7 +3,11 @@
 <?php $activeRoute = $content->routeTranslation($lang->code); ?>
 
 @section('title')
-    {{ $activeTranslation->title }}
+    {{ $activeTranslation->seoTitle() }}
+@stop
+
+@section('seoDescription')
+    {{ $activeTranslation->seoDescription() }}
 @stop
 
 @section('content')
