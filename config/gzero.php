@@ -5,6 +5,7 @@ return [
     'defaultPageSize'                => 5,
     'seoTitleAlternativeField'       => 'title',
     'seoDescriptionAlternativeField' => 'body',
+    'seoDescLength'                  => 160,
     'multilang'                      => [
         'enabled'   => true,
         'detected'  => false, // Do not change, changes in runtime!
