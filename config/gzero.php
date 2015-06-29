@@ -6,6 +6,7 @@ return [
     'seoTitleAlternativeField'       => 'title',
     'seoDescriptionAlternativeField' => 'body',
     'seoDescLength'                  => 160,
+    'siteDesc'                       => 'Content management system.',
     'multilang'                      => [
         'enabled'   => true,
         'detected'  => false, // Do not change, changes in runtime!
