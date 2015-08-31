@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler {
                     ),
                     $request
                 );
-            } else if (App::environment() == 'prod') {
+            } else if (App::environment() == 'production') {
                 return $cors->addActualRequestHeaders(
                     response()->json(
                         [
