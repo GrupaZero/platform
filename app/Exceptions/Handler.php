@@ -1,6 +1,7 @@
 <?php namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\App;
 use Whoops\Run;
 use Whoops\Handler\PrettyPageHandler;
 use Gzero\Validator\ValidationException;
@@ -52,6 +53,19 @@ class Handler extends ExceptionHandler {
                         [
                             'code'  => self::VALIDATION_ERROR,
                             'error' => $e->getErrors()
+                        ],
+                        500
+                    ),
+                    $request
+                );
+            } else if (App::environment() == 'production') {
+                return $cors->addActualRequestHeaders(
+                    response()->json(
+                        [
+                            'code'  => self::SERVER_ERROR,
+                            'error' => [
+                                'message' => $e->getMessage(),
+                            ]
                         ],
                         500
                     ),
