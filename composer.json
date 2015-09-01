@@ -17,7 +17,8 @@
     "require": {
         "gzero/cms": "dev-master",
         "gzero/api": "dev-master",
-        "gzero/admin": "dev-master"
+        "gzero/admin": "dev-master",
+        "thomaswelton/laravel-gravatar": "~1.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "2.0.*",

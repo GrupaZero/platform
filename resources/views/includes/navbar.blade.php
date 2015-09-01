@@ -28,7 +28,9 @@
             @else
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle height-50" data-toggle="dropdown" href="#">
+                            <img src="{{ Gravatar::src(Auth::user()->email, 35) }}"
+                                 class="navbar-avatar">
                             {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}
                             <i class="fa fa-caret-down"></i>
                         </a>
