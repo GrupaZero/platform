@@ -140,6 +140,7 @@ return [
         'Gzero\Core\ServiceProvider',
         'Gzero\Api\ServiceProvider',
         'Gzero\Admin\ServiceProvider',
+		'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
 
         /*
          * Application Service Providers...
@@ -197,6 +198,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Gravatar' => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
 
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
 	],
