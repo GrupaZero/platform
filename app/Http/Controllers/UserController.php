@@ -7,9 +7,11 @@ use Gzero\Validator\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
+use Swift_TransportException;
 
 
 /**
@@ -101,7 +103,7 @@ class UserController extends BaseController {
             if ($existingUser === null) {
                 $input['password'] = Hash::make($input['password']);
                 $user              = $this->userRepo->create($input);
-                if (!empty($user) && shouldSendRegisterEmail()) {
+                if (!empty($user)) {
                     Auth::login($user);
                     try {
                         $subject = Lang::get('emails.welcome.subject', ['siteName' => Config::get('gzero.siteName')]);
