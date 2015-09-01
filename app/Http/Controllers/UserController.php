@@ -101,7 +101,7 @@ class UserController extends BaseController {
             if ($existingUser === null) {
                 $input['password'] = Hash::make($input['password']);
                 $user              = $this->userRepo->create($input);
-                if (!empty($user)) {
+                if (!empty($user) && shouldSendRegisterEmail()) {
                     Auth::login($user);
                     try {
                         $subject = Lang::get('emails.welcome.subject', ['siteName' => Config::get('gzero.siteName')]);
