@@ -7,6 +7,7 @@ use Gzero\Validator\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
@@ -113,7 +114,7 @@ class UserController extends BaseController {
                                     ->to($input['email'], $input['firstName'] . ' ' . $input['lastName']);
                             }
                         );
-                    } catch (Swift_TransportException $e) {
+                    } catch (\Swift_TransportException $e) {
                         /**@TODO Better way to handle exceptions on production */
                         Log::error('Unable to send welcome email: ' . $e->getMessage());
                     }
