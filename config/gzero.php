@@ -1,6 +1,6 @@
 <?php
 return [
-    'domain'                         => 'dev.gzero.pl',
+    'domain'                         => env('DOMAIN', 'localhost'),
     'siteName'                       => 'G-ZERO CMS',
     'defaultPageSize'                => 5,
     'seoTitleAlternativeField'       => 'title',
