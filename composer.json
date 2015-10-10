@@ -25,6 +25,7 @@
         "barryvdh/laravel-debugbar": "2.0.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
+        "codeception/codeception": "2.1.*",
         "fzaninotto/faker": "1.4.0",
         "satooshi/php-coveralls": "dev-master"
     },

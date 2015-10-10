@@ -16,7 +16,7 @@ composer install
 
 Create and configure database:
  - create database and user
- - copy .env.example as .env in root directory and put your credentials in it
+ - copy .env.example as .env in root directory and put your credentials in to it
  
  ```
  DB_HOST=localhost
@@ -48,3 +48,14 @@ php artisan serve
  - done
  
  To check progress on project development you can occasionally run composer install
+
+
+## Testing
+
+Copy .env.example as .env.testing in root directory and put your credentials in to it
+
+To run tests use:
+
+```
+./vendor/bin/codecept run
+```
