@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4b97282d44dca0773d5ee59f590057e9",
+    "hash": "47be33b964f5aadb8dee4c71374ecb26",
     "content-hash": "7197f0bff20414b7641386f0a7d7d75f",
     "packages": [
         {
@@ -422,16 +422,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "beb7d513d9f0dbd185c46749262c607747578659"
+                "reference": "742ebaa84ab6885b4318d46d956492f44824442a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/beb7d513d9f0dbd185c46749262c607747578659",
-                "reference": "beb7d513d9f0dbd185c46749262c607747578659",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/742ebaa84ab6885b4318d46d956492f44824442a",
+                "reference": "742ebaa84ab6885b4318d46d956492f44824442a",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.1.*",
+                "gzero/core": "dev-master",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -460,7 +460,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-10-10 14:17:24"
+            "time": "2015-10-11 16:26:34"
         },
         {
             "name": "gzero/api",
@@ -468,22 +468,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "1fe7006789f41b74a7411f36c3a733359c4b1593"
+                "reference": "e6f4013dd0d22aae1ff5f19a0a779128756fdc5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/1fe7006789f41b74a7411f36c3a733359c4b1593",
-                "reference": "1fe7006789f41b74a7411f36c3a733359c4b1593",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/e6f4013dd0d22aae1ff5f19a0a779128756fdc5e",
+                "reference": "e6f4013dd0d22aae1ff5f19a0a779128756fdc5e",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/laravel-cors": "0.6.0",
                 "gzero/core": "dev-master",
+                "gzero/entity": "dev-master",
                 "gzero/repository": "dev-master",
                 "gzero/validator": "dev-master",
                 "illuminate/pagination": "5.1.*",
                 "illuminate/routing": "5.1.*",
-                "illuminate/support": "5.1.*",
                 "league/fractal": "0.12.0",
                 "php": ">=5.5.9"
             },
@@ -518,7 +518,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-07-10 20:08:23"
+            "time": "2015-10-11 17:08:30"
         },
         {
             "name": "gzero/cms",
@@ -526,12 +526,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "52a27a01d682aeb8fca8125715194e1381323298"
+                "reference": "d8cf4af9b6aa871165698c0422ba2a19bedbd106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/52a27a01d682aeb8fca8125715194e1381323298",
-                "reference": "52a27a01d682aeb8fca8125715194e1381323298",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/d8cf4af9b6aa871165698c0422ba2a19bedbd106",
+                "reference": "d8cf4af9b6aa871165698c0422ba2a19bedbd106",
                 "shasum": ""
             },
             "require": {
@@ -582,7 +582,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-10-04 09:58:50"
+            "time": "2015-10-11 16:48:43"
         },
         {
             "name": "gzero/eloquent-tree",

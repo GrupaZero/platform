@@ -316,7 +316,8 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'asd@dasda.pl','$2y$10$BKybUxNzuF5TSUVojoINJ.x28Yl./vOCJofFwJoIo/TZ6FlsXfkK.','asdas','asdasd','',0,'2015-10-10 16:28:30','2015-10-10 16:28:30');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$TtIn8PAFvzK9x2kqEzgAxu5BpdxTy4lmHfOrdxdvcjeWTDSJdd4q.','asdas','asdasd','',
+1,'2015-10-10 16:28:30','2015-10-10 16:28:30');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -15,13 +14,49 @@
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
  * @SuppressWarnings(PHPMD)
-*/
-class FunctionalTester extends \Codeception\Actor
-{
+ */
+class FunctionalTester extends \Codeception\Actor {
+
     use _generated\FunctionalTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * Login in to page
+     *
+     * @param $name
+     * @param $password
+     */
+    public function login($name, $password)
+    {
+        $I = $this;
+        $I->amOnPage('/en/login');
+        $I->fillField('email', $name);
+        $I->fillField('password', $password);
+        $I->click('button[type=submit]');
+        $I->amOnPage('/en');
+        $I->seeAuthentication();
+    }
+
+    /**
+     * Login as admin in to page
+     */
+    public function loginAsAdmin()
+    {
+        $I = $this;
+        $I->amOnPage('/en/login');
+        $I->fillField('email', 'admin@gzero.pl');
+        $I->fillField('password', 'test');
+        $I->click('button[type=submit]');
+    }
+
+    /**
+     * Logout from page
+     */
+    public function logout()
+    {
+        $I = $this;
+        $I->amOnPage('/en/logout');
+        $I->canSeeCurrentUrlEquals('/en');
+        $I->dontSeeAuthentication();
+    }
 
 }
