@@ -24,13 +24,13 @@ Create and configure database:
  DB_USERNAME=database_user
  DB_PASSWORD=database_password
  ```
- - create database schema (remember to set env to dev)
+ - create database schema (remember to set env to dev) with basic user, languages, content types and options data
  
 ```
 php artisan migrate --path=vendor/gzero/cms/src/migrations/
 ```
 
- - you can seed database with example data using this command
+ - you can also seed database with example data using this command
  
 ```
 php artisan db:seed --class="Gzero\Core\CMSSeeder"
