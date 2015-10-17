@@ -22,14 +22,14 @@ class FunctionalTester extends \Codeception\Actor {
     /**
      * Login in to page
      *
-     * @param $name
+     * @param $email
      * @param $password
      */
-    public function login($name, $password)
+    public function login($email, $password)
     {
         $I = $this;
         $I->amOnPage('/en/login');
-        $I->fillField('email', $name);
+        $I->fillField('email', $email);
         $I->fillField('password', $password);
         $I->click('button[type=submit]');
         $I->amOnPage('/en');
@@ -46,6 +46,7 @@ class FunctionalTester extends \Codeception\Actor {
         $I->fillField('email', 'admin@gzero.pl');
         $I->fillField('password', 'test');
         $I->click('button[type=submit]');
+        $I->seeAuthentication();
     }
 
     /**

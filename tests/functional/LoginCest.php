@@ -81,6 +81,6 @@ class LoginCest {
         );
         $I->login('john@doe.com', 'password');
         $I->logout();
-
+        $I->dontSeeAuthentication();
     }
 }
