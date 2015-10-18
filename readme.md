@@ -24,7 +24,7 @@ Create and configure database:
  DB_USERNAME=database_user
  DB_PASSWORD=database_password
  ```
- - create database schema (remember to set env to dev)
+ - create database schema and required data (remember to set env to dev)
  
 ```
 php artisan migrate --path=vendor/gzero/cms/src/migrations/

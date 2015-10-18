@@ -1,4 +1,5 @@
 actor: Tester
+namespace: platform
 coverage:
     enabled: true
     remote: false
@@ -8,6 +9,8 @@ coverage:
     exclude:
         - app/Http/routes.php
         - app/Http/Kernel.php
+include:
+    - vendor/gzero/api
 paths:
     tests: tests
     log: tests/_output

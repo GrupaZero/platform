@@ -1,5 +1,6 @@
-<?php
-use \FunctionalTester;
+<?php namespace platform;
+
+use DateTime;
 
 class LoginCest {
 
