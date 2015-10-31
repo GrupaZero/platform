@@ -2,8 +2,11 @@ class_name: FunctionalTester
 modules:
     enabled:
         - Db
-        - Helper\Functional
+        - platform\Helper\Functional
         - Asserts
         - Laravel5:
-            cleanup: false
+            cleanup: true
+            disable_middleware: false
             environment_file: .env.testing
+        - REST:
+            depends: Laravel5

@@ -12,7 +12,7 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - ./vendor/bin/codecept run --coverage --coverage-xml --coverage-html
+  - ./vendor/bin/codecept run --coverage --coverage-xml --coverage-html --env platform
   - cp tests/_output/coverage.xml build/logs/clover.xml
 
 after_script:

@@ -92,11 +92,10 @@ class Handler extends ExceptionHandler {
             if (config('app.debug')) {
                 $whoops = new Run;
                 $whoops->pushHandler(new PrettyPageHandler);
-
                 return response(
                     $whoops->handleException($e),
-                    $e->getStatusCode(),
-                    $e->getHeaders()
+                    method_exists($e, 'getStatusCode') ? $e->getStatusCode() : self::SERVER_ERROR,
+                    method_exists($e, 'getHeaders') ? $e->getHeaders() : []
                 );
             } else {
                 return parent::render($request, $e);

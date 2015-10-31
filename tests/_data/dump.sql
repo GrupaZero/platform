@@ -73,6 +73,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
+INSERT INTO `ContentTypes` VALUES ('content',1,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('category',1,'2015-10-17 18:25:48','2015-10-17 18:25:48');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,6 +146,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('pl','pl_PL',1,0,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('de','de_DE',0,0,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('fr','fr_FR',0,0,'2015-10-17 18:25:48','2015-10-17 18:25:48');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,6 +172,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
+INSERT INTO `OptionCategories` VALUES ('general','2015-10-17 18:25:48','2015-10-17 18:25:48'),('seo','2015-10-17 18:25:48','2015-10-17 18:25:48');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +193,7 @@ CREATE TABLE `Options` (
   PRIMARY KEY (`id`),
   KEY `options_categorykey_key_index` (`categoryKey`,`key`),
   CONSTRAINT `options_categorykey_foreign` FOREIGN KEY (`categoryKey`) REFERENCES `OptionCategories` (`key`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,6 +202,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(4,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(5,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2015-10-17 18:25:48','2015-10-17 18:25:48');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +320,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'asd@dasda.pl','$2y$10$BKybUxNzuF5TSUVojoINJ.x28Yl./vOCJofFwJoIo/TZ6FlsXfkK.','asdas','asdasd','',0,'2015-10-10 16:28:30','2015-10-10 16:28:30');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$e2NYo4HEJmJcHgNleTqiHeX41sC2WugALw4Lu.Aj0Juq7vCK3CMVK','John','Doe','',1,'2015-10-17 18:25:48','2015-10-17 18:25:48');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-10 20:37:30
+-- Dump completed on 2015-10-17 22:27:05

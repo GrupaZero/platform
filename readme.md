@@ -1,4 +1,4 @@
-## GZERO CMS PLATFORM [![Build Status](https://travis-ci.org/GrupaZero/platform.png?branch=master)](https://travis-ci.org/GrupaZero/platform) [![Coverage Status](https://coveralls.io/repos/GrupaZero/platform/badge.png)](https://coveralls.io/r/GrupaZero/platform)
+## GZERO CMS PLATFORM [![Build Status](https://travis-ci.org/GrupaZero/platform.png?branch=master)](https://travis-ci.org/GrupaZero/platform) [![Coverage Status](https://coveralls.io/repos/GrupaZero/platform/badge.svg?branch=master&service=github)](https://coveralls.io/github/GrupaZero/platform?branch=master)
 
 GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
@@ -24,7 +24,7 @@ Create and configure database:
  DB_USERNAME=database_user
  DB_PASSWORD=database_password
  ```
- - create database schema (remember to set env to dev) with basic user, languages, content types and options data
+ - create database schema and required data (remember to set env to dev)
  
 ```
 php artisan migrate --path=vendor/gzero/cms/src/migrations/
