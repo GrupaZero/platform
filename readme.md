@@ -30,7 +30,7 @@ Create and configure database:
 php artisan migrate --path=vendor/gzero/cms/src/migrations/
 ```
 
- - you can seed database with example data using this command
+ - you can also seed database with example data using this command
  
 ```
 php artisan db:seed --class="Gzero\Core\CMSSeeder"
