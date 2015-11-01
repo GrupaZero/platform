@@ -71,24 +71,27 @@
                 $.ajax({
                     url: "/<?php echo $lang->code;?>/api/v1/account/ <?php echo $user->id;?>",
                     data: $('#edit-account-form').serializeObject(),
-                    type: 'PUT'
-                }).done(function (result) {
-                    Loading.stop();
-                    if(result.success){
+                    type: 'PUT',
+                    success: function (xhr) {
+                        Loading.stop();
                         // set success message
                         setGlobalMessage('success', "@lang('common.changesSavedMessage')");
                         hideMessages();
                         clearFormValidationErrors();
-                    } else {
-                        // clear previous errors
-                        clearFormValidationErrors();
-                        $.each(result.errors, function (index, error) {
-                            // set form errors
-                            setFormValidationErrors(index, error);
-                        });
+                    },
+                    error: function(xhr, status, error){
+                        Loading.stop();
+                        if(typeof xhr.responseJSON !== 'undefined'){
+                            // clear previous errors
+                            clearFormValidationErrors();
+                            $.each(xhr.responseJSON.errors, function (index, error) {
+                                // set form errors
+                                setFormValidationErrors(index, error);
+                            });
+                        }
                     }
-                })
-            });
+                });
+            })
         });
     </script>
 @stop

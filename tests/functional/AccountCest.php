@@ -72,7 +72,7 @@ class AccountCest
         $token = $I->grabValueFrom("input[name='_token']");
         $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
         $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['password' => 'test124', '_token' => $token]);
-        $I->seeResponseCodeIs(500);
+        $I->seeResponseCodeIs(400);
     }
 
 }

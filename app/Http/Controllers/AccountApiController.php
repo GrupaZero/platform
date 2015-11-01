@@ -57,7 +57,8 @@ class AccountApiController extends BaseController {
             $this->userRepo->update($user, $input);
             return Response::json(['success' => true]);
         } catch (ValidationException $e) {
-            return Response::json(['success' => false, 'errors' => $e->getErrors()]);
+            // @TODO Use response code from ValidationException class
+            return Response::json(['success' => false, 'errors' => $e->getErrors()], 400);
         }
     }
 
