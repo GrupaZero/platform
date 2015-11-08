@@ -46,20 +46,21 @@ class Handler extends ExceptionHandler {
     public function render($request, Exception $e)
     {
         if ($request->ajax()) {
-            $cors = app()->make('Asm89\Stack\CorsService');
+            /** @var $CORS \Asm89\Stack\CorsService */
+            $CORS = app()->make('Asm89\Stack\CorsService');
             if ($e instanceof ValidationException) {
-                return $cors->addActualRequestHeaders(
+                return $CORS->addActualRequestHeaders(
                     response()->json(
                         [
                             'code'  => self::VALIDATION_ERROR,
                             'error' => $e->getErrors()
                         ],
-                        500
+                        self::VALIDATION_ERROR
                     ),
                     $request
                 );
             } else if (App::environment() == 'production') {
-                return $cors->addActualRequestHeaders(
+                return $CORS->addActualRequestHeaders(
                     response()->json(
                         [
                             'code'  => self::SERVER_ERROR,
@@ -67,12 +68,12 @@ class Handler extends ExceptionHandler {
                                 'message' => $e->getMessage(),
                             ]
                         ],
-                        500
+                        self::SERVER_ERROR
                     ),
                     $request
                 );
             } else {
-                return $cors->addActualRequestHeaders(
+                return $CORS->addActualRequestHeaders(
                     response()->json(
                         [
                             'code'  => self::SERVER_ERROR,
@@ -83,7 +84,7 @@ class Handler extends ExceptionHandler {
                                 'line'    => $e->getLine(),
                             ]
                         ],
-                        500
+                        self::SERVER_ERROR
                     ),
                     $request
                 );
