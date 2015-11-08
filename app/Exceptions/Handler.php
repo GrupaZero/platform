@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler {
                         [
                             'code'  => self::SERVER_ERROR,
                             'error' => [
-                                'message' => $e->getMessage(),
+                                'message' => ($e->getMessage()) ? $e->getMessage() : 'Internal Server Error',
                             ]
                         ],
                         self::SERVER_ERROR
