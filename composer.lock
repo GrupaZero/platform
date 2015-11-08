@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "hash": "47be33b964f5aadb8dee4c71374ecb26",
-    "content-hash": "7197f0bff20414b7641386f0a7d7d75f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -422,12 +421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "1cb252a5b0118ff38c5bd6a1e95bf9a1fd9e7ccc"
+                "reference": "49e16655e123836411c2b1afac6c75028d77e3bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/1cb252a5b0118ff38c5bd6a1e95bf9a1fd9e7ccc",
-                "reference": "1cb252a5b0118ff38c5bd6a1e95bf9a1fd9e7ccc",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/49e16655e123836411c2b1afac6c75028d77e3bb",
+                "reference": "49e16655e123836411c2b1afac6c75028d77e3bb",
                 "shasum": ""
             },
             "require": {
@@ -460,7 +459,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-11-06 14:43:00"
+            "time": "2015-11-08 17:22:04"
         },
         {
             "name": "gzero/api",
@@ -468,12 +467,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "70c3303028dfd72a2a2f9122fdd4115f9ba4887e"
+                "reference": "b98c4c150a25563187e60892af8b2f6c998ec457"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/70c3303028dfd72a2a2f9122fdd4115f9ba4887e",
-                "reference": "70c3303028dfd72a2a2f9122fdd4115f9ba4887e",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/b98c4c150a25563187e60892af8b2f6c998ec457",
+                "reference": "b98c4c150a25563187e60892af8b2f6c998ec457",
                 "shasum": ""
             },
             "require": {
@@ -519,7 +518,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-10-31 14:21:17"
+            "time": "2015-11-08 12:45:52"
         },
         {
             "name": "gzero/cms",
@@ -762,7 +761,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
