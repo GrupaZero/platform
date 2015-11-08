@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "47be33b964f5aadb8dee4c71374ecb26",
+    "content-hash": "7197f0bff20414b7641386f0a7d7d75f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -467,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "b98c4c150a25563187e60892af8b2f6c998ec457"
+                "reference": "cb0915086070e44378aba5b9bdec63b416753185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/b98c4c150a25563187e60892af8b2f6c998ec457",
-                "reference": "b98c4c150a25563187e60892af8b2f6c998ec457",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/cb0915086070e44378aba5b9bdec63b416753185",
+                "reference": "cb0915086070e44378aba5b9bdec63b416753185",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +519,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-11-08 12:45:52"
+            "time": "2015-11-08 17:56:02"
         },
         {
             "name": "gzero/cms",
