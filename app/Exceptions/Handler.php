@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler {
                     response()->json(
                         [
                             'code'  => self::FORBIDDEN_ERROR,
-                            'error' => $e->getMessage()
+                            'error' => ($e->getMessage()) ? $e->getMessage() : 'Forbidden.'
                         ],
                         self::FORBIDDEN_ERROR
                     ),
