@@ -50,8 +50,6 @@ class Handler extends ExceptionHandler {
         if ($request->ajax()) {
             /** @var $CORS \Asm89\Stack\CorsService */
             $CORS = app()->make('Asm89\Stack\CorsService');
-
-
             if ($e instanceof ValidationException) {
                 return $CORS->addActualRequestHeaders(
                     response()->json(
