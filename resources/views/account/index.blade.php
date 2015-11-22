@@ -13,7 +13,7 @@
 
     <h3>{{ $user->firstName }} {{ $user->lastName }}</h3>
 
-    @if(app()->bound('oauth') && strpos($user->email,'social_') !== false)
+    @if(isset($user->hasSocialIntegrations) && strpos($user->email,'social_') !== false)
         <p>@lang('common.accountConected')</p>
     @else
         <p><strong>@choice('common.email', 1):</strong> {{ $user->email }}</p>
