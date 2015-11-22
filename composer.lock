@@ -905,12 +905,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/social.git",
-                "reference": "c39cfcc79c49f3e2c5e50e20ff2abacf283629a7"
+                "reference": "6530e78ee009f998de28f27826b2eeb82259e51b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/c39cfcc79c49f3e2c5e50e20ff2abacf283629a7",
-                "reference": "c39cfcc79c49f3e2c5e50e20ff2abacf283629a7",
+                "url": "https://api.github.com/repos/GrupaZero/social/zipball/6530e78ee009f998de28f27826b2eeb82259e51b",
+                "reference": "6530e78ee009f998de28f27826b2eeb82259e51b",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "plugin",
                 "social"
             ],
-            "time": "2015-11-22 15:10:09"
+            "time": "2015-11-22 15:45:21"
         },
         {
             "name": "jakub-onderka/php-console-color",
