@@ -51,7 +51,7 @@
             <input id="accountIntent" type="text" name="accountIntent" class="hidden">
         </form>
         @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
-            @include('includes.socialLogin')
+            @include('gzero-social::includes.socialLogin')
         @endif
     </div>
 @stop
