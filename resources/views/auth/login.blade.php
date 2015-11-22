@@ -45,7 +45,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
         </form>
-        @if(app()->bound('oauth'))
+        @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
             @include('includes.socialLogin')
         @endif
         <hr/>

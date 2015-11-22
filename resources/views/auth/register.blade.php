@@ -50,7 +50,7 @@
             </div>
             <input id="accountIntent" type="text" name="accountIntent" class="hidden">
         </form>
-        @if(app()->bound('oauth'))
+        @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
             @include('includes.socialLogin')
         @endif
     </div>
