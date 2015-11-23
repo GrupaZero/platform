@@ -33,13 +33,13 @@
                        <p class="help-block">{{ $errors->first('lastName') }}</p>
                    @endif
                </div>
-               <div class="separator">
-                   <span>@lang('common.passwordChange')</span>
-               </div>
-               <p class="text-muted">
-                   <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.leaveBlank')
-               </p>
-               @if(strpos($user->email,'social_') == false)
+               @if(strpos($user->email,'@'))
+                   <div class="separator">
+                       <span>@lang('common.passwordChange')</span>
+                   </div>
+                   <p class="text-muted">
+                       <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.leaveBlank')
+                   </p>
                    <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
                        <label class="control-label" for="password">@lang('common.newPassword')</label>
                        <input type="password" id="password" name="password" class="form-control"
