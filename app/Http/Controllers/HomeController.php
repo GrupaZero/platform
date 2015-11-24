@@ -46,7 +46,7 @@ class HomeController extends BaseController {
                 ['isSticky', 'DESC']
             ],
             $request->get('page', 1),
-            config('gzero.defaultPageSize', 20)
+            option('general', 'defaultPageSize', false, 20)
         );
 
         $contents->setPath($request->url());
