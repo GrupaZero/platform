@@ -19,6 +19,7 @@
         "gzero/api": "dev-master",
         "gzero/admin": "dev-master",
         "gzero/social": "dev-master",
+        "gzero/vanilla-integration": "0.1",
         "thomaswelton/laravel-gravatar": "~1.0"
     },
     "require-dev": {

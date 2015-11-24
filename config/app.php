@@ -134,6 +134,7 @@ return [
         'Gzero\Admin\ServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'Gzero\Social\ServiceProvider',
+        'Gzero\Vanilla\ServiceProvider',
         /*
          * Application Service Providers...
          */
