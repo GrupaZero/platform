@@ -17,7 +17,7 @@
 @section('content')
     {!! Breadcrumbs::render('category') !!}
     <h1 class="page-header">{{ $activeTranslation->title }}</h1>
-    {{ $activeTranslation->body }}
+    {!! $activeTranslation->body !!}
     @if($children)
         @foreach($children as $index => $child)
             <?php $activeTranslation = $child->translation($lang->code); ?>
