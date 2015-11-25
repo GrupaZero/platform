@@ -18,8 +18,12 @@
                 $(".nav-stacked").metisMenu({
                     toggle: false
                 });
-                //Expand parent of an active element
+                // Expand parent of an active element
                 $(".nav-stacked li.active").parents('li').addClass('active').has('ul').children('ul').addClass('collapse in');
+                // Loading on form submit actions
+                $('form').submit(function (event) {
+                    Loading.start('body');
+                })
             });
         </script>
     @section('footerScripts')

@@ -688,12 +688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "f0bddfe722d60ff27d05e89e36c09131c4c802eb"
+                "reference": "cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/f0bddfe722d60ff27d05e89e36c09131c4c802eb",
-                "reference": "f0bddfe722d60ff27d05e89e36c09131c4c802eb",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3",
+                "reference": "cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-11-25 11:32:48"
+            "time": "2015-11-25 12:25:00"
         },
         {
             "name": "gzero/api",
@@ -905,12 +905,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/social.git",
-                "reference": "47d2b4c00f8a0f364f858e1235b26782976741b4"
+                "reference": "9c9b0d56cbd3124bb46f47748b23d8cbf898f28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/47d2b4c00f8a0f364f858e1235b26782976741b4",
-                "reference": "47d2b4c00f8a0f364f858e1235b26782976741b4",
+                "url": "https://api.github.com/repos/GrupaZero/social/zipball/9c9b0d56cbd3124bb46f47748b23d8cbf898f28e",
+                "reference": "9c9b0d56cbd3124bb46f47748b23d8cbf898f28e",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "plugin",
                 "social"
             ],
-            "time": "2015-11-22 16:39:25"
+            "time": "2015-11-25 13:08:42"
         },
         {
             "name": "jakub-onderka/php-console-color",
