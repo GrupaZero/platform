@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8144d119750dbbb4a5ced78476468754",
-    "content-hash": "b66166d2010b68f51f0d7cfd1c77d16a",
+    "hash": "e1706ccada058960f10ba0b74e740c96",
+    "content-hash": "ebab534b2e38bbc200c108e42795171b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -360,16 +360,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.9",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "c9abab430c5a019724425b57093fc4c853cf716a"
+                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/c9abab430c5a019724425b57093fc4c853cf716a",
-                "reference": "c9abab430c5a019724425b57093fc4c853cf716a",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/72538eeb70bbfb11964412a3d098d109efd012f7",
+                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7",
                 "shasum": ""
             },
             "require": {
@@ -414,7 +414,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-11-22 19:20:15"
+            "time": "2015-06-29 05:42:04"
         },
         {
             "name": "guzzle/guzzle",
@@ -688,12 +688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "88c2de71b594ee1c42ef5bfa08c62df9bdbbe6af"
+                "reference": "cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/88c2de71b594ee1c42ef5bfa08c62df9bdbbe6af",
-                "reference": "88c2de71b594ee1c42ef5bfa08c62df9bdbbe6af",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3",
+                "reference": "cd6bcd8a6d6795d3fbd34b7dc078a4018d2353b3",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-11-24 10:18:46"
+            "time": "2015-11-25 12:25:00"
         },
         {
             "name": "gzero/api",
@@ -793,12 +793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "e8b5208b78dddb2487aab44171a5416c20bb51ea"
+                "reference": "d4fe6239b97ec262c212146b655c189897fa9f5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/e8b5208b78dddb2487aab44171a5416c20bb51ea",
-                "reference": "e8b5208b78dddb2487aab44171a5416c20bb51ea",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/d4fe6239b97ec262c212146b655c189897fa9f5a",
+                "reference": "d4fe6239b97ec262c212146b655c189897fa9f5a",
                 "shasum": ""
             },
             "require": {
@@ -849,7 +849,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-11-24 11:30:44"
+            "time": "2015-11-25 08:00:39"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -905,12 +905,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/social.git",
-                "reference": "47d2b4c00f8a0f364f858e1235b26782976741b4"
+                "reference": "9c9b0d56cbd3124bb46f47748b23d8cbf898f28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/47d2b4c00f8a0f364f858e1235b26782976741b4",
-                "reference": "47d2b4c00f8a0f364f858e1235b26782976741b4",
+                "url": "https://api.github.com/repos/GrupaZero/social/zipball/9c9b0d56cbd3124bb46f47748b23d8cbf898f28e",
+                "reference": "9c9b0d56cbd3124bb46f47748b23d8cbf898f28e",
                 "shasum": ""
             },
             "require": {
@@ -954,64 +954,7 @@
                 "plugin",
                 "social"
             ],
-            "time": "2015-11-22 16:39:25"
-        },
-        {
-            "name": "gzero/vanilla-integration",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrupaZero/vanilla-integration.git",
-                "reference": "c605f409ddcb8086c74ce8d9be1992dc13d0f3da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/vanilla-integration/zipball/c605f409ddcb8086c74ce8d9be1992dc13d0f3da",
-                "reference": "c605f409ddcb8086c74ce8d9be1992dc13d0f3da",
-                "shasum": ""
-            },
-            "require": {
-                "gzero/core": "dev-master",
-                "illuminate/auth": "5.1.*",
-                "illuminate/config": "5.1.*",
-                "illuminate/routing": "5.1.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "1.4.0",
-                "mockery/mockery": "0.9.*",
-                "phpmd/phpmd": "2.*",
-                "phpunit/phpunit": "4.3.*",
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [],
-                "files": [
-                    "src/libs/functions.jsconnect.php"
-                ],
-                "psr-4": {
-                    "Gzero\\": "src/Gzero"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Skierniewski",
-                    "email": "adrian.skierniewski@gmail.com"
-                }
-            ],
-            "description": "Gzero Vanilla Integration",
-            "keywords": [
-                "cms",
-                "integration",
-                "laravel",
-                "vanilla forum"
-            ],
-            "time": "2015-11-24 12:47:51"
+            "time": "2015-11-25 13:08:42"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1142,7 +1085,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",

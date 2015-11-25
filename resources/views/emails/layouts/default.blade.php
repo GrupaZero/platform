@@ -4,7 +4,7 @@
     <!-- NAME: 1 COLUMN - BANDED -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('gzero.siteName') }}</title>
+    <title>{{ option('general', 'siteName') }}</title>
 
     <style type="text/css">
         body, #bodyTable, #bodyCell {
@@ -649,8 +649,8 @@
                                                 <td valign="top" class="headerContainer" style="padding-top:15px;
                                                 padding-bottom:13px;">
                                                     <img src="{{ URL::asset('images/email-logo.png') }}"
-                                                         alt="{{ config('gzero.siteName') }}"
-                                                         title="{{ config('gzero.siteName') }}"/>
+                                                         alt="{{ option('general', 'siteName') }}"
+                                                         title="{{ option('general', 'siteName') }}"/>
                                                 </td>
                                             </tr>
                                         </table>

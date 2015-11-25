@@ -94,4 +94,4 @@
             })
         });
     </script>
-@stop
+@append

@@ -29,23 +29,16 @@
 </div>
 
 @section('footerScripts')
-
     <script src="{{ asset('/js/jquery.sequence-min.js') }}"></script>
-
     <script>
         $(document).ready(function() {
+            var options = {
+                animateStartingFrameIn: false,
+                autoPlay: true,
+                autoPlayDelay: 5000
+            };
 
-            $(document).ready(function() {
-                var options = {
-                    animateStartingFrameIn: false,
-                    autoPlay: true,
-                    autoPlayDelay: 5000
-                };
-
-                var mySequence = $("#slider").sequence(options).data("sequence");
-            });
-
+            var mySequence = $("#slider").sequence(options).data("sequence");
         });
     </script>
-
-@stop
+@append
