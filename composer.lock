@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1706ccada058960f10ba0b74e740c96",
-    "content-hash": "ebab534b2e38bbc200c108e42795171b",
+    "hash": "8144d119750dbbb4a5ced78476468754",
+    "content-hash": "b66166d2010b68f51f0d7cfd1c77d16a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -955,6 +955,63 @@
                 "social"
             ],
             "time": "2015-11-25 13:08:42"
+        },
+        {
+            "name": "gzero/vanilla-integration",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrupaZero/vanilla-integration.git",
+                "reference": "c605f409ddcb8086c74ce8d9be1992dc13d0f3da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrupaZero/vanilla-integration/zipball/c605f409ddcb8086c74ce8d9be1992dc13d0f3da",
+                "reference": "c605f409ddcb8086c74ce8d9be1992dc13d0f3da",
+                "shasum": ""
+            },
+            "require": {
+                "gzero/core": "dev-master",
+                "illuminate/auth": "5.1.*",
+                "illuminate/config": "5.1.*",
+                "illuminate/routing": "5.1.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "1.4.0",
+                "mockery/mockery": "0.9.*",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "4.3.*",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "files": [
+                    "src/libs/functions.jsconnect.php"
+                ],
+                "psr-4": {
+                    "Gzero\\": "src/Gzero"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Skierniewski",
+                    "email": "adrian.skierniewski@gmail.com"
+                }
+            ],
+            "description": "Gzero Vanilla Integration",
+            "keywords": [
+                "cms",
+                "integration",
+                "laravel",
+                "vanilla forum"
+            ],
+            "time": "2015-11-24 12:47:51"
         },
         {
             "name": "jakub-onderka/php-console-color",
