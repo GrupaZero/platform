@@ -34,7 +34,7 @@ class ContentCest {
         $I->seeLink('News', '/en/news');
         $I->seeLink('Start', '/en');
         $I->click('News');
-        $I->canSeeInCurrentUrl('/en/news');
+        $I->canSeeCurrentUrlEquals('/en/news');
     }
 
     public function can_view_category(FunctionalTester $I)
@@ -55,7 +55,7 @@ class ContentCest {
         $I->seeResponseCodeIs(200);
 
         $I->click('Read more');
-        $I->canSeeInCurrentUrl('/en/news/they-all-wash-the-rest-her-arm-with');
+        $I->canSeeCurrentUrlEquals('/en/news/they-all-wash-the-rest-her-arm-with');
     }
 
     public function can_see_not_published_content_as_admin(FunctionalTester $I)
@@ -167,7 +167,7 @@ class ContentCest {
         $I->see('And she heard every moment Alice.');
 
         $I->click('2');
-        $I->canSeeInCurrentUrl('/en/news?page=2');
+        $I->canSeeCurrentUrlEquals('/en/news?page=2');
         $I->see('They were quite follow it to rest.');
     }
 
