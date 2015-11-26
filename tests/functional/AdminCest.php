@@ -11,15 +11,15 @@ class AdminCest {
     }
 
     // tests
-    public function cant_access_admin_panel_as_regular_user(FunctionalTester $I)
+    public function cantAccessAdminPanelAsRegularUser(FunctionalTester $I)
     {
         $I->wantTo('access admin panel as regular user');
         $I->amOnPage('/admin');
         $I->seeResponseCodeIs(404);
     }
 
-    public function can_access_admin_panel_as_superuser(FunctionalTester $I){
-        $I->wantTo('access admin panel as regular superuser');
+    public function canAccessAdminPanelAsAdmin(FunctionalTester $I){
+        $I->wantTo('access admin panel as admin');
         $I->loginAsAdmin();
         $I->amOnPage('/admin');
         $I->seeResponseCodeIs(200);
