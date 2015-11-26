@@ -11,7 +11,7 @@ class ContentCest {
     }
 
     // tests
-    public function can_view_article(FunctionalTester $I)
+    public function canViewArticle(FunctionalTester $I)
     {
         $I->wantTo('view article');
         $I->amOnPage('/en/news/and-she-heard-every-moment-alice');
@@ -25,7 +25,7 @@ class ContentCest {
 
     }
 
-    public function can_use_article_breadcrumbs(FunctionalTester $I)
+    public function canUseArticleBreadcrumbs(FunctionalTester $I)
     {
         $I->wantTo('use breadcrumbs to go back to category view from article');
         $I->amOnPage('/en/news/and-she-heard-every-moment-alice');
@@ -37,7 +37,7 @@ class ContentCest {
         $I->canSeeCurrentUrlEquals('/en/news');
     }
 
-    public function can_view_category(FunctionalTester $I)
+    public function canViewCategory(FunctionalTester $I)
     {
         $I->wantTo('view category');
         $I->amOnPage('/en/news');
@@ -48,7 +48,7 @@ class ContentCest {
         $I->see('You see, Miss, we\'re doing out.');
     }
 
-    public function can_go_to_article_from_category(FunctionalTester $I)
+    public function canGoToArticleFromCategory(FunctionalTester $I)
     {
         $I->wantTo('read more');
         $I->amOnPage('/en/news');
@@ -58,7 +58,7 @@ class ContentCest {
         $I->canSeeCurrentUrlEquals('/en/news/they-all-wash-the-rest-her-arm-with');
     }
 
-    public function can_see_not_published_content_as_admin(FunctionalTester $I)
+    public function canSeeNotPublishedContentAsAdmin(FunctionalTester $I)
     {
         $I->wantTo('see not published content as admin user');
         $I->loginAsAdmin();
@@ -69,14 +69,14 @@ class ContentCest {
         $I->see('This content is not published.');
     }
 
-    public function cant_see_not_published_content(FunctionalTester $I)
+    public function cantSeeNotPublishedContent(FunctionalTester $I)
     {
         $I->wantTo('try to see not published content');
         $I->amOnPage('/en/offer/half-past-one-but-it-vanished');
         $I->seeResponseCodeIs(404);
     }
 
-    public function see_sticky_content_on_the_top_of_list(FunctionalTester $I)
+    public function seeStickyContentOnTopOfTheList(FunctionalTester $I)
     {
         $I->wantTo('see sticky content on the top of the list');
         $I->amOnPage('/en/offer');
@@ -85,7 +85,7 @@ class ContentCest {
         $I->see('And took them attempted to be a few.', '(//h2)[1]');
     }
 
-    public function see_promoted_content_on_the_top_of_the_list(FunctionalTester $I)
+    public function seePromotedContentOnTopOfTheList(FunctionalTester $I)
     {
         $I->wantTo('see promoted content on the top of the list');
         $I->amOnPage('/en/offer');
@@ -94,7 +94,7 @@ class ContentCest {
         $I->see('I\'m mad.\' \'I haven\'t the Cheshire.', '(//h2)[2]');
     }
 
-    public function contents_are_ordered_by_weight(FunctionalTester $I)
+    public function contentsAreOrderedByWeight(FunctionalTester $I)
     {
         $I->wantTo('check if heavier contents go to bottom');
         $I->amOnPage('/en/offer');
@@ -104,7 +104,7 @@ class ContentCest {
         $I->see('Alice had been of an offended tone..', '(//h2)[5]');
     }
 
-    public function can_see_subcategory(FunctionalTester $I)
+    public function canSeeSubcategory(FunctionalTester $I)
     {
         $I->wantTo('see subcategory');
         $I->amOnPage('/en/news/lorem');
@@ -114,7 +114,7 @@ class ContentCest {
         $I->see('Phosfluorescently');
     }
 
-    public function can_see_article_from_subcategory(FunctionalTester $I)
+    public function canSeeArticleFromSubcategory(FunctionalTester $I)
     {
         $I->wantTo('see article from subcategory');
         $I->amOnPage('/en/news/lorem');
@@ -123,7 +123,7 @@ class ContentCest {
         $I->see('Phosfluorescently');
     }
 
-    public function can_see_not_published_category_as_admin(FunctionalTester $I)
+    public function canSeeNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
         $I->wantTo('see not published category as admin');
         $I->loginAsAdmin();
@@ -134,7 +134,7 @@ class ContentCest {
         $I->see('This content is not published.');
     }
 
-    public function can_see_article_in_unpublished_category_as_admin(FunctionalTester $I)
+    public function canSeeArticleInNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
         $I->wantTo('see article in not published category as admin');
         $I->loginAsAdmin();
@@ -145,21 +145,21 @@ class ContentCest {
         $I->see('This content is not published.');
     }
 
-    public function cant_see_unpublished_category_as_user(FunctionalTester $I)
+    public function cantSeeNotPublishedCategoryAsUser(FunctionalTester $I)
     {
         $I->wantTo('cant see unpublished category as user');
         $I->amOnPage('/en/news/ipsum');
         $I->seeResponseCodeIs(404);
     }
 
-    public function cant_see_article_in_unpublished_category_as_user(FunctionalTester $I)
+    public function cantSeeArticleInNotPublishedCategoryAsUser(FunctionalTester $I)
     {
         $I->wantTo('cant see article in not published category as user');
         $I->amOnPage('/en/news/ipsum/test');
         $I->seeResponseCodeIs(404);
     }
 
-    public function can_use_pagination(FunctionalTester $I)
+    public function canUsePagination(FunctionalTester $I)
     {
         $I->wantTo('use pagination on category view');
         $I->amOnPage('/en/news/');
