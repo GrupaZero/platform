@@ -71,7 +71,7 @@ class ContentCest {
 
     public function cantSeeNotPublishedContent(FunctionalTester $I)
     {
-        $I->wantTo('try to see not published content');
+        $I->wantTo('try to see not published content as regular user');
         $I->amOnPage('/en/offer/half-past-one-but-it-vanished');
         $I->seeResponseCodeIs(404);
     }
