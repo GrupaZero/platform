@@ -1,18 +1,6 @@
 <?php namespace platform;
 
-use Gzero\Entity\Content;
-use Gzero\Entity\User;
-use Gzero\Repository\ContentRepository;
-use Gzero\Repository\UserRepository;
-use Illuminate\Events\Dispatcher;
-
 class ContentCest {
-
-    public function __construct()
-    {
-        $this->contentRepo = new ContentRepository(new Content(), new Dispatcher());
-        $this->userRepo    = new UserRepository(new User(), new Dispatcher());
-    }
 
     public function _before(FunctionalTester $I)
     {
