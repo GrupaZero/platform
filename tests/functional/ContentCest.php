@@ -133,7 +133,7 @@ class ContentCest {
         $I->see('Ipsum');
         $I->see('This content is not published.');
     }
-
+    /*
     public function canSeeArticleInNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
         $I->wantTo('see article in not published category as admin');
@@ -144,21 +144,21 @@ class ContentCest {
         $I->see('Test');
         $I->see('This content is not published.');
     }
-
+    */
     public function cantSeeNotPublishedCategoryAsUser(FunctionalTester $I)
     {
         $I->wantTo('cant see unpublished category as user');
         $I->amOnPage('/en/news/ipsum');
         $I->seeResponseCodeIs(404);
     }
-
+    /*
     public function cantSeeArticleInNotPublishedCategoryAsUser(FunctionalTester $I)
     {
         $I->wantTo('cant see article in not published category as user');
         $I->amOnPage('/en/news/ipsum/test');
         $I->seeResponseCodeIs(404);
     }
-
+    */
     public function canUsePagination(FunctionalTester $I)
     {
         $I->wantTo('use pagination on category view');
