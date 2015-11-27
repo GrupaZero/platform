@@ -90,7 +90,7 @@ class FunctionalTester extends \Codeception\Actor {
     /**
      * Create user and return entity
      *
-     * @param bool|false $attributes
+     * @param array $attributes
      *
      * @return User
      */
@@ -107,6 +107,14 @@ class FunctionalTester extends \Codeception\Actor {
         return $this->userRepo->create($fakeAttributes);
     }
 
+    /**
+     * Create content and return entity
+     *
+     * @param bool|false $attributes
+     * @param null       $user
+     *
+     * @return Content
+     */
     public function haveContent($attributes = false, $user = null)
     {
         $fakeAttributes = [
