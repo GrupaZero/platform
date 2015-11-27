@@ -20,9 +20,7 @@ class ContentCest {
         $I->canSee('And she heard every moment Alice.');
         $I->canSee('Gryphon is, look at me like a tunnel for some way, and then I\'ll tell you his history');
         $I->canSee('Posted by Vern Lind');
-        $I->canSee('on 26-11-2015 - 05:02');
-
-
+        $I->canSee('26-11-2015');
     }
 
     public function canUseArticleBreadcrumbs(FunctionalTester $I)
