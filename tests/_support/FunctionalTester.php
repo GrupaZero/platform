@@ -31,6 +31,9 @@ class FunctionalTester extends \Codeception\Actor {
      */
     private $userRepo;
 
+    /**
+     * @var ContentRepository
+     */
     private $contentRepo;
 
     /**
