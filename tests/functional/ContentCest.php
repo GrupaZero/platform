@@ -8,16 +8,6 @@ use Illuminate\Events\Dispatcher;
 
 class ContentCest {
 
-    /**
-     * @var ContentRepository
-     */
-    private $contentRepo;
-
-    /**
-     * @var UserRepository
-     */
-    private $userRepo;
-
     public function __construct()
     {
         $this->contentRepo = new ContentRepository(new Content(), new Dispatcher());
@@ -60,7 +50,8 @@ class ContentCest {
                 'isActive'     => 1,
                 'translations' => [
                     'title'    => 'lorem ipsum',
-                    'langCode' => 'en'
+                    'langCode' => 'en',
+                    'isActive'     => 1
                 ]
             ],
             $user
@@ -148,7 +139,8 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'ZZZ'
+                    'title'    => 'ZZZ',
+                    'isActive'     => 1
                 ]
             ]
         );
@@ -160,7 +152,8 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'AAA'
+                    'title'    => 'AAA',
+                    'isActive'     => 1
                 ]
             ]
         );
@@ -185,7 +178,8 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'ZZZ'
+                    'title'    => 'ZZZ',
+                    'isActive'     => 1
                 ]
             ]
         );
@@ -197,7 +191,8 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'AAA'
+                    'title'    => 'AAA',
+                    'isActive'     => 1
                 ]
             ]
         );
