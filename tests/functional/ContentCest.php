@@ -127,7 +127,7 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'ZZZ',
+                    'title'    => 'This content is sticky.',
                     'isActive'     => 1
                 ]
             ]
@@ -140,7 +140,7 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'AAA',
+                    'title'    => 'And this is not.',
                     'isActive'     => 1
                 ]
             ]
@@ -166,7 +166,7 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'ZZZ',
+                    'title'    => 'This content is promoted.',
                     'isActive'     => 1
                 ]
             ]
@@ -179,7 +179,7 @@ class ContentCest {
                 'parentId'     => $category->id,
                 'translations' => [
                     'langCode' => 'en',
-                    'title'    => 'AAA',
+                    'title'    => 'And this is not',
                     'isActive'     => 1
                 ]
             ]
