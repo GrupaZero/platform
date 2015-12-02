@@ -192,38 +192,7 @@ class ContentCest {
 
         $I->see($promotedContent->translations[0]->title, '(//h2)[1]');
     }
-
-
-    public function contentsAreOrderedByWeight(FunctionalTester $I)
-    {
-        $category = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $route    = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
-        $counter  = 1;
-        $contents = [];
-
-        do {
-            $contents[$counter] = $I->haveContent(
-                [
-                    'isActive' => 1,
-                    'weight'   => $counter,
-                    'parentId' => $category->id
-                ]
-            );
-            $counter++;
-        } while ($counter <= 10);
-
-        $I->wantTo('check if heavier contents go to bottom');
-        $I->amOnPage($route);
-        $I->seeResponseCodeIs(200);
-
-        $counter = 1;
-
-        do {
-            $I->see($contents[$counter]->translations[0]->title, "(//h2)[{$counter}]");
-            $counter++;
-        } while ($counter <= 10);
-    }
-
+    
     public function canSeeNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
         $category = $I->haveContent(['type' => 'category', 'isActive' => 0]);
