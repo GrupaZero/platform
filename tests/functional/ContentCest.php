@@ -39,7 +39,7 @@ class ContentCest {
                 'translations' => [
                     'title'    => 'lorem ipsum',
                     'langCode' => 'en',
-                    'isActive'     => 1
+                    'isActive' => 1
                 ]
             ],
             $user
@@ -128,7 +128,7 @@ class ContentCest {
                 'translations' => [
                     'langCode' => 'en',
                     'title'    => 'This content is sticky.',
-                    'isActive'     => 1
+                    'isActive' => 1
                 ]
             ]
         );
@@ -141,7 +141,7 @@ class ContentCest {
                 'translations' => [
                     'langCode' => 'en',
                     'title'    => 'And this is not.',
-                    'isActive'     => 1
+                    'isActive' => 1
                 ]
             ]
         );
@@ -167,7 +167,7 @@ class ContentCest {
                 'translations' => [
                     'langCode' => 'en',
                     'title'    => 'This content is promoted.',
-                    'isActive'     => 1
+                    'isActive' => 1
                 ]
             ]
         );
@@ -180,7 +180,7 @@ class ContentCest {
                 'translations' => [
                     'langCode' => 'en',
                     'title'    => 'And this is not',
-                    'isActive'     => 1
+                    'isActive' => 1
                 ]
             ]
         );
@@ -238,23 +238,6 @@ class ContentCest {
         $I->see('This content is not published.');
     }
 
-
-    public function canSeeArticleInNotPublishedCategoryAsAdmin(FunctionalTester $I)
-    {
-        $category     = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $content      = $I->haveContent(['type' => 'content', 'isActive' => 1, 'parentId' => $category->id]);
-        $contentRoute = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
-
-        $I->wantTo('see article in not published category as admin');
-        $I->loginAsAdmin();
-        $I->amOnPage($contentRoute);
-        $I->seeResponseCodeIs(200);
-
-        $I->see($content->translations[0]->title);
-        $I->see('This content is not published.');
-    }
-
-
     public function cantSeeNotPublishedCategoryAsUser(FunctionalTester $I)
     {
         $category = $I->haveContent(['type' => 'category', 'isActive' => 0]);
@@ -262,18 +245,6 @@ class ContentCest {
 
         $I->wantTo('cant see unpublished category as user');
         $I->amOnPage($route);
-        $I->seeResponseCodeIs(404);
-    }
-
-
-    public function cantSeeArticleInNotPublishedCategoryAsRegularUser(FunctionalTester $I)
-    {
-        $category     = $I->haveContent(['type' => 'category', 'isActive' => 0]);
-        $content      = $I->haveContent(['type' => 'content', 'isActive' => 1, 'parentId' => $category->id]);
-        $contentRoute = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
-
-        $I->wantTo('cant see article in not published category as regular user');
-        $I->amOnPage($contentRoute);
         $I->seeResponseCodeIs(404);
     }
 
@@ -298,7 +269,7 @@ class ContentCest {
         $I->seeResponseCodeIs(200);
 
         $I->click('2');
-        $I->canSeeCurrentUrlEquals($route.'?page=2');
+        $I->canSeeCurrentUrlEquals($route . '?page=2');
     }
 
 }
