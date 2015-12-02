@@ -1,5 +1,12 @@
 <?php namespace platform;
 
+use Faker\Factory;
+use Gzero\Entity\Content;
+use Gzero\Repository\ContentRepository;
+use Gzero\Repository\UserRepository;
+use Gzero\Entity\User;
+use Illuminate\Events\Dispatcher;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -18,6 +25,29 @@
 class FunctionalTester extends \Codeception\Actor {
 
     use _generated\FunctionalTesterActions;
+
+    /**
+     * @var UserRepository
+     */
+    private $userRepo;
+
+    /**
+     * @var ContentRepository
+     */
+    private $contentRepo;
+
+    /**
+     * @var \Faker\Generator
+     */
+    private $faker;
+
+    public function __construct(\Codeception\Scenario $scenario)
+    {
+        $this->faker        = Factory::create();
+        $this->categoryRepo = new ContentRepository(new Content(), new Dispatcher());
+        $this->userRepo     = new UserRepository(new User(), new Dispatcher());
+        parent::__construct($scenario);
+    }
 
     /**
      * Login in to page
@@ -59,5 +89,56 @@ class FunctionalTester extends \Codeception\Actor {
         $I->canSeeCurrentUrlEquals('/en');
         $I->dontSeeAuthentication();
     }
+
+    /**
+     * Create user and return entity
+     *
+     * @param array $attributes
+     *
+     * @return User
+     */
+    public function haveUser($attributes = [])
+    {
+        $fakeAttributes = [
+            'firstName' => $this->faker->firstName,
+            'lastName'  => $this->faker->lastName,
+            'email'     => $this->faker->email
+        ];
+
+        $fakeAttributes = array_merge($fakeAttributes, $attributes);
+
+        return $this->userRepo->create($fakeAttributes);
+    }
+
+    /**
+     * Create content and return entity
+     *
+     * @param bool|false $attributes
+     * @param null       $user
+     *
+     * @return Content
+     */
+    public function haveContent($attributes = false, $user = null)
+    {
+        $fakeAttributes = [
+            'type'         => ['category', 'content'][rand(0, 1)],
+            'isActive'     => 1,
+            'publishedAt'  => date('Y-m-d H:i:s'),
+            'translations' => [
+                'langCode'       => 'en',
+                'title'          => $this->faker->realText(38, 1),
+                'teaser'         => '<p>' . $this->faker->realText(300) . '</p>',
+                'body'           => $this->faker->realText(1000),
+                'seoTitle'       => $this->faker->realText(60, 1),
+                'seoDescription' => $this->faker->realText(160, 1),
+                'isActive'       => rand(0, 1)
+            ]
+        ];
+
+        $fakeAttributes = array_merge($fakeAttributes, $attributes);
+
+        return $this->categoryRepo->create($fakeAttributes, $user);
+    }
+
 
 }
