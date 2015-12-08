@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="@yield('seoDescription', option('general', 'siteDesc'))">
 <title>@yield('title') - {{ option('general', 'siteName') }}</title>
+@yield('metaData')
 
 @section('head')
     <link href="{{ asset('/css/jquery.metisMenu.css') }}" rel="stylesheet">
