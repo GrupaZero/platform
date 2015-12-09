@@ -1,6 +1,15 @@
 @extends('layouts.default')
 <?php $activeTranslation = $content->translation($lang->code); ?>
 <?php $activeRoute = $content->routeTranslation($lang->code); ?>
+<?php $url = url('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
+
+@section('metaData')
+
+    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+        {!! fbOgTags($url, $activeTranslation) !!}
+    @endif
+
+@stop
 
 @section('title')
     {{ $activeTranslation->seoTitle() }}
@@ -25,4 +34,9 @@
         </div>
     </div>
     {!! $activeTranslation->body !!}
+
+    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+        <hr/>
+        {!! shareButtons($url, $activeTranslation) !!}
+    @endif
 @stop
