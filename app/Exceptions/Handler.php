@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $e)
     {
-        if ($request->ajax()) {
+        if ($request->ajax() || preg_match('/^api/', $request->getHost())) {
             /** @var $CORS \Asm89\Stack\CorsService */
             $CORS = app()->make('Asm89\Stack\CorsService');
             if ($e instanceof ValidationException) {
