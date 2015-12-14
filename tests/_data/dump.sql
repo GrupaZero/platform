@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: gzero-cms
 -- ------------------------------------------------------
--- Server version	5.5.44-0ubuntu0.14.04.1
+-- Server version	5.5.46-0ubuntu0.14.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,107 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `BlockTranslations`
+--
+
+DROP TABLE IF EXISTS `BlockTranslations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlockTranslations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `langCode` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `blockId` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `customFields` text COLLATE utf8_unicode_ci,
+  `isActive` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `blocktranslations_blockid_foreign` (`blockId`),
+  KEY `blocktranslations_langcode_foreign` (`langCode`),
+  CONSTRAINT `blocktranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE,
+  CONSTRAINT `blocktranslations_blockid_foreign` FOREIGN KEY (`blockId`) REFERENCES `Blocks` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlockTranslations`
+--
+
+LOCK TABLES `BlockTranslations` WRITE;
+/*!40000 ALTER TABLE `BlockTranslations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `BlockTranslations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlockTypes`
+--
+
+DROP TABLE IF EXISTS `BlockTypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlockTypes` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  UNIQUE KEY `blocktypes_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlockTypes`
+--
+
+LOCK TABLES `BlockTypes` WRITE;
+/*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
+INSERT INTO `BlockTypes` VALUES ('basic',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('content',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('menu',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('slider',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('widget',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
+/*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Blocks`
+--
+
+DROP TABLE IF EXISTS `Blocks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Blocks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `region` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `theme` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blockableId` int(10) unsigned DEFAULT NULL,
+  `blockableType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authorId` int(10) unsigned DEFAULT NULL,
+  `filter` text COLLATE utf8_unicode_ci,
+  `options` text COLLATE utf8_unicode_ci,
+  `weight` int(11) NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `isCacheable` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deletedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blocks_blockableid_blockabletype_index` (`blockableId`,`blockableType`),
+  KEY `blocks_authorid_foreign` (`authorId`),
+  KEY `blocks_type_foreign` (`type`),
+  CONSTRAINT `blocks_type_foreign` FOREIGN KEY (`type`) REFERENCES `BlockTypes` (`name`) ON DELETE CASCADE,
+  CONSTRAINT `blocks_authorid_foreign` FOREIGN KEY (`authorId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Blocks`
+--
+
+LOCK TABLES `Blocks` WRITE;
+/*!40000 ALTER TABLE `Blocks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Blocks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ContentTranslations`
@@ -63,7 +164,7 @@ CREATE TABLE `ContentTypes` (
   `isActive` tinyint(1) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  KEY `contenttypes_name_index` (`name`)
+  UNIQUE KEY `contenttypes_name_unique` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -73,7 +174,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
-INSERT INTO `ContentTypes` VALUES ('content',1,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('category',1,'2015-10-17 18:25:48','2015-10-17 18:25:48');
+INSERT INTO `ContentTypes` VALUES ('category',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('content',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,6 +188,7 @@ DROP TABLE IF EXISTS `Contents`;
 CREATE TABLE `Contents` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `theme` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `authorId` int(10) unsigned DEFAULT NULL,
   `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parentId` int(10) unsigned DEFAULT NULL,
@@ -146,7 +248,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
-INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('pl','pl_PL',1,0,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('de','de_DE',0,0,'2015-10-17 18:25:48','2015-10-17 18:25:48'),('fr','fr_FR',0,0,'2015-10-17 18:25:48','2015-10-17 18:25:48');
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('pl','pl_PL',1,0,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('de','de_DE',0,0,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('fr','fr_FR',0,0,'2015-12-12 10:50:57','2015-12-12 10:50:57');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +274,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
-INSERT INTO `OptionCategories` VALUES ('general','2015-10-17 18:25:48','2015-10-17 18:25:48'),('seo','2015-10-17 18:25:48','2015-10-17 18:25:48');
+INSERT INTO `OptionCategories` VALUES ('general','2015-12-12 10:50:57','2015-12-12 10:50:57'),('seo','2015-12-12 10:50:57','2015-12-12 10:50:57');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +304,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
-INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(4,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2015-10-17 18:25:48','2015-10-17 18:25:48'),(5,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2015-10-17 18:25:48','2015-10-17 18:25:48');
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(4,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(5,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2015-12-12 10:50:57','2015-12-12 10:50:57');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,8 +376,8 @@ DROP TABLE IF EXISTS `Routes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Routes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `routableId` int(10) unsigned NOT NULL,
-  `routableType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `routableId` int(10) unsigned DEFAULT NULL,
+  `routableType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isActive` tinyint(1) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -320,8 +422,37 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$e2NYo4HEJmJcHgNleTqiHeX41sC2WugALw4Lu.Aj0Juq7vCK3CMVK','John','Doe','',1,'2015-10-17 18:25:48','2015-10-17 18:25:48');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$LyQ3ybcUKQmbSBAzFitove/xJjZVpwz2dGo9iSnZSiKvnKfaj76BK','John','Doe','',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Widgets`
+--
+
+DROP TABLE IF EXISTS `Widgets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Widgets` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `args` text COLLATE utf8_unicode_ci,
+  `isActive` tinyint(1) NOT NULL,
+  `isCacheable` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `widgets_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Widgets`
+--
+
+LOCK TABLES `Widgets` WRITE;
+/*!40000 ALTER TABLE `Widgets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Widgets` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -343,7 +474,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1);
+INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -356,4 +487,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-17 22:27:05
+-- Dump completed on 2015-12-12 12:56:11
