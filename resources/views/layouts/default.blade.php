@@ -15,7 +15,7 @@
         @show
     </div>
 </div>
-<footer id="footer">
+<footer id="footer" class="clearfix">
     @include('includes.footer')
 </footer>
 </body>

@@ -4,6 +4,24 @@
 
     @include('blocks.slider')
 
+    @if(!empty($blocks) && $blocks->get('homepage'))
+        <div class="row">
+            @foreach($blocks->get('homepage') as $index => $block)
+                <div class="col-sm-3">
+                    <?php $activeTranslation = $block->getPresenter()->translation($lang->code); ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {{ $activeTranslation->title }}
+                        </div>
+                        <div class="panel-body">
+                            {{ $activeTranslation->body }}
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+
     @foreach($contents as $index => $child)
         <?php $activeTranslation = $child->translation($lang->code); ?>
         @if($activeTranslation)

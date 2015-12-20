@@ -23,5 +23,14 @@ return [
     'content_type'                   => [
         'content'  => 'Gzero\Core\Handler\Content\Content',
         'category' => 'Gzero\Core\Handler\Content\Category'
+    ],
+    'available_blocks_regions'       => [
+        'header',
+        'homepage',
+        'contentHeader',
+        'sidebarLeft',
+        'sidebarRight',
+        'contentFooter',
+        'footer'
     ]
 ];
