@@ -14,6 +14,9 @@ class EventServiceProvider extends ServiceProvider {
         'router.matched' => [
             'Gzero\Core\Listeners\Events\BlockLoad',
         ],
+        'router.contentMatched' => [
+            'Gzero\Core\Listeners\Events\BlockLoad',
+        ],
     ];
 
     /**
