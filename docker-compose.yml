@@ -1,0 +1,16 @@
+web:
+  build: .
+  command: php /code/artisan serve --port=8000 --host=0.0.0.0
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
+db:
+  image: mysql:5.7
+  environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    MYSQL_USER: "gzero-cms"
+    MYSQL_PASSWORD: "test"
+    MYSQL_DATABASE: "gzero-cms"
