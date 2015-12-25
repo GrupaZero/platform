@@ -734,12 +734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "847f6e26292db799b9ad2d0628dfed5b62046e4b"
+                "reference": "2eca447a497bbdff0e64221f60ce0cc0e1246634"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/847f6e26292db799b9ad2d0628dfed5b62046e4b",
-                "reference": "847f6e26292db799b9ad2d0628dfed5b62046e4b",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/2eca447a497bbdff0e64221f60ce0cc0e1246634",
+                "reference": "2eca447a497bbdff0e64221f60ce0cc0e1246634",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                 "php": ">=5.5.9"
             },
             "require-dev": {
-                "codeception/codeception": "2.1.*",
+                "codeception/codeception": "2.1.4",
                 "fzaninotto/faker": "1.4.0",
                 "mockery/mockery": "0.9.*",
                 "phpmd/phpmd": "2.*",
@@ -785,7 +785,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2015-12-13 16:43:33"
+            "time": "2015-12-25 20:24:57"
         },
         {
             "name": "gzero/cms",
@@ -4053,12 +4053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "f2fe833caef2c65620c11f5fabe60040df39339f"
+                "reference": "73d05ac4f4a66aaecf4c5c7cd2441868e7197fe5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/f2fe833caef2c65620c11f5fabe60040df39339f",
-                "reference": "f2fe833caef2c65620c11f5fabe60040df39339f",
+                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/73d05ac4f4a66aaecf4c5c7cd2441868e7197fe5",
+                "reference": "73d05ac4f4a66aaecf4c5c7cd2441868e7197fe5",
                 "shasum": ""
             },
             "require": {
@@ -4108,7 +4108,7 @@
                 "github",
                 "test"
             ],
-            "time": "2015-12-17 20:16:23"
+            "time": "2015-12-25 20:09:02"
         },
         {
             "name": "sebastian/comparator",
