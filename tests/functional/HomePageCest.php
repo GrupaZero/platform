@@ -19,8 +19,7 @@ class HomePageCest
         $I->wantTo('can view home page');
         $I->amOnPage('/en');
         $I->seeResponseCodeIs(200);
-        $I->canSee('GZERO CMS!');
-        $I->seeLink('Get started today', 'http://localhost/en/register');
+        $I->canSee('G-ZERO CMS');
         $I->seeLink('Login', 'http://localhost/en/login');
         $I->seeLink('Register', 'http://localhost/en/register');
     }

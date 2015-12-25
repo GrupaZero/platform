@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8144d119750dbbb4a5ced78476468754",
-    "content-hash": "b66166d2010b68f51f0d7cfd1c77d16a",
+    "hash": "46c0066ffdbdeb8c00b2968d63332ef8",
+    "content-hash": "83145aba5f5646c2c33250622ebf2435",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -688,12 +688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "3cf8f74ad11739f101bf639a340bb668d969cbcd"
+                "reference": "7e5a37f441982bcc4d7fbe8017746142979b8fbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/3cf8f74ad11739f101bf639a340bb668d969cbcd",
-                "reference": "3cf8f74ad11739f101bf639a340bb668d969cbcd",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/7e5a37f441982bcc4d7fbe8017746142979b8fbb",
+                "reference": "7e5a37f441982bcc4d7fbe8017746142979b8fbb",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2015-12-13 13:58:29"
+            "time": "2015-12-25 15:28:47"
         },
         {
             "name": "gzero/api",
@@ -793,12 +793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "56ce4c1d8446a1a2c8269a25b2b35e733af82956"
+                "reference": "0e3d3f221652efa7e47a8a5bbcd21c163b13d1c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/56ce4c1d8446a1a2c8269a25b2b35e733af82956",
-                "reference": "56ce4c1d8446a1a2c8269a25b2b35e733af82956",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/0e3d3f221652efa7e47a8a5bbcd21c163b13d1c1",
+                "reference": "0e3d3f221652efa7e47a8a5bbcd21c163b13d1c1",
                 "shasum": ""
             },
             "require": {
@@ -849,7 +849,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-12-13 16:00:32"
+            "time": "2015-12-25 19:01:21"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -1160,16 +1160,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.26",
+            "version": "v5.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "be7fbb60376bd61f07e9c637473e5b2cf7eebe5c"
+                "reference": "b16f80878fd3603022d3c84593397cedd9af0bcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/be7fbb60376bd61f07e9c637473e5b2cf7eebe5c",
-                "reference": "be7fbb60376bd61f07e9c637473e5b2cf7eebe5c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b16f80878fd3603022d3c84593397cedd9af0bcf",
+                "reference": "b16f80878fd3603022d3c84593397cedd9af0bcf",
                 "shasum": ""
             },
             "require": {
@@ -1215,7 +1215,6 @@
                 "illuminate/events": "self.version",
                 "illuminate/exception": "self.version",
                 "illuminate/filesystem": "self.version",
-                "illuminate/foundation": "self.version",
                 "illuminate/hashing": "self.version",
                 "illuminate/http": "self.version",
                 "illuminate/log": "self.version",
@@ -1285,7 +1284,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-12-02 21:59:57"
+            "time": "2015-12-17 20:35:38"
         },
         {
             "name": "laravel/socialite",
@@ -1343,16 +1342,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.15",
+            "version": "1.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "31525caf9e8772683672fefd8a1ca0c0736020f4"
+                "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/31525caf9e8772683672fefd8a1ca0c0736020f4",
-                "reference": "31525caf9e8772683672fefd8a1ca0c0736020f4",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/183e1a610664baf6dcd6fceda415baf43cbdc031",
+                "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031",
                 "shasum": ""
             },
             "require": {
@@ -1366,7 +1365,7 @@
                 "mockery/mockery": "~0.9",
                 "phpspec/phpspec": "^2.2",
                 "phpspec/prophecy-phpunit": "~1.0",
-                "phpunit/phpunit": "~4.1"
+                "phpunit/phpunit": "~4.8"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -1423,7 +1422,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-09-30 22:26:59"
+            "time": "2015-12-19 20:16:43"
         },
         {
             "name": "league/fractal",
@@ -2960,16 +2959,16 @@
         },
         {
             "name": "thomaswelton/laravel-gravatar",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-gravatar.git",
-                "reference": "e01b473a4e89c8ebb203d0616e12894f5dd84c45"
+                "reference": "b9eeb9c23123cc8547973e0ca33dc5898bb768b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/e01b473a4e89c8ebb203d0616e12894f5dd84c45",
-                "reference": "e01b473a4e89c8ebb203d0616e12894f5dd84c45",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/b9eeb9c23123cc8547973e0ca33dc5898bb768b8",
+                "reference": "b9eeb9c23123cc8547973e0ca33dc5898bb768b8",
                 "shasum": ""
             },
             "require": {
@@ -3011,7 +3010,7 @@
                 "laravel",
                 "laravel5"
             ],
-            "time": "2015-10-13 14:42:42"
+            "time": "2015-12-19 15:44:13"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4054,12 +4053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "3e617b88638958365d031b654f5a9bf91b4178f2"
+                "reference": "f2fe833caef2c65620c11f5fabe60040df39339f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/3e617b88638958365d031b654f5a9bf91b4178f2",
-                "reference": "3e617b88638958365d031b654f5a9bf91b4178f2",
+                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/f2fe833caef2c65620c11f5fabe60040df39339f",
+                "reference": "f2fe833caef2c65620c11f5fabe60040df39339f",
                 "shasum": ""
             },
             "require": {
@@ -4082,7 +4081,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.7-dev"
+                    "dev-master": "0.8-dev"
                 }
             },
             "autoload": {
@@ -4109,7 +4108,7 @@
                 "github",
                 "test"
             ],
-            "time": "2015-12-13 00:51:27"
+            "time": "2015-12-17 20:16:23"
         },
         {
             "name": "sebastian/comparator",

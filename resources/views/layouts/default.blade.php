@@ -10,7 +10,7 @@
     </header>
     <!-- main content -->
     <div id="content" class="container">
-        @include('includes/messages')
+        @include('includes.messages')
         @section('content')
         @show
     </div>
