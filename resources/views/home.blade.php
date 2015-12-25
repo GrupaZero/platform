@@ -1,23 +1,10 @@
 @extends('layouts.default')
 
 @section('content')
-
-    @include('blocks.slider')
-
     @if(!empty($blocks) && $blocks->get('homepage'))
         <div class="row">
-            @foreach($blocks->get('homepage') as $index => $block)
-                <div class="col-sm-3">
-                    <?php $activeTranslation = $block->getPresenter()->translation($lang->code); ?>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            {{ $activeTranslation->title }}
-                        </div>
-                        <div class="panel-body">
-                            {{ $activeTranslation->body }}
-                        </div>
-                    </div>
-                </div>
+        @foreach($blocks->get('homepage') as $index => $block)
+                {!! $block->view !!}
             @endforeach
         </div>
     @endif

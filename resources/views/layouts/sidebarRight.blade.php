@@ -23,15 +23,7 @@
                 </div>
                 @if(!empty($blocks) && $blocks->get('sidebarRight'))
                     @foreach($blocks->get('sidebarRight') as $index => $block)
-                        <?php $activeTranslation = $block->getPresenter()->translation($lang->code); ?>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                {{ $activeTranslation->title }}
-                            </div>
-                            <div class="panel-body">
-                                {{ $activeTranslation->body }}
-                            </div>
-                        </div>
+                        {!! $block->view !!}
                     @endforeach
                 @endif
             </div>
