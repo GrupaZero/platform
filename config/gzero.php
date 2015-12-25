@@ -17,8 +17,11 @@ return [
     //    'public' => asset('uploads')
     //],
     'block_type'                     => [
-        'basic' => 'Gzero\Core\Handler\Block\Basic',
-        'menu'  => 'Gzero\Core\Handler\Block\Menu'
+        'basic'   => 'Gzero\Core\Handler\Block\Basic',
+        'content' => 'Gzero\Core\Handler\Block\Content',
+        'menu'    => 'Gzero\Core\Handler\Block\Menu',
+        'slider'  => 'Gzero\Core\Handler\Block\Slider',
+        'widget'  => 'Gzero\Core\Handler\Block\Widget'
     ],
     'content_type'                   => [
         'content'  => 'Gzero\Core\Handler\Content\Content',
