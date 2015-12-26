@@ -4,15 +4,29 @@
     @include('includes.head')
 </head>
 <body>
+<?php $sidebarClass = 'col-md-3' ?>
+<?php $contentClass = 12 - ($sidebarsNumber * substr($sidebarClass, -1)) ?>
 <div id="wrapper">
     <header>
         @include('includes.navbar')
     </header>
-    <!-- main content -->
-    <div id="content" class="container">
-        @include('includes.messages')
-        @section('content')
-        @show
+    <div class="container">
+        <div class="row">
+            @if(!empty($blocks) && $blocks->has('sidebarLeft'))
+            @include('includes.sidebarLeft', ['sidebarClass' => $sidebarClass])
+            @endif
+
+                    <!-- main content -->
+            <div id="content" class="col-sm-{{ $contentClass }}">
+                @include('includes.messages')
+                @section('content')
+                @show
+            </div>
+
+            @if(!empty($blocks) && $blocks->has('sidebarRight'))
+                @include('includes.sidebarRight', ['sidebarClass' => $sidebarClass])
+            @endif
+        </div>
     </div>
 </div>
 <footer id="footer" class="clearfix">

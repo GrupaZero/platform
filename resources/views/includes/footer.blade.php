@@ -1,6 +1,6 @@
 <div class="loading"><!-- loading container --></div>
 <div class="container">
-    @if(!empty($blocks) && $blocks->get('footer'))
+    @if(!empty($blocks) && $blocks->has('footer'))
         <div class="row mt20">
             @foreach($blocks->get('footer') as $index => $block)
                 {!! $block->view !!}

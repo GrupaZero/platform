@@ -1,4 +1,4 @@
-@extends('layouts.sidebarRight')
+@extends('layouts.default')
 <?php $activeTranslation = $content->translation($lang->code); ?>
 <?php $activeRoute = $content->routeTranslation($lang->code); ?>
 
@@ -8,10 +8,6 @@
 
 @section('seoDescription')
     {{ $activeTranslation->seoDescription() }}
-@stop
-
-@section('sidebarRight')
-    <h1 class="page-header">Menu</h1>
 @stop
 
 @section('content')
