@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    @if(!empty($blocks) && $blocks->get('homepage'))
+    @if(!empty($blocks) && $blocks->has('homepage'))
         <div class="row">
         @foreach($blocks->get('homepage') as $index => $block)
                 {!! $block->view !!}
