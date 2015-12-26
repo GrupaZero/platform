@@ -4,8 +4,8 @@
     @include('includes.head')
 </head>
 <body>
-<?php $sidebarClass = 'col-md-3' ?>
-<?php $contentClass = 12 - ($sidebarsNumber * substr($sidebarClass, -1)) ?>
+<?php $sidebarClass = 'col-md-3'; ?>
+<?php $contentClass = (isset($sidebarsNumber)) ? 12 - ($sidebarsNumber * substr($sidebarClass, -1)) : 12; ?>
 <div id="wrapper">
     <header>
         @include('includes.navbar')
