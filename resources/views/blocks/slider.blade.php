@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div class="{{isset($block->theme) ? $block->theme : 'col-sm-12'}}">
     <div class="slider" id="slider">
         <ul class="sequence-canvas">
             <li class="slide1">

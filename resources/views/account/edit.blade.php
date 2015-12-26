@@ -1,4 +1,4 @@
-@extends('layouts.sidebarLeft')
+@extends('layouts.default')
 
 @section('title')
     @lang('common.edit')
