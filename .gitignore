@@ -3,6 +3,5 @@
 /node_modules
 .env
 .env.testing
-/public/gzero
 /tests/_output
 /tests/_support/_generated
