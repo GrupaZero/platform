@@ -1,39 +1,40 @@
-<div class="loading"><!-- loading container --></div>
 <div class="container">
     @if(!empty($blocks) && $blocks->has('footer'))
-        <div class="row mt20">
-            @foreach($blocks->get('footer') as $index => $block)
-                {!! $block->view !!}
-            @endforeach
+        <div id="footer-region" class="block-region clearfix mt20">
+            <div class="row">
+                @include('includes.blocksRegion', ['regionName' => 'footer'])
+            </div>
         </div>
     @endif
     @section('footer')
-        <p class="text-muted">
-            Copyright &copy; {{ config('gzero.domain') }},
-            @lang('common.allRightsReserved')
-        </p>
+        <div class="clearfix text-muted">
+            <div class="copyrights pull-left">
+                Copyright &copy; {{ config('gzero.domain') }},
+                @lang('common.allRightsReserved')
+            </div>
+        </div>
     @show
 
-                <!-- Scripts -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="{{ asset('/js/common.js') }}"></script>
-        <script src="{{ asset('/js/jquery.metisMenu.js') }}"></script>
-        <script src="{{ asset('/js/jquery.sequence-min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('/js/common.js') }}"></script>
+    <script src="{{ asset('/js/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/js/jquery.sequence-min.js') }}"></script>
 
-        <script type="text/javascript">
-            $(function() {
-                $(".nav-stacked").metisMenu({
-                    toggle: false
-                });
-                // Expand parent of an active element
-                $(".nav-stacked li.active").parents('li').addClass('active').has('ul').children('ul').addClass('collapse in');
-                // Loading on form submit actions
-                $('form').submit(function(event) {
-                    Loading.start('body');
-                })
+    <script type="text/javascript">
+        $(function() {
+            $(".nav-stacked").metisMenu({
+                toggle: false
             });
-        </script>
+            // Expand parent of an active element
+            $(".nav-stacked li.active").parents('li').addClass('active').has('ul').children('ul').addClass('collapse in');
+            // Loading on form submit actions
+            $('form').submit(function(event) {
+                Loading.start('body');
+            })
+        });
+    </script>
     @section('footerScripts')
     @show
 </div>
+<div class="loading"><!-- loading container --></div>

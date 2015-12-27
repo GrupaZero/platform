@@ -1,5 +1,5 @@
 <div class="{{isset($block->theme) ? $block->theme : 'col-sm-12'}}">
-    <div class="slider" id="slider">
+    <div class="slider" id="slider-{{$block->id}}">
         <ul class="sequence-canvas">
             <li class="slide1">
                 <div class="jumbotron text-center">
@@ -37,7 +37,6 @@
             autoPlay: true,
             autoPlayDelay: 5000
         };
-
-        var mySequence = $("#slider").sequence(options).data("sequence");
+        var mySequence = $("#slider-" + "{{ $block->id }}").sequence(options).data("sequence");
     });
 </script>

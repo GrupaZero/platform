@@ -1,14 +1,14 @@
 @extends('layouts.default')
-
-@section('content')
+@section('homepageRegion')
     @if(!empty($blocks) && $blocks->has('homepage'))
+    <div id="homepage-region" class="block-region clearfix container">
         <div class="row">
-        @foreach($blocks->get('homepage') as $index => $block)
-                {!! $block->view !!}
-            @endforeach
+            @include('includes.blocksRegion', ['regionName' => 'homepage'])
         </div>
+    </div>
     @endif
-
+@stop
+@section('content')
     @foreach($contents as $index => $child)
         <?php $activeTranslation = $child->translation($lang->code); ?>
         @if($activeTranslation)

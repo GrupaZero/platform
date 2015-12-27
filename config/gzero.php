@@ -30,6 +30,7 @@ return [
     'available_blocks_regions'       => [
         'header',
         'homepage',
+        'featured',
         'contentHeader',
         'sidebarLeft',
         'sidebarRight',

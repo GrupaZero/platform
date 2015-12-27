@@ -7,3 +7,4 @@
         @endforeach
     @endif
 </div>
+<!-- end #sidebar-right -->
