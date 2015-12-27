@@ -14,6 +14,13 @@ Install dependencies
 composer install
 ```
 
+Set permissions to storage & bootstrap cache
+
+```
+find storage/ -type d -exec chmod 777 {} \;
+find bootstrap/cache/ -type d -exec chmod 777 {} \;
+```
+
 Create and configure database:
  - create database and user
  - copy .env.example as .env in root directory and put your credentials in to it
