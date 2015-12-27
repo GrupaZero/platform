@@ -9,18 +9,26 @@
 <div id="wrapper">
     <header>
         @include('includes.navbar')
+        @if(!empty($blocks) && $blocks->has('header'))
+            {!! $block->view !!}
+        @endif
     </header>
     <div class="container">
         <div class="row">
             @if(!empty($blocks) && $blocks->has('sidebarLeft'))
-            @include('includes.sidebarLeft', ['sidebarClass' => $sidebarClass])
+                @include('includes.sidebarLeft', ['sidebarClass' => $sidebarClass])
             @endif
 
                     <!-- main content -->
             <div id="content" class="col-sm-{{ $contentClass }}">
+                @if(!empty($blocks) && $blocks->has('contentHeader'))
+                    {!! $block->view !!}
+                @endif
                 @include('includes.messages')
-                @section('content')
-                @show
+                @section('content')@show
+                @if(!empty($blocks) && $blocks->has('contentFooter'))
+                    {!! $block->view !!}
+                @endif
             </div>
 
             @if(!empty($blocks) && $blocks->has('sidebarRight'))
