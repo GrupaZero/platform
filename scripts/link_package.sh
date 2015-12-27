@@ -31,9 +31,9 @@ OPERATION=$2
 if [ $OPERATION == "mount" ]; then
   # Checking if package was mounted before
   if grep -qs "platform/vendor/gzero/$PACKAGE" /proc/mounts; then
-      echo -e "\e[1mUnmounting previously mounted package\e[1m"
+      echo -e "\e[1mUnmounting previously mounted package\e[0m"
       sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
-      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[49m\e[21m"
+      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
       sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       sudo mount -o remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       if [ $PACKAGE == "admin" ]; then
@@ -42,7 +42,7 @@ if [ $OPERATION == "mount" ]; then
           sudo mount -o remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
       fi
   else
-      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[49m\e[21m"
+      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
       sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       sudo mount -o remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       if [ $PACKAGE == "admin" ]; then
@@ -55,12 +55,12 @@ fi
 if [ $OPERATION == "umount" ]; then
   # Checking if package was mounted before
   if grep -qs "platform/vendor/gzero/$PACKAGE" /proc/mounts; then
-    echo -e "\e[1mUnmounting package \e[91m$PACKAGE\e[49m\e[1m"
+    echo -e "\e[1mUnmounting package \e[91m$PACKAGE\e[0m"
     sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
     if [ $PACKAGE == "admin" ]; then
         sudo umount "$SCRIPT_DIR/../public/gzero/$PACKAGE"
     fi
   else
-      echo -e "\e[1mPackage was not mounted \e[91m$PACKAGE\e[49m\e[1m"
+      echo -e "\e[1mPackage was not mounted \e[91m$PACKAGE\e[0m"
   fi
 fi

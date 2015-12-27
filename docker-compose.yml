@@ -1,5 +1,7 @@
 web:
   build: .
+  environment:
+    OVERRIDE_UMASK: "002"
   volumes:
     - .:/var/www
   ports:
