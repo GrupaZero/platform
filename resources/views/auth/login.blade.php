@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.withoutBlocks')
 
 @section('title')
     @lang('common.login')

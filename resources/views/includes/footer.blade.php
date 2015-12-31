@@ -1,11 +1,4 @@
 <div class="container">
-    @if(!empty($blocks) && $blocks->has('footer'))
-        <div id="footer-region" class="block-region clearfix mt20">
-            <div class="row">
-                @include('includes.blocksRegion', ['regionName' => 'footer'])
-            </div>
-        </div>
-    @endif
     @section('footer')
         <div class="clearfix text-muted">
             <div class="copyrights pull-left">
