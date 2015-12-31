@@ -24,7 +24,7 @@ settings:
 modules:
     config:
         Db:
-            dsn: 'mysql:host=localhost;dbname=gzero-tests'
+            dsn: 'mysql:host=db_tests;dbname=gzero-cms'
             user: 'root'
             password: ''
             dump: tests/_data/dump.sql
