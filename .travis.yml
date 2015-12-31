@@ -1,7 +1,5 @@
 sudo: required
 
-language: php
-
 services:
   - docker
 
@@ -19,12 +17,15 @@ before_script:
   - docker exec -i -t platform_web_1 composer install -d /var/www/ --prefer-source --no-interaction --dev
 
 script:
-  - docker exec -i -t platform_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --coverage-html --env platform
+  - docker exec -i -t platform_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --env platform
   - docker exec -i -t platform_web_1 mkdir -p /var/www/build/logs
   - docker exec -i -t platform_web_1 cp /var/www/tests/_output/coverage.xml /var/www/build/logs/clover.xml
 
 after_script:
   - docker exec -i -t platform_web_1 /var/www/vendor/bin/coveralls -v
+
+matrix:
+  fast_finish: true
 
 #language: php
 #
