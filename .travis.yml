@@ -20,7 +20,6 @@ before_script:
 
 script:
   - docker exec -i -t platform_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --coverage-html --env platform
-  - docker exec -i -t platform_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --coverage-html --env platform
   - docker exec -i -t platform_web_1 mkdir -p /var/www/build/logs
   - docker exec -i -t platform_web_1 cp /var/www/tests/_output/coverage.xml /var/www/build/logs/clover.xml
 
