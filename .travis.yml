@@ -16,7 +16,7 @@ before_install:
 
 before_script:
   - docker-compose up -d
-  - docker exec -i -t platform_web_1 composer install -d /var/www/
+  - docker exec -i -t platform_web_1 composer install -d /var/www/ --prefer-source --no-interaction --dev
 
 script:
   - docker exec -i -t platform_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --coverage-html --env platform
