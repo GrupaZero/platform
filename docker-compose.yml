@@ -1,4 +1,4 @@
-web:
+dev_web:
   build: .
   environment:
     OVERRIDE_UMASK: "002"
@@ -7,10 +7,10 @@ web:
   ports:
     - "8000:80"
   links:
-    - db
-    - db_tests
-    - redis
-db:
+    - dev_db
+    - dev_db_tests
+    - dev_redis
+dev_db:
   image: mysql:5.7
   ports:
     - "3307:3306"
@@ -19,7 +19,7 @@ db:
     MYSQL_USER: "gzero-cms"
     MYSQL_PASSWORD: "test"
     MYSQL_DATABASE: "gzero-cms"
-db_tests:
+dev_db_tests:
   image: mysql:5.7
   ports:
     - "3308:3306"
@@ -27,7 +27,7 @@ db_tests:
     MYSQL_ROOT_PASSWORD: ''
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     MYSQL_DATABASE: "gzero-cms"
-redis:
+dev_redis:
   image: redis:3
   ports:
     - "6379:6379"
