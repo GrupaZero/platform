@@ -55,7 +55,7 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'gzero-tests'),
+			'database'  => env('DB_DATABASE', 'gzero-cms'),
 			'username'  => env('DB_USERNAME', 'root'),
 			'password'  => env('DB_PASSWORD', ''),
 			'charset'   => 'utf8',
@@ -67,7 +67,7 @@ return [
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'gzero-tests'),
+			'database' => env('DB_DATABASE', 'gzero-cms'),
 			'username' => env('DB_USERNAME', 'root'),
 			'password' => env('DB_PASSWORD', ''),
 			'charset'  => 'utf8',
@@ -78,7 +78,7 @@ return [
 		'sqlsrv' => [
 			'driver'   => 'sqlsrv',
 			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'gzero-tests'),
+			'database' => env('DB_DATABASE', 'gzero-cms'),
 			'username' => env('DB_USERNAME', 'root'),
 			'password' => env('DB_PASSWORD', ''),
 			'prefix'   => '',
