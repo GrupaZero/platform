@@ -2,6 +2,8 @@
 
 GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
+- [VIEW DEMO](http://staging.gzero.pl/en)
+
 **The project is still in the phase of intensive development**
 
 **The project uses [Docker](https://www.docker.com/what-docker) containers to package entire application with all of its dependencies into a standardized unit for 
@@ -12,16 +14,16 @@ software development.**
 Clone this project directly form github
 
 ##### Install dependencies
-To inlall all required dependencies run:
+To install all required dependencies run:
 ```
 composer install
 ```
 
-##### Files and directories permissions
+##### Directories permissions
 Set permissions to storage & bootstrap cache
 ```
-find storage/ -type d -exec chmod 777 {} \;
-find bootstrap/cache/ -type d -exec chmod 777 {} \;
+sudo chmod 777 -r storage/
+sudo chmod 777 -r bootstrap/cache/
 ```
 
 ##### Environment Configuration.
