@@ -1,0 +1,16 @@
+staging_web:
+  build: .
+  environment:
+    OVERRIDE_UMASK: "022"
+  ports:
+    - "80:80"
+  links:
+    - staging_db
+    - staging_db_tests
+    - staging_redis
+staging_db:
+  image: mysql:5.7
+  env_file:
+    - docker.env
+staging_redis:
+  image: redis:3
