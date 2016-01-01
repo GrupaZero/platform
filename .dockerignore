@@ -1,0 +1,8 @@
+build
+vendor
+tests
+node_modules
+.phpstorm.meta.php
+codeception.yml
+docker-compose.yml
+staging.yml
