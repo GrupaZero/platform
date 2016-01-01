@@ -127,8 +127,6 @@ return [
         'Illuminate\Translation\TranslationServiceProvider',
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
         'Gzero\Core\ServiceProvider',
         'Gzero\Api\ServiceProvider',
         'Gzero\Admin\ServiceProvider',
@@ -191,7 +189,6 @@ return [
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
         'Gravatar'  => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
-        'Debugbar'  => 'Barryvdh\Debugbar\Facade',
     ],
 
 ];

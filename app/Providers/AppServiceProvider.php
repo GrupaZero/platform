@@ -1,8 +1,27 @@
 <?php namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Gzero\Core\AbstractServiceProvider;
 
-class AppServiceProvider extends ServiceProvider {
+class AppServiceProvider extends AbstractServiceProvider {
+
+    /**
+     * List of additional providers
+     *
+     * @var array
+     */
+    protected $providers = [
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
+    ];
+
+    /**
+     * List of service providers aliases
+     *
+     * @var array
+     */
+    protected $aliases = [
+        'Debugbar'  => 'Barryvdh\Debugbar\Facade'
+    ];
 
     /**
      * Bootstrap any application services.
@@ -25,6 +44,8 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function register()
     {
+        $this->registerAdditionalProviders();
+        $this->registerProvidersAliases();
         $this->app->bind(
             'Illuminate\Contracts\Auth\Registrar',
             'App\Services\Registrar'
