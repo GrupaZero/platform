@@ -69,19 +69,19 @@ After Installing Docker Engine you need to build required docker containers, go 
  - Create database schema and required data
  
 ```
-sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan migrate --path=vendor/gzero/cms/src/migrations/
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate --path=vendor/gzero/cms/src/migrations/
 ```
 
  - You can also seed database with example data using this command
  
 ```
-sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
  - Publish vendor assets
  
 ```
-sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan vendor:publish --tag=public --force
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
 ```
 
  - Done
@@ -121,5 +121,6 @@ sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan vendor:publish --
 To run tests use:
 
 ```
-sudo docker exec -i -t platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --env platform
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml 
+--env platform
 ```
