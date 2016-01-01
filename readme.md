@@ -4,65 +4,122 @@ GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
 **The project is still in the phase of intensive development**
 
+**The project uses [Docker](https://www.docker.com/what-docker) containers to package entire application with all of its dependencies into a standardized unit for 
+software development.**
+
 ## Installation
 
 Clone this project directly form github
 
-Install dependencies
-
+##### Install dependencies
+To inlall all required dependencies run:
 ```
 composer install
 ```
 
+##### Files and directories permissions
 Set permissions to storage & bootstrap cache
-
 ```
 find storage/ -type d -exec chmod 777 {} \;
 find bootstrap/cache/ -type d -exec chmod 777 {} \;
 ```
 
-Create and configure database:
- - create database and user
- - copy .env.example as .env in root directory and put your credentials in to it
+##### Environment Configuration.
+ Copy .env.example as .env in root directory.
  
- ```
- DB_HOST=localhost
- DB_DATABASE=database_name
- DB_USERNAME=database_user
- DB_PASSWORD=database_password
- ```
- - create database schema and required data (remember to set env to dev)
- 
-```
-php artisan migrate --path=vendor/gzero/cms/src/migrations/
-```
+##### Install and run Docker Engine:
 
- - you can also seed database with example data using this command
+Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation instructions are available on [Docker documentation
+ page](https://docs.docker.com/engine/installation/) 
+
+##### Build Docker container for platform
+After Installing Docker Engine you need to build required docker containers, go to project directory and run:
+
+ - Build docker containers
+
  
-```
-php artisan db:seed --class="Gzero\Core\CMSSeeder"
-```
- - publish vendor assets
+ ```
+ sudo docker-compose build
+ ```
  
-```
-php artisan vendor:publish --tag=public --force
-```
- - run php build in server
+ This will download and build application containers
+ 
+ ```
+ Building dev_db
+ Building dev_redis
+ Building dev_db_tests
+ Building dev_web
+ ```
   
-```
-php artisan serve
-```
- - done
+ - Start Docker
  
- To check progress on project development you can occasionally run composer install
+  ```
+  sudo docker-compose up -d
+  ```
+  
+  This will run all application containers
+ 
+ ```
+  Starting platform_dev_db_1
+  Starting platform_dev_redis_1
+  Starting platform_dev_db_tests_1
+  Starting platform_dev_web_1
+ ```
+ 
+ - Create database schema and required data
+ 
+```
+sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan migrate --path=vendor/gzero/cms/src/migrations/
+```
 
+ - You can also seed database with example data using this command
+ 
+```
+sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
+```
 
+ - Publish vendor assets
+ 
+```
+sudo docker exec -i -t platform_dev_web_1 php /var/www/artisan vendor:publish --tag=public --force
+```
+
+ - Done
+ 
+ To check progress on project development you can occasionally run composer install.
+
+#### Stopping Docker
+ If you want to stop docker just run:
+ 
+  ```
+  sudo docker-compose stop
+  ```
+  
+  This will stop all running application containers
+ 
+ ```
+ Stopping platform_dev_web_1 ... done
+ Stopping platform_dev_db_tests_1 ... done
+ Stopping platform_dev_redis_1 ... done
+ Stopping platform_dev_db_1 ... done
+ ```
+ 
+#### Viewing docker logs
+  If you want to view logs from docker you can run:
+   ```
+   sudo docker-compose logs dev_web
+   ```
+   
+#### Updating Docker container for platform
+   To check for changes in Docker container for platform u can occasionally run  
+   ```
+  sudo docker-compose build
+   ```
+  
 ## Testing
-
-Copy .env.example as .env.testing in root directory and put your credentials in to it
 
 To run tests use:
 
 ```
-./vendor/bin/codecept run
+sudo docker exec -i -t platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --env platform
 ```
