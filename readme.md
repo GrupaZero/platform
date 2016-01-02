@@ -2,7 +2,12 @@
 
 GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
-- [VIEW DEMO](http://staging.gzero.pl/en)
+**[VIEW DEMO](http://staging.gzero.pl/en)** - you can log in with this credentials:
+
+```
+login: admin@gzero.pl
+pass: test
+```
 
 **The project is still in the phase of intensive development**
 
@@ -115,7 +120,7 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
 #### Updating Docker container for platform
    To check for changes in Docker container for platform u can occasionally run  
    ```
-  sudo docker-compose build
+  sudo docker-compose build --pull
    ```
   
 ## Testing

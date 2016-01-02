@@ -35,6 +35,13 @@
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
+                            @if (Auth::user()->isAdmin)
+                            <li>
+                                <a href="{{ route('admin') }}" target="_blank">
+                                    @lang('user.admin_panel') <i class="fa fa-cogs pull-right"></i>
+                                </a>
+                            </li>
+                            @endif
                             <li class="{{ (URL::full() ==  route('account')) ? 'active' : '' }}">
                                 <a href="{{ route('account') }}">
                                     @lang('user.my_account') <i class="fa fa-user pull-right"></i>
