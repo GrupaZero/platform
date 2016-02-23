@@ -1,7 +1,6 @@
 @extends('layouts.default')
 <?php $activeTranslation = $content->translation($lang->code); ?>
-<?php $activeRoute = $content->routeTranslation($lang->code); ?>
-<?php $url = url('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
+<?php $url = $content->routeUrl($lang->code); ?>
 
 @section('metaData')
 

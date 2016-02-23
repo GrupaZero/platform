@@ -1,6 +1,5 @@
 @extends('layouts.default')
 <?php $activeTranslation = $content->translation($lang->code); ?>
-<?php $activeRoute = $content->routeTranslation($lang->code); ?>
 
 @section('title')
     {{ $activeTranslation->seoTitle() }}
@@ -18,8 +17,7 @@
         @foreach($children as $index => $child)
             <?php $activeTranslation = $child->translation($lang->code); ?>
             @if($activeTranslation)
-                <?php $activeRoute = $child->routeTranslation($lang->code); ?>
-                <?php $childUrl = url('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
+                <?php $childUrl = $child->routeUrl($lang->code); ?>
                 <div class="media">
                     <h2 class="page-header">
                         <a href="{{ $childUrl }}">

@@ -12,8 +12,7 @@
     @foreach($contents as $index => $child)
         <?php $activeTranslation = $child->translation($lang->code); ?>
         @if($activeTranslation)
-            <?php $activeRoute = $child->routeTranslation($lang->code); ?>
-            <?php $childUrl = url('/'). '/' . $activeRoute->langCode .'/' . $activeRoute->url; ?>
+            <?php $childUrl = $child->routeUrl($lang->code); ?>
             <div class="media">
                 <h2 class="page-header">
                     <a href="{{ $childUrl }}">

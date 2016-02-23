@@ -69,7 +69,7 @@ class BaseController extends Controller {
             array_shift($segments);
             return implode('/', $segments);
         }
-        return ltrim(Request::getRequestUri(), '/');
+        return trim(Request::getRequestUri(), '/');
     }
 
     protected function viewShareLangs()
