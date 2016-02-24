@@ -29,6 +29,7 @@ Set permissions to storage & bootstrap cache
 ```
 sudo chmod 777 -R storage/
 sudo chmod 777 -R bootstrap/cache/
+sudo chmod 777 -R public/
 ```
 
 ##### Environment Configuration.
