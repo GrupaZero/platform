@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Gzero\Repository\ContentRepository;
+use Illuminate\Support\Facades\App;
 
 /**
  * This file is part of the GZERO CMS package.
@@ -17,6 +18,11 @@ class DevController extends BaseController {
 
     public function __construct(ContentRepository $repository)
     {
+        // show dev page only for logged users
+        if (!app('auth')->check() || !app('auth')->user()->isAdmin) {
+            App::abort(404);
+        }
+
         parent::__construct();
         $this->repository = $repository;
     }
