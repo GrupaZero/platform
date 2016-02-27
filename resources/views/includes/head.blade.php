@@ -5,6 +5,28 @@
 <title>@yield('title') - {{ option('general', 'siteName') }}</title>
 @yield('metaData')
 
+@if(option('seo', 'googleAnalyticsId'))
+<!-- Google Analytics web tracking code -->
+<script type="text/javascript">
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+</script>
+<!-- end Google Analytics web tracking code-->
+@endif
+
 @section('head')
     <link href="{{ asset('/css/jquery.metisMenu.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
