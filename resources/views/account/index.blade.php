@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.sidebarLeft')
 
 @section('title')
     @lang('common.account')
@@ -19,7 +19,7 @@
         <p><strong>@choice('common.email', 1):</strong> {{ $user->email }}</p>
     @endif
 
-    <a href="{{ route('account.edit') }}" title="@lang('user.edit_account')" class="btn btn-primary">
+    <a href="{{ route('account.edit') }}" title="@lang('user.edit_account')" class="btn btn-default">
         @lang('user.edit_account')
     </a>
 

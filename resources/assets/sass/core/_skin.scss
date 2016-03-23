@@ -1,0 +1,50 @@
+// -------------------------------------
+//   Skin
+// -------------------------------------
+// ----- Global skin classes (gradients, colors, box-shadows, etc).
+// -------------------------------------
+
+/*alert error*/
+header {
+  background-color : $black;
+}
+
+.alert-error {
+  @extend .alert-danger
+}
+
+.utility-container {
+  border       : 1px solid darken($gray-lighter, 5%);
+  border-width : 1px 0;
+}
+
+.btn-social, .connect-btn {
+  &.btn-primary {
+    background-color : #39579A;
+    border-color     : #39579A;
+  }
+  &.btn-danger {
+    background-color : #DF4A32;
+    border-color     : #DF4A32;
+  }
+}
+
+.langs-list {
+  li {
+    & > a {
+      color : $gray-light;
+    }
+
+    &.active {
+      a {
+        color : $white;
+      }
+    }
+  }
+}
+
+#featured-region {
+  background-color : $gray-lighter;
+  border-bottom    : 1px solid darken($gray-lighter, 5%);
+  @include gradient-vertical($start-color : $white, $end-color : $gray-lighter);
+}

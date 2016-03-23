@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $lang->code }}">
 <head>
     @include('includes.head')
 </head>
-<body>
+<body class="@yield('bodyClass') {{!empty($blocks) && $blocks->has('sidebarLeft') ? 'sidebar-left' : ''}}{{!empty($blocks) && $blocks->has('sidebarRight') ? ' sidebar-right' : ''}}">
 <?php $sidebarClass = 'col-md-3'; ?>
 <?php $contentClass = (isset($sidebarsNumber)) ? 12 - ($sidebarsNumber * substr($sidebarClass, -1)) : 12; ?>
 <div id="wrapper">
     <header>
+        @include('includes.langs')
         @if(!empty($blocks) && $blocks->has('header'))
-            <div id="header-region" class="block-region clearfix container">
+            <div id="header-region" class="block-region clearfix container mb20">
                 <div class="row">
                     @include('includes.blocksRegion', ['regionName' => 'header'])
                 </div>
@@ -17,6 +18,8 @@
         @endif
         @include('includes.navbar')
     </header>
+    @yield('contentTitle')
+    @yield('breadcrumbs')
     @if(!empty($blocks) && $blocks->has('featured'))
         <div id="featured-region" class="block-region container-fluid clearfix">
             <div class="row">
@@ -27,12 +30,12 @@
     @section('homepageRegion')
         {{-- HOMEPAGE REGION SECTION --}}
     @show
-    <div id="main-container" class="container mt20">
+    <div id="main-container" class="container">
         <div class="row">
             @if(!empty($blocks) && $blocks->has('sidebarLeft'))
                 @include('includes.sidebarLeft', ['sidebarClass' => $sidebarClass])
             @endif
-            <div id="content" class="col-sm-{{ $contentClass }}">
+            <div id="content" class="col-md-{{ $contentClass }} mh-column">
                 @if(!empty($blocks) && $blocks->has('contentHeader'))
                     <div id="content-header-region" class="block-region clearfix">
                         <div class="row">
@@ -45,8 +48,8 @@
                     {{-- CONTENT SECTION --}}
                 @show
                 @if(!empty($blocks) && $blocks->has('contentFooter'))
-                    <div id="content-footer-region" class="block-region clearfix">
-                        <div class="row mt20">
+                    <div id="content-footer-region mt20" class="block-region clearfix">
+                        <div class="row">
                             @include('includes.blocksRegion', ['regionName' => 'contentFooter'])
                         </div>
                     </div>

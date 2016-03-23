@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $lang->code }}">
 <head>
     @include('includes.head')
 </head>
-<body>
+<body class="@yield('bodyClass')">
 <div id="wrapper">
     <header>
+        @include('includes.langs')
         @include('includes.navbar')
     </header>
-    <div id="main-container" class="container mt20">
+    @yield('breadcrumbs')
+    <div id="main-container" class="container">
         <div class="row">
-            <div id="content" class="col-sm-12">
+            <div id="content" class="col-sm-12 mh-column">
                 @include('includes.messages')
                 @section('content')
                     {{-- CONTENT SECTION --}}

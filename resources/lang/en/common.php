@@ -3,8 +3,7 @@
 # modified at 06-04-2015 16:34
 
 return [
-    '404Message'               => 'The page you are looking for might have been removed, had its name changed, or is
-    temporarily unavailable.',
+    '404Message'               => 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
     'account'                  => 'Account',
     'accountConected'          => 'Account connected to external service.',
     'allRightsReserved'        => 'All rights reserved.',
@@ -12,7 +11,12 @@ return [
     'author'                   => 'Author',
     'backtoHomepage'           => 'Return to the homepage',
     'changesSavedMessage'      => 'The changes have been saved!',
+    'comments'                 => 'Comments',
+    'commentsNoJsMessage'      => 'Please enable JavaScript to view the comments.',
+    'contentNotPublished'      => 'This content is not published.',
     'contentsList'             => 'Contents list',
+    'cookiesInfoText'          => 'We use cookies and similar technologies. By using the Site you agree to the use of cookies.',
+    'cookiesInfoLinkText'      => 'read more about our cookies policy',
     'edit'                     => 'Edit',
     'email'                    => 'E-mail|Emails',
     'emailAlreadyInUseMessage' => 'This email is already registered.',
@@ -20,6 +24,8 @@ return [
     'firstName'                => 'First Name',
     'forgotPassword'           => 'Forgot password?',
     'forgotPasswordHint'       => 'Enter the email address you used for creating your Account and we will send you instructions.',
+    'getStartedToday'          => 'Get started today',
+    'home'                     => 'Home',
     'incorrectLoginMessage'    => 'The username or password is incorrect. Please try again.',
     'lastName'                 => 'Last Name',
     'leaveBlank'               => 'Leave blank if don\'t want to change.',
@@ -60,5 +66,4 @@ return [
     'type'                     => 'Type',
     'unknown'                  => 'unknown',
     'welcome'                  => 'Welcome',
-    'contentNotPublished'      => 'This content is not published.'
 ];

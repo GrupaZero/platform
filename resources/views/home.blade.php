@@ -1,11 +1,12 @@
 @extends('layouts.default')
+@section('bodyClass', 'home')
 @section('homepageRegion')
     @if(!empty($blocks) && $blocks->has('homepage'))
-    <div id="homepage-region" class="block-region clearfix container">
-        <div class="row">
-            @include('includes.blocksRegion', ['regionName' => 'homepage'])
+        <div id="homepage-region" class="block-region clearfix container">
+            <div class="row">
+                @include('includes.blocksRegion', ['regionName' => 'homepage'])
+            </div>
         </div>
-    </div>
     @endif
 @stop
 @section('content')
@@ -20,40 +21,53 @@
                     </a>
                 </h2>
                 <div class="media-body">
-                    <div class="row">
-                        <div class="col-md-8">
+                    <div class="row article-meta">
+                        <div class="col-xs-8">
                             <p class="text-muted">
-                                @lang('common.postedBy') {{ $child->authorName() }}
-                                @lang('common.postedOn') {{ $child->publishDate() }}
+                                <small> @lang('common.postedBy') {{ $child->authorName() }}</small>
+                                <small>@lang('common.postedOn') {{ $child->publishDate() }}</small>
                             </p>
                         </div>
-                        <div class="col-md-4 text-right">
-                            <p class="text-muted">@lang('common.rating') {!! $child->ratingStars() !!}</p>
-                        </div>
+                        @if(config('disqus.enabled'))
+                            <div class="col-xs-4 text-right">
+                                <a href="{{ $childUrl }}#disqus_thread"
+                                   data-disqus-identifier="{{ $child->id }}"
+                                   class="disqus-comment-count">
+                                    0 @lang('common.comments')
+                                </a>
+                            </div>
+                        @endif
                     </div>
-                    <p>
-                        <a href="{{ $childUrl }}">
+                    <div class="thumb mb20">
+                        <a href="{{ $childUrl }}" title="{{$activeTranslation->title}}">
                             <img class="img-responsive" src="http://placehold.it/847x312"
                                  width="847" height="312" alt="{{$activeTranslation->title}}">
                         </a>
-                    </p>
+                    </div>
                     {!! $activeTranslation->teaser !!}
                 </div>
-                <hr/>
                 <div class="row">
-                    <div class="col-md-6">
-                        <a href="{{ $childUrl }}" class="btn btn-default">
+                    <div class="col-sm-4">
+                        <a href="{{ $childUrl }}" class="btn btn-default read-more">
                             @lang('common.readMore')
                         </a>
                     </div>
-                    <div class="col-md-6 text-right">
-                        <p class="text-muted">@lang('common.numberOfViews') {{ $child->visits }}</p>
+                    <div class="col-sm-8 text-right text-left-xs mt20-xs">
+                        <ul class="list-inline text-muted">
+                            <li>
+                                @lang('common.rating') {!! $child->ratingStars() !!}
+                            </li>
+                            <li>
+                                @lang('common.numberOfViews') {{ $child->visits }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            @if($index < sizeof($contents) -1)
+            <hr/>
+            @endif
         @endif
     @endforeach
-
     {!! $contents->render() !!}
-
 @stop
