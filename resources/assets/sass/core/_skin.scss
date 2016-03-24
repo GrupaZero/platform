@@ -46,5 +46,6 @@ header {
 #featured-region {
   background-color : $gray-lighter;
   border-bottom    : 1px solid darken($gray-lighter, 5%);
+  padding-bottom   : 20px;
   @include gradient-vertical($start-color : $white, $end-color : $gray-lighter);
 }

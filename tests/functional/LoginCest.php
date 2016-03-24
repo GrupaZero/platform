@@ -30,6 +30,48 @@ class LoginCest {
         $I->seeAuthentication();
     }
 
+    public function registerAlreadyExistingUser(FunctionalTester $I)
+    {
+        $I->wantTo('prevent registration a user with already registered email');
+        $I->haveRecord(
+            'Users',
+            [
+                'firstName' => 'John',
+                'lastName'  => 'Doe',
+                'email'     => 'john@doe.com',
+                'password'  => bcrypt('password'),
+                'createdAt' => new DateTime(),
+                'updatedAt' => new DateTime(),
+            ]
+        );
+
+        $I->amOnPage('/en/register');
+        $I->fillField('firstName', 'John');
+        $I->fillField('lastName', 'Doe');
+        $I->fillField('email', 'john@doe.com');
+        $I->fillField('password', 'password');
+        $I->click('button[type=submit]');
+        $I->see('This email is already registered.');
+        $I->dontSeeAuthentication();
+    }
+
+    public function preventSpamUserRegistrations(FunctionalTester $I)
+    {
+        $I->wantTo('prevent a spammer users registrations');
+
+        $I->amOnPage('/en/register');
+        $I->fillField('firstName', 'John');
+        $I->fillField('lastName', 'Doe');
+        $I->fillField('email', 'example@example.com');
+        $I->fillField('password', 'password');
+        $I->fillField('accountIntent', 'randomstring');
+        $I->click('button[type=submit]');
+
+        $I->amOnPage('/en');
+        $I->seeResponseCodeIs(200);
+        $I->dontSeeAuthentication();
+    }
+
     public function login(FunctionalTester $I)
     {
         $I->wantTo('login as a user');
