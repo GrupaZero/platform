@@ -100,6 +100,17 @@ class LoginCest {
         $I->seePageNotFound();
     }
 
+    public function loginNonExistingUser(FunctionalTester $I)
+    {
+        $I->wantTo('prevent login as a none existing usr');
+        $I->amOnPage('/en/login');
+        $I->fillField('email', 'john@doe.com');
+        $I->fillField('password', 'password');
+        $I->click('button[type=submit]');
+        $I->see('The username or password is incorrect. Please try again.');
+        $I->dontSeeAuthentication();
+    }
+
     public function loginAsAdmin(FunctionalTester $I)
     {
         $I->wantTo('login as a admin');
