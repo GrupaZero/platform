@@ -4,6 +4,7 @@ class AdminCest {
 
     public function _before(FunctionalTester $I)
     {
+        $I->logout();
     }
 
     public function _after(FunctionalTester $I)
