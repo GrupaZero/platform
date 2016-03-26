@@ -26,7 +26,7 @@ class BaseController extends Controller {
         /** @TODO We need better way to access langs */
         $langRepository = App::make('Gzero\Repository\LangRepository');
         $this->lang     = $langRepository->getCurrent();
-        $this->langs    = $langRepository->getAll();
+        $this->langs    = $langRepository->getAllEnabled();
         $this->viewShareLangs();
     }
 

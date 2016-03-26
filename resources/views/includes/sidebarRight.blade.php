@@ -1,5 +1,5 @@
 <!-- sidebar content -->
-<div id="sidebarRight" class="{{ $sidebarClass }} sidebar">
+<div id="sidebarRight" class="{{ $sidebarClass }} sidebar mh-column clearfix">
     @yield('sidebarRight')
     @if(!empty($blocks) && $blocks->get('sidebarRight'))
         @foreach($blocks->get('sidebarRight') as $index => $block)

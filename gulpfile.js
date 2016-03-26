@@ -12,7 +12,15 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less([
-        'app.less'
+    mix.sass([
+        'app.scss'
+    ]);
+    mix.scripts([
+        'cookies.js',
+        'responsive-paginate.js',
+        'jquery.metisMenu.js',
+        'jquery.colorbox.js',
+        'jquery.matchHeight.js',
+        'common.js'
     ]);
 });

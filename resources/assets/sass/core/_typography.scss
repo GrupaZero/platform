@@ -1,0 +1,46 @@
+// -------------------------------------
+//   Typography
+// -------------------------------------
+// ----- Global typography classes
+// -------------------------------------
+.breadcrumb {
+  text-transform : uppercase;
+  margin-bottom  : 0;
+  @extend .small
+}
+
+.page-header + .breadcrumb {
+  margin-bottom : 20px;
+}
+
+.content-meta, .article-meta {
+  font-family : $font-family-serif;
+}
+
+.article-meta {
+  font-weight    : 300;
+}
+
+#content {
+  .content-meta + p, .content-meta + .thumb + p, {
+    @extend .lead;
+  }
+
+  .content-meta, .article-meta {
+    & + .thumb img, {
+      @extend .img-responsive;
+    }
+  }
+}
+
+#header-region,
+#footer-region {
+  .block {
+    .block-title {
+      color : $white;
+    }
+    .block-body {
+      color : lighten($gray-light, 10%);
+    }
+  }
+}

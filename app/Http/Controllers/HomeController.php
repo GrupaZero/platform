@@ -43,7 +43,8 @@ class HomeController extends BaseController {
             ],
             [
                 ['isPromoted', 'DESC'],
-                ['isSticky', 'DESC']
+                ['isSticky', 'DESC'],
+                ['publishedAt', 'DESC']
             ],
             $request->get('page', 1),
             option('general', 'defaultPageSize', 20)

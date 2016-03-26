@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: gzero-cms
+-- Host: dev_db    Database: gzero-cms
 -- ------------------------------------------------------
--- Server version	5.5.46-0ubuntu0.14.04.2
+-- Server version	5.7.10
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,8 +35,8 @@ CREATE TABLE `BlockTranslations` (
   PRIMARY KEY (`id`),
   KEY `blocktranslations_blockid_foreign` (`blockId`),
   KEY `blocktranslations_langcode_foreign` (`langCode`),
-  CONSTRAINT `blocktranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE,
-  CONSTRAINT `blocktranslations_blockid_foreign` FOREIGN KEY (`blockId`) REFERENCES `Blocks` (`id`) ON DELETE CASCADE
+  CONSTRAINT `blocktranslations_blockid_foreign` FOREIGN KEY (`blockId`) REFERENCES `Blocks` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `blocktranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,7 +71,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES ('basic',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('content',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('menu',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('slider',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('widget',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-03-24 09:47:45','2016-03-24 09:47:45'),('content',1,'2016-03-24 09:47:45','2016-03-24 09:47:45'),('menu',1,'2016-03-24 09:47:45','2016-03-24 09:47:45'),('slider',1,'2016-03-24 09:47:45','2016-03-24 09:47:45'),('widget',1,'2016-03-24 09:47:45','2016-03-24 09:47:45');
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,8 +102,8 @@ CREATE TABLE `Blocks` (
   KEY `blocks_blockableid_blockabletype_index` (`blockableId`,`blockableType`),
   KEY `blocks_authorid_foreign` (`authorId`),
   KEY `blocks_type_foreign` (`type`),
-  CONSTRAINT `blocks_type_foreign` FOREIGN KEY (`type`) REFERENCES `BlockTypes` (`name`) ON DELETE CASCADE,
-  CONSTRAINT `blocks_authorid_foreign` FOREIGN KEY (`authorId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
+  CONSTRAINT `blocks_authorid_foreign` FOREIGN KEY (`authorId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `blocks_type_foreign` FOREIGN KEY (`type`) REFERENCES `BlockTypes` (`name`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,8 +138,8 @@ CREATE TABLE `ContentTranslations` (
   PRIMARY KEY (`id`),
   KEY `contenttranslations_contentid_foreign` (`contentId`),
   KEY `contenttranslations_langcode_foreign` (`langCode`),
-  CONSTRAINT `contenttranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE,
-  CONSTRAINT `contenttranslations_contentid_foreign` FOREIGN KEY (`contentId`) REFERENCES `Contents` (`id`) ON DELETE CASCADE
+  CONSTRAINT `contenttranslations_contentid_foreign` FOREIGN KEY (`contentId`) REFERENCES `Contents` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `contenttranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,7 +174,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
-INSERT INTO `ContentTypes` VALUES ('category',1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('content',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `ContentTypes` VALUES ('category',1,'2016-03-24 09:47:44','2016-03-24 09:47:44'),('content',1,'2016-03-24 09:47:44','2016-03-24 09:47:44');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,9 +209,9 @@ CREATE TABLE `Contents` (
   KEY `contents_type_path_parentid_level_index` (`type`,`path`,`parentId`,`level`),
   KEY `contents_authorid_foreign` (`authorId`),
   KEY `contents_parentid_foreign` (`parentId`),
-  CONSTRAINT `contents_type_foreign` FOREIGN KEY (`type`) REFERENCES `ContentTypes` (`name`) ON DELETE CASCADE,
   CONSTRAINT `contents_authorid_foreign` FOREIGN KEY (`authorId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `contents_parentid_foreign` FOREIGN KEY (`parentId`) REFERENCES `Contents` (`id`) ON DELETE CASCADE
+  CONSTRAINT `contents_parentid_foreign` FOREIGN KEY (`parentId`) REFERENCES `Contents` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `contents_type_foreign` FOREIGN KEY (`type`) REFERENCES `ContentTypes` (`name`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -248,7 +248,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
-INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('pl','pl_PL',1,0,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('de','de_DE',0,0,'2015-12-12 10:50:57','2015-12-12 10:50:57'),('fr','fr_FR',0,0,'2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-03-24 09:47:43','2016-03-24 09:47:43'),('pl','pl_PL',1,0,'2016-03-24 09:47:43','2016-03-24 09:47:43'),('de','de_DE',0,0,'2016-03-24 09:47:43','2016-03-24 09:47:43'),('fr','fr_FR',0,0,'2016-03-24 09:47:43','2016-03-24 09:47:43');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +274,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
-INSERT INTO `OptionCategories` VALUES ('general','2015-12-12 10:50:57','2015-12-12 10:50:57'),('seo','2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `OptionCategories` VALUES ('general','2016-03-24 09:47:44','2016-03-24 09:47:44'),('seo','2016-03-24 09:47:44','2016-03-24 09:47:44');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +295,7 @@ CREATE TABLE `Options` (
   PRIMARY KEY (`id`),
   KEY `options_categorykey_key_index` (`categoryKey`,`key`),
   CONSTRAINT `options_categorykey_foreign` FOREIGN KEY (`categoryKey`) REFERENCES `OptionCategories` (`key`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +304,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
-INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(4,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2015-12-12 10:50:57','2015-12-12 10:50:57'),(5,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-03-24 09:47:44','2016-03-24 09:47:44'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-03-24 09:47:44','2016-03-24 09:47:44'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-03-24 09:47:44','2016-03-24 09:47:44'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-03-24 09:47:44','2016-03-24 09:47:44'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-03-24 09:47:44','2016-03-24 09:47:44'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-03-24 09:47:44','2016-03-24 09:47:44');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,6 +395,34 @@ LOCK TABLES `Routes` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `SocialIntegrations`
+--
+
+DROP TABLE IF EXISTS `SocialIntegrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SocialIntegrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned DEFAULT NULL,
+  `socialId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `socialintegrations_socialid_unique` (`socialId`),
+  KEY `socialintegrations_userid_foreign` (`userId`),
+  CONSTRAINT `socialintegrations_userid_foreign` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SocialIntegrations`
+--
+
+LOCK TABLES `SocialIntegrations` WRITE;
+/*!40000 ALTER TABLE `SocialIntegrations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SocialIntegrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Users`
 --
 
@@ -409,6 +437,7 @@ CREATE TABLE `Users` (
   `lastName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rememberToken` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `hasSocialIntegrations` tinyint(1) NOT NULL DEFAULT '0',
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -422,7 +451,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$LyQ3ybcUKQmbSBAzFitove/xJjZVpwz2dGo9iSnZSiKvnKfaj76BK','John','Doe','',1,'2015-12-12 10:50:57','2015-12-12 10:50:57');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$1VzgwEjGBfam3lN2wWeU8.q83SWpt6OlGV8qc71nEveCrDc1Nwlty','John','Doe','cUMbAqMU7uXdeWaGWSRwcmXQFRTe3VZ8PMvEVQvEVEnXBuWcNvCAX3bEXixL',1,0,'2016-03-24 09:47:44','2016-03-24 11:04:42');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -474,9 +503,17 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1);
+INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1),('2015_03_28_091847_create_social',2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'gzero-cms'
+--
+
+--
+-- Dumping routines for database 'gzero-cms'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -487,4 +524,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-12 12:56:11
+-- Dump completed on 2016-03-24 13:48:55

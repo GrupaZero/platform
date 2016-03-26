@@ -3,8 +3,7 @@
 # modified at 06-04-2015 16:34
 
 return [
-    '404Message'               => 'Strona, której szukasz, mogła zostać usunięta, zmieniono jej nazwę lub jest tymczasowo
-    niedostępna.',
+    '404Message'               => 'Strona, której szukasz, mogła zostać usunięta, zmieniono jej nazwę lub jest tymczasowo niedostępna.',
     'account'                  => 'Konto',
     'accountConected'          => 'Konto połaczone z usługą zewnętrzną.',
     'allRightsReserved'        => 'Wszelkie prawa zastrzeżone.',
@@ -12,7 +11,12 @@ return [
     'author'                   => 'Autor',
     'backtoHomepage'           => 'Powrót do strony głównej',
     'changesSavedMessage'      => 'Zmiany zostały zapisane!',
+    'comments'                 => 'Komentarzy',
+    'commentsNoJsMessage'      => 'Proszę włącz JavaScript aby móc zobaczyć komentarze.',
+    'contentNotPublished'      => 'Ta zawartość nie jest opublikowana.',
     'contentsList'             => 'Lista Zawartości',
+    'cookiesInfoText'          => 'Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie.',
+    'cookiesInfoLinkText'      => 'dowiedz się więcej o polityce cookies',
     'edit'                     => 'Edytuj',
     'email'                    => 'E-mail|Emaile',
     'emailAlreadyInUseMessage' => 'Ten e-mail jest już zarejestrowany.',
@@ -20,6 +24,8 @@ return [
     'firstName'                => 'Imię',
     'forgotPassword'           => 'Nie pamiętasz hasła?',
     'forgotPasswordHint'       => 'Wpisz adres e-mail kt&oacute;rego użyłeś do stworzenia konta, a my prześlemy dalsze instrukcje.',
+    'getStartedToday'          => 'Zacznij już teraz',
+    'home'                     => 'Strona główna',
     'incorrectLoginMessage'    => 'Nazwa użytkownika lub hasło są niewłaściwe. Spróbuj ponownie.',
     'lastName'                 => 'Nazwisko',
     'leaveBlank'               => 'Pozostaw puste, jeśli nie chcesz zmieniać.',
@@ -59,6 +65,5 @@ return [
     'toggleNavigation'         => 'Włącz nawigację',
     'type'                     => 'Typ',
     'unknown'                  => 'Nieznany',
-    'welcome'                  => 'Witaj',
-    'contentNotPublished'      => 'Ta zawartość nie jest opublikowana.'
+    'welcome'                  => 'Witaj'
 ];

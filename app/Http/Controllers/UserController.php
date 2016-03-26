@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Password;
 
 
 /**
@@ -86,6 +87,9 @@ class UserController extends BaseController {
 
     public function register()
     {
+        if (Auth::check()) {
+            return redirect()->to('home');
+        }
         return view('auth.register');
     }
 
@@ -145,7 +149,7 @@ class UserController extends BaseController {
     public function remind()
     {
         if (Auth::check()) {
-            return redirect()->to('/');
+            return redirect()->to('home');
         }
         return view('auth.password');
     }
@@ -159,7 +163,7 @@ class UserController extends BaseController {
     {
         try {
             $input    = $this->validator->validate('remind');
-            $response = Password::remind(
+            $response = Password::sendResetLink(
                 $input,
                 function ($message) {
                     $message->subject(Lang::get('emails.passwordReminder.title'));
@@ -177,7 +181,7 @@ class UserController extends BaseController {
                         ]
                     );
                     return redirect()->back()->withInput();
-                case Password::REMINDER_SENT:
+                case Password::RESET_LINK_SENT:
                     Session::flash(
                         'messages',
                         [

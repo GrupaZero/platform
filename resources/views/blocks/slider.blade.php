@@ -5,24 +5,25 @@
                 <div class="jumbotron text-center">
                     @if(isset($translations))
                         <h1>{{ $translations->title }}</h1>
-                        {!! $translations->body !!}
+                        <p>{!! $translations->body !!}</p>
                     @endif
-
                     <p>
-                        <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">Get started today</a>
+                        <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">
+                            @lang('common.getStartedToday')
+                        </a>
                     </p>
                 </div>
-
             </li>
             <li class="slide2">
                 <div class="jumbotron text-center">
                     @if(isset($translations))
                         <h1>{{ $translations->title }}</h1>
-                        {!! $translations->body !!}
+                        <p>{!! $translations->body !!}</p>
                     @endif
-
                     <p>
-                        <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">Get started today</a>
+                        <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">
+                            @lang('common.getStartedToday')
+                        </a>
                     </p>
                 </div>
             </li>
@@ -35,7 +36,7 @@
         var options = {
             animateStartingFrameIn: false,
             autoPlay: true,
-            autoPlayDelay: 5000
+            autoPlayDelay: 8000
         };
         var mySequence = $("#slider-" + "{{ $block->id }}").sequence(options).data("sequence");
     });

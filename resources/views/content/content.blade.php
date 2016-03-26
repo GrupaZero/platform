@@ -1,13 +1,12 @@
 @extends('layouts.default')
+@section('bodyClass', $content->theme)
 <?php $activeTranslation = $content->translation($lang->code); ?>
 <?php $url = $content->routeUrl($lang->code); ?>
 
 @section('metaData')
-
     @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
         {!! fbOgTags($url, $activeTranslation) !!}
     @endif
-
 @stop
 
 @section('title')
@@ -18,24 +17,41 @@
     {{ $activeTranslation->seoDescription() }}
 @stop
 
+@section('breadcrumbs')
+    <div class="utility-container">
+        <div class="container text-center-xs">
+            {!! Breadcrumbs::render('content') !!}
+        </div>
+    </div>
+@stop
+
 @section('content')
-    {!! Breadcrumbs::render('content') !!}
-    <h1 class="page-header">{{ $activeTranslation->title }}</h1>
-    <div class="row">
-        <div class="col-md-8">
-            <p class="text-muted">
-                @lang('common.postedBy') {{ $content->authorName() }}
-                @lang('common.postedOn') {{ $content->publishDate() }}
+    <h1 class="content-title page-header">
+        {{ $activeTranslation->title }}
+    </h1>
+    <div class="row content-meta">
+        <div class="col-sm-7">
+            <p class="content-author text-muted">
+                <i>@lang('common.postedBy') {{ $content->authorName() }}</i>
+                <i>@lang('common.postedOn') {{ $content->publishDate() }}</i>
             </p>
         </div>
-        <div class="col-md-4 text-right">
-            <p class="text-muted">@lang('common.rating') {!! $content->ratingStars() !!}</p>
+        <div class="col-sm-5 text-right text-left-sm text-left-xs">
+            @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+                <p class="social-buttons">
+                    {!! shareButtons($url, $activeTranslation) !!}
+                </p>
+            @endif
         </div>
     </div>
     {!! $activeTranslation->body !!}
-
-    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
-        <hr/>
-        {!! shareButtons($url, $activeTranslation) !!}
+    @if(config('disqus.enabled') && $content->isCommentAllowed)
+        <div class="text-center">
+            @include('includes.disqus.disqus', ['contentId' => $content->id, 'url' => $url])
+        </div>
     @endif
+    <hr>
+    <div class="text-muted text-right">
+        @lang('common.rating') {!! $content->ratingStars() !!}
+    </div>
 @stop

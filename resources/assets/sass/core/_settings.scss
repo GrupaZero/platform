@@ -1,0 +1,56 @@
+// -------------------------------------
+//   Settings
+// -------------------------------------
+// ----- @Font-Face Declarations, Variables
+// -------------------------------------
+
+// -------------------------------------
+//   @font-face
+// -------------------------------------
+// Add fonts to project as needed by updating the $fonts map below
+$fonts : (
+        //'OpenSans-Light-webfont':(font-weight: 300, font-style: normal, 'group': 'Open Sans'),
+        //'OpenSans-LightItalic-webfont':(font-weight: 300, font-style: italic, 'group': 'Open Sans'),
+        //'OpenSans-Regular-webfont':(font-weight: normal, font-style: normal, 'group': 'Open Sans'),
+        //'OpenSans-Italic-webfont':(font-weight: normal, font-style: italic, 'group': 'Open Sans'),
+        //'OpenSans-Bold-webfont':(font-weight: bold, font-style: normal, 'group': 'Open Sans'),
+        //'OpenSans-BoldItalic-webfont':(font-weight: bold, font-style: italic, 'group': 'Open Sans'),
+);
+
+@each $font-file, $font-group in $fonts {
+  $type : map-get($fonts, $font-file);
+
+  @font-face {
+    @if map-has-key($type, 'group') {
+      font-family : map-get($type, 'group');
+    }
+
+    src : url('../fonts/#{$font-file}.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/#{$font-file}.woff') format('woff'),
+    url('../fonts/#{$font-file}.ttf') format('truetype'),
+    url('../fonts/#{$font-file}.svg##{$font-file}') format('svg');
+
+    @if map-has-key($type, font-weight) {
+      font-weight : map-get($type, font-weight);
+    }
+
+    @if map-has-key($type, 'font-style') {
+      font-style : map-get($type, 'font-style');
+    }
+  }
+}
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+$img-path : "/images/" !default;
+
+// ----- Colors ----- //
+$black : #000 !default;
+$white : #FFF !default;
+$gray-ultra-lighter : #F5F5F5 !default;
+
+// ----- Type ----- //
+
+// ----- Grid ----- //

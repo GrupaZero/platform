@@ -1,0 +1,31 @@
+// -------------------------------------
+//   Layout
+// -------------------------------------
+// ----- Global layout classes (margin, padding, floats, etc).
+// -------------------------------------
+
+/*
+ * Main content
+ */
+.img-avatar {
+  margin-bottom : 5px;
+}
+
+.pagination {
+  margin-bottom : 0;
+}
+
+header {
+  .user-nav {
+    .dropdown-toggle {
+      padding-top    : 7px;
+      padding-bottom : 7px;
+    }
+  }
+}
+
+@media (max-width : 769px) {
+  #sidebarLeft, #sidebarRight {
+    padding-bottom : 20px;
+  }
+}

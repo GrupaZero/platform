@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.sidebarLeft')
 
 @section('title')
     @lang('common.edit')
@@ -67,7 +67,7 @@
         $(function () {
             $('#edit-account').click(function (event) {
                 event.preventDefault();
-                Loading.start('body');
+                Loading.start('#main-container');
                 $.ajax({
                     url: "/<?php echo $lang->code;?>/api/v1/account/ <?php echo $user->id;?>",
                     data: $('#edit-account-form').serializeObject(),
