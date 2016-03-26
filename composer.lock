@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "094f9a1b6375e7e8257fff88a94f5857",
-    "content-hash": "af35492f5b44940d378e51705e6a2d99",
+    "hash": "01525504e245db10cfc02379309cb4af",
+    "content-hash": "f6200b0bd4177c994200ffb76aae1d34",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -684,16 +684,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "dev-master",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "87df09914e5064e0d4c3dc2bec7d88f539180fa6"
+                "reference": "91d26ff1343af8fce90f20ab283b270f16540b5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/87df09914e5064e0d4c3dc2bec7d88f539180fa6",
-                "reference": "87df09914e5064e0d4c3dc2bec7d88f539180fa6",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/91d26ff1343af8fce90f20ab283b270f16540b5d",
+                "reference": "91d26ff1343af8fce90f20ab283b270f16540b5d",
                 "shasum": ""
             },
             "require": {
@@ -726,20 +726,20 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-03-25 16:27:07"
+            "time": "2016-03-26 10:52:14"
         },
         {
             "name": "gzero/api",
-            "version": "dev-master",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "88f506eab03dda40b561ba0dc35683589fa7cd06"
+                "reference": "9934bc87c430140f65ccaabc31cf8be0918095bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/88f506eab03dda40b561ba0dc35683589fa7cd06",
-                "reference": "88f506eab03dda40b561ba0dc35683589fa7cd06",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/9934bc87c430140f65ccaabc31cf8be0918095bf",
+                "reference": "9934bc87c430140f65ccaabc31cf8be0918095bf",
                 "shasum": ""
             },
             "require": {
@@ -785,11 +785,11 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-03-24 17:45:59"
+            "time": "2016-03-26 10:47:33"
         },
         {
             "name": "gzero/cms",
-            "version": "dev-master",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
@@ -901,16 +901,16 @@
         },
         {
             "name": "gzero/social",
-            "version": "dev-master",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/social.git",
-                "reference": "bf5f4ccdc143f127f20159bef62d147495f2a9b6"
+                "reference": "0db632f92a5f450ce488582c777c83a7eb804cfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/bf5f4ccdc143f127f20159bef62d147495f2a9b6",
-                "reference": "bf5f4ccdc143f127f20159bef62d147495f2a9b6",
+                "url": "https://api.github.com/repos/GrupaZero/social/zipball/0db632f92a5f450ce488582c777c83a7eb804cfd",
+                "reference": "0db632f92a5f450ce488582c777c83a7eb804cfd",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "plugin",
                 "social"
             ],
-            "time": "2016-03-24 11:19:38"
+            "time": "2016-03-26 10:57:44"
         },
         {
             "name": "gzero/vanilla-integration",
@@ -4898,38 +4898,9 @@
             "time": "2016-02-23 07:41:20"
         }
     ],
-    "aliases": [
-        {
-            "alias": "0.0.5",
-            "alias_normalized": "0.0.5.0",
-            "version": "9999999-dev",
-            "package": "gzero/cms"
-        },
-        {
-            "alias": "0.0.5",
-            "alias_normalized": "0.0.5.0",
-            "version": "9999999-dev",
-            "package": "gzero/api"
-        },
-        {
-            "alias": "0.0.5",
-            "alias_normalized": "0.0.5.0",
-            "version": "9999999-dev",
-            "package": "gzero/admin"
-        },
-        {
-            "alias": "1.0",
-            "alias_normalized": "1.0.0.0",
-            "version": "9999999-dev",
-            "package": "gzero/social"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/cms": 20,
-        "gzero/api": 20,
-        "gzero/admin": 20,
-        "gzero/social": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
