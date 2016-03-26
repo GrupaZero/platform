@@ -15,10 +15,10 @@
         }
     ],
     "require": {
-        "gzero/cms": "dev-master as 0.0.5",
-        "gzero/api": "dev-master as 0.0.5",
-        "gzero/admin": "dev-master as 0.0.5",
-        "gzero/social": "dev-master as 1.0",
+        "gzero/cms": "0.*",
+        "gzero/api": "0.*",
+        "gzero/admin": "0.*",
+        "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
         "thomaswelton/laravel-gravatar": "~1.0",
         "predis/predis": "1.0.*"
