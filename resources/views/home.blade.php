@@ -28,7 +28,7 @@
                                 <small>@lang('common.postedOn') {{ $child->publishDate() }}</small>
                             </p>
                         </div>
-                        @if(config('disqus.enabled'))
+                        @if(config('disqus.enabled') && $child->isCommentAllowed)
                             <div class="col-xs-4 text-right">
                                 <a href="{{ $childUrl }}#disqus_thread"
                                    data-disqus-identifier="{{ $child->id }}"

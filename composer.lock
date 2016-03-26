@@ -688,12 +688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "b5c95c67707a21861bd911b389cdcb00eb8161d8"
+                "reference": "87df09914e5064e0d4c3dc2bec7d88f539180fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/b5c95c67707a21861bd911b389cdcb00eb8161d8",
-                "reference": "b5c95c67707a21861bd911b389cdcb00eb8161d8",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/87df09914e5064e0d4c3dc2bec7d88f539180fa6",
+                "reference": "87df09914e5064e0d4c3dc2bec7d88f539180fa6",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-03-24 11:20:33"
+            "time": "2016-03-25 16:27:07"
         },
         {
             "name": "gzero/api",
@@ -793,12 +793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "3f754a62df0aa5f9c6b366eecfaed41546fbfb06"
+                "reference": "8174fa694ba80e965709a3b2d50bf8dff5a112ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/3f754a62df0aa5f9c6b366eecfaed41546fbfb06",
-                "reference": "3f754a62df0aa5f9c6b366eecfaed41546fbfb06",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/8174fa694ba80e965709a3b2d50bf8dff5a112ba",
+                "reference": "8174fa694ba80e965709a3b2d50bf8dff5a112ba",
                 "shasum": ""
             },
             "require": {
@@ -849,7 +849,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-24 11:19:23"
+            "time": "2016-03-25 17:32:26"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -1288,16 +1288,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.14",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "b15f4be0ac739405120d74b837af423aa71502d9"
+                "reference": "edd00ab96933e3ef053533cce81e958fb26921af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/b15f4be0ac739405120d74b837af423aa71502d9",
-                "reference": "b15f4be0ac739405120d74b837af423aa71502d9",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/edd00ab96933e3ef053533cce81e958fb26921af",
+                "reference": "edd00ab96933e3ef053533cce81e958fb26921af",
                 "shasum": ""
             },
             "require": {
@@ -1338,7 +1338,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-10-16 15:39:46"
+            "time": "2016-03-21 14:30:30"
         },
         {
             "name": "league/flysystem",
