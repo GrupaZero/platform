@@ -46,7 +46,7 @@ class AccountCest
         $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
         $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'firstName' => 'xxx', 'lastName' => 'yyy', '_token' => $token]);
         $I->seeResponseCodeIs(200);
-        $I->amOnPage('/en');
+        $I->amOnPage('/en/account');
         $I->see('xxx yyy');
     }
 
