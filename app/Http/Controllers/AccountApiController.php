@@ -52,8 +52,8 @@ class AccountApiController extends BaseController {
             if (!Input::has('password')) {
                 $this->validator->setData(Input::except(['password', 'password_confirmation']));
             }
-            $input = $this->validator->validate('update');
             $user  = $this->userRepo->getById($id);
+            $input = $this->validator->bind('nickName', ['userId' => $user->id])->validate('update');
             $this->userRepo->update($user, $input);
             return Response::json(['success' => true]);
         } catch (ValidationException $e) {

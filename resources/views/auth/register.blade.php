@@ -19,11 +19,20 @@
                     <p class="help-block">{{ $errors->first('email') }}</p>
                 @endif
             </div>
+            <div class="form-group{{ $errors->first('nickName') ? ' has-error' : '' }}">
+                <label class="control-label" for="firstName">@lang('common.nickName')</label>
+                <input type="text" id="nickName" name="nickName" class="form-control"
+                       value="{{old('nickName')}}"
+                       placeholder="@lang('common.nickName')">
+                @if($errors->first('nickName'))
+                    <p class="help-block">{{ $errors->first('nickName') }}</p>
+                @endif
+            </div>
             <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
                 <label class="control-label" for="firstName">@lang('common.firstName')</label>
                 <input type="text" id="firstName" name="firstName" class="form-control"
                        value="{{old('firstName')}}"
-                       placeholder="@lang('common.firstName')">
+                       placeholder="@lang('common.firstName') (@lang('common.optional'))">
                 @if($errors->first('firstName'))
                     <p class="help-block">{{ $errors->first('firstName') }}</p>
                 @endif
@@ -32,7 +41,7 @@
                 <label class="control-label" for="lastName">@lang('common.lastName')</label>
                 <input type="text" id="lastName" name="lastName" class="form-control"
                        value="{{old('lastName')}}"
-                       placeholder="@lang('common.lastName')">
+                       placeholder="@lang('common.lastName') (@lang('common.optional'))">
                 @if($errors->first('lastName'))
                     <p class="help-block">{{ $errors->first('lastName') }}</p>
                 @endif

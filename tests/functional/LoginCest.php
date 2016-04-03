@@ -19,6 +19,7 @@ class LoginCest {
         $I->wantTo('register a user');
 
         $I->amOnPage('/en/register');
+        $I->fillField('nickName', 'NickName');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'example@example.com');
@@ -36,6 +37,7 @@ class LoginCest {
         $I->haveRecord(
             'Users',
             [
+                'nickName' => 'NickName',
                 'firstName' => 'John',
                 'lastName'  => 'Doe',
                 'email'     => 'john@doe.com',
@@ -46,12 +48,14 @@ class LoginCest {
         );
 
         $I->amOnPage('/en/register');
+        $I->fillField('nickName', 'NickName');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'john@doe.com');
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
-        $I->see('This email is already registered.');
+        $I->see('The email has already been taken.');
+        $I->see('The nick name has already been taken.');
         $I->dontSeeAuthentication();
     }
 
@@ -60,6 +64,7 @@ class LoginCest {
         $I->wantTo('prevent a spammer users registrations');
 
         $I->amOnPage('/en/register');
+        $I->fillField('nickName', 'NickName');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'example@example.com');

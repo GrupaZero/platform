@@ -6,6 +6,7 @@ return [
     'seoTitleAlternativeField'       => 'title',
     'seoDescriptionAlternativeField' => 'body',
     'seoDescLength'                  => 160,
+    'useUsersNickNames'              => true,
     'siteDesc'                       => 'Content management system.',
     'multilang'                      => [
         'enabled'   => true,

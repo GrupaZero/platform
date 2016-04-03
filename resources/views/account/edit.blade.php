@@ -15,6 +15,15 @@
        <div class="col-md-5">
            <form id="edit-account-form" action="#" method="POST" role="form">
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <div class="form-group{{ $errors->first('nickName') ? ' has-error' : '' }}">
+                   <label class="control-label" for="firstName">@lang('common.nickName')</label>
+                   <input type="text" id="nickName" name="nickName" class="form-control"
+                          value="{{ $user->nickName }}"
+                          placeholder="@lang('common.nickName')">
+                   @if($errors->first('nickName'))
+                       <p class="help-block">{{ $errors->first('nickName') }}</p>
+                   @endif
+               </div>
                <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
                    <label class="control-label" for="firstName">@lang('common.firstName')</label>
                    <input type="text" id="firstName" name="firstName" class="form-control"
