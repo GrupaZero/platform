@@ -15,11 +15,11 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.*",
-        "gzero/api": "0.*",
-        "gzero/admin": "0.*",
+        "gzero/cms": "dev-master as 0.0.6",
+        "gzero/api": "dev-KMS-225_add_user_nickname_field as 0.0.6",
+        "gzero/admin": "dev-master as 0.0.6",
         "gzero/social": "^1.0",
-        "gzero/vanilla-integration": "^1.0",
+        "gzero/vanilla-integration": "dev-master as 0.0.6",
         "thomaswelton/laravel-gravatar": "~1.0",
         "predis/predis": "1.0.*"
     },
