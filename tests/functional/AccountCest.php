@@ -44,7 +44,7 @@ class AccountCest
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
         $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['firstName' => 'xxx', 'lastName' => 'yyy', '_token' => $token]);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'firstName' => 'xxx', 'lastName' => 'yyy', '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->amOnPage('/en');
         $I->see('xxx yyy');
@@ -58,7 +58,7 @@ class AccountCest
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
         $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['password' => 'test124', 'password_confirmation' => 'test124', '_token' => $token]);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'password' => 'test124', 'password_confirmation' => 'test124', '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->logout();
         $I->login('john@doe.com', 'test124');
@@ -72,7 +72,7 @@ class AccountCest
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
         $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['password' => 'test124', '_token' => $token]);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'password' => 'test124', '_token' => $token]);
         $I->seeResponseCodeIs(400);
     }
 
