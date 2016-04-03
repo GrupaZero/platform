@@ -10,6 +10,7 @@ class AccountCest
         $I->haveRecord(
             'Users',
             [
+                'nickName' => 'JohnyD',
                 'firstName' => 'Johny',
                 'lastName' => 'Doe',
                 'email' => 'john@doe.com',
