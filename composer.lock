@@ -734,20 +734,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "283fd242970bece7c989b176194a15fe7edc852b"
+                "reference": "8331fe6583098ec3798df21e66c96890b8304bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/283fd242970bece7c989b176194a15fe7edc852b",
-                "reference": "283fd242970bece7c989b176194a15fe7edc852b",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8331fe6583098ec3798df21e66c96890b8304bea",
+                "reference": "8331fe6583098ec3798df21e66c96890b8304bea",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/laravel-cors": "0.6.0",
-                "gzero/core": "dev-master as 0.0.6",
-                "gzero/entity": "dev-master as 0.0.6",
-                "gzero/repository": "dev-master as 0.0.6",
-                "gzero/validator": "dev-master as 0.0.6",
+                "gzero/core": "0.*",
+                "gzero/entity": "0.*",
+                "gzero/repository": "0.*",
+                "gzero/validator": "0.*",
                 "illuminate/pagination": "5.1.*",
                 "illuminate/routing": "5.1.*",
                 "league/fractal": "0.12.0",
@@ -785,7 +785,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-04-03 21:27:25"
+            "time": "2016-04-04 07:28:31"
         },
         {
             "name": "gzero/cms",
