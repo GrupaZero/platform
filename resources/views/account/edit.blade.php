@@ -78,7 +78,7 @@
                 event.preventDefault();
                 Loading.start('#main-container');
                 $.ajax({
-                    url: "/<?php echo $lang->code;?>/api/v1/account/ <?php echo $user->id;?>",
+                    url: "/<?php echo (config('gzero.multilang.enabled')) ? $lang->code .'/' : '';?>api/v1/account/<?php echo $user->id; ?>",
                     data: $('#edit-account-form').serializeObject(),
                     type: 'PUT',
                     success: function (xhr) {
