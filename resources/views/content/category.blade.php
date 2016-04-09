@@ -2,13 +2,8 @@
 @section('bodyClass', $content->theme)
 <?php $activeTranslation = $content->translation($lang->code); ?>
 
-@section('title')
-    {{ $activeTranslation->seoTitle() }}
-@stop
-
-@section('seoDescription')
-    {{ $activeTranslation->seoDescription() }}
-@stop
+@section('title'){{ $activeTranslation->seoTitle() }}@stop
+@section('seoDescription'){{ $activeTranslation->seoDescription() }}@stop
 
 @section('breadcrumbs')
     <div class="utility-container">
@@ -84,5 +79,10 @@
             @endif
         @endforeach
         {!! $children->render() !!}
+    @endif
+@stop
+@section('footerScripts')
+    @if(config('disqus.enabled') && config('disqus.domain'))
+        <script id="dsq-count-scr" src="//{{config('disqus.domain')}}.disqus.com/count.js" async></script>
     @endif
 @stop

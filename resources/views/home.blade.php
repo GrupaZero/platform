@@ -71,3 +71,8 @@
     @endforeach
     {!! $contents->render() !!}
 @stop
+@section('footerScripts')
+    @if(config('disqus.enabled') && config('disqus.domain'))
+        <script id="dsq-count-scr" src="//{{config('disqus.domain')}}.disqus.com/count.js" async></script>
+    @endif
+@stop

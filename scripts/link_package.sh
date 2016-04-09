@@ -19,7 +19,7 @@ function contains() {
 }
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PACKAGES=("admin" "api" "cms" "social")
+PACKAGES=("admin" "api" "cms" "social" "vanilla-integration")
 OPERATIONS=("mount" "umount")
 PACKAGE=$1
 OPERATION=$2

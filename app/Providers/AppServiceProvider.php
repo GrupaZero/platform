@@ -38,7 +38,7 @@ class AppServiceProvider extends AbstractServiceProvider {
                 if ($user) {
                     $data = [
                         "id"       => $user["id"],
-                        "username" => $user["firstName"] . ' ' . $user["lastName"],
+                        "username" => $user->getPresenter()->displayName(),
                         "email"    => $user["email"],
                         //"avatar"    => $user["avatar"],
                     ];

@@ -9,13 +9,8 @@
     @endif
 @stop
 
-@section('title')
-    {{ $activeTranslation->seoTitle() }}
-@stop
-
-@section('seoDescription')
-    {{ $activeTranslation->seoDescription() }}
-@stop
+@section('title'){{ $activeTranslation->seoTitle() }}@stop
+@section('seoDescription'){{ $activeTranslation->seoDescription() }}@stop
 
 @section('breadcrumbs')
     <div class="utility-container">

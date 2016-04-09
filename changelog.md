@@ -1,4 +1,41 @@
 ###Changelog:
+##v0.0.6
+*GZERO PLATFORM*
+
+- Added user nickName field
+- Added email field to edit user account form
+- Added missing disquss counter
+- Added handling social accounts without email field
+- Fixed api url on edit account when multi language is disabled
+- Fixed SEO fields formatting issues
+- Fixed lang code in html tag
+- Fixed loading mask dimensions
+
+*GZERO ADMIN*
+
+- Added user nickName field
+
+*GZERO API*
+
+- Added user nickName field
+
+*GZERO CMS*
+
+- Added user nickName field
+- Added unique nickname for users with empty on user creation
+- Fixed SEO fields in translation presenter
+
+*GZERO SOCIAL*
+
+- Added user email from social response for user creation
+- Unique social id is now used as fallback for response with missing email
+- Fixed social login buttons so that they are visible only for configured services
+- Fixed loading mask
+
+*GZERO VANILLA-INTEGRATION*
+
+- Added user nickName field
+
 ##v0.0.5
 *GZERO PLATFORM*
 
