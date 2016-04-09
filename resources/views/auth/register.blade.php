@@ -55,7 +55,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <button id="edit-account" type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.register')</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.register')</button>
             </div>
             <input id="accountIntent" type="text" name="accountIntent" class="hidden">
         </form>

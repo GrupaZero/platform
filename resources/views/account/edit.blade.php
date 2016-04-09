@@ -24,6 +24,15 @@
                        <p class="help-block">{{ $errors->first('nickName') }}</p>
                    @endif
                </div>
+               <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
+                   <label class="control-label" for="email">@choice('common.email', 1)</label>
+                   <input type="email" id="email" name="email" class="form-control"
+                          value="{{ $user->email }}"
+                          placeholder="@choice('common.email', 1)">
+                   @if($errors->first('email'))
+                       <p class="help-block">{{ $errors->first('email') }}</p>
+                   @endif
+               </div>
                <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
                    <label class="control-label" for="firstName">@lang('common.firstName')</label>
                    <input type="text" id="firstName" name="firstName" class="form-control"
@@ -43,12 +52,21 @@
                    @endif
                </div>
                @if(strpos($user->email,'@'))
+                   @if($user->password)
                    <div class="separator">
                        <span>@lang('common.passwordChange')</span>
                    </div>
                    <p class="text-muted">
                        <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.leaveBlank')
                    </p>
+                   @else
+                       <div class="separator">
+                           <span>@lang('common.passwordSet')</span>
+                       </div>
+                       <p class="text-success">
+                           <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.setPasswordToLogin')
+                       </p>
+                   @endif
                    <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
                        <label class="control-label" for="password">@lang('common.newPassword')</label>
                        <input type="password" id="password" name="password" class="form-control"
@@ -87,6 +105,10 @@
                         setGlobalMessage('success', "@lang('common.changesSavedMessage')");
                         hideMessages();
                         clearFormValidationErrors();
+                        // reload page to load any view changes
+                        setTimeout(function(){
+                            location.reload();
+                        }, 1000);
                     },
                     error: function(xhr, status, error){
                         Loading.stop();

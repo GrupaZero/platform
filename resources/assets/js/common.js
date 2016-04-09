@@ -29,8 +29,8 @@ var Loading = {
             var loading = $(me.loadingContainer);
             loading.css('top', destHtml.offset().top + 'px');
             loading.css('left', destHtml.offset().left + 'px');
-            loading.css('width', destHtml.width() + 'px');
-            loading.css('height', destHtml.height() + 'px');
+            loading.css('width', destHtml.outerWidth() + 'px');
+            loading.css('height', destHtml.outerHeight() + 'px');
         }
     },
     stop: function() {

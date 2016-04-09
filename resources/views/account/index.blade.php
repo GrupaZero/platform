@@ -15,8 +15,12 @@
 
     @if(isset($user->hasSocialIntegrations) && strpos($user->email,'social_') !== false)
         <p>@lang('common.accountConected')</p>
+        <p class="text-danger"><i class="fa fa-exclamation-triangle"><!-- icon --></i> @lang('common.emailIsMissing')</p>
     @else
-        <p><strong>@choice('common.email', 1):</strong> {{ $user->email }}</p>
+        <p>
+            <strong>@choice('common.email', 1):</strong> {{ $user->email }}
+            <small class="help-block">@lang('common.emailIsHidden')</small>
+        </p>
     @endif
 
     <a href="{{ route('account.edit') }}" title="@lang('user.edit_account')" class="btn btn-default">

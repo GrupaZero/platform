@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6e8b629f2a103612b2dbd72cdc3a0109",
-    "content-hash": "deaa50c7c6bbf27416d0a30c3dc9f284",
+    "hash": "8bac59bb37ea1bd17a96a2c1f256346c",
+    "content-hash": "3b6b5d06dfafad214ce7eb1baff8511b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -734,12 +734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "8331fe6583098ec3798df21e66c96890b8304bea"
+                "reference": "87bc7376b0906a4b1aaaa393a967651cd804b4f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8331fe6583098ec3798df21e66c96890b8304bea",
-                "reference": "8331fe6583098ec3798df21e66c96890b8304bea",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/87bc7376b0906a4b1aaaa393a967651cd804b4f2",
+                "reference": "87bc7376b0906a4b1aaaa393a967651cd804b4f2",
                 "shasum": ""
             },
             "require": {
@@ -785,7 +785,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-04-04 07:28:31"
+            "time": "2016-04-09 09:18:55"
         },
         {
             "name": "gzero/cms",
@@ -793,12 +793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "01af3374dd5266136e183c8635826070056845b7"
+                "reference": "3068086679e76e8db5ae804000ec61e6000b9f01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/01af3374dd5266136e183c8635826070056845b7",
-                "reference": "01af3374dd5266136e183c8635826070056845b7",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/3068086679e76e8db5ae804000ec61e6000b9f01",
+                "reference": "3068086679e76e8db5ae804000ec61e6000b9f01",
                 "shasum": ""
             },
             "require": {
@@ -849,7 +849,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-04-03 21:22:32"
+            "time": "2016-04-09 14:12:53"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -901,16 +901,16 @@
         },
         {
             "name": "gzero/social",
-            "version": "v1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/social.git",
-                "reference": "0db632f92a5f450ce488582c777c83a7eb804cfd"
+                "reference": "936c5de59bd5fa40e28b52e9e92c97b243500b6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/0db632f92a5f450ce488582c777c83a7eb804cfd",
-                "reference": "0db632f92a5f450ce488582c777c83a7eb804cfd",
+                "url": "https://api.github.com/repos/GrupaZero/social/zipball/936c5de59bd5fa40e28b52e9e92c97b243500b6e",
+                "reference": "936c5de59bd5fa40e28b52e9e92c97b243500b6e",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "plugin",
                 "social"
             ],
-            "time": "2016-03-26 10:57:44"
+            "time": "2016-04-09 14:13:14"
         },
         {
             "name": "gzero/vanilla-integration",
@@ -1160,16 +1160,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.32",
+            "version": "v5.1.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bdb01c499305ede9d6f8caec57649bbaca4dd5e3"
+                "reference": "0e73cba565b0ef5b158da62f641dc6770b806102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bdb01c499305ede9d6f8caec57649bbaca4dd5e3",
-                "reference": "bdb01c499305ede9d6f8caec57649bbaca4dd5e3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0e73cba565b0ef5b158da62f641dc6770b806102",
+                "reference": "0e73cba565b0ef5b158da62f641dc6770b806102",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1284,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-04-01 18:52:14"
+            "time": "2016-04-07 14:12:37"
         },
         {
             "name": "laravel/socialite",
@@ -4981,6 +4981,12 @@
             "alias": "0.0.6",
             "alias_normalized": "0.0.6.0",
             "version": "9999999-dev",
+            "package": "gzero/social"
+        },
+        {
+            "alias": "0.0.6",
+            "alias_normalized": "0.0.6.0",
+            "version": "9999999-dev",
             "package": "gzero/vanilla-integration"
         }
     ],
@@ -4989,6 +4995,7 @@
         "gzero/cms": 20,
         "gzero/api": 20,
         "gzero/admin": 20,
+        "gzero/social": 20,
         "gzero/vanilla-integration": 20,
         "satooshi/php-coveralls": 20
     },

@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="@yield('seoDescription', option('general', 'siteDesc'))">
-<title>@yield('title') - {{ option('general', 'siteName') }}</title>
+<title>@yield('title', option('general', 'siteName'))</title>
 @yield('metaData')
 
 @if(option('seo', 'googleAnalyticsId'))

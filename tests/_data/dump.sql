@@ -71,7 +71,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-04-03 16:43:47','2016-04-03 16:43:47'),('content',1,'2016-04-03 16:43:47','2016-04-03 16:43:47'),('menu',1,'2016-04-03 16:43:47','2016-04-03 16:43:47'),('slider',1,'2016-04-03 16:43:47','2016-04-03 16:43:47'),('widget',1,'2016-04-03 16:43:47','2016-04-03 16:43:47');
+INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('content',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('menu',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('slider',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('widget',1,'2016-04-06 18:52:43','2016-04-06 18:52:43');
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
-INSERT INTO `ContentTypes` VALUES ('category',1,'2016-04-03 16:43:47','2016-04-03 16:43:47'),('content',1,'2016-04-03 16:43:47','2016-04-03 16:43:47');
+INSERT INTO `ContentTypes` VALUES ('category',1,'2016-04-06 18:52:42','2016-04-06 18:52:42'),('content',1,'2016-04-06 18:52:42','2016-04-06 18:52:42');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +248,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
-INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-04-03 16:43:46','2016-04-03 16:43:46'),('pl','pl_PL',1,0,'2016-04-03 16:43:46','2016-04-03 16:43:46'),('de','de_DE',0,0,'2016-04-03 16:43:46','2016-04-03 16:43:46'),('fr','fr_FR',0,0,'2016-04-03 16:43:46','2016-04-03 16:43:46');
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('pl','pl_PL',1,0,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('de','de_DE',0,0,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('fr','fr_FR',0,0,'2016-04-06 18:52:41','2016-04-06 18:52:41');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +274,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
-INSERT INTO `OptionCategories` VALUES ('general','2016-04-03 16:43:47','2016-04-03 16:43:47'),('seo','2016-04-03 16:43:47','2016-04-03 16:43:47');
+INSERT INTO `OptionCategories` VALUES ('general','2016-04-06 18:52:42','2016-04-06 18:52:42'),('seo','2016-04-06 18:52:42','2016-04-06 18:52:42');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +304,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
-INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-04-03 16:43:47','2016-04-03 16:43:47'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-04-03 16:43:47','2016-04-03 16:43:47'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-04-03 16:43:47','2016-04-03 16:43:47'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-03 16:43:47','2016-04-03 16:43:47'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-04-03 16:43:47','2016-04-03 16:43:47'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-03 16:43:47','2016-04-03 16:43:47');
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-06 18:52:42','2016-04-06 18:52:42');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,7 +442,8 @@ CREATE TABLE `Users` (
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_nickname_unique` (`nickName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -452,7 +453,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$iDOTV75LH2aQFq9iL8Qvw.TTt8pekafeMSpKi5GkCPAFMod3RLlsW','Admin','John','Doe','',1,0,'2016-04-03 16:43:46','2016-04-03 16:43:46');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$gLmbDtx0rHiNMj0iRdG/..OwQ6Z9Bxnie1AfFHn90tsAh/5/ArUwG','Admin','John','Doe','',1,0,'2016-04-06 18:52:42','2016-04-06 18:52:42');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,4 +526,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-03 16:44:07
+-- Dump completed on 2016-04-06 18:53:52
