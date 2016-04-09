@@ -98,7 +98,7 @@ class AccountCest
 
     public function canNotChangePasswordWithoutConfirmation(FunctionalTester $I)
     {
-        $I->wantTo('change user password');
+        $I->wantTo('change user password without confirmation');
         $I->login('john@doe.com', 'test123');
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Change password');
@@ -123,7 +123,7 @@ class AccountCest
             ]
         );
 
-        $I->wantTo('change user nickname');
+        $I->wantTo('change user nickname to already taken');
         $I->login('john@doe.com', 'test123');
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Nick name');
@@ -149,7 +149,7 @@ class AccountCest
             ]
         );
 
-        $I->wantTo('change user nickname');
+        $I->wantTo('change user email to already taken');
         $I->login('john@doe.com', 'test123');
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Nick name');

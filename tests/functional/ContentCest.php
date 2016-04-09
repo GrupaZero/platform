@@ -186,7 +186,7 @@ class ContentCest {
         );
         $route              = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
 
-        $I->wantTo('see sticky content on the top of the list');
+        $I->wantTo('see promoted content on the top of the list');
         $I->amOnPage($route);
         $I->seeResponseCodeIs(200);
 

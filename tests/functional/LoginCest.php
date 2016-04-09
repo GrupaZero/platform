@@ -37,7 +37,7 @@ class LoginCest {
         $I->haveRecord(
             'Users',
             [
-                'nickName' => 'NickName',
+                'nickName'  => 'NickName',
                 'firstName' => 'John',
                 'lastName'  => 'Doe',
                 'email'     => 'john@doe.com',
@@ -142,5 +142,34 @@ class LoginCest {
         $I->login('john@doe.com', 'password');
         $I->logout();
         $I->dontSeeAuthentication();
+    }
+
+    public function canRemindPassword(FunctionalTester $I)
+    {
+        $I->wantTo('remind a password');
+        $I->amOnPage('/en/password/remind');
+        $I->see('Forgot password?');
+        $I->see('Enter the email address you used for creating your Account and we will send you instructions.');
+        $I->see('Return to sign in');
+    }
+
+    public function canNotRemindPasswordAsLoggedUser(FunctionalTester $I)
+    {
+        $I->wantTo('remind a password as logged user');
+        $I->haveRecord(
+            'Users',
+            [
+                'nickName'  => 'JohnDoe',
+                'firstName' => 'John',
+                'lastName'  => 'Doe',
+                'email'     => 'john@doe.com',
+                'password'  => bcrypt('password'),
+                'createdAt' => new DateTime(),
+                'updatedAt' => new DateTime(),
+            ]
+        );
+        $I->login('john@doe.com', 'password');
+        $I->amOnPage('/en/password/remind');
+        $I->see('JohnDoe');
     }
 }

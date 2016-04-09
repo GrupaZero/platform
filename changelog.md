@@ -2,7 +2,7 @@
 ##v0.0.6
 *GZERO PLATFORM*
 
-- Added Add user nickName field
+- Added user nickName field
 - Added email field to edit user account form
 - Added missing disquss counter
 - Added handling social accounts without email field
@@ -13,15 +13,15 @@
 
 *GZERO ADMIN*
 
-- Added Add user nickName field
+- Added user nickName field
 
 *GZERO API*
 
-- Added Add user nickName field
+- Added user nickName field
 
 *GZERO CMS*
 
-- Added Add user nickName field
+- Added user nickName field
 - Added unique nickname for users with empty on user creation
 - Fixed SEO fields in translation presenter
 
@@ -31,6 +31,10 @@
 - Unique social id is now used as fallback for response with missing email
 - Fixed social login buttons so that they are visible only for configured services
 - Fixed loading mask
+
+*GZERO VANILLA-INTEGRATION*
+
+- Added user nickName field
 
 ##v0.0.5
 *GZERO PLATFORM*
