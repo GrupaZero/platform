@@ -64,7 +64,7 @@ class AccountCest
         $I->see('john@doe.org');
         $I->logout();
         $I->login('john@doe.org', 'test123');
-        $I->click('Edit Account', '.user-nav');
+        $I->amOnPage('/en/account');
         $I->see('john@doe.org');
     }
 

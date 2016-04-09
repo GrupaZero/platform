@@ -24,7 +24,7 @@ class ContentCest {
 
         $I->canSee($translation->title);
         $I->canSee($translation->body);
-        $I->canSee($user->firstName . ' ' . $user->lastName);
+        $I->canSee($user->nickName);
         $I->canSee(date('d-m-Y', strtotime($content->createdAt)));
     }
 
