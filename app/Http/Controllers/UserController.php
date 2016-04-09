@@ -100,42 +100,27 @@ class UserController extends BaseController {
         }
 
         try {
-            $input        = $this->validator->validate('register');
-            $existingUser = $this->userRepo->getByEmail($input['email']);
-            // duplicated user verification
-            if ($existingUser === null) {
-                $input['password'] = Hash::make($input['password']);
-                $user              = $this->userRepo->create($input);
-                if (!empty($user)) {
-                    Auth::login($user);
-                    try {
-                        $subject = Lang::get('emails.welcome.subject', ['siteName' => Config::get('gzero.siteName')]);
-                        Mail::send( // welcome email
-                            'emails.auth.welcome',
-                            ['user' => $user],
-                            function ($message) use ($input, $subject) {
-                                $message->subject($subject)
-                                    ->to($input['email'], $input['firstName'] . ' ' . $input['lastName']);
-                            }
-                        );
-                    } catch (\Swift_TransportException $e) {
-                        /**@TODO Better way to handle exceptions on production */
-                        Log::error('Unable to send welcome email: ' . $e->getMessage());
-                    }
+            $input             = $this->validator->validate('register');
+            $input['password'] = Hash::make($input['password']);
+            $user              = $this->userRepo->create($input);
+            if (!empty($user)) {
+                Auth::login($user);
+                try {
+                    $subject = Lang::get('emails.welcome.subject', ['siteName' => Config::get('gzero.siteName')]);
+                    Mail::send( // welcome email
+                        'emails.auth.welcome',
+                        ['user' => $user],
+                        function ($message) use ($input, $subject) {
+                            $message->subject($subject)
+                                ->to($input['email'], $input['firstName'] . ' ' . $input['lastName']);
+                        }
+                    );
+                } catch (\Swift_TransportException $e) {
+                    /**@TODO Better way to handle exceptions on production */
+                    Log::error('Unable to send welcome email: ' . $e->getMessage());
                 }
-                return redirect()->intended('account');
-            } else {
-                Session::flash(
-                    'messages',
-                    [
-                        [
-                            'code' => 'error',
-                            'text' => Lang::get('common.emailAlreadyInUseMessage')
-                        ]
-                    ]
-                );
-                return redirect()->route('register')->withInput();
             }
+            return redirect()->intended('account');
         } catch (ValidationException $e) {
             return redirect()->route('register')->withInput()->withErrors($e->getErrors());
         }
