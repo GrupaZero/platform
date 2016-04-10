@@ -88,7 +88,7 @@ class UserController extends BaseController {
     public function register()
     {
         if (Auth::check()) {
-            return redirect()->to('home');
+            return redirect()->route('home');
         }
         return view('auth.register');
     }
@@ -96,7 +96,7 @@ class UserController extends BaseController {
     public function postRegister()
     {
         if (Input::get('accountIntent')) {
-            return redirect()->to('home'); // Preventing spammer registration
+            return redirect()->route('home'); // Preventing spammer registration
         }
 
         try {
@@ -134,7 +134,7 @@ class UserController extends BaseController {
     public function remind()
     {
         if (Auth::check()) {
-            return redirect()->to('home');
+            return redirect()->route('home');
         }
         return view('auth.password');
     }
@@ -195,7 +195,7 @@ class UserController extends BaseController {
         if (is_null($token)) {
             App::abort(404);
         } elseif (Auth::check()) {
-            return redirect()->to('/');
+            return redirect()->route('home');
         }
 
         return view('auth.reset')->with('token', $token);
