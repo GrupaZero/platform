@@ -11,16 +11,16 @@ dev_web:
     - dev_db_tests
     - dev_redis
 dev_db:
-  image: mysql:5.7
+  image: mariadb:10.1
   ports:
     - "3307:3306"
   environment:
-    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    MYSQL_ROOT_PASSWORD: "Xfsd43fs9532#2"
     MYSQL_USER: "gzero-cms"
     MYSQL_PASSWORD: "test"
     MYSQL_DATABASE: "gzero-cms"
 dev_db_tests:
-  image: mysql:5.7
+  image: mariadb:10.1
   ports:
     - "3308:3306"
   environment:
