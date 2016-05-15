@@ -2,6 +2,7 @@ staging_web:
   build: .
   environment:
     OVERRIDE_UMASK: "022"
+    NGINX_HOST: "staging.gzero.pl"
   volumes:
       - ../backups:/var/www/backups # Volume to save backups outside container
   ports:

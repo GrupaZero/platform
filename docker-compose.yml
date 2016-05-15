@@ -2,6 +2,7 @@ dev_web:
   build: .
   environment:
     OVERRIDE_UMASK: "002"
+    NGINX_HOST: "dev.gzero.pl"
   volumes:
     - .:/var/www
   ports:
