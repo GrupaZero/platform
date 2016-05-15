@@ -13,10 +13,9 @@ return [
         'detected'  => false, // Do not change, changes in runtime!
         'subdomain' => false
     ],
-    //'upload'       => [                       TODO: we cant use helpers here
-    //    'path'   => public_path('uploads'),
-    //    'public' => asset('uploads')
-    //],
+    'upload'                         => [
+        'directory' => env('UPLOAD_DIR', 'public') // directory inside filesystem root directory (storage/app/ as default)
+    ],
     'block_type'                     => [
         'basic'   => 'Gzero\Core\Handler\Block\Basic',
         'content' => 'Gzero\Core\Handler\Block\Content',
