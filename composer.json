@@ -15,8 +15,8 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.*",
-        "gzero/api": "0.*",
+        "gzero/cms": "dev-KMS-155_files_uploader as 0.0.6",
+        "gzero/api": "dev-KMS-155_files_uploader as 0.0.6",
         "gzero/admin": "0.*",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
