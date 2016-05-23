@@ -27,6 +27,12 @@ return [
         'content'  => 'Gzero\Core\Handler\Content\Content',
         'category' => 'Gzero\Core\Handler\Content\Category'
     ],
+    'file_type' => [
+        'image',
+        'document',
+        'video',
+        'music'
+    ],
     'available_blocks_regions'       => [
         'header',
         'homepage',
