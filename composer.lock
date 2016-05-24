@@ -873,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "1a7564a9979752b091883b97692dbc90001caebd"
+                "reference": "8b626758f9fd9d360f390b0449136ca66f7cb969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/1a7564a9979752b091883b97692dbc90001caebd",
-                "reference": "1a7564a9979752b091883b97692dbc90001caebd",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/8b626758f9fd9d360f390b0449136ca66f7cb969",
+                "reference": "8b626758f9fd9d360f390b0449136ca66f7cb969",
                 "shasum": ""
             },
             "require": {
@@ -929,7 +929,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-05-23 09:04:03"
+            "time": "2016-05-23 09:37:04"
         },
         {
             "name": "gzero/eloquent-tree",
