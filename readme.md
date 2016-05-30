@@ -35,6 +35,18 @@ sudo chmod 777 -R public/
 ##### Environment Configuration.
  Copy .env.example as .env in root directory.
  
+##### Setting the local domains
+For proper communication with the API is required to modify the hosts file in your OS.
+In Ubuntu hosts file should looks like the following:
+```
+# /etc/hosts
+127.0.0.1	localhost
+...
+127.0.0.1	dev.gzero.pl
+127.0.0.1   api.dev.gzero.pl
+...
+```
+ 
 ##### Install and run Docker Engine:
 
 Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation instructions are available on [Docker documentation
