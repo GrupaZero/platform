@@ -14,7 +14,7 @@ return [
         'subdomain' => false
     ],
     'upload'                         => [
-        'directory' => env('UPLOAD_DIR', 'public') // directory inside filesystem root directory (storage/app/ as default)
+        'directory' => env('UPLOAD_DIR', 'uploads') // directory inside filesystem root directory (storage/app/ as default)
     ],
     'block_type'                     => [
         'basic'   => 'Gzero\Core\Handler\Block\Basic',
