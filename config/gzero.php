@@ -28,10 +28,16 @@ return [
         'category' => 'Gzero\Core\Handler\Content\Category'
     ],
     'file_type' => [
-        'image',
-        'document',
-        'video',
-        'music'
+        'image'    => 'Gzero\Core\Handler\File\Image',
+        'document' => 'Gzero\Core\Handler\File\Document',
+        'video'    => 'Gzero\Core\Handler\File\Video',
+        'music'    => 'Gzero\Core\Handler\File\Music'
+    ],
+    'allowed_file_extensions' => [
+        'image'    => ['png', 'jpg', 'jpeg', 'tif'],
+        'document' => ['pdf', 'odt', 'ods', 'doc', 'docx', 'xls', 'xlsx', 'txt'],
+        'video'    => ['mp4'],
+        'music'    => ['mp3']
     ],
     'available_blocks_regions'       => [
         'header',
