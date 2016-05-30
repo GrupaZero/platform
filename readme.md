@@ -35,7 +35,7 @@ sudo chmod 777 -R public/
 ##### Environment Configuration.
  Copy .env.example as .env in root directory.
  
-##### setting the local domains
+##### Setting the local domains
 For proper communication with the API is required to modify the hosts file in your OS.
 In Ubuntu hosts file should looks like the following:
 ```
