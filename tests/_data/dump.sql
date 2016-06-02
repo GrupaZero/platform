@@ -2,7 +2,7 @@
 --
 -- Host: dev_db    Database: gzero-cms
 -- ------------------------------------------------------
--- Server version	5.7.10
+-- Server version	5.5.5-10.1.13-MariaDB-1~jessie
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -71,7 +71,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('content',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('menu',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('slider',1,'2016-04-06 18:52:43','2016-04-06 18:52:43'),('widget',1,'2016-04-06 18:52:43','2016-04-06 18:52:43');
+INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('content',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('menu',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('slider',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('widget',1,'2016-05-21 12:54:25','2016-05-21 12:54:25');
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
-INSERT INTO `ContentTypes` VALUES ('category',1,'2016-04-06 18:52:42','2016-04-06 18:52:42'),('content',1,'2016-04-06 18:52:42','2016-04-06 18:52:42');
+INSERT INTO `ContentTypes` VALUES ('category',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('content',1,'2016-05-21 12:54:25','2016-05-21 12:54:25');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,6 +192,7 @@ CREATE TABLE `Contents` (
   `authorId` int(10) unsigned DEFAULT NULL,
   `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parentId` int(10) unsigned DEFAULT NULL,
+  `fileId` int(10) unsigned DEFAULT NULL,
   `level` int(11) NOT NULL DEFAULT '0',
   `weight` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
@@ -209,7 +210,9 @@ CREATE TABLE `Contents` (
   KEY `contents_type_path_parentid_level_index` (`type`,`path`,`parentId`,`level`),
   KEY `contents_authorid_foreign` (`authorId`),
   KEY `contents_parentid_foreign` (`parentId`),
+  KEY `contents_fileid_foreign` (`fileId`),
   CONSTRAINT `contents_authorid_foreign` FOREIGN KEY (`authorId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `contents_fileid_foreign` FOREIGN KEY (`fileId`) REFERENCES `Files` (`id`) ON DELETE SET NULL,
   CONSTRAINT `contents_parentid_foreign` FOREIGN KEY (`parentId`) REFERENCES `Contents` (`id`) ON DELETE CASCADE,
   CONSTRAINT `contents_type_foreign` FOREIGN KEY (`type`) REFERENCES `ContentTypes` (`name`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -222,6 +225,101 @@ CREATE TABLE `Contents` (
 LOCK TABLES `Contents` WRITE;
 /*!40000 ALTER TABLE `Contents` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Contents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `FileTranslations`
+--
+
+DROP TABLE IF EXISTS `FileTranslations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FileTranslations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `langCode` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `fileId` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `filetranslations_fileid_langcode_unique` (`fileId`,`langCode`),
+  KEY `filetranslations_langcode_foreign` (`langCode`),
+  CONSTRAINT `filetranslations_fileid_foreign` FOREIGN KEY (`fileId`) REFERENCES `Files` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `filetranslations_langcode_foreign` FOREIGN KEY (`langCode`) REFERENCES `Langs` (`code`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `FileTranslations`
+--
+
+LOCK TABLES `FileTranslations` WRITE;
+/*!40000 ALTER TABLE `FileTranslations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `FileTranslations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `FileTypes`
+--
+
+DROP TABLE IF EXISTS `FileTypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FileTypes` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `extensions` text COLLATE utf8_unicode_ci NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  UNIQUE KEY `filetypes_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `FileTypes`
+--
+
+LOCK TABLES `FileTypes` WRITE;
+/*!40000 ALTER TABLE `FileTypes` DISABLE KEYS */;
+INSERT INTO `FileTypes` VALUES ('document','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('image','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('music','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('video','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26');
+/*!40000 ALTER TABLE `FileTypes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Files`
+--
+
+DROP TABLE IF EXISTS `Files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Files` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `extension` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `size` int(11) DEFAULT NULL,
+  `mimeType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `info` text COLLATE utf8_unicode_ci,
+  `createdBy` int(10) unsigned DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `files_createdby_foreign` (`createdBy`),
+  KEY `files_type_foreign` (`type`),
+  CONSTRAINT `files_createdby_foreign` FOREIGN KEY (`createdBy`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `files_type_foreign` FOREIGN KEY (`type`) REFERENCES `FileTypes` (`name`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Files`
+--
+
+LOCK TABLES `Files` WRITE;
+/*!40000 ALTER TABLE `Files` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Files` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -248,7 +346,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
-INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('pl','pl_PL',1,0,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('de','de_DE',0,0,'2016-04-06 18:52:41','2016-04-06 18:52:41'),('fr','fr_FR',0,0,'2016-04-06 18:52:41','2016-04-06 18:52:41');
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('pl','pl_PL',1,0,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('de','de_DE',0,0,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('fr','fr_FR',0,0,'2016-05-21 12:54:24','2016-05-21 12:54:24');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +372,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
-INSERT INTO `OptionCategories` VALUES ('general','2016-04-06 18:52:42','2016-04-06 18:52:42'),('seo','2016-04-06 18:52:42','2016-04-06 18:52:42');
+INSERT INTO `OptionCategories` VALUES ('general','2016-05-21 12:54:25','2016-05-21 12:54:25'),('seo','2016-05-21 12:54:25','2016-05-21 12:54:25');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +402,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
-INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-04-06 18:52:42','2016-04-06 18:52:42'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-04-06 18:52:42','2016-04-06 18:52:42');
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-05-21 12:54:25','2016-05-21 12:54:25');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,31 +493,31 @@ LOCK TABLES `Routes` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `SocialIntegrations`
+-- Table structure for table `Uploadables`
 --
 
-DROP TABLE IF EXISTS `SocialIntegrations`;
+DROP TABLE IF EXISTS `Uploadables`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SocialIntegrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `socialId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `Uploadables` (
+  `fileId` int(10) unsigned NOT NULL,
+  `uploadableId` int(10) unsigned DEFAULT NULL,
+  `uploadableType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `weight` int(11) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `socialintegrations_socialid_unique` (`socialId`),
-  KEY `socialintegrations_userid_foreign` (`userId`),
-  CONSTRAINT `socialintegrations_userid_foreign` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `uploadables_fileid_index` (`fileId`),
+  CONSTRAINT `uploadables_fileid_foreign` FOREIGN KEY (`fileId`) REFERENCES `Files` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SocialIntegrations`
+-- Dumping data for table `Uploadables`
 --
 
-LOCK TABLES `SocialIntegrations` WRITE;
-/*!40000 ALTER TABLE `SocialIntegrations` DISABLE KEYS */;
-/*!40000 ALTER TABLE `SocialIntegrations` ENABLE KEYS */;
+LOCK TABLES `Uploadables` WRITE;
+/*!40000 ALTER TABLE `Uploadables` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Uploadables` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -438,7 +536,6 @@ CREATE TABLE `Users` (
   `lastName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rememberToken` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
-  `hasSocialIntegrations` tinyint(1) NOT NULL DEFAULT '0',
   `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -453,7 +550,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$gLmbDtx0rHiNMj0iRdG/..OwQ6Z9Bxnie1AfFHn90tsAh/5/ArUwG','Admin','John','Doe','',1,0,'2016-04-06 18:52:42','2016-04-06 18:52:42');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$FFs03C/qo1Kmrcx0H8e7.OAkaLAJyCMi.Io/e0I/cTNvhkbJZ5muy','Admin','John','Doe','',1,'2016-05-21 12:54:24','2016-05-21 12:54:24');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +602,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1),('2015_03_28_091847_create_social',2);
+INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1),('2016_05_08_111342_create_files_table',1),('2016_05_08_140929_add_file_column_to_contents_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -526,4 +623,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-06 18:53:52
+-- Dump completed on 2016-05-21 12:55:29

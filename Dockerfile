@@ -1,4 +1,4 @@
-FROM gzero/docker-platform:latest
+FROM gzero/docker-platform:v1
 
 MAINTAINER Adrian Skierniewski <adrian.skierniewski@gmail.com>
 

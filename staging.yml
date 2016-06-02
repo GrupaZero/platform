@@ -2,13 +2,16 @@ staging_web:
   build: .
   environment:
     OVERRIDE_UMASK: "022"
+    NGINX_HOST: "staging.gzero.pl"
+  volumes:
+      - ../backups:/var/www/backups # Volume to save backups outside container
   ports:
     - "80:80"
   links:
     - staging_db
     - staging_redis
 staging_db:
-  image: mysql:5.7
+  image: mariadb:10.1
   env_file:
     - docker.env
 staging_redis:

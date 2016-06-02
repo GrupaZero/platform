@@ -13,10 +13,9 @@ return [
         'detected'  => false, // Do not change, changes in runtime!
         'subdomain' => false
     ],
-    //'upload'       => [                       TODO: we cant use helpers here
-    //    'path'   => public_path('uploads'),
-    //    'public' => asset('uploads')
-    //],
+    'upload'                         => [
+        'directory' => env('UPLOAD_DIR', 'uploads') // directory inside filesystem root directory (storage/app/ as default)
+    ],
     'block_type'                     => [
         'basic'   => 'Gzero\Core\Handler\Block\Basic',
         'content' => 'Gzero\Core\Handler\Block\Content',
@@ -27,6 +26,18 @@ return [
     'content_type'                   => [
         'content'  => 'Gzero\Core\Handler\Content\Content',
         'category' => 'Gzero\Core\Handler\Content\Category'
+    ],
+    'file_type' => [
+        'image'    => 'Gzero\Core\Handler\File\Image',
+        'document' => 'Gzero\Core\Handler\File\Document',
+        'video'    => 'Gzero\Core\Handler\File\Video',
+        'music'    => 'Gzero\Core\Handler\File\Music'
+    ],
+    'allowed_file_extensions' => [
+        'image'    => ['png', 'jpg', 'jpeg', 'tif'],
+        'document' => ['pdf', 'odt', 'ods', 'doc', 'docx', 'xls', 'xlsx', 'txt'],
+        'video'    => ['mp4'],
+        'music'    => ['mp3']
     ],
     'available_blocks_regions'       => [
         'header',

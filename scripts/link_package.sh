@@ -35,19 +35,19 @@ if [ $OPERATION == "mount" ]; then
       sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
       echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
       sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      sudo mount -o remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
+      sudo mount -o bind,remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       if [ $PACKAGE == "admin" ]; then
           sudo umount "$SCRIPT_DIR/../public/gzero/$PACKAGE"
           sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/public" "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-          sudo mount -o remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
+          sudo mount -o bind,remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
       fi
   else
       echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
       sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      sudo mount -o remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
+      sudo mount -o bind,remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
       if [ $PACKAGE == "admin" ]; then
           sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/public" "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-          sudo mount -o remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
+          sudo mount -o bind,remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
       fi
   fi
 fi
