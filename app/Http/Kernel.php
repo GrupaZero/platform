@@ -10,6 +10,7 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $middleware = [
+        'Gzero\Core\Middleware\Init',
         'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
         'Barryvdh\Cors\Middleware\HandleCors',
         'Illuminate\Cookie\Middleware\EncryptCookies',
