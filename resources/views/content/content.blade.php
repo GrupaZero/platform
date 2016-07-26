@@ -11,7 +11,10 @@
 
 @section('title'){{ $activeTranslation->seoTitle() }}@stop
 @section('seoDescription'){{ $activeTranslation->seoDescription() }}@stop
-
+@section('head')
+    @parent
+    <link rel="canonical" href="{{Url::current()}}"/>
+@stop
 @section('breadcrumbs')
     <div class="utility-container">
         <div class="container text-center-xs">
@@ -19,7 +22,6 @@
         </div>
     </div>
 @stop
-
 @section('content')
     <h1 class="content-title page-header">
         {{ $activeTranslation->title }}
