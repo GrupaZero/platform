@@ -1,5 +1,9 @@
 @extends('layouts.default')
 @section('bodyClass', 'home')
+@section('head')
+    @parent
+    @include('includes.canonical', ['paginator' => $contents])
+@stop
 @section('homepageRegion')
     @if(!empty($blocks) && $blocks->has('homepage'))
         <div id="homepage-region" class="block-region clearfix container">
