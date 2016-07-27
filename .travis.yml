@@ -18,6 +18,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
+  - phpenv config-rm xdebug.ini # disable xdebug to speed up composer
   - docker-compose up -d
   - docker exec -i -t platform_dev_web_1 composer install -d /var/www/ --prefer-source --no-interaction --dev
 
