@@ -1,34 +1,37 @@
-dev_web:
-  build: .
-  environment:
-    OVERRIDE_UMASK: "002"
-    NGINX_HOST: "dev.gzero.pl"
-  volumes:
-    - .:/var/www
-  ports:
-    - "8000:80"
-  links:
-    - dev_db
-    - dev_db_tests
-    - dev_redis
-dev_db:
-  image: mariadb:10.1
-  ports:
-    - "3307:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: "Xfsd43fs9532#2"
-    MYSQL_USER: "gzero-cms"
-    MYSQL_PASSWORD: "test"
-    MYSQL_DATABASE: "gzero-cms"
-dev_db_tests:
-  image: mariadb:10.1
-  ports:
-    - "3308:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: ''
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_DATABASE: "gzero-cms"
-dev_redis:
-  image: redis:3
-  ports:
-    - "6379:6379"
+version: '2'
+services:
+  dev_web:
+    build: .
+    restart: always
+    environment:
+      OVERRIDE_UMASK: "002"
+      NGINX_HOST: "dev.gzero.pl"
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:80"
+    links:
+      - dev_db
+      - dev_db_tests
+      - dev_redis
+  dev_db:
+    image: mariadb:10.1
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "Xfsd43fs9532#2"
+      MYSQL_USER: "gzero-cms"
+      MYSQL_PASSWORD: "test"
+      MYSQL_DATABASE: "gzero-cms"
+  dev_db_tests:
+    image: mariadb:10.1
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: "gzero-cms"
+  dev_redis:
+    image: redis:3
+    ports:
+      - "6379:6379"
