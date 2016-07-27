@@ -22,7 +22,7 @@ before_install:
 
 before_script:
   - docker version
-  - docker-composer version
+  - docker-compose version
   - phpenv config-rm xdebug.ini # disable xdebug to speed up composer
   - sudo phpdismod xdebug # just to make sure
   - docker-compose up -d
