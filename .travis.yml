@@ -25,7 +25,8 @@ before_script:
   - docker-compose version
   - docker-compose up -d
   - docker exec -i -t platform_dev_web_1 phpdismod xdebug # disabling xdebug to speed up composer
-  - docker exec -i -t platform_dev_web_1 composer install -d /var/www/ --prefer-source --no-interaction
+  - docker exec -i -t platform_dev_web_1 composer install -d /var/www/ --prefer-source --no-interaction || true
+  - docker exec -i -t platform_dev_web_1 phpenmod xdebug # enabling xdebug for code coverage
 
 script:
   - docker exec -i -t platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --env platform
