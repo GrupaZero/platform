@@ -41,10 +41,15 @@ class FunctionalTester extends \Codeception\Actor {
      */
     private $faker;
 
+    /**
+     * FunctionalTester constructor.
+     *
+     * @param \Codeception\Scenario $scenario
+     */
     public function __construct(\Codeception\Scenario $scenario)
     {
         $this->faker        = Factory::create();
-        $this->categoryRepo = new ContentRepository(new Content(), new Dispatcher());
+        $this->contentRepo = new ContentRepository(new Content(), new Dispatcher());
         $this->userRepo     = new UserRepository(new User(), new Dispatcher());
         parent::__construct($scenario);
     }
@@ -137,7 +142,7 @@ class FunctionalTester extends \Codeception\Actor {
 
         $fakeAttributes = array_merge($fakeAttributes, $attributes);
 
-        return $this->categoryRepo->create($fakeAttributes, $user);
+        return $this->contentRepo->create($fakeAttributes, $user);
     }
 
 

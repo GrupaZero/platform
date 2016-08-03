@@ -22,6 +22,9 @@
 
     ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
     ga('require', 'displayfeatures');
+    @if(Auth::check())
+    ga('set', 'userId', 'gz-user-{{ Auth::user()->id }}');
+    @endif
     ga('send', 'pageview');
 </script>
 <!-- end Google Analytics web tracking code-->
