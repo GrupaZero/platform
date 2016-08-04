@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -25,5 +26,17 @@ class AccountController extends BaseController {
     public function edit()
     {
         return view('account.edit', ['menu' => App::make('user.menu')->getMenu(), 'user' => auth()->user()]);
+    }
+
+    public function welcome(Request $request)
+    {
+        if (session()->has('showWelcomePage')) {
+            session()->forget('showWelcomePage');
+
+            return view('auth.welcome', ['method' => $request->get('method')]);
+        }
+
+        return redirect()->route('home');
+
     }
 }

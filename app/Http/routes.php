@@ -22,6 +22,7 @@ group(
             function () {
                 get('account', ['as' => 'account', 'uses' => 'AccountController@account']);
                 get('account/edit', ['as' => 'account.edit', 'uses' => 'AccountController@edit']);
+                get('account/welcome', ['as' => 'account.welcome', 'uses' => 'AccountController@welcome']);
 
                 group(
                     ['prefix' => 'api/v1'],
@@ -56,14 +57,3 @@ group(
 
 app()->make('user.menu')->addLink(URL::route('account'), 'user.my_account');
 //App::make('user.menu')->addChild(['url' => URL::route('logout'), 'title' => 'common.logout'], URL::route('account'));
-
-
-// Laravel 5 DEFAULT ROUTES
-//get('/', 'WelcomeController@index');
-//
-//get('home', 'HomeController@index');
-//
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);

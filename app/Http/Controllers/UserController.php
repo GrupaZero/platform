@@ -120,7 +120,8 @@ class UserController extends BaseController {
                     Log::error('Unable to send welcome email: ' . $e->getMessage());
                 }
             }
-            return redirect()->intended('account');
+            session()->put('showWelcomePage', true);
+            return redirect()->route('account.welcome', ['method' => 'Signup form']);
         } catch (ValidationException $e) {
             return redirect()->route('register')->withInput()->withErrors($e->getErrors());
         }
