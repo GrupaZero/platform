@@ -77,6 +77,27 @@ class LoginCest {
         $I->dontSeeAuthentication();
     }
 
+    public function seeWelcomePage(FunctionalTester $I)
+    {
+        $I->wantTo('register a user and see welcome page');
+
+        $I->amOnPage('/en/register');
+        $I->fillField('nickName', 'NickName');
+        $I->fillField('firstName', 'John');
+        $I->fillField('lastName', 'Doe');
+        $I->fillField('email', 'example@example.com');
+        $I->fillField('password', 'password');
+        $I->click('button[type=submit]');
+
+        $I->seeCurrentUrlEquals('/en/account/welcome?method=Signup+form');
+        $I->see('Welcome!');
+        $I->see('Your account was successfully created. Thank you for your registration!');
+        $I->see('My Account');
+        $I->see('Return to the homepage');
+        $I->seeRecord('Users', ['email' => 'example@example.com']);
+        $I->seeAuthentication();
+    }
+
     public function login(FunctionalTester $I)
     {
         $I->wantTo('login as a user');

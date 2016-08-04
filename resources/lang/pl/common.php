@@ -71,5 +71,6 @@ return [
     'toggleNavigation'         => 'Włącz nawigację',
     'type'                     => 'Typ',
     'unknown'                  => 'Nieznany',
-    'welcome'                  => 'Witaj'
+    'welcome'                  => 'Witaj',
+    'welcomeMessage'           => 'Twoje konto zostało utworzone. Dziękujemy za rejestrację!',
 ];

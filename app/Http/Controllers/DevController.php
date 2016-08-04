@@ -32,18 +32,9 @@ class DevController extends BaseController {
         // All trees
         //$params['filter'] = ['type' => ['value' => 'category', 'relation' => null]];
 
-        $nodes = $this->repository->getContents(
-            [],
-            [],
-            null
-        );
+        $nodes = $this->repository->getContentsByLevel([], [], null);
 
-        return view(
-            'dev.index',
-            [
-                'tree' => $this->repository->buildTree($nodes),
-            ]
-        );
+        return view('dev.index', ['tree' => $nodes,]);
     }
 
 

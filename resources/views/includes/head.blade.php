@@ -26,6 +26,7 @@
     ga('set', 'userId', 'gz-user-{{ Auth::user()->id }}');
     @endif
     ga('send', 'pageview');
+    @yield('gaEvent')
 </script>
 <!-- end Google Analytics web tracking code-->
 @endif

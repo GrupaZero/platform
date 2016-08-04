@@ -72,4 +72,5 @@ return [
     'type'                     => 'Type',
     'unknown'                  => 'unknown',
     'welcome'                  => 'Welcome',
+    'welcomeMessage'           => 'Your account was successfully created. Thank you for your registration!',
 ];
