@@ -40,6 +40,7 @@ return [
     ],
 
     'facebook' => [
+        'app_id'        => env('FB_APP_ID'),
         'client_id'     => env('OAUTH_FB_CLIENT_ID'),
         'client_secret' => env('OAUTH_FB_CLIENT_SECRET'),
     ],

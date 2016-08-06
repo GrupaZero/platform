@@ -35,9 +35,9 @@
         </div>
         <div class="col-sm-5 text-right text-left-sm text-left-xs">
             @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
-                <p class="social-buttons">
+                <div class="social-buttons mb15">
                     {!! shareButtons($url, $activeTranslation) !!}
-                </p>
+                </div>
             @endif
         </div>
     </div>
@@ -48,6 +48,11 @@
         </div>
     @endif
     <hr>
+    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+        <div class="social-buttons mb15">
+            {!! likeButtons($url, $activeTranslation) !!}
+        </div>
+    @endif
     <div class="text-muted text-right">
         @lang('common.rating') {!! $content->ratingStars() !!}
     </div>

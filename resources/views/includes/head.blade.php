@@ -22,6 +22,7 @@
 
     ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
     ga('require', 'displayfeatures');
+    @yield('gaPlugin')
     @if(Auth::check())
     ga('set', 'userId', 'gz-user-{{ Auth::user()->id }}');
     @endif

@@ -33,6 +33,20 @@
   }
 }
 
+.like-buttons {
+  opacity: 0;
+  transition: opacity .33s ease-in-out;
+  div {
+    vertical-align: middle !important;
+  }
+  iframe {
+    vertical-align: top;
+  }
+  &.ready {
+    opacity: 1;
+  }
+}
+
 #header-region,
 #footer-region {
   .block {
