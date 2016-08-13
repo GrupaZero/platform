@@ -4,7 +4,7 @@
 <?php $url = $content->routeUrl($lang->code); ?>
 
 @section('metaData')
-    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+    @if(isProviderLoaded('Gzero\Social\ServiceProvider') && function_exists('fbOgTags'))
         {!! fbOgTags($url, $activeTranslation) !!}
     @endif
 @stop
@@ -34,7 +34,7 @@
             </p>
         </div>
         <div class="col-sm-5 text-right text-left-sm text-left-xs">
-            @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+            @if(isProviderLoaded('Gzero\Social\ServiceProvider') && function_exists('shareButtons'))
                 <div class="social-buttons mb15">
                     {!! shareButtons($url, $activeTranslation) !!}
                 </div>
@@ -48,7 +48,7 @@
         </div>
     @endif
     <hr>
-    @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
+    @if(isProviderLoaded('Gzero\Social\ServiceProvider') && function_exists('likeButtons'))
         <div class="social-buttons mb15">
             {!! likeButtons($url, $activeTranslation) !!}
         </div>
