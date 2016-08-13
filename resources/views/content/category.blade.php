@@ -7,6 +7,7 @@
 @section('head')
     @parent
     @include('includes.canonical', ['paginator' => $children])
+    @include('includes.alternateLinks', ['content' => $content])
     @if(method_exists($content, 'stDataMarkup'))
         {!! $content->stDataMarkup($lang->code) !!}
     @endif

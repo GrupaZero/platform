@@ -3,6 +3,11 @@
 @section('head')
     @parent
     @include('includes.canonical', ['paginator' => $contents])
+    @if(config('gzero.multilang.enabled'))
+        @foreach($langs as $availableLang)
+            <link rel="alternate" href="{{url() . '/' . $availableLang->code}}" hreflang="{{$availableLang->code}}"/>
+        @endforeach
+    @endif
 @stop
 @section('homepageRegion')
     @if(!empty($blocks) && $blocks->has('homepage'))
