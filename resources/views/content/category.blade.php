@@ -7,6 +7,9 @@
 @section('head')
     @parent
     @include('includes.canonical', ['paginator' => $children])
+    @if(method_exists($content, 'stDataMarkup'))
+        {!! $content->stDataMarkup($lang->code) !!}
+    @endif
 @stop
 @section('breadcrumbs')
     <div class="utility-container">
@@ -50,11 +53,11 @@
                             @endif
                         </div>
                         <div class="thumb mb20">
-                           <a href="{{ $childUrl }}">
-                               <img class="img-responsive" src="http://placehold.it/847x312"
-                                    width="847" height="312" alt="{{$activeTranslation->title}}">
-                           </a>
-                       </div>
+                            <a href="{{ $childUrl }}">
+                                <img class="img-responsive" src="http://placehold.it/847x312"
+                                     width="847" height="312" alt="{{$activeTranslation->title}}">
+                            </a>
+                        </div>
                         {!! $activeTranslation->teaser !!}
                     </div>
                     <div class="row">
