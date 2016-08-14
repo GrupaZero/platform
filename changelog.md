@@ -1,4 +1,7 @@
 ###Changelog:
+## New versions
+Change log for new versions is available here: https://github.com/GrupaZero/platform/releases
+
 ##v0.0.6
 *GZERO PLATFORM*
 
