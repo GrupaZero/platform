@@ -32,6 +32,23 @@
 <!-- end Google Analytics web tracking code-->
 @endif
 
+<script type="application/ld+json">
+[
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ config('gzero.siteName') }}",
+      "url": "{{ route('home') }}"
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "{{ route('home') }}",
+      "logo": "{{ asset('/images/logo.png') }}"
+    }
+]
+</script>
+
 @section('head')
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

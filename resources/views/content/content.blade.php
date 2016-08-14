@@ -13,7 +13,11 @@
 @section('seoDescription'){{ $activeTranslation->seoDescription() }}@stop
 @section('head')
     @parent
-    <link rel="canonical" href="{{Url::current()}}"/>
+    @include('includes.canonical')
+    @include('includes.alternateLinks', ['content' => $content])
+    @if(method_exists($content, 'stDataMarkup'))
+        {!! $content->stDataMarkup($lang->code) !!}
+    @endif
 @stop
 @section('breadcrumbs')
     <div class="utility-container">
