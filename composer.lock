@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c9c9174983993c6caa44becf13fff8bc",
-    "content-hash": "af8ba30e20484f24a67ef2f0a88800d2",
+    "hash": "053b5d3b0d51d62f9568002240b9c36d",
+    "content-hash": "3904f9a998d3ed5eada919b2e5aff2d1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -765,16 +765,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "dev-access_middleware",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "fa21b03a9095b7381b1726078981a8a7287d8f5a"
+                "reference": "0b2b50e2a16acd5383d952971de4c949be28764a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/fa21b03a9095b7381b1726078981a8a7287d8f5a",
-                "reference": "fa21b03a9095b7381b1726078981a8a7287d8f5a",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0b2b50e2a16acd5383d952971de4c949be28764a",
+                "reference": "0b2b50e2a16acd5383d952971de4c949be28764a",
                 "shasum": ""
             },
             "require": {
@@ -807,20 +807,20 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-08-14 15:47:13"
+            "time": "2016-08-14 16:36:54"
         },
         {
             "name": "gzero/api",
-            "version": "dev-GC-66_checking_policies",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "1feba940c5676b90f359462e82d05656e6905553"
+                "reference": "c723a0028a7ef8636f1dc36d217c876652c3e689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/1feba940c5676b90f359462e82d05656e6905553",
-                "reference": "1feba940c5676b90f359462e82d05656e6905553",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/c723a0028a7ef8636f1dc36d217c876652c3e689",
+                "reference": "c723a0028a7ef8636f1dc36d217c876652c3e689",
                 "shasum": ""
             },
             "require": {
@@ -866,7 +866,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-08-14 13:37:52"
+            "time": "2016-08-14 16:52:56"
         },
         {
             "name": "gzero/cms",
@@ -5150,24 +5150,9 @@
             "time": "2016-07-17 09:06:15"
         }
     ],
-    "aliases": [
-        {
-            "alias": "0.9",
-            "alias_normalized": "0.9.0.0",
-            "version": "dev-GC-66_checking_policies",
-            "package": "gzero/api"
-        },
-        {
-            "alias": "0.9",
-            "alias_normalized": "0.9.0.0",
-            "version": "dev-access_middleware",
-            "package": "gzero/admin"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/api": 20,
-        "gzero/admin": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
