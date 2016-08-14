@@ -55,7 +55,7 @@ class ContentCest {
         $I->seeResponseCodeIs(200);
 
         $I->seeLink($linkName, $categoryRoute);
-        $I->seeLink('Start', '/en');
+        $I->seeLink('Home', '/en');
         $I->click($linkName);
         $I->canSeeCurrentUrlEquals($categoryRoute);
     }
