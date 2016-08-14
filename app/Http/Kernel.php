@@ -10,15 +10,15 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $middleware = [
-        'Gzero\Core\Middleware\Init',
-        'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-        'Barryvdh\Cors\Middleware\HandleCors',
-        'Illuminate\Cookie\Middleware\EncryptCookies',
-        'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-        'Illuminate\Session\Middleware\StartSession',
-        'Illuminate\View\Middleware\ShareErrorsFromSession',
-        'Gzero\Core\Middleware\LanguageDetector',
-        'App\Http\Middleware\VerifyCsrfToken',
+        \Gzero\Core\Middleware\Init::class,
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Barryvdh\Cors\Middleware\HandleCors::class,
+        \Illuminate\Cookie\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Gzero\Core\Middleware\LanguageDetector::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -27,10 +27,10 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'       => 'Gzero\Core\Middleware\Auth',
-        'access'     => 'Gzero\Core\Middleware\Access',
-        'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-        'guest'      => 'App\Http\Middleware\RedirectIfAuthenticated',
+        'auth'             => \Gzero\Core\Middleware\Auth::class,
+        'admin.api.access' => \Gzero\Core\Middleware\AdminApiAccess::class,
+        'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest'            => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 
 }

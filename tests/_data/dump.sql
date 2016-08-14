@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.50, for debian-linux-gnu (x86_64)
 --
 -- Host: dev_db    Database: gzero-cms
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.13-MariaDB-1~jessie
+-- Server version	5.5.5-10.1.14-MariaDB-1~jessie
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,117 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ACLPermissions`
+--
+
+DROP TABLE IF EXISTS `ACLPermissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ACLPermissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `aclpermissions_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ACLPermissions`
+--
+
+LOCK TABLES `ACLPermissions` WRITE;
+/*!40000 ALTER TABLE `ACLPermissions` DISABLE KEYS */;
+INSERT INTO `ACLPermissions` VALUES (1,'admin-api-access','general'),(200,'content-create','content'),(201,'content-read','content'),(202,'content-update','content'),(203,'content-delete','content'),(204,'block-create','block'),(205,'block-read','block'),(206,'block-update','block'),(207,'block-delete','block'),(208,'user-create','user'),(209,'user-read','user'),(210,'user-update','user'),(211,'user-delete','user'),(212,'file-create','file'),(213,'file-read','file'),(214,'file-update','file'),(215,'file-delete','file'),(216,'role-create','role'),(217,'role-read','role'),(218,'role-update','role'),(219,'role-delete','role'),(220,'options-read','options'),(221,'options-update-general','options'),(222,'options-update-seo','options');
+/*!40000 ALTER TABLE `ACLPermissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ACLRolePermissions`
+--
+
+DROP TABLE IF EXISTS `ACLRolePermissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ACLRolePermissions` (
+  `permissionId` int(10) unsigned NOT NULL,
+  `roleId` int(10) unsigned NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `aclrolepermissions_permissionid_index` (`permissionId`),
+  KEY `aclrolepermissions_roleid_index` (`roleId`),
+  CONSTRAINT `aclrolepermissions_permissionid_foreign` FOREIGN KEY (`permissionId`) REFERENCES `ACLPermissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `aclrolepermissions_roleid_foreign` FOREIGN KEY (`roleId`) REFERENCES `ACLRoles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ACLRolePermissions`
+--
+
+LOCK TABLES `ACLRolePermissions` WRITE;
+/*!40000 ALTER TABLE `ACLRolePermissions` DISABLE KEYS */;
+INSERT INTO `ACLRolePermissions` VALUES (1,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(204,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(207,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(205,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(206,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(200,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(203,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(201,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(202,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(212,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(215,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(213,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(214,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(220,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(221,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(222,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(216,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(219,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(217,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(218,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(208,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(211,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(209,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(210,1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(1,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(200,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(201,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(202,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(203,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(204,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(205,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(206,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(207,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(212,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(213,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(214,2,'2016-08-14 15:29:58','2016-08-14 15:29:58'),(215,2,'2016-08-14 15:29:58','2016-08-14 15:29:58');
+/*!40000 ALTER TABLE `ACLRolePermissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ACLRoles`
+--
+
+DROP TABLE IF EXISTS `ACLRoles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ACLRoles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `aclroles_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ACLRoles`
+--
+
+LOCK TABLES `ACLRoles` WRITE;
+/*!40000 ALTER TABLE `ACLRoles` DISABLE KEYS */;
+INSERT INTO `ACLRoles` VALUES (1,'Admin','2016-08-14 15:29:58','2016-08-14 15:29:58'),(2,'Moderator','2016-08-14 15:29:58','2016-08-14 15:29:58');
+/*!40000 ALTER TABLE `ACLRoles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ACLUserRoles`
+--
+
+DROP TABLE IF EXISTS `ACLUserRoles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ACLUserRoles` (
+  `userId` int(10) unsigned NOT NULL,
+  `roleId` int(10) unsigned NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `acluserroles_userid_index` (`userId`),
+  KEY `acluserroles_roleid_index` (`roleId`),
+  CONSTRAINT `acluserroles_roleid_foreign` FOREIGN KEY (`roleId`) REFERENCES `ACLRoles` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `acluserroles_userid_foreign` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ACLUserRoles`
+--
+
+LOCK TABLES `ACLUserRoles` WRITE;
+/*!40000 ALTER TABLE `ACLUserRoles` DISABLE KEYS */;
+INSERT INTO `ACLUserRoles` VALUES (1,1,'2016-08-14 15:29:58','2016-08-14 15:29:58');
+/*!40000 ALTER TABLE `ACLUserRoles` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `BlockTranslations`
@@ -71,7 +182,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('content',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('menu',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('slider',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('widget',1,'2016-05-21 12:54:25','2016-05-21 12:54:25');
+INSERT INTO `BlockTypes` VALUES ('basic',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('content',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('menu',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('slider',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('widget',1,'2016-08-14 15:29:58','2016-08-14 15:29:58');
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +285,7 @@ CREATE TABLE `ContentTypes` (
 
 LOCK TABLES `ContentTypes` WRITE;
 /*!40000 ALTER TABLE `ContentTypes` DISABLE KEYS */;
-INSERT INTO `ContentTypes` VALUES ('category',1,'2016-05-21 12:54:25','2016-05-21 12:54:25'),('content',1,'2016-05-21 12:54:25','2016-05-21 12:54:25');
+INSERT INTO `ContentTypes` VALUES ('category',1,'2016-08-14 15:29:57','2016-08-14 15:29:57'),('content',1,'2016-08-14 15:29:57','2016-08-14 15:29:57');
 /*!40000 ALTER TABLE `ContentTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +393,7 @@ CREATE TABLE `FileTypes` (
 
 LOCK TABLES `FileTypes` WRITE;
 /*!40000 ALTER TABLE `FileTypes` DISABLE KEYS */;
-INSERT INTO `FileTypes` VALUES ('document','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('image','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('music','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26'),('video','',1,'2016-05-21 12:54:26','2016-05-21 12:54:26');
+INSERT INTO `FileTypes` VALUES ('document','',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('image','',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('music','',1,'2016-08-14 15:29:58','2016-08-14 15:29:58'),('video','',1,'2016-08-14 15:29:58','2016-08-14 15:29:58');
 /*!40000 ALTER TABLE `FileTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,7 +457,7 @@ CREATE TABLE `Langs` (
 
 LOCK TABLES `Langs` WRITE;
 /*!40000 ALTER TABLE `Langs` DISABLE KEYS */;
-INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('pl','pl_PL',1,0,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('de','de_DE',0,0,'2016-05-21 12:54:24','2016-05-21 12:54:24'),('fr','fr_FR',0,0,'2016-05-21 12:54:24','2016-05-21 12:54:24');
+INSERT INTO `Langs` VALUES ('en','en_US',1,1,'2016-08-14 15:29:56','2016-08-14 15:29:56'),('pl','pl_PL',1,0,'2016-08-14 15:29:56','2016-08-14 15:29:56'),('de','de_DE',0,0,'2016-08-14 15:29:56','2016-08-14 15:29:56'),('fr','fr_FR',0,0,'2016-08-14 15:29:56','2016-08-14 15:29:56');
 /*!40000 ALTER TABLE `Langs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,7 +483,7 @@ CREATE TABLE `OptionCategories` (
 
 LOCK TABLES `OptionCategories` WRITE;
 /*!40000 ALTER TABLE `OptionCategories` DISABLE KEYS */;
-INSERT INTO `OptionCategories` VALUES ('general','2016-05-21 12:54:25','2016-05-21 12:54:25'),('seo','2016-05-21 12:54:25','2016-05-21 12:54:25');
+INSERT INTO `OptionCategories` VALUES ('general','2016-08-14 15:29:57','2016-08-14 15:29:57'),('seo','2016-08-14 15:29:57','2016-08-14 15:29:57');
 /*!40000 ALTER TABLE `OptionCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +513,7 @@ CREATE TABLE `Options` (
 
 LOCK TABLES `Options` WRITE;
 /*!40000 ALTER TABLE `Options` DISABLE KEYS */;
-INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-05-21 12:54:25','2016-05-21 12:54:25'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-05-21 12:54:25','2016-05-21 12:54:25');
+INSERT INTO `Options` VALUES (1,'siteName','general','{\"en\":\"G-ZERO CMS\",\"pl\":\"G-ZERO CMS\",\"de\":\"G-ZERO CMS\",\"fr\":\"G-ZERO CMS\"}','2016-08-14 15:29:57','2016-08-14 15:29:57'),(2,'siteDesc','general','{\"en\":\"Content management system.\",\"pl\":\"Content management system.\",\"de\":\"Content management system.\",\"fr\":\"Content management system.\"}','2016-08-14 15:29:57','2016-08-14 15:29:57'),(3,'defaultPageSize','general','{\"en\":5,\"pl\":5,\"de\":5,\"fr\":5}','2016-08-14 15:29:57','2016-08-14 15:29:57'),(4,'cookiesPolicyUrl','general','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-08-14 15:29:57','2016-08-14 15:29:57'),(5,'seoDescLength','seo','{\"en\":160,\"pl\":160,\"de\":160,\"fr\":160}','2016-08-14 15:29:57','2016-08-14 15:29:57'),(6,'googleAnalyticsId','seo','{\"en\":null,\"pl\":null,\"de\":null,\"fr\":null}','2016-08-14 15:29:57','2016-08-14 15:29:57');
 /*!40000 ALTER TABLE `Options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -550,7 +661,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$FFs03C/qo1Kmrcx0H8e7.OAkaLAJyCMi.Io/e0I/cTNvhkbJZ5muy','Admin','John','Doe','',1,'2016-05-21 12:54:24','2016-05-21 12:54:24');
+INSERT INTO `Users` VALUES (1,'admin@gzero.pl','$2y$10$0kWvPevt3br6soMp/8KMD.kp4xFSQ5qQHsNtIm2VyB0l8xcBs5V02','Admin','John','Doe','',1,'2016-08-14 15:29:57','2016-08-14 15:29:57');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,7 +713,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1),('2016_05_08_111342_create_files_table',1),('2016_05_08_140929_add_file_column_to_contents_table',1);
+INSERT INTO `migrations` VALUES ('2014_11_16_114110_create_lang',1),('2014_11_16_114111_create_user',1),('2014_11_16_114112_create_route',1),('2014_11_16_114113_create_content',1),('2015_09_07_100656_create_options',1),('2015_11_26_115322_create_block',1),('2016_05_08_111342_create_files_table',1),('2016_05_08_140929_add_file_column_to_contents_table',1),('2016_08_13_113755_create_roles_and_permissions_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -623,4 +734,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-21 12:55:29
+-- Dump completed on 2016-08-14 15:31:53

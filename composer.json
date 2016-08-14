@@ -16,8 +16,8 @@
     ],
     "require": {
         "gzero/cms": "0.*",
-        "gzero/api": "0.*",
-        "gzero/admin": "0.*",
+        "gzero/api": "dev-GC-66_checking_policies as 0.9",
+        "gzero/admin": "dev-access_middleware as 0.9",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
         "thomaswelton/laravel-gravatar": "~1.0",

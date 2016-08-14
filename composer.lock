@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dce4fe2158affb9c4e046f23d68f7a70",
-    "content-hash": "a1da905baf681a519be765f24b412d58",
+    "hash": "c9c9174983993c6caa44becf13fff8bc",
+    "content-hash": "af8ba30e20484f24a67ef2f0a88800d2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -765,16 +765,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "v0.1.0",
+            "version": "dev-access_middleware",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "74169b6c485cb526ebf793d78e81788e1c04442e"
+                "reference": "fa21b03a9095b7381b1726078981a8a7287d8f5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/74169b6c485cb526ebf793d78e81788e1c04442e",
-                "reference": "74169b6c485cb526ebf793d78e81788e1c04442e",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/fa21b03a9095b7381b1726078981a8a7287d8f5a",
+                "reference": "fa21b03a9095b7381b1726078981a8a7287d8f5a",
                 "shasum": ""
             },
             "require": {
@@ -807,20 +807,20 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-06-02 11:53:33"
+            "time": "2016-08-14 15:47:13"
         },
         {
             "name": "gzero/api",
-            "version": "v0.1.1",
+            "version": "dev-GC-66_checking_policies",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "f4a542fb4e4d28d2c6a0c97a8698385a270e7365"
+                "reference": "1feba940c5676b90f359462e82d05656e6905553"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/f4a542fb4e4d28d2c6a0c97a8698385a270e7365",
-                "reference": "f4a542fb4e4d28d2c6a0c97a8698385a270e7365",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/1feba940c5676b90f359462e82d05656e6905553",
+                "reference": "1feba940c5676b90f359462e82d05656e6905553",
                 "shasum": ""
             },
             "require": {
@@ -866,20 +866,20 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-07-19 08:26:03"
+            "time": "2016-08-14 13:37:52"
         },
         {
             "name": "gzero/cms",
-            "version": "v0.1.2",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "635df4f5e3e0a79b7747d109e915564ccc85e1d0"
+                "reference": "5bf588e379ae97755e8f109df8e9eeaaee8b7f33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/635df4f5e3e0a79b7747d109e915564ccc85e1d0",
-                "reference": "635df4f5e3e0a79b7747d109e915564ccc85e1d0",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/5bf588e379ae97755e8f109df8e9eeaaee8b7f33",
+                "reference": "5bf588e379ae97755e8f109df8e9eeaaee8b7f33",
                 "shasum": ""
             },
             "require": {
@@ -930,7 +930,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-07-26 22:27:34"
+            "time": "2016-08-14 14:39:31"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -947,7 +947,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "orchestra/testbench": "3.1.*",
@@ -978,7 +978,7 @@
                 "eloquent",
                 "laravel"
             ],
-            "time": "2015-06-13 13:57:14"
+            "time": "2015-06-13 12:35:02"
         },
         {
             "name": "gzero/social",
@@ -3609,16 +3609,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "0b889d7de7461439f8a3bbcca46e0f696cb27986"
+                "reference": "b7186fb1bcfda956d237f59face250d06ef47253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/0b889d7de7461439f8a3bbcca46e0f696cb27986",
-                "reference": "0b889d7de7461439f8a3bbcca46e0f696cb27986",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/b7186fb1bcfda956d237f59face250d06ef47253",
+                "reference": "b7186fb1bcfda956d237f59face250d06ef47253",
                 "shasum": ""
             },
             "require": {
@@ -3626,7 +3626,9 @@
                 "php": ">=5.3.19"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.6.*"
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "squizlabs/php_codesniffer": "^2.6"
             },
             "suggest": {
                 "phpdocumentor/phpdocumentor": "2.*"
@@ -3649,7 +3651,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2016-06-04 00:02:34"
+            "time": "2016-08-10 00:44:08"
         },
         {
             "name": "fzaninotto/faker",
@@ -5148,9 +5150,24 @@
             "time": "2016-07-17 09:06:15"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "0.9",
+            "alias_normalized": "0.9.0.0",
+            "version": "dev-GC-66_checking_policies",
+            "package": "gzero/api"
+        },
+        {
+            "alias": "0.9",
+            "alias_normalized": "0.9.0.0",
+            "version": "dev-access_middleware",
+            "package": "gzero/admin"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "gzero/api": 20,
+        "gzero/admin": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
