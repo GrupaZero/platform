@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller as Controller;
+use Gzero\Core\Controllers\BaseController as Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
