@@ -21,6 +21,7 @@
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
+    ga('require', 'eventTracker');
     ga('require', 'displayfeatures');
     @yield('gaPlugin')
     @if(Auth::check())
@@ -51,6 +52,7 @@
 
 @section('head')
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/eventTracker.js') }}"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
