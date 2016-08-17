@@ -21,6 +21,7 @@
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
+    ga('require', 'eventTracker');
     ga('require', 'displayfeatures');
     @yield('gaPlugin')
     @if(Auth::check())
