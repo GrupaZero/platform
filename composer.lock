@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a5f1bb7a1353f47db1290b392b93f48d",
-    "content-hash": "856fbc1dc16e3475f6bd0105e0a6facf",
+    "hash": "060a9ca7f105715bd332b0c4e3166972",
+    "content-hash": "7820368132e236bb46d01d3e129caa5e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -719,12 +719,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "4197d66dcf215d1730d9196f250cf53afed93e24"
+                "reference": "8d79130e7b8e1da94ef6c21f89f12aa04d762a28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/4197d66dcf215d1730d9196f250cf53afed93e24",
-                "reference": "4197d66dcf215d1730d9196f250cf53afed93e24",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8d79130e7b8e1da94ef6c21f89f12aa04d762a28",
+                "reference": "8d79130e7b8e1da94ef6c21f89f12aa04d762a28",
                 "shasum": ""
             },
             "require": {
@@ -771,7 +771,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-08-20 19:08:08"
+            "time": "2016-08-20 22:52:55"
         },
         {
             "name": "gzero/cms",
@@ -852,7 +852,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
                 "orchestra/testbench": "3.1.*",
@@ -883,7 +883,7 @@
                 "eloquent",
                 "laravel"
             ],
-            "time": "2015-06-13 12:35:02"
+            "time": "2015-06-13 13:57:14"
         },
         {
             "name": "gzero/social",
@@ -3768,6 +3768,44 @@
                 "webdriver"
             ],
             "time": "2016-08-10 00:44:08"
+        },
+        {
+            "name": "flow/jsonpath",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FlowCommunications/JSONPath.git",
+                "reference": "e064398010089f9efb46044f85ee63c458ae89e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FlowCommunications/JSONPath/zipball/e064398010089f9efb46044f85ee63c458ae89e1",
+                "reference": "e064398010089f9efb46044f85ee63c458ae89e1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "peekmo/jsonpath": "dev-master",
+                "phpunit/phpunit": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Flow\\JSONPath": "src/",
+                    "Flow\\JSONPath\\Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Frank",
+                    "email": "stephen@flowsa.com"
+                }
+            ],
+            "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "time": "2015-10-12 07:39:47"
         },
         {
             "name": "fzaninotto/faker",
