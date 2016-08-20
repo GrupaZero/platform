@@ -20,7 +20,7 @@ class Handler extends ExceptionHandler {
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException'
+        \Symfony\Component\HttpKernel\Exception\HttpException::class
     ];
 
     /**
@@ -47,15 +47,16 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $e)
     {
-        if ($request->ajax() || preg_match('/^api/', $request->getHost())) {
+        if (preg_match('/^api/', $request->getHost())) {
             /** @var $CORS \Asm89\Stack\CorsService */
             $CORS = app()->make('Asm89\Stack\CorsService');
             if ($e instanceof ValidationException) {
                 return $CORS->addActualRequestHeaders(
                     response()->json(
                         [
-                            'code'  => self::VALIDATION_ERROR,
-                            'error' => $e->getErrors()
+                            'code'    => self::VALIDATION_ERROR,
+                            'message' => ($e->getMessage()) ? $e->getMessage() : 'Validation Error',
+                            'errors'  => $e->getErrors()
                         ],
                         self::VALIDATION_ERROR
                     ),
@@ -65,8 +66,8 @@ class Handler extends ExceptionHandler {
                 return $CORS->addActualRequestHeaders(
                     response()->json(
                         [
-                            'code'  => self::FORBIDDEN_ERROR,
-                            'error' => ($e->getMessage()) ? $e->getMessage() : 'Forbidden.'
+                            'code'    => self::FORBIDDEN_ERROR,
+                            'message' => ($e->getMessage()) ? $e->getMessage() : 'Forbidden'
                         ],
                         self::FORBIDDEN_ERROR
                     ),
@@ -77,10 +78,8 @@ class Handler extends ExceptionHandler {
                     return $CORS->addActualRequestHeaders(
                         response()->json(
                             [
-                                'code'  => self::SERVER_ERROR,
-                                'error' => [
-                                    'message' => ($e->getMessage()) ? $e->getMessage() : 'Internal Server Error',
-                                ]
+                                'code'    => self::SERVER_ERROR,
+                                'message' => ($e->getMessage()) ? $e->getMessage() : 'Internal Server Error',
                             ],
                             self::SERVER_ERROR
                         ),
@@ -90,13 +89,11 @@ class Handler extends ExceptionHandler {
                     return $CORS->addActualRequestHeaders(
                         response()->json(
                             [
-                                'code'  => self::SERVER_ERROR,
-                                'error' => [
-                                    'type'    => get_class($e),
-                                    'message' => ($e->getMessage()) ? $e->getMessage() : 'Internal Server Error',
-                                    'file'    => $e->getFile(),
-                                    'line'    => $e->getLine(),
-                                ]
+                                'code'    => self::SERVER_ERROR,
+                                'type'    => get_class($e),
+                                'message' => ($e->getMessage()) ? $e->getMessage() : 'Internal Server Error',
+                                'file'    => $e->getFile(),
+                                'line'    => $e->getLine(),
                             ],
                             self::SERVER_ERROR
                         ),

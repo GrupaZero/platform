@@ -16,7 +16,7 @@
     ],
     "require": {
         "gzero/cms": "0.2.*",
-        "gzero/api": "0.2.*",
+        "gzero/api": "dev-GC-79_add_jwt_token_auth as 0.3",
         "gzero/admin": "0.2.*",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
