@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ade50512bd7456460282886c55d5d1d1",
-    "content-hash": "5fa4cf1d9e1c871f798cfd5001826d9d",
+    "hash": "5fd1927d7b1505e42cd3303211750955",
+    "content-hash": "7cecbdb7f4349d5dd2f7d840ebd66c86",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -671,16 +671,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "dev-GC-79_add_jwt_token_auth",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "151dc98eb8d6a65c5f23ebf58aa72ef1d47f584e"
+                "reference": "cf15bda8081115dcb9ee74e589e73604fa2295cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/151dc98eb8d6a65c5f23ebf58aa72ef1d47f584e",
-                "reference": "151dc98eb8d6a65c5f23ebf58aa72ef1d47f584e",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/cf15bda8081115dcb9ee74e589e73604fa2295cb",
+                "reference": "cf15bda8081115dcb9ee74e589e73604fa2295cb",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-08-21 16:57:57"
+            "time": "2016-08-21 18:31:05"
         },
         {
             "name": "gzero/api",
@@ -721,12 +721,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "a7883954af64a3ebf55b5bdebcf51658a57367ef"
+                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/a7883954af64a3ebf55b5bdebcf51658a57367ef",
-                "reference": "a7883954af64a3ebf55b5bdebcf51658a57367ef",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/b9209a8680664f1325fa95f161636fcb8be8a033",
+                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033",
                 "shasum": ""
             },
             "require": {
@@ -773,20 +773,20 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-08-21 16:54:26"
+            "time": "2016-08-21 19:06:56"
         },
         {
             "name": "gzero/cms",
-            "version": "v0.3.0",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "08a94bfd15b02a375d0c6e8cbacb8e20a7b67e34"
+                "reference": "36c464e3cc624bd24cf968e2fb6cceecd3e2961d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/08a94bfd15b02a375d0c6e8cbacb8e20a7b67e34",
-                "reference": "08a94bfd15b02a375d0c6e8cbacb8e20a7b67e34",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/36c464e3cc624bd24cf968e2fb6cceecd3e2961d",
+                "reference": "36c464e3cc624bd24cf968e2fb6cceecd3e2961d",
                 "shasum": ""
             },
             "require": {
@@ -837,7 +837,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-21 12:08:13"
+            "time": "2016-08-21 19:19:09"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -854,7 +854,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "orchestra/testbench": "3.1.*",
@@ -885,7 +885,7 @@
                 "eloquent",
                 "laravel"
             ],
-            "time": "2015-06-13 13:57:14"
+            "time": "2015-06-13 12:35:02"
         },
         {
             "name": "gzero/social",
@@ -5312,18 +5312,11 @@
             "alias_normalized": "0.3.0.0",
             "version": "dev-GC-79_add_jwt_token_auth",
             "package": "gzero/api"
-        },
-        {
-            "alias": "0.3",
-            "alias_normalized": "0.3.0.0",
-            "version": "dev-GC-79_add_jwt_token_auth",
-            "package": "gzero/admin"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "gzero/api": 20,
-        "gzero/admin": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
