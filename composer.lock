@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "053b5d3b0d51d62f9568002240b9c36d",
-    "content-hash": "3904f9a998d3ed5eada919b2e5aff2d1",
+    "hash": "5fd1927d7b1505e42cd3303211750955",
+    "content-hash": "7cecbdb7f4349d5dd2f7d840ebd66c86",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -52,16 +52,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.18.39",
+            "version": "3.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "85f1fddaeb40b95106b2a2764268e9c89fc258ce"
+                "reference": "40d7696b738c1376d5c1d1462e113c2a5648156b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/85f1fddaeb40b95106b2a2764268e9c89fc258ce",
-                "reference": "85f1fddaeb40b95106b2a2764268e9c89fc258ce",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/40d7696b738c1376d5c1d1462e113c2a5648156b",
+                "reference": "40d7696b738c1376d5c1d1462e113c2a5648156b",
                 "shasum": ""
             },
             "require": {
@@ -128,7 +128,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-08-11 16:40:35"
+            "time": "2016-08-18 22:54:26"
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -440,37 +440,40 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.10",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7"
+                "reference": "8828aaa2178e0a19325522e2a45282ff0a14649b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/72538eeb70bbfb11964412a3d098d109efd012f7",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/8828aaa2178e0a19325522e2a45282ff0a14649b",
+                "reference": "8828aaa2178e0a19325522e2a45282ff0a14649b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "symfony/var-dumper": "~3.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Whoops": "src/"
-                },
-                "classmap": [
-                    "src/deprecated"
-                ]
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -490,107 +493,10 @@
                 "exception",
                 "handling",
                 "library",
-                "silex-provider",
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-06-29 05:42:04"
-        },
-        {
-            "name": "guzzle/guzzle",
-            "version": "v3.9.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle3.git",
-                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
-                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.3.3",
-                "symfony/event-dispatcher": "~2.1"
-            },
-            "replace": {
-                "guzzle/batch": "self.version",
-                "guzzle/cache": "self.version",
-                "guzzle/common": "self.version",
-                "guzzle/http": "self.version",
-                "guzzle/inflection": "self.version",
-                "guzzle/iterator": "self.version",
-                "guzzle/log": "self.version",
-                "guzzle/parser": "self.version",
-                "guzzle/plugin": "self.version",
-                "guzzle/plugin-async": "self.version",
-                "guzzle/plugin-backoff": "self.version",
-                "guzzle/plugin-cache": "self.version",
-                "guzzle/plugin-cookie": "self.version",
-                "guzzle/plugin-curlauth": "self.version",
-                "guzzle/plugin-error-response": "self.version",
-                "guzzle/plugin-history": "self.version",
-                "guzzle/plugin-log": "self.version",
-                "guzzle/plugin-md5": "self.version",
-                "guzzle/plugin-mock": "self.version",
-                "guzzle/plugin-oauth": "self.version",
-                "guzzle/service": "self.version",
-                "guzzle/stream": "self.version"
-            },
-            "require-dev": {
-                "doctrine/cache": "~1.3",
-                "monolog/monolog": "~1.0",
-                "phpunit/phpunit": "3.7.*",
-                "psr/log": "~1.0",
-                "symfony/class-loader": "~2.1",
-                "zendframework/zend-cache": "2.*,<2.3",
-                "zendframework/zend-log": "2.*,<2.3"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Guzzle": "src/",
-                    "Guzzle\\Tests": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Guzzle Community",
-                    "homepage": "https://github.com/guzzle/guzzle/contributors"
-                }
-            ],
-            "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "abandoned": "guzzlehttp/guzzle",
-            "time": "2015-03-18 18:23:50"
+            "time": "2016-05-06 18:25:35"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -765,16 +671,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "v0.2.0",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "0b2b50e2a16acd5383d952971de4c949be28764a"
+                "reference": "cf15bda8081115dcb9ee74e589e73604fa2295cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0b2b50e2a16acd5383d952971de4c949be28764a",
-                "reference": "0b2b50e2a16acd5383d952971de4c949be28764a",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/cf15bda8081115dcb9ee74e589e73604fa2295cb",
+                "reference": "cf15bda8081115dcb9ee74e589e73604fa2295cb",
                 "shasum": ""
             },
             "require": {
@@ -807,20 +713,20 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-08-14 16:36:54"
+            "time": "2016-08-21 18:31:05"
         },
         {
             "name": "gzero/api",
-            "version": "v0.2.0",
+            "version": "dev-GC-79_add_jwt_token_auth",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "c723a0028a7ef8636f1dc36d217c876652c3e689"
+                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/c723a0028a7ef8636f1dc36d217c876652c3e689",
-                "reference": "c723a0028a7ef8636f1dc36d217c876652c3e689",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/b9209a8680664f1325fa95f161636fcb8be8a033",
+                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033",
                 "shasum": ""
             },
             "require": {
@@ -832,7 +738,8 @@
                 "illuminate/pagination": "5.1.*",
                 "illuminate/routing": "5.1.*",
                 "league/fractal": "0.12.0",
-                "php": ">=5.5.9"
+                "php": ">=7.0.0",
+                "tymon/jwt-auth": "0.5.*"
             },
             "require-dev": {
                 "codeception/codeception": "2.1.4",
@@ -866,28 +773,28 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-08-14 16:52:56"
+            "time": "2016-08-21 19:06:56"
         },
         {
             "name": "gzero/cms",
-            "version": "v0.2.0",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "5bf588e379ae97755e8f109df8e9eeaaee8b7f33"
+                "reference": "36c464e3cc624bd24cf968e2fb6cceecd3e2961d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/5bf588e379ae97755e8f109df8e9eeaaee8b7f33",
-                "reference": "5bf588e379ae97755e8f109df8e9eeaaee8b7f33",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/36c464e3cc624bd24cf968e2fb6cceecd3e2961d",
+                "reference": "36c464e3cc624bd24cf968e2fb6cceecd3e2961d",
                 "shasum": ""
             },
             "require": {
                 "davejamesmiller/laravel-breadcrumbs": "3.0.*",
-                "filp/whoops": "1.1.*",
+                "filp/whoops": "2.1.*",
                 "gzero/eloquent-tree": "2.*",
                 "laravel/framework": "5.1.*",
-                "php": ">=5.5.9",
+                "php": ">=7.0.0",
                 "robclancy/presenter": "1.3.1"
             },
             "replace": {
@@ -930,7 +837,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-14 14:39:31"
+            "time": "2016-08-21 19:19:09"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -1617,26 +1524,26 @@
         },
         {
             "name": "league/oauth1-client",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "cef3ceda13c78f89c323e4d5e6301c0eb7cea422"
+                "reference": "fca5f160650cb74d23fc11aa570dd61f86dcf647"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/cef3ceda13c78f89c323e4d5e6301c0eb7cea422",
-                "reference": "cef3ceda13c78f89c323e4d5e6301c0eb7cea422",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/fca5f160650cb74d23fc11aa570dd61f86dcf647",
+                "reference": "fca5f160650cb74d23fc11aa570dd61f86dcf647",
                 "shasum": ""
             },
             "require": {
-                "guzzle/guzzle": "3.*",
-                "php": ">=5.3.0"
+                "guzzlehttp/guzzle": "^6.0",
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^4.0",
+                "squizlabs/php_codesniffer": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -1676,7 +1583,7 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2015-10-23 04:02:07"
+            "time": "2016-08-17 00:36:58"
         },
         {
             "name": "monolog/monolog",
@@ -1856,6 +1763,56 @@
             "time": "2016-01-05 18:25:05"
         },
         {
+            "name": "namshi/jose",
+            "version": "5.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namshi/jose.git",
+                "reference": "8c7eba486f74c014ea1d8faedafe5109a31ea95b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namshi/jose/zipball/8c7eba486f74c014ea1d8faedafe5109a31ea95b",
+                "reference": "8c7eba486f74c014ea1d8faedafe5109a31ea95b",
+                "shasum": ""
+            },
+            "require": {
+                "lib-openssl": "*",
+                "php": ">=5.3.3",
+                "phpseclib/phpseclib": "~0.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Namshi\\JOSE": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Nadalin",
+                    "email": "alessandro.nadalin@gmail.com"
+                }
+            ],
+            "description": "JSON Object Signing and Encryption library for PHP.",
+            "keywords": [
+                "JSON Web Signature",
+                "JSON Web Token",
+                "JWS",
+                "json",
+                "jwt",
+                "token"
+            ],
+            "time": "2015-06-29 05:41:44"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.21.0",
             "source": {
@@ -2000,6 +1957,104 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "0.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "d15bba1edcc7c89e09cc74c5d961317a8b947bf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d15bba1edcc7c89e09cc74c5d961317a8b947bf4",
+                "reference": "d15bba1edcc7c89e09cc74c5d961317a8b947bf4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": "~2.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
+                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Crypt": "phpseclib/",
+                    "File": "phpseclib/",
+                    "Math": "phpseclib/",
+                    "Net": "phpseclib/",
+                    "System": "phpseclib/"
+                },
+                "files": [
+                    "phpseclib/Crypt/Random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "phpseclib/"
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "time": "2015-01-28 21:50:33"
         },
         {
             "name": "predis/predis",
@@ -3309,6 +3364,69 @@
             "time": "2015-12-19 15:44:13"
         },
         {
+            "name": "tymon/jwt-auth",
+            "version": "0.5.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "18b2add90de2315d549664b4d4a062db07e8b080"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/18b2add90de2315d549664b4d4a062db07e8b080",
+                "reference": "18b2add90de2315d549664b4d4a062db07e8b080",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/support": "~5.0",
+                "namshi/jose": "5.0.*",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/auth": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "http://tymondesigns.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Web Token Authentication for Laravel 4 and 5",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
+                "laravel",
+                "tymon"
+            ],
+            "time": "2016-02-18 09:22:36"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -3652,6 +3770,44 @@
                 "webdriver"
             ],
             "time": "2016-08-10 00:44:08"
+        },
+        {
+            "name": "flow/jsonpath",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FlowCommunications/JSONPath.git",
+                "reference": "e064398010089f9efb46044f85ee63c458ae89e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FlowCommunications/JSONPath/zipball/e064398010089f9efb46044f85ee63c458ae89e1",
+                "reference": "e064398010089f9efb46044f85ee63c458ae89e1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "peekmo/jsonpath": "dev-master",
+                "phpunit/phpunit": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Flow\\JSONPath": "src/",
+                    "Flow\\JSONPath\\Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Frank",
+                    "email": "stephen@flowsa.com"
+                }
+            ],
+            "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "time": "2015-10-12 07:39:47"
         },
         {
             "name": "fzaninotto/faker",
@@ -4532,23 +4688,23 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.7",
+            "version": "1.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "4e8f0da10ac5802913afc151413bc8c53b6c2716"
+                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/4e8f0da10ac5802913afc151413bc8c53b6c2716",
-                "reference": "4e8f0da10ac5802913afc151413bc8c53b6c2716",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/be2c607e43ce4c89ecd60e75c6a85c126e754aea",
+                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.4"
+                "phpunit/phpunit": "^4.8 || ^5.0"
             },
             "type": "library",
             "extra": {
@@ -4578,7 +4734,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-05-17 03:18:57"
+            "time": "2016-08-18 05:49:44"
         },
         {
             "name": "sebastian/exporter",
@@ -5150,9 +5306,17 @@
             "time": "2016-07-17 09:06:15"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "0.3",
+            "alias_normalized": "0.3.0.0",
+            "version": "dev-GC-79_add_jwt_token_auth",
+            "package": "gzero/api"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "gzero/api": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,

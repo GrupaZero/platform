@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.2.*",
-        "gzero/api": "0.2.*",
-        "gzero/admin": "0.2.*",
+        "gzero/cms": "0.3.*",
+        "gzero/api": "dev-GC-79_add_jwt_token_auth as 0.3",
+        "gzero/admin": "0.3.*",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
         "thomaswelton/laravel-gravatar": "~1.0",
@@ -31,7 +31,8 @@
         "phpspec/phpspec": "~2.1",
         "codeception/codeception": "2.1.4",
         "fzaninotto/faker": "1.4.0",
-        "satooshi/php-coveralls": "dev-master"
+        "satooshi/php-coveralls": "dev-master",
+        "flow/jsonpath": "^0.3.1"
     },
     "autoload": {
         "classmap": [

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use Auth;
 use Gzero\Repository\UserRepository;
 use Gzero\Validator\BaseUserValidator;
 use Gzero\Validator\ValidationException;
@@ -46,7 +45,7 @@ class UserController extends BaseController {
 
     public function login()
     {
-        if (Auth::check()) {
+        if (auth()->check()) {
             return redirect()->route('account');
         }
         return view('auth.login');
@@ -54,7 +53,7 @@ class UserController extends BaseController {
 
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
         return redirect()->route('home');
     }
 
@@ -63,8 +62,8 @@ class UserController extends BaseController {
         try {
             $input    = $this->validator->validate('login');
             $remember = Input::get('remember', false);
-            if (Auth::validate($input)) {
-                if (Auth::check() || Auth::viaRemember() || Auth::attempt($input, $remember)) {
+            if (auth()->validate($input)) {
+                if (auth()->check() || auth()->viaRemember() || auth()->attempt($input, $remember)) {
                     return redirect()->route('home');
                 }
                 return redirect()->route('login');
@@ -87,7 +86,7 @@ class UserController extends BaseController {
 
     public function register()
     {
-        if (Auth::check()) {
+        if (auth()->check()) {
             return redirect()->route('home');
         }
         return view('auth.register');
@@ -104,7 +103,7 @@ class UserController extends BaseController {
             $input['password'] = Hash::make($input['password']);
             $user              = $this->userRepo->create($input);
             if (!empty($user)) {
-                Auth::login($user);
+                auth()->login($user);
                 try {
                     $subject = Lang::get('emails.welcome.subject', ['siteName' => Config::get('gzero.siteName')]);
                     Mail::send( // welcome email
@@ -134,7 +133,7 @@ class UserController extends BaseController {
      */
     public function remind()
     {
-        if (Auth::check()) {
+        if (auth()->check()) {
             return redirect()->route('home');
         }
         return view('auth.password');
@@ -195,7 +194,7 @@ class UserController extends BaseController {
     {
         if (is_null($token)) {
             App::abort(404);
-        } elseif (Auth::check()) {
+        } elseif (auth()->check()) {
             return redirect()->route('home');
         }
 
