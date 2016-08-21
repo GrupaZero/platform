@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
      |--------------------------------------------------------------------------
@@ -15,31 +15,31 @@ return array(
      | to accept any value, the allowed methods however have to be explicitly listed.
      |
      */
-    'defaults' => array(
+    'defaults' => [
         'supportsCredentials' => false,
-        'allowedOrigins' => array(),
-        'allowedHeaders' => array(),
-        'allowedMethods' => array(),
-        'exposedHeaders' => array(),
-        'maxAge' => 0,
-        'hosts' => array(),
-    ),
+        'allowedOrigins'      => [],
+        'allowedHeaders'      => [],
+        'allowedMethods'      => [],
+        'exposedHeaders'      => [],
+        'maxAge'              => 0,
+        'hosts'               => [],
+    ],
 
-    'paths' => array(
-        'api/*' => array(
-            'allowedOrigins' => array('*'),
-            'allowedHeaders' => array('*'),
-            'allowedMethods' => array('*'),
-            'maxAge' => 3600,
-        ),
-        '*' => array(
+    'paths' => [
+        'api/*' => [
+            'allowedOrigins' => ['*'],
+            'allowedHeaders' => ['*'],
+            'allowedMethods' => ['*'],
+            'maxAge'         => 3600,
+        ],
+        '*'     => [
             'supportsCredentials' => true,
-            'allowedOrigins' => array('*'),
-            'allowedHeaders' => array('Content-Type', 'Accept', 'X-Requested-With'),
-            'allowedMethods' => array('POST', 'PUT', 'GET', 'DELETE'),
-            'maxAge' => 3600,
-            'hosts' => array('api.*'),
-        ),
-    ),
+            'allowedOrigins'      => ['*'],
+            'allowedHeaders'      => ['*'],
+            'allowedMethods'      => ['POST', 'PUT', 'GET', 'DELETE'],
+            'maxAge'              => 3600,
+            'hosts'               => ['api.*'],
+        ],
+    ],
 
-);
+];
