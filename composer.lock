@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5fd1927d7b1505e42cd3303211750955",
-    "content-hash": "7cecbdb7f4349d5dd2f7d840ebd66c86",
+    "hash": "863876ec16e6a3624be73aa5a3d8eb05",
+    "content-hash": "b13b2dd305710f55fd75fe0a187316ba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -717,16 +717,16 @@
         },
         {
             "name": "gzero/api",
-            "version": "dev-GC-79_add_jwt_token_auth",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033"
+                "reference": "ee6e74e2242c90c1a6a500dba514dff13230c8a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/b9209a8680664f1325fa95f161636fcb8be8a033",
-                "reference": "b9209a8680664f1325fa95f161636fcb8be8a033",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/ee6e74e2242c90c1a6a500dba514dff13230c8a4",
+                "reference": "ee6e74e2242c90c1a6a500dba514dff13230c8a4",
                 "shasum": ""
             },
             "require": {
@@ -773,7 +773,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-08-21 19:06:56"
+            "time": "2016-08-21 19:39:37"
         },
         {
             "name": "gzero/cms",
@@ -5306,17 +5306,9 @@
             "time": "2016-07-17 09:06:15"
         }
     ],
-    "aliases": [
-        {
-            "alias": "0.3",
-            "alias_normalized": "0.3.0.0",
-            "version": "dev-GC-79_add_jwt_token_auth",
-            "package": "gzero/api"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/api": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
