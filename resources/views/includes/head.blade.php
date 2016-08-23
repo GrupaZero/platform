@@ -30,6 +30,7 @@
     ga('send', 'pageview');
     @yield('gaEvent')
 </script>
+<script async src="{{ asset('/js/autotrack.js') }}"></script>
 <!-- end Google Analytics web tracking code-->
 @endif
 
