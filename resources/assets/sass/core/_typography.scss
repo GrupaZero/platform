@@ -22,12 +22,12 @@
 }
 
 #content {
-  .content-meta + p, .content-meta + .thumb + p, {
+  .content-meta + p, .content-meta + .thumb + p {
     @extend .lead;
   }
 
   .content-meta, .article-meta {
-    & + .thumb img, {
+    & + .thumb img {
       @extend .img-responsive;
     }
   }
