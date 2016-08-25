@@ -15,8 +15,8 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.3.*",
-        "gzero/api": "0.3.*",
+        "gzero/cms": "dev-GC-86_forceDelete_deletes_everything_in_trash as 0.3.1",
+        "gzero/api": "dev-GC-86_forceDelete_deletes_everything_in_trash as 0.3",
         "gzero/admin": "0.3.*",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
