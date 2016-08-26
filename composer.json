@@ -15,8 +15,8 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.3.*",
-        "gzero/api": "0.3.*",
+        "gzero/cms": "dev-GC-57_forceDelete-as-url-query-string as 0.3",
+        "gzero/api": "dev-GC-57_forceDelete-as-url-query-string as 0.3",
         "gzero/admin": "0.3.*",
         "gzero/social": "^1.0",
         "gzero/vanilla-integration": "^1.0",
