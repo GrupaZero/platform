@@ -1,56 +1,68 @@
-@extends('layouts.withoutBlocks')
-
-@section('title')
-    @lang('common.login')
-@stop
+@extends('layouts.app')
 
 @section('content')
-    <div class="col-md-4 col-md-offset-4">
-        <h1 class="page-header">@lang('common.login')</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
 
-        <form method="POST" role="form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
-                <label class="control-label" for="email">@choice('common.email', 1)</label>
-                <input type="email" id="email" name="email" class="form-control"
-                       value="{{old('email')}}"
-                       placeholder="@choice('common.email', 1)">
-                @if($errors->first('email'))
-                    <p class="help-block">{{ $errors->first('email') }}</p>
-                @endif
-            </div>
-            <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
-                <label class="control-label" for="password">@lang('common.password')</label>
-                <input type="password" id="password" name="password" class="form-control"
-                       placeholder="@lang('common.password')">
-                @if($errors->first('password'))
-                    <p class="help-block">{{ $errors->first('password') }}</p>
-                @endif
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember" checked="true">@lang('common.remember')
-                            </label>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="checkbox text-right">
-                            <a href="{{ route('password.remind') }}">@lang('common.forgotPassword')</a>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
-        </form>
-        @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
-            @include('gzero-social::includes.socialLogin')
-        @endif
-        <hr/>
-        <div class="text-center">
-            @lang('common.notAMember') <a href="{{ route('register') }}"> @lang('common.register')</a>
         </div>
     </div>
-@stop
+</div>
+@endsection

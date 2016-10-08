@@ -1,4 +1,6 @@
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -6,21 +8,12 @@ var elixir = require('laravel-elixir');
  |--------------------------------------------------------------------------
  |
  | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
+ | for your Laravel application. By default, we are compiling the Sass
  | file for our application, as well as publishing vendor resources.
  |
  */
 
-elixir(function(mix) {
-    mix.sass([
-        'app.scss'
-    ]);
-    mix.scripts([
-        'cookies.js',
-        'responsive-paginate.js',
-        'jquery.metisMenu.js',
-        'jquery.colorbox.js',
-        'jquery.matchHeight.js',
-        'common.js'
-    ]);
+elixir(mix => {
+    mix.sass('app.scss')
+       .webpack('app.js');
 });
