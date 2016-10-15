@@ -12,16 +12,11 @@
 */
 
 Route::group(
-    setMultilangRouting(),
+    setMultilangRouting(['middleware' => ['web']]),
     function () {
         Auth::routes();
-        Route::group(
-            ['middleware' => ['web', 'detectLang']],
-            function () {
-                Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-                Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
-            }
-        );
+        Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+        Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
     }
 );
 
