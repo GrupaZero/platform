@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ return array(
     |
     */
 
-    'previous' => '&laquo; Poprzedni',
-    'next'     => 'Następny &raquo;',
+    'previous' => '&laquo; Poprzednia',
+    'next'     => 'Następna &raquo;',
 
-);
+];

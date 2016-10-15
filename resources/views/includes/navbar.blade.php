@@ -20,11 +20,11 @@
             </ul>
             @if (Auth::guest())
                 <div class="navbar-right">
-                    <a href="{{ url('/login') }}" class="btn btn-default navbar-btn"
+                    <a href="{{ route('login') }}" class="btn btn-default navbar-btn"
                        title="@lang('common.login')">
                         @lang('common.login')
                     </a>
-                    <a href="{{ url('/register') }}" class="btn btn-primary navbar-btn"
+                    <a href="{{ route('register') }}" class="btn btn-primary navbar-btn"
                        title="@lang('common.register')">
                         @lang('common.register')
                     </a>
