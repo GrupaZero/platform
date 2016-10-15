@@ -33,34 +33,40 @@
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img src="{{ Gravatar::src(Auth::user()->email, 35) }}"
-                                 class="navbar-avatar img-circle">
-                            {{ Auth::user()->getPresenter()->displayName() }}
+                            {{--<img src="{{ Gravatar::src(Auth::user()->email, 35) }}"--}}
+                            {{--class="navbar-avatar img-circle">--}}
+                            {{ Auth::user()->name }}
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            @if (Auth::user()->isAdmin)
-                            <li>
-                                <a href="{{ route('admin') }}" target="_blank">
-                                    @lang('user.admin_panel') <i class="fa fa-cogs pull-right"></i>
-                                </a>
-                            </li>
-                            @endif
-                            <li class="{{ (URL::full() ==  route('account')) ? 'active' : '' }}">
-                                <a href="{{ route('account') }}">
-                                    @lang('user.my_account') <i class="fa fa-user pull-right"></i>
-                                </a>
-                            </li>
-                            <li class="{{ (URL::full() ==  route('account.edit')) ? 'active' : '' }}">
-                                <a href="{{ route('account.edit') }}">@lang('user.edit_account')
-                                    <i class="fa fa-pencil pull-right"></i>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
+                            {{--@if (Auth::user()->isAdmin)--}}
+                            {{--<li>--}}
+                            {{--<a href="{{ route('admin') }}" target="_blank">--}}
+                            {{--@lang('user.admin_panel') <i class="fa fa-cogs pull-right"></i>--}}
+                            {{--</a>--}}
+                            {{--</li>--}}
+                            {{--@endif--}}
+                            {{--<li class="{{ (URL::full() ==  route('account')) ? 'active' : '' }}">--}}
+                            {{--<a href="{{ route('account') }}">--}}
+                            {{--@lang('user.my_account') <i class="fa fa-user pull-right"></i>--}}
+                            {{--</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="{{ (URL::full() ==  route('account.edit')) ? 'active' : '' }}">--}}
+                            {{--<a href="{{ route('account.edit') }}">@lang('user.edit_account')--}}
+                            {{--<i class="fa fa-pencil pull-right"></i>--}}
+                            {{--</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="divider"></li>--}}
                             <li class="{{ (URL::full() ==  route('logout')) ? 'active' : '' }}">
-                                <a href="{{ route('logout') }}">
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     @lang('common.logout') <i class="fa fa-sign-out fa-fw pull-right"></i>
                                 </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->
