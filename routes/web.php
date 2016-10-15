@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-Auth::routes();
-Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
+Route::group(
+    setMultilangRouting(),
+    function () {
+        Auth::routes();
+        Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+        Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
+    }
+);

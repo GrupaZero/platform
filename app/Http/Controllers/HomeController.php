@@ -2,20 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class HomeController extends BaseController
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+class HomeController extends BaseController {
     /**
      * Show the application dashboard.
      *
@@ -23,7 +10,6 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        parent::__construct();
         return view('home');
     }
 }
