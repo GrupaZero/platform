@@ -13,6 +13,7 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
+        "gzero/cms": "dev-laravel_53_upgrade",
         "predis/predis": "^1.1"
     },
     "require-dev": {

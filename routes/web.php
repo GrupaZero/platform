@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
 Route::get('/home', 'HomeController@index');
