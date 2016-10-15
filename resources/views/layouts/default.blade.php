@@ -6,7 +6,7 @@
 <body class="@yield('bodyClass') {{!empty($blocks) && $blocks->has('sidebarLeft') ? 'sidebar-left' : ''}}{{!empty($blocks) && $blocks->has('sidebarRight') ? ' sidebar-right' : ''}}">
 <?php $sidebarClass = 'col-md-3'; ?>
 <?php $contentClass = (isset($sidebarsNumber)) ? 12 - ($sidebarsNumber * substr($sidebarClass, -1)) : 12; ?>
-<div id="wrapper">
+<div id="app" class="wrapper">
     <header>
         @include('includes.langs')
         @if(!empty($blocks) && $blocks->has('header'))
