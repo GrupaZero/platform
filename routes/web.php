@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Auth::routes();
 Route::get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
-Route::get('/home', 'HomeController@index');

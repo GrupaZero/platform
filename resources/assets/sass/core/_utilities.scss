@@ -1,0 +1,260 @@
+// -------------------------------------
+//   Utilities
+// -------------------------------------
+// ----- Placeholders Extends, Mixins, Functions, and Utility Classes
+// -------------------------------------
+
+// -------------------------------------
+//   Placeholder Extends
+// -------------------------------------
+
+// ----- Clearfix ----- //
+// %clearfix:before,
+// %clearfix:after {
+//   content: " ";
+//   display: table;
+// }
+
+// %clearfix:after {
+//   clear: both;
+// }
+
+// %clearfix {
+//   *zoom: 1;
+// }
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+// ----- Adds responsive breakpoints. ----- //
+@mixin breakpoint($width) {
+  @media (min-width : $width) {
+    @content;
+  }
+}
+
+// ----- Adds accessibility pseudo selectors to hover states. ----- //
+@mixin attention() {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+// Rem sizing mixin with px fallback.
+// @mixin rem-sizing($property, $size) {
+//   #{$property}: $size * 10px;
+//   #{$property}: $size * 1rem;
+// }
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+// -------------------------------------
+//   Utilities
+// -------------------------------------
+.m0 {
+  margin : 0 !important;
+}
+
+.mt0 {
+  margin-top : 0;
+}
+
+.mr0 {
+  margin-right : 0;
+}
+
+.mb0 {
+  margin-bottom : 0;
+}
+
+.ml0 {
+  margin-left : 0;
+}
+
+.mt15 {
+  margin-top : 15px;
+}
+
+.mr15 {
+  margin-right : 15px;
+}
+
+.mb15 {
+  margin-bottom : 15px;
+}
+
+.ml15 {
+  margin-left : 15px;
+}
+
+.mt20 {
+  margin-top : 20px;
+}
+
+.mr20 {
+  margin-right : 20px;
+}
+
+.mb20 {
+  margin-bottom : 20px;
+}
+
+.ml20 {
+  margin-left : 20px;
+}
+
+.mt30 {
+  margin-top : 30px;
+}
+
+.mr30 {
+  margin-right : 30px;
+}
+
+.mb30 {
+  margin-bottom : 30px;
+}
+
+.ml30 {
+  margin-left : 30px;
+}
+
+.h50 {
+  height : 50px;
+}
+
+@media (max-width : 767px) {
+  .m0-xs {
+    margin : 0 !important;
+  }
+
+  .mt0-xs {
+    margin-top : 0;
+  }
+
+  .mr0-xs {
+    margin-right : 0;
+  }
+
+  .mb0-xs {
+    margin-bottom : 0;
+  }
+
+  .ml0-xs {
+    margin-left : 0;
+  }
+
+  .mt20-xs {
+    margin-top : 20px;
+  }
+
+  .mr20-xs {
+    margin-right : 20px;
+  }
+
+  .mb20-xs {
+    margin-bottom : 20px;
+  }
+
+  .ml20-xs {
+    margin-left : 20px;
+  }
+
+  .mt30-xs {
+    margin-top : 30px;
+  }
+
+  .mr30-xs {
+    margin-right : 30px;
+  }
+
+  .mb30-xs {
+    margin-bottom : 30px;
+  }
+
+  .ml30-xs {
+    margin-left : 30px;
+  }
+
+  .text-left-xs {
+    text-align : left;
+  }
+  .text-right-xs {
+    text-align : right;
+  }
+  .text-center-xs {
+    text-align : center;
+  }
+  .pull-none-xs {
+    float : none !important;
+  }
+}
+
+@media (min-width : 767px) and (max-width : 1200px) {
+  .m0-sm {
+    margin : 0 !important;
+  }
+
+  .mt0-sm {
+    margin-top : 0;
+  }
+
+  .mr0-sm {
+    margin-right : 0;
+  }
+
+  .mb0-sm {
+    margin-bottom : 0;
+  }
+
+  .ml0-sm {
+    margin-left : 0;
+  }
+
+  .mt20-sm {
+    margin-top : 20px;
+  }
+
+  .mr20-sm {
+    margin-right : 20px;
+  }
+
+  .mb20-sm {
+    margin-bottom : 20px;
+  }
+
+  .ml20-sm {
+    margin-left : 20px;
+  }
+
+  .mt30-sm {
+    margin-top : 30px;
+  }
+
+  .mr30-sm {
+    margin-right : 30px;
+  }
+
+  .mb30-sm {
+    margin-bottom : 30px;
+  }
+
+  .ml30-sm {
+    margin-left : 30px;
+  }
+
+  .text-left-sm {
+    text-align : left;
+  }
+  .text-right-sm {
+    text-align : right;
+  }
+  .text-center-sm {
+    text-align : center;
+  }
+}

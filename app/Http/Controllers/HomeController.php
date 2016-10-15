@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        parent::__construct();
         return view('home');
     }
 }
