@@ -26,7 +26,8 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "satooshi/php-coveralls": "dev-master",
-        "flow/jsonpath": "0.3.*"
+        "flow/jsonpath": "0.3.*",
+        "gzero/testing-db": "0.0.*"
     },
     "autoload": {
         "classmap": [

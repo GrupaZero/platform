@@ -2,7 +2,10 @@
 
 use Faker\Factory;
 use Gzero\Entity\Content;
+use Gzero\Entity\File;
+use Gzero\Entity\FileType;
 use Gzero\Repository\ContentRepository;
+use Gzero\Repository\FileRepository;
 use Gzero\Repository\UserRepository;
 use Gzero\Entity\User;
 use Illuminate\Events\Dispatcher;
@@ -48,9 +51,15 @@ class FunctionalTester extends \Codeception\Actor {
      */
     public function __construct(\Codeception\Scenario $scenario)
     {
-        $this->faker        = Factory::create();
-        $this->contentRepo = new ContentRepository(new Content(), new Dispatcher());
-        $this->userRepo     = new UserRepository(new User(), new Dispatcher());
+        $this->faker       = Factory::create();
+        $this->contentRepo = new ContentRepository(
+            new Content(),
+            new Dispatcher(),
+            new FileRepository(
+                new File(), new FileType(), new Dispatcher()
+            )
+        );
+        $this->userRepo    = new UserRepository(new User(), new Dispatcher());
         parent::__construct($scenario);
     }
 

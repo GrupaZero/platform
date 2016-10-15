@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "862444a6c42f41ce911ffa8fa55372d8",
-    "content-hash": "cc5baa123762e1319a210ddc0d9041a4",
+    "hash": "6f4408c510ae10dd4fec04853dda8c1f",
+    "content-hash": "305648d35194b4b59a207b0f85f7cbf8",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -276,12 +276,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "1767dd8e3a34d3a7eeda2b7c4782880287787d1f"
+                "reference": "3c63c14e6d85e3edf736ef4634c8bb65e6da73a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/1767dd8e3a34d3a7eeda2b7c4782880287787d1f",
-                "reference": "1767dd8e3a34d3a7eeda2b7c4782880287787d1f",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/3c63c14e6d85e3edf736ef4634c8bb65e6da73a2",
+                "reference": "3c63c14e6d85e3edf736ef4634c8bb65e6da73a2",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +335,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-10-15 14:22:25"
+            "time": "2016-10-15 15:23:56"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -2872,6 +2872,34 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
+        },
+        {
+            "name": "gzero/testing-db",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrupaZero/testing-db.git",
+                "reference": "7d01b0d7c4fcd228c4fdd0a26b0dc437d14f2fc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrupaZero/testing-db/zipball/7d01b0d7c4fcd228c4fdd0a26b0dc437d14f2fc6",
+                "reference": "7d01b0d7c4fcd228c4fdd0a26b0dc437d14f2fc6",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Skierniewski",
+                    "email": "adrian.skierniewski@gmail.com"
+                }
+            ],
+            "description": "Package that helps testing DB across our packages",
+            "time": "2016-10-15 14:16:37"
         },
         {
             "name": "hamcrest/hamcrest-php",
