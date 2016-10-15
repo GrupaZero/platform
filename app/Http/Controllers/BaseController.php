@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Gzero\Core\Controllers\BaseController as GzeroBaseController;
-use Illuminate\Http\Request;
 
 class BaseController extends GzeroBaseController {
 
@@ -43,11 +42,11 @@ class BaseController extends GzeroBaseController {
     {
 
         if (config('gzero.multilang.enabled') and !config('gzero.multilang.subdomain')) {
-            $segments = Request::segments();
+            $segments = request()->segments();
             array_shift($segments);
             return implode('/', $segments);
         }
-        return trim(Request::getRequestUri(), '/');
+        return trim(request()->getRequestUri(), '/');
     }
 
     protected function viewShareLangs()
