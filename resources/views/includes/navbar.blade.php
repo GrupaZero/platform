@@ -35,7 +35,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             {{--<img src="{{ Gravatar::src(Auth::user()->email, 35) }}"--}}
                             {{--class="navbar-avatar img-circle">--}}
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->nickName }}
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
