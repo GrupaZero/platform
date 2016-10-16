@@ -47,7 +47,9 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                @lang('common.login')
+            </button>
         </form>
         @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
             @include('gzero-social::includes.socialLogin')

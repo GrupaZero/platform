@@ -15,7 +15,7 @@
                 <input id="email" type="email" class="form-control" name="email"
                        value="{{ old('email') }}"
                        placeholder="@choice('common.email', 1)"
-                       required>
+                       required autofocus>
                 @if ($errors->has('email'))
                     <p class="help-block">{{ $errors->first('email') }}</p>
                 @endif
@@ -24,7 +24,8 @@
                 <label class="control-label" for="nickName">@lang('common.nickName')</label>
                 <input id="nickName" type="text" class="form-control" name="nickName"
                        value="{{old('nickName')}}"
-                       placeholder="@lang('common.nickName')">
+                       placeholder="@lang('common.nickName')"
+                       required>
                 @if($errors->has('nickName'))
                     <p class="help-block">{{ $errors->first('nickName') }}</p>
                 @endif
