@@ -14,6 +14,22 @@
 Route::group(
     setMultilangRouting(['middleware' => ['web']]),
     function () {
+        // Account
+        Route::group(
+            ['middleware' => 'auth'],
+            function () {
+                Route::get('account', ['as' => 'account', 'uses' => 'AccountController@account']);
+                Route::get('account/edit', ['as' => 'account.edit', 'uses' => 'AccountController@edit']);
+                Route::get('account/welcome', ['as' => 'account.welcome', 'uses' => 'AccountController@welcome']);
+                // @TODO Why do we need this here?
+                //Route::group(
+                //    ['prefix' => 'api/v1'],
+                //    function () {
+                //        Route::resource('account', 'AccountApiController', ['only' => ['show', 'update', 'destroy']]);
+                //    }
+                //);
+            }
+        );
         // START Laravel Auth routes
         // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -38,6 +54,7 @@ Route::group(
 
 
 // By default we're redirecting to multi language page
+// @TODO If multi language support enabled
 Route::get(
     '/',
     function () {

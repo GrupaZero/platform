@@ -6,5 +6,5 @@ Homestead.json
 Homestead.yaml
 .env
 /tests/_output
-
+/public/gzero/*
 tests/_output/*

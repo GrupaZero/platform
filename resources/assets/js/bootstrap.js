@@ -25,6 +25,7 @@ require('vue-resource');
  * included with Laravel will automatically verify the header's value.
  */
 
+Vue.http.options.credentials = true; // We need this to send cookie to subdomain
 Vue.http.interceptors.push((request, next) => {
     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
 

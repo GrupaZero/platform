@@ -141,5 +141,5 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
 To run tests use:
 
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --env platform
+composer test
 ```

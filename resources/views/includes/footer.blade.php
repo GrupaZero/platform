@@ -12,7 +12,7 @@
     @section('footerScripts')
     @show
 </div>
-@if(option('general', 'cookiesPolicyUrl'))
+@if(option('general', 'cookies_policy_url'))
     @include('includes.cookieInfo')
 @endif
 <div class="loading"><!-- loading container --></div>

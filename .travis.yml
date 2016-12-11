@@ -9,7 +9,7 @@ services:
   - docker
 
 env:
-  DOCKER_VERSION: 1.10.3-0~trusty
+  DOCKER_VERSION: 1.12.3-0~trusty
   DOCKER_COMPOSE_VERSION: 1.7.1
 
 before_install:

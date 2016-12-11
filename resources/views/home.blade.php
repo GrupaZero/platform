@@ -36,7 +36,7 @@
                         <div class="row article-meta">
                             <div class="col-xs-8">
                                 <p class="text-muted">
-                                    <small> @lang('common.postedBy') {{ $child->authorName() }}</small>
+                                    <small>@lang('common.postedBy') {{ $child->authorName() }}</small>
                                     <small>@lang('common.postedOn') {{ $child->publishDate() }}</small>
                                 </p>
                             </div>

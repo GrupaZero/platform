@@ -4,12 +4,12 @@
         <p>
             @lang('common.cookiesInfoText')
             @if(config('gzero.multilang.enabled'))
-                <a href="{{url() . '/' . $lang->code .'/' . option('general', 'cookiesPolicyUrl') }}"
+                <a href="{{url() . '/' . $lang->code .'/' . option('general', 'cookies_policy_url') }}"
                    rel="nofollow" title="@lang('common.cookiesInfoLinkText')">
                     {{ ucfirst(trans('common.cookiesInfoLinkText')) }}
                 </a>
             @else
-                <a href="{{url() . '/' . option('general', 'cookiesPolicyUrl')}}"
+                <a href="{{url() . '/' . option('general', 'cookies_policy_url')}}"
                    rel="nofollow" title="@lang('common.cookiesInfoLinkText')">
                     {{ ucfirst(trans('common.cookiesInfoLinkText')) }}
                 </a>

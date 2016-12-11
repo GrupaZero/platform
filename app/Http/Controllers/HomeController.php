@@ -27,19 +27,18 @@ class HomeController extends BaseController {
      */
     public function index(Request $request)
     {
-
         $contents = $this->contentRepo->getContents(
             [
-                ['isActive', '=', true],
-                ['isOnHome', '=', true]
+                ['is_active', '=', true],
+                ['is_on_home', '=', true]
             ],
             [
-                ['isPromoted', 'DESC'],
-                ['isSticky', 'DESC'],
-                ['publishedAt', 'DESC']
+                ['is_promoted', 'DESC'],
+                ['is_sticky', 'DESC'],
+                ['published_at', 'DESC']
             ],
             $request->get('page', 1),
-            option('general', 'defaultPageSize', 20)
+            option('general', 'default_page_size', 20)
         );
 
         $contents->setPath($request->url());

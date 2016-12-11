@@ -35,7 +35,7 @@ return [
     'loginWith'                => 'lub zaloguj się z',
     'logout'                   => 'Wyloguj',
     'newPassword'              => 'Nowe hasło',
-    'nickName'                 => 'Nick',
+    'nick'                 => 'Nick',
     'noTranslation'            => 'Brak tłumaczenia',
     'notAMember'               => 'Nie masz jeszcze konta?',
     'notPublished'             => 'Niepublikowany',

@@ -35,7 +35,7 @@ return [
     'loginWith'                => 'or sign in with',
     'logout'                   => 'Logout',
     'newPassword'              => 'New password',
-    'nickName'                 => 'Nick name',
+    'nick'                 => 'Nick name',
     'noTranslation'            => 'No translation',
     'notAMember'               => 'Not a member yet?',
     'notPublished'             => 'Not published',

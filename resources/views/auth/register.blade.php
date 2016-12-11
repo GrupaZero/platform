@@ -20,14 +20,14 @@
                     <p class="help-block">{{ $errors->first('email') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->has('nickName') ? ' has-error' : '' }}">
-                <label class="control-label" for="nickName">@lang('common.nickName')</label>
-                <input id="nickName" type="text" class="form-control" name="nickName"
-                       value="{{old('nickName')}}"
-                       placeholder="@lang('common.nickName')"
+            <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
+                <label class="control-label" for="nick">@lang('common.nick')</label>
+                <input id="nick" type="text" class="form-control" name="nick"
+                       value="{{old('nick')}}"
+                       placeholder="@lang('common.nick')"
                        required>
-                @if($errors->has('nickName'))
-                    <p class="help-block">{{ $errors->first('nickName') }}</p>
+                @if($errors->has('nick'))
+                    <p class="help-block">{{ $errors->first('nick') }}</p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">

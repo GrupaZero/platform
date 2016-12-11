@@ -17,7 +17,12 @@
 <script>
     export default {
         mounted() {
-            console.log('Component ready.')
+            console.log('Component ready.');
+
+            this.$http.get('http://api.dev.gzero.pl:8000/v1/admin/contents')
+                .then(response => {
+                    console.log(response);
+                })
         }
     }
 </script>
