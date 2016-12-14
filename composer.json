@@ -18,8 +18,8 @@
         "php": ">=7.0.0",
         "laravel/framework": "5.3.*",
         "gzero/cms": "dev-master",
-        "gzero/api": "dev-laravel_53_migration",
-        "gzero/admin": "dev-laravel_53_upgrade",
+        "gzero/api": "dev-master",
+        "gzero/admin": "dev-master",
         "predis/predis": "^1.1"
     },
     "require-dev": {
@@ -33,7 +33,7 @@
         "symfony/dom-crawler": "3.1.*",
         "satooshi/php-coveralls": "dev-master",
         "flow/jsonpath": "0.3.*",
-        "gzero/testing-db": "0.*"
+        "gzero/testing": "2.*"
     },
     "autoload": {
         "classmap": [
@@ -70,7 +70,7 @@
             "php artisan optimize"
         ],
         "test": [
-            "sudo docker exec $(echo ${PWD##*/} | sed -e 's/_//g')_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www"
+            "sudo docker exec $(echo ${PWD##*/} | sed -e 's/_//g')_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www --env platform"
         ]
     },
     "config": {

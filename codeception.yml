@@ -8,23 +8,17 @@ coverage:
         - app/User.php
     exclude:
         - app/Http/Kernel.php
+include:
+    - vendor/gzero/api
 paths:
     tests: tests
     log: tests/_output
     data: tests/_data
     support: tests/_support
 settings:
+    bootstrap: _bootstrap.php
     colors: true
     memory_limit: 1024M
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-modules:
-    config:
-        Db:
-            dsn: 'mysql:host=dev_db_tests;dbname=gzero-cms'
-            user: 'root'
-            password: ''
-            dump: vendor/gzero/testing-db/dump.sql
-            populate: true
-            cleanup: true
