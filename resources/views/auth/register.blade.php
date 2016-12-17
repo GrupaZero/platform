@@ -51,7 +51,7 @@
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label class="control-label" for="password">@lang('common.password')</label>
                 <input id="password" type="password" class="form-control" name="password"
-                       placeholder="@lang('common.password')">
+                       placeholder="@lang('common.password')" required>
                 @if($errors->has('password'))
                     <p class="help-block">{{ $errors->first('password') }}</p>
                 @endif

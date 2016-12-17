@@ -94,17 +94,6 @@ class FunctionalTester extends \Codeception\Actor {
     }
 
     /**
-     * Logout from page
-     */
-    public function logout()
-    {
-        $I = $this;
-        $I->amOnPage('/en/logout');
-        $I->canSeeCurrentUrlEquals('/en');
-        $I->dontSeeAuthentication();
-    }
-
-    /**
      * Create user and return entity
      *
      * @param array $attributes

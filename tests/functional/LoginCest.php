@@ -95,6 +95,7 @@ class LoginCest {
         $I->haveRecord(
             'users',
             [
+                'nick'       => 'Johny',
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
                 'email'     => 'john@doe.com',
@@ -110,7 +111,7 @@ class LoginCest {
         $I->seeCurrentUrlEquals('/en');
         $I->amOnPage('/en');
         $I->seeAuthentication();
-        $I->see('John Doe');
+        $I->see('Johny');
 
         // Trying to access admin panel
         $I->amOnPage('admin');
@@ -159,10 +160,9 @@ class LoginCest {
     public function canRemindPassword(FunctionalTester $I)
     {
         $I->wantTo('remind a password');
-        $I->amOnPage('/en/password/remind');
-        $I->see('Forgot password?');
-        $I->see('Enter the email address you used for creating your Account and we will send you instructions.');
-        $I->see('Return to sign in');
+        $I->amOnPage('/en/password/reset');
+        $I->see('Reset Password');
+        $I->see('Send password reset link');
     }
 
     public function canNotRemindPasswordAsLoggedUser(FunctionalTester $I)
@@ -181,7 +181,7 @@ class LoginCest {
             ]
         );
         $I->login('john@doe.com', 'password');
-        $I->amOnPage('/en/password/remind');
+        $I->amOnPage('/en/password/reset');
         $I->see('JohnDoe');
     }
 }
