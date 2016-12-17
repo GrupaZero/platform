@@ -11,6 +11,14 @@ window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
 /**
+ * We'll load jQuery Plugins
+ */
+
+window.colorbox = require('jquery-colorbox');
+window.matchHeight = require('jquery-match-height');
+window.twbsResponsivePagination = require('jquery.fn.twbs-responsive-pagination');
+
+/**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
  * and simple, leaving you to focus on building your next great project.

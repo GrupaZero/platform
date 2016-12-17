@@ -14,6 +14,17 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+  mix
+
+  /**
+   * Copy needed files from /node directories
+   * to /public directory.
+   */
+    .copy(
+      'node_modules/jquery-colorbox/i18n',
+      'public/js/vendor/jquery-colorbox/i18n'
+    )
+
+    .sass('app.scss')
+    .webpack('app.js');
 });

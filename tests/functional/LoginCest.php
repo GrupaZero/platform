@@ -4,22 +4,13 @@ use DateTime;
 
 class LoginCest {
 
-    public function _before(FunctionalTester $I)
-    {
-        $I->logout();
-    }
-
-    public function _after(FunctionalTester $I)
-    {
-    }
-
     // tests
     public function register(FunctionalTester $I)
     {
         $I->wantTo('register a user');
 
         $I->amOnPage('/en/register');
-        $I->fillField('nickName', 'NickName');
+        $I->fillField('nick', 'nick');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'example@example.com');
@@ -27,7 +18,7 @@ class LoginCest {
         $I->click('button[type=submit]');
 
         $I->amOnPage('/');
-        $I->seeRecord('Users', ['email' => 'example@example.com']);
+        $I->seeRecord('users', ['email' => 'example@example.com']);
         $I->seeAuthentication();
     }
 
@@ -35,20 +26,20 @@ class LoginCest {
     {
         $I->wantTo('prevent registration a user with already registered email');
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'nickName'  => 'NickName',
-                'firstName' => 'John',
-                'lastName'  => 'Doe',
+                'nick'  => 'nick',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
                 'email'     => 'john@doe.com',
                 'password'  => bcrypt('password'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
 
         $I->amOnPage('/en/register');
-        $I->fillField('nickName', 'NickName');
+        $I->fillField('nick', 'nick');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'john@doe.com');
@@ -64,7 +55,7 @@ class LoginCest {
         $I->wantTo('prevent a spammer users registrations');
 
         $I->amOnPage('/en/register');
-        $I->fillField('nickName', 'NickName');
+        $I->fillField('nick', 'nick');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'example@example.com');
@@ -82,7 +73,7 @@ class LoginCest {
         $I->wantTo('register a user and see welcome page');
 
         $I->amOnPage('/en/register');
-        $I->fillField('nickName', 'NickName');
+        $I->fillField('nick', 'nick');
         $I->fillField('firstName', 'John');
         $I->fillField('lastName', 'Doe');
         $I->fillField('email', 'example@example.com');
@@ -94,7 +85,7 @@ class LoginCest {
         $I->see('Your account was successfully created. Thank you for your registration!');
         $I->see('My Account');
         $I->see('Return to the homepage');
-        $I->seeRecord('Users', ['email' => 'example@example.com']);
+        $I->seeRecord('users', ['email' => 'example@example.com']);
         $I->seeAuthentication();
     }
 
@@ -102,14 +93,14 @@ class LoginCest {
     {
         $I->wantTo('login as a user');
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'firstName' => 'John',
-                'lastName'  => 'Doe',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
                 'email'     => 'john@doe.com',
                 'password'  => bcrypt('password'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
         $I->amOnPage('/en/login');
@@ -150,14 +141,14 @@ class LoginCest {
     {
         $I->wantTo('logout as a user');
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'firstName' => 'John',
-                'lastName'  => 'Doe',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
                 'email'     => 'john@doe.com',
                 'password'  => bcrypt('password'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
         $I->login('john@doe.com', 'password');
@@ -178,15 +169,15 @@ class LoginCest {
     {
         $I->wantTo('remind a password as logged user');
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'nickName'  => 'JohnDoe',
-                'firstName' => 'John',
-                'lastName'  => 'Doe',
+                'nick'  => 'JohnDoe',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
                 'email'     => 'john@doe.com',
                 'password'  => bcrypt('password'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
         $I->login('john@doe.com', 'password');

@@ -114,9 +114,10 @@ class FunctionalTester extends \Codeception\Actor {
     public function haveUser($attributes = [])
     {
         $fakeAttributes = [
-            'firstName' => $this->faker->firstName,
-            'lastName'  => $this->faker->lastName,
-            'email'     => $this->faker->email
+            'first_name' => $this->faker->firstName,
+            'last_name'  => $this->faker->lastName,
+            'email'      => $this->faker->email,
+            'password'   => bcrypt('test123')
         ];
 
         $fakeAttributes = array_merge($fakeAttributes, $attributes);
@@ -136,16 +137,16 @@ class FunctionalTester extends \Codeception\Actor {
     {
         $fakeAttributes = [
             'type'         => ['category', 'content'][rand(0, 1)],
-            'isActive'     => 1,
-            'publishedAt'  => date('Y-m-d H:i:s'),
+            'is_active'     => 1,
+            'published_at'  => date('Y-m-d H:i:s'),
             'translations' => [
-                'langCode'       => 'en',
+                'lang_code'       => 'en',
                 'title'          => $this->faker->realText(38, 1),
                 'teaser'         => '<p>' . $this->faker->realText(300) . '</p>',
                 'body'           => $this->faker->realText(1000),
-                'seoTitle'       => $this->faker->realText(60, 1),
-                'seoDescription' => $this->faker->realText(160, 1),
-                'isActive'       => rand(0, 1)
+                'seo_title'       => $this->faker->realText(60, 1),
+                'seo_description' => $this->faker->realText(160, 1),
+                'is_active'       => rand(0, 1)
             ]
         ];
 

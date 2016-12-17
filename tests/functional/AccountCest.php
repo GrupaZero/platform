@@ -8,15 +8,15 @@ class AccountCest
     public function _before(FunctionalTester $I)
     {
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'nickName' => 'JohnyD',
-                'firstName' => 'Johny',
-                'lastName' => 'Doe',
+                'nick' => 'JohnyD',
+                'first_name' => 'Johny',
+                'last_name' => 'Doe',
                 'email' => 'john@doe.com',
                 'password' => bcrypt('test123'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
     }
@@ -36,15 +36,15 @@ class AccountCest
         $I->canSeeInCurrentUrl('/en/account');
     }
 
-    public function canChangeNickName(FunctionalTester $I)
+    public function canChangeNick(FunctionalTester $I)
     {
-        $I->wantTo('change user nickname');
+        $I->wantTo('change user nick');
         $I->login('john@doe.com', 'test123');
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Nick name');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyDoe', 'email' => 'john@doe.com',  '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyDoe', 'email' => 'john@doe.com',  '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->amOnPage('/en/account');
         $I->see('JohnyDoe');
@@ -57,8 +57,8 @@ class AccountCest
         $I->click('Edit Account', '.user-nav');
         $I->canSee('E-mail');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'email' => 'john@doe.org', '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyD', 'email' => 'john@doe.org', '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->amOnPage('/en/account');
         $I->see('john@doe.org');
@@ -75,8 +75,8 @@ class AccountCest
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'email' => 'john@doe.com', 'firstName' => 'xxx', 'lastName' => 'yyy', '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyD', 'email' => 'john@doe.com', 'first_name' => 'xxx', 'last_name' => 'yyy', '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->amOnPage('/en/account');
         $I->see('xxx yyy');
@@ -89,8 +89,8 @@ class AccountCest
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'email' => 'john@doe.com', 'password' => 'test124', 'password_confirmation' => 'test124', '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyD', 'email' => 'john@doe.com', 'password' => 'test124', 'password_confirmation' => 'test124', '_token' => $token]);
         $I->seeResponseCodeIs(200);
         $I->logout();
         $I->login('john@doe.com', 'test124');
@@ -103,33 +103,33 @@ class AccountCest
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Change password');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyD', 'email' => 'john@doe.com', 'password' => 'test124', '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyD', 'email' => 'john@doe.com', 'password' => 'test124', '_token' => $token]);
         $I->seeResponseCodeIs(400);
     }
 
-    public function canNotChangeNickNameToAlreadyTaken(FunctionalTester $I)
+    public function canNotChangeNickToAlreadyTaken(FunctionalTester $I)
     {
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'nickName' => 'JohnyDoe',
-                'firstName' => 'Johny',
-                'lastName' => 'Doe',
+                'nick' => 'JohnyDoe',
+                'first_name' => 'Johny',
+                'last_name' => 'Doe',
                 'email' => 'john@domain.com',
                 'password' => bcrypt('test123'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
 
-        $I->wantTo('change user nickname to already taken');
+        $I->wantTo('change user nick to already taken');
         $I->login('john@doe.com', 'test123');
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Nick name');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
-        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nickName' => 'JohnyDoe', 'email' => 'john@doe.com',  '_token' => $token]);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
+        $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['nick' => 'JohnyDoe', 'email' => 'john@doe.com',  '_token' => $token]);
         $I->seeResponseCodeIs(400);
         $I->canSee('The nick name has already been taken.');
     }
@@ -137,15 +137,15 @@ class AccountCest
     public function canNotChangeEmailToAlreadyTaken(FunctionalTester $I)
     {
         $I->haveRecord(
-            'Users',
+            'users',
             [
-                'nickName' => 'JohnyDoe',
-                'firstName' => 'Johny',
-                'lastName' => 'Doe',
+                'nick' => 'JohnyDoe',
+                'first_name' => 'Johny',
+                'last_name' => 'Doe',
                 'email' => 'john@domain.com',
                 'password' => bcrypt('test123'),
-                'createdAt' => new DateTime(),
-                'updatedAt' => new DateTime(),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ]
         );
 
@@ -154,7 +154,7 @@ class AccountCest
         $I->click('Edit Account', '.user-nav');
         $I->canSee('Nick name');
         $token = $I->grabValueFrom("input[name='_token']");
-        $loggedUser = $I->grabRecord('Users', ['email' => 'john@doe.com']);
+        $loggedUser = $I->grabRecord('users', ['email' => 'john@doe.com']);
         $I->sendAjaxRequest('PUT', '/en/api/v1/account/' . $loggedUser->id, ['email' => 'john@domain.com', '_token' => $token]);
         $I->seeResponseCodeIs(400);
         $I->canSee('The email has already been taken.');

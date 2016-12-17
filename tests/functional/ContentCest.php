@@ -1,21 +1,12 @@
 <?php namespace platform;
 
 class ContentCest {
-
-    public function _before(FunctionalTester $I)
-    {
-    }
-
-    public function _after(FunctionalTester $I)
-    {
-    }
-
     // tests
     public function canViewArticle(FunctionalTester $I)
     {
         $user        = $I->haveUser();
-        $content     = $I->haveContent(['type' => 'content', 'isActive' => 1], $user);
-        $route       = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
+        $content     = $I->haveContent(['type' => 'content', 'is_active' => 1], $user);
+        $route       = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
         $translation = $content->translations[0];
 
         $I->wantTo('view article ' . $content->id);
@@ -24,8 +15,8 @@ class ContentCest {
 
         $I->canSee($translation->title);
         $I->canSee($translation->body);
-        $I->canSee($user->nickName);
-        $I->canSee(date('d-m-Y', strtotime($content->createdAt)));
+        $I->canSee($user->nick);
+        $I->canSee(date('d-m-Y', strtotime($content->created_at)));
     }
 
 
@@ -35,19 +26,19 @@ class ContentCest {
         $category = $I->haveContent(
             [
                 'type'         => 'category',
-                'isActive'     => 1,
+                'is_active'     => 1,
                 'translations' => [
                     'title'    => 'lorem ipsum',
-                    'langCode' => 'en',
-                    'isActive' => 1
+                    'lang_code' => 'en',
+                    'is_active' => 1
                 ]
             ],
             $user
         );
-        $content  = $I->haveContent(['type' => 'content', 'isActive' => 1, 'parentId' => $category->id], $user);
+        $content  = $I->haveContent(['type' => 'content', 'is_active' => 1, 'parent_id' => $category->id], $user);
 
-        $contentRoute  = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
-        $categoryRoute = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $contentRoute  = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
+        $categoryRoute = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
         $linkName      = ucwords($category->translations[0]->title);
 
         $I->wantTo('use breadcrumbs to go back to category view from article');
@@ -63,9 +54,9 @@ class ContentCest {
 
     public function canViewCategory(FunctionalTester $I)
     {
-        $category = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $content  = $I->haveContent(['type' => 'content', 'isActive' => 1, 'parentId' => $category->id]);
-        $route    = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $category = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $content  = $I->haveContent(['type' => 'content', 'is_active' => 1, 'parent_id' => $category->id]);
+        $route    = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('view category');
         $I->amOnPage($route);
@@ -78,10 +69,10 @@ class ContentCest {
 
     public function canGoToArticleFromCategory(FunctionalTester $I)
     {
-        $category      = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $content       = $I->haveContent(['type' => 'content', 'isActive' => 1, 'parentId' => $category->id]);
-        $contentRoute  = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
-        $categoryRoute = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $category      = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $content       = $I->haveContent(['type' => 'content', 'is_active' => 1, 'parent_id' => $category->id]);
+        $contentRoute  = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
+        $categoryRoute = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('read more');
         $I->amOnPage($categoryRoute);
@@ -93,9 +84,9 @@ class ContentCest {
 
     public function canSeeNotPublishedContentAsAdmin(FunctionalTester $I)
     {
-        $category     = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $content      = $I->haveContent(['type' => 'content', 'isActive' => 0, 'parentId' => $category->id]);
-        $contentRoute = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
+        $category     = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $content      = $I->haveContent(['type' => 'content', 'is_active' => 0, 'parent_id' => $category->id]);
+        $contentRoute = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
 
         $I->wantTo('see not published content as admin user');
         $I->loginAsAdmin();
@@ -108,8 +99,8 @@ class ContentCest {
 
     public function cantSeeNotPublishedContentAsRegularUser(FunctionalTester $I)
     {
-        $content = $I->haveContent(['type' => 'content', 'isActive' => 0]);
-        $route   = '/' . $content->route->translations[0]['langCode'] . '/' . $content->route->translations[0]['url'];
+        $content = $I->haveContent(['type' => 'content', 'is_active' => 0]);
+        $route   = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
 
         $I->wantTo('try to see not published content as regular user');
         $I->amOnPage($route);
@@ -118,34 +109,34 @@ class ContentCest {
 
     public function seeStickyContentOnTopOfTheList(FunctionalTester $I)
     {
-        $category         = $I->haveContent(['type' => 'category', 'isActive' => 1]);
+        $category         = $I->haveContent(['type' => 'category', 'is_active' => 1]);
         $stickyContent    = $I->haveContent(
             [
                 'type'         => 'content',
-                'isActive'     => 1,
+                'is_active'     => 1,
                 'isSticky'     => 1,
-                'parentId'     => $category->id,
+                'parent_id'     => $category->id,
                 'translations' => [
-                    'langCode' => 'en',
+                    'lang_code' => 'en',
                     'title'    => 'This content is sticky.',
-                    'isActive' => 1
+                    'is_active' => 1
                 ]
             ]
         );
         $nonStickyContent = $I->haveContent(
             [
                 'type'         => 'content',
-                'isActive'     => 1,
+                'is_active'     => 1,
                 'isSticky'     => 0,
-                'parentId'     => $category->id,
+                'parent_id'     => $category->id,
                 'translations' => [
-                    'langCode' => 'en',
+                    'lang_code' => 'en',
                     'title'    => 'And this is not.',
-                    'isActive' => 1
+                    'is_active' => 1
                 ]
             ]
         );
-        $route            = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $route            = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('see sticky content on the top of the list');
         $I->amOnPage($route);
@@ -157,34 +148,34 @@ class ContentCest {
 
     public function seePromotedContentOnTopOfTheList(FunctionalTester $I)
     {
-        $category           = $I->haveContent(['type' => 'category', 'isActive' => 1]);
+        $category           = $I->haveContent(['type' => 'category', 'is_active' => 1]);
         $promotedContent    = $I->haveContent(
             [
                 'type'         => 'content',
-                'isActive'     => 1,
+                'is_active'     => 1,
                 'isPromoted'   => 1,
-                'parentId'     => $category->id,
+                'parent_id'     => $category->id,
                 'translations' => [
-                    'langCode' => 'en',
+                    'lang_code' => 'en',
                     'title'    => 'This content is promoted.',
-                    'isActive' => 1
+                    'is_active' => 1
                 ]
             ]
         );
         $nonPromotedContent = $I->haveContent(
             [
                 'type'         => 'content',
-                'isActive'     => 1,
+                'is_active'     => 1,
                 'isPromoted'   => 0,
-                'parentId'     => $category->id,
+                'parent_id'     => $category->id,
                 'translations' => [
-                    'langCode' => 'en',
+                    'lang_code' => 'en',
                     'title'    => 'And this is not',
-                    'isActive' => 1
+                    'is_active' => 1
                 ]
             ]
         );
-        $route              = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $route              = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('see promoted content on the top of the list');
         $I->amOnPage($route);
@@ -195,8 +186,8 @@ class ContentCest {
     
     public function canSeeNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
-        $category = $I->haveContent(['type' => 'category', 'isActive' => 0]);
-        $route    = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $category = $I->haveContent(['type' => 'category', 'is_active' => 0]);
+        $route    = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('see not published category as admin');
         $I->loginAsAdmin();
@@ -209,8 +200,8 @@ class ContentCest {
 
     public function cantSeeNotPublishedCategoryAsUser(FunctionalTester $I)
     {
-        $category = $I->haveContent(['type' => 'category', 'isActive' => 0]);
-        $route    = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $category = $I->haveContent(['type' => 'category', 'is_active' => 0]);
+        $route    = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('cant see unpublished category as user');
         $I->amOnPage($route);
@@ -219,15 +210,15 @@ class ContentCest {
 
     public function canUsePagination(FunctionalTester $I)
     {
-        $category = $I->haveContent(['type' => 'category', 'isActive' => 1]);
-        $route    = '/' . $category->route->translations[0]['langCode'] . '/' . $category->route->translations[0]['url'];
+        $category = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $route    = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
         $counter  = 0;
 
         do {
             $I->haveContent(
                 [
-                    'isActive' => 1,
-                    'parentId' => $category->id
+                    'is_active' => 1,
+                    'parent_id' => $category->id
                 ]
             );
             $counter++;
