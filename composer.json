@@ -55,19 +55,19 @@
         "post-create-project-cmd": [
             "php artisan key:generate",
             "php artisan passport:install",
-            "php artisan vendor:publish --provider=\"Gzero\\Admin\\ServiceProvider\""
+            "php artisan vendor:publish --force --provider=\"Gzero\\Admin\\ServiceProvider\""
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan vendor:publish --provider=\"Gzero\\Admin\\ServiceProvider\"",
-            "php artisan vendor:publish --tag=passport-components",
+            "php artisan vendor:publish --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
+            "php artisan vendor:publish --force --tag=passport-components",
             "php artisan optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan ide-helper:generate",
             "php artisan ide-helper:meta",
-            "php artisan vendor:publish --provider=\"Gzero\\Admin\\ServiceProvider\"",
+            "php artisan vendor:publish --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
             "php artisan optimize"
         ],
         "test": [
