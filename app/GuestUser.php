@@ -5,7 +5,7 @@ namespace App;
 class GuestUser extends User {
 
     /**
-     * @return bool
+     * @return boolean
      */
     public function isSuperAdmin()
     {
@@ -13,7 +13,7 @@ class GuestUser extends User {
     }
 
     /**
-     * @return bool
+     * @return boolean
      */
     public function isGuest()
     {
