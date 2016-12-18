@@ -103,6 +103,7 @@ class FunctionalTester extends \Codeception\Actor {
     public function haveUser($attributes = [])
     {
         $fakeAttributes = [
+            'nick'       => $this->faker->userName,
             'first_name' => $this->faker->firstName,
             'last_name'  => $this->faker->lastName,
             'email'      => $this->faker->email,
@@ -126,13 +127,13 @@ class FunctionalTester extends \Codeception\Actor {
     {
         $fakeAttributes = [
             'type'         => ['category', 'content'][rand(0, 1)],
-            'is_active'     => 1,
-            'published_at'  => date('Y-m-d H:i:s'),
+            'is_active'    => 1,
+            'published_at' => date('Y-m-d H:i:s'),
             'translations' => [
                 'lang_code'       => 'en',
-                'title'          => $this->faker->realText(38, 1),
-                'teaser'         => '<p>' . $this->faker->realText(300) . '</p>',
-                'body'           => $this->faker->realText(1000),
+                'title'           => $this->faker->realText(38, 1),
+                'teaser'          => '<p>' . $this->faker->realText(300) . '</p>',
+                'body'            => $this->faker->realText(1000),
                 'seo_title'       => $this->faker->realText(60, 1),
                 'seo_description' => $this->faker->realText(160, 1),
                 'is_active'       => rand(0, 1)

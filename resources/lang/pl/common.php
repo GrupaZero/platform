@@ -9,7 +9,7 @@ return [
     'allRightsReserved'        => 'Wszelkie prawa zastrzeżone.',
     'anonymous'                => 'Anonimowy',
     'author'                   => 'Autor',
-    'backtoHomepage'           => 'Powrót do strony głównej',
+    'backToHomepage'           => 'Powrót do strony głównej',
     'changesSavedMessage'      => 'Zmiany zostały zapisane!',
     'comments'                 => 'Komentarzy',
     'commentsNoJsMessage'      => 'Proszę włącz JavaScript aby móc zobaczyć komentarze.',

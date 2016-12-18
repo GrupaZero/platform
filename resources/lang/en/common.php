@@ -9,7 +9,7 @@ return [
     'allRightsReserved'        => 'All rights reserved.',
     'anonymous'                => 'Anonymous',
     'author'                   => 'Author',
-    'backtoHomepage'           => 'Return to the homepage',
+    'backToHomepage'           => 'Return to the homepage',
     'changesSavedMessage'      => 'The changes have been saved!',
     'comments'                 => 'Comments',
     'commentsNoJsMessage'      => 'Please enable JavaScript to view the comments.',

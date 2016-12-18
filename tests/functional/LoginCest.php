@@ -46,7 +46,7 @@ class LoginCest {
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
         $I->see('The email has already been taken.');
-        $I->see('The nick name has already been taken.');
+        $I->see('The nick has already been taken.');
         $I->dontSeeAuthentication();
     }
 
@@ -98,8 +98,8 @@ class LoginCest {
                 'nick'       => 'Johny',
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
-                'email'     => 'john@doe.com',
-                'password'  => bcrypt('password'),
+                'email'      => 'john@doe.com',
+                'password'   => bcrypt('password'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
@@ -125,7 +125,7 @@ class LoginCest {
         $I->fillField('email', 'john@doe.com');
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
-        $I->see('The username or password is incorrect. Please try again.');
+        $I->see('These credentials do not match our records.');
         $I->dontSeeAuthentication();
     }
 
@@ -146,8 +146,8 @@ class LoginCest {
             [
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
-                'email'     => 'john@doe.com',
-                'password'  => bcrypt('password'),
+                'email'      => 'john@doe.com',
+                'password'   => bcrypt('password'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
@@ -171,11 +171,11 @@ class LoginCest {
         $I->haveRecord(
             'users',
             [
-                'nick'  => 'JohnDoe',
+                'nick'       => 'JohnDoe',
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
-                'email'     => 'john@doe.com',
-                'password'  => bcrypt('password'),
+                'email'      => 'john@doe.com',
+                'password'   => bcrypt('password'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
