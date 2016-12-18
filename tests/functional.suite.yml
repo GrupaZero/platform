@@ -2,7 +2,7 @@ class_name: FunctionalTester
 modules:
     enabled:
         - Db
-        - platform\Helper\Functional
+        - Platform\Helper\Functional
         - Asserts
         - Laravel5:
             cleanup: false

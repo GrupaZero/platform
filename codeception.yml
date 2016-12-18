@@ -1,5 +1,5 @@
 actor: Tester
-namespace: platform
+namespace: Platform
 coverage:
     enabled: true
     remote: false

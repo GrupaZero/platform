@@ -1,4 +1,4 @@
-<?php namespace platform;
+<?php namespace Platform;
 
 class ContentCest {
     // tests
