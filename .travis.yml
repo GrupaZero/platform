@@ -24,17 +24,17 @@ before_script:
   - docker version
   - docker-compose version
   - docker-compose up -d
-  - docker exec -it platform_dev_web_1 phpdismod xdebug # disabling xdebug to speed up composer
-  - docker exec -it platform_dev_web_1 composer install -d /var/www/ --prefer-source --no-interaction || true
-  - docker exec -it platform_dev_web_1 phpenmod xdebug # enabling xdebug for code coverage
+  - docker exec -i platform_dev_web_1 phpdismod xdebug # disabling xdebug to speed up composer
+  - docker exec -i platform_dev_web_1 composer install -d /var/www/ --prefer-source --no-interaction || true
+  - docker exec -i platform_dev_web_1 phpenmod xdebug # enabling xdebug for code coverage
 
 script:
   - docker exec -i platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --env platform
-  - docker exec -it platform_dev_web_1 mkdir -p /var/www/build/logs
-  - docker exec -it platform_dev_web_1 cp /var/www/tests/_output/coverage.xml /var/www/build/logs/clover.xml
+  - docker exec -i platform_dev_web_1 mkdir -p /var/www/build/logs
+  - docker exec -i platform_dev_web_1 cp /var/www/tests/_output/coverage.xml /var/www/build/logs/clover.xml
 
 after_script:
-  - docker exec -it platform_dev_web_1 bash -c "export TRAVIS=$TRAVIS && export TRAVIS_JOB_ID=$TRAVIS_JOB_ID && cd /var/www && vendor/bin/coveralls -v"
+  - docker exec -i platform_dev_web_1 bash -c "export TRAVIS=$TRAVIS && export TRAVIS_JOB_ID=$TRAVIS_JOB_ID && cd /var/www && vendor/bin/coveralls -v"
 
 matrix:
   fast_finish: true
