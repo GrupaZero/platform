@@ -9,8 +9,8 @@ services:
   - docker
 
 env:
-  DOCKER_VERSION: 1.12.3-0~trusty
-  DOCKER_COMPOSE_VERSION: 1.7.1
+  DOCKER_VERSION: 1.12.5-0~ubuntu-trusty
+  DOCKER_COMPOSE_VERSION: 1.9.0
 
 before_install:
   - apt-cache madison docker-engine # list docker-engine versions
