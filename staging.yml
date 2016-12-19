@@ -2,6 +2,7 @@ version: '2'
 services:
   staging_web:
     build: .
+    restart: "always"
     environment:
       OVERRIDE_UMASK: "022"
       NGINX_HOST: "staging.gzero.pl"
