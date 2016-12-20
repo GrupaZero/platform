@@ -26,9 +26,9 @@ class ContentCest {
         $category = $I->haveContent(
             [
                 'type'         => 'category',
-                'is_active'     => 1,
+                'is_active'    => 1,
                 'translations' => [
-                    'title'    => 'lorem ipsum',
+                    'title'     => 'lorem ipsum',
                     'lang_code' => 'en',
                     'is_active' => 1
                 ]
@@ -109,81 +109,135 @@ class ContentCest {
 
     public function seeStickyContentOnTopOfTheList(FunctionalTester $I)
     {
-        $category         = $I->haveContent(['type' => 'category', 'is_active' => 1]);
-        $stickyContent    = $I->haveContent(
+        $category          = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $nonStickyContent1 = $I->haveContent(
             [
                 'type'         => 'content',
-                'is_active'     => 1,
-                'isSticky'     => 1,
-                'parent_id'     => $category->id,
+                'is_active'    => 1,
+                'is_sticky'    => 0,
+                'parent_id'    => $category->id,
                 'translations' => [
                     'lang_code' => 'en',
-                    'title'    => 'This content is sticky.',
+                    'title'     => 'And this is not.',
                     'is_active' => 1
                 ]
             ]
         );
-        $nonStickyContent = $I->haveContent(
+        $nonStickyContent2 = $I->haveContent(
             [
                 'type'         => 'content',
-                'is_active'     => 1,
-                'isSticky'     => 0,
-                'parent_id'     => $category->id,
+                'is_active'    => 1,
+                'is_sticky'    => 0,
+                'parent_id'    => $category->id,
                 'translations' => [
                     'lang_code' => 'en',
-                    'title'    => 'And this is not.',
+                    'title'     => 'And this is not. #2',
                     'is_active' => 1
                 ]
             ]
         );
-        $route            = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
+        $stickyContent1    = $I->haveContent(
+            [
+                'type'         => 'content',
+                'is_active'    => 0,
+                'is_sticky'    => 1,
+                'parent_id'    => $category->id,
+                'translations' => [
+                    'lang_code' => 'en',
+                    'title'     => 'This content is sticky but not active.',
+                    'is_active' => 0
+                ]
+            ]
+        );
+        $stickyContent2    = $I->haveContent(
+            [
+                'type'         => 'content',
+                'is_active'    => 1,
+                'is_sticky'    => 1,
+                'parent_id'    => $category->id,
+                'translations' => [
+                    'lang_code' => 'en',
+                    'title'     => 'This content is sticky.',
+                    'is_active' => 1
+                ]
+            ]
+        );
+
+        $route = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('see sticky content on the top of the list');
         $I->amOnPage($route);
         $I->seeResponseCodeIs(200);
 
-        $I->see($stickyContent->translations[0]->title, '(//h2)[1]');
+        $I->see($stickyContent2->translations[0]->title, '(//h2)[1]');
     }
 
 
     public function seePromotedContentOnTopOfTheList(FunctionalTester $I)
     {
-        $category           = $I->haveContent(['type' => 'category', 'is_active' => 1]);
-        $promotedContent    = $I->haveContent(
+        $category            = $I->haveContent(['type' => 'category', 'is_active' => 1]);
+        $nonPromotedContent1 = $I->haveContent(
             [
                 'type'         => 'content',
-                'is_active'     => 1,
-                'isPromoted'   => 1,
-                'parent_id'     => $category->id,
+                'is_active'    => 1,
+                'is_promoted'  => 0,
+                'parent_id'    => $category->id,
                 'translations' => [
                     'lang_code' => 'en',
-                    'title'    => 'This content is promoted.',
+                    'title'     => 'And this is not',
                     'is_active' => 1
                 ]
             ]
         );
-        $nonPromotedContent = $I->haveContent(
+        $nonPromotedContent2 = $I->haveContent(
             [
                 'type'         => 'content',
-                'is_active'     => 1,
-                'isPromoted'   => 0,
-                'parent_id'     => $category->id,
+                'is_active'    => 1,
+                'is_promoted'  => 0,
+                'parent_id'    => $category->id,
                 'translations' => [
                     'lang_code' => 'en',
-                    'title'    => 'And this is not',
+                    'title'     => 'And this is not #2',
                     'is_active' => 1
                 ]
             ]
         );
-        $route              = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
+        $promotedContent1    = $I->haveContent(
+            [
+                'type'         => 'content',
+                'is_active'    => 0,
+                'is_promoted'  => 1,
+                'parent_id'    => $category->id,
+                'translations' => [
+                    'lang_code' => 'en',
+                    'title'     => 'This content is promoted but not active',
+                    'is_active' => 0
+                ]
+            ]
+        );
+        $promotedContent2    = $I->haveContent(
+            [
+                'type'         => 'content',
+                'is_active'    => 1,
+                'is_promoted'  => 1,
+                'parent_id'    => $category->id,
+                'translations' => [
+                    'lang_code' => 'en',
+                    'title'     => 'This content is promoted.',
+                    'is_active' => 1
+                ]
+            ]
+        );
+
+        $route = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
 
         $I->wantTo('see promoted content on the top of the list');
         $I->amOnPage($route);
         $I->seeResponseCodeIs(200);
 
-        $I->see($promotedContent->translations[0]->title, '(//h2)[1]');
+        $I->see($promotedContent2->translations[0]->title, '(//h2)[1]');
     }
-    
+
     public function canSeeNotPublishedCategoryAsAdmin(FunctionalTester $I)
     {
         $category = $I->haveContent(['type' => 'category', 'is_active' => 0]);
