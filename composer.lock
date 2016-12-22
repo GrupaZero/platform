@@ -583,12 +583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "4f2c992b0e8d0ce5294ce8c4dfc322b2fa1ffdb0"
+                "reference": "68abf1c6de0618ca16677a4f9aa26bada0c2cf82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/4f2c992b0e8d0ce5294ce8c4dfc322b2fa1ffdb0",
-                "reference": "4f2c992b0e8d0ce5294ce8c4dfc322b2fa1ffdb0",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/68abf1c6de0618ca16677a4f9aa26bada0c2cf82",
+                "reference": "68abf1c6de0618ca16677a4f9aa26bada0c2cf82",
                 "shasum": ""
             },
             "require": {
@@ -622,7 +622,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-12-20T12:25:15+00:00"
+            "time": "2016-12-21T18:06:42+00:00"
         },
         {
             "name": "gzero/api",
@@ -1074,16 +1074,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v1.0.16",
+            "version": "v1.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "7ed1a0b80c1da9a3bf25eb180068ddd005a82068"
+                "reference": "f2a8af3a48adac02288779f59de95f46fef69b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/7ed1a0b80c1da9a3bf25eb180068ddd005a82068",
-                "reference": "7ed1a0b80c1da9a3bf25eb180068ddd005a82068",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/f2a8af3a48adac02288779f59de95f46fef69b7a",
+                "reference": "f2a8af3a48adac02288779f59de95f46fef69b7a",
                 "shasum": ""
             },
             "require": {
@@ -1134,7 +1134,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2016-12-03T16:07:20+00:00"
+            "time": "2016-12-21T13:51:02+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -4095,16 +4095,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929"
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/903fd6318d0a90b4770a009ff73e4a4e9c437929",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c14196e64a78570034afd0b7a9f3757ba71c2a0a",
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a",
                 "shasum": ""
             },
             "require": {
@@ -4154,7 +4154,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-11-28T16:00:31+00:00"
+            "time": "2016-12-20T15:22:42+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

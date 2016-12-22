@@ -6,10 +6,12 @@ services:
     environment:
       OVERRIDE_UMASK: "022"
       NGINX_HOST: "staging.gzero.pl"
+      SSL: "true"
     volumes:
         - ../backups:/var/www/backups # Volume to save backups outside container
     ports:
       - "80:80"
+      - "443:443"
     links:
       - staging_db
       - staging_redis
