@@ -171,8 +171,6 @@ return [
         Gzero\Api\ServiceProvider::class,
         Gzero\Admin\ServiceProvider::class,
 
-        //
-
         /*
          * Application Service Providers...
          */

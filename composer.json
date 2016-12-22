@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.0",
         "laravel/framework": "5.3.*",
         "gzero/cms": "dev-master",
         "gzero/api": "dev-master",

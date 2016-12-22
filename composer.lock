@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ecaf69c49ebf40e99dd9cb7ccfc002c",
+    "content-hash": "7c43cd2fb8a178278b1160937b9d52bd",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -630,12 +630,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "90c299fc0c10b84484ad3983f289e2ef47428fb3"
+                "reference": "8b1aef4377fed4e58e0b6431f5d45e11164ded3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/90c299fc0c10b84484ad3983f289e2ef47428fb3",
-                "reference": "90c299fc0c10b84484ad3983f289e2ef47428fb3",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8b1aef4377fed4e58e0b6431f5d45e11164ded3c",
+                "reference": "8b1aef4377fed4e58e0b6431f5d45e11164ded3c",
                 "shasum": ""
             },
             "require": {
@@ -649,7 +649,7 @@
                 "illuminate/routing": "5.3.*",
                 "laravel/passport": "^1.0",
                 "league/fractal": "0.12.0",
-                "php": ">=7.0.0"
+                "php": ">=7.1.0"
             },
             "require-dev": {
                 "aedart/testing-laravel": "1.8.*",
@@ -684,7 +684,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-12-18T14:09:08+00:00"
+            "time": "2016-12-22T14:31:21+00:00"
         },
         {
             "name": "gzero/cms",
@@ -692,12 +692,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "8eb07fff4e515b1afda1307a253e277dfed031d1"
+                "reference": "271dccaedeb03e9ab50e7e41152027689ec0366c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/8eb07fff4e515b1afda1307a253e277dfed031d1",
-                "reference": "8eb07fff4e515b1afda1307a253e277dfed031d1",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/271dccaedeb03e9ab50e7e41152027689ec0366c",
+                "reference": "271dccaedeb03e9ab50e7e41152027689ec0366c",
                 "shasum": ""
             },
             "require": {
@@ -706,7 +706,7 @@
                 "gzero/eloquent-tree": "3.*",
                 "laravel/framework": "5.3.*",
                 "laravel/passport": "^1.0",
-                "php": ">=7.0.0",
+                "php": ">=7.1.0",
                 "robclancy/presenter": "1.3.1"
             },
             "replace": {
@@ -749,7 +749,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-12-18T13:53:52+00:00"
+            "time": "2016-12-22T14:20:09+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -5547,7 +5547,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.1.0"
     },
     "platform-dev": []
 }

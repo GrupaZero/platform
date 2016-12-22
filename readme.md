@@ -89,7 +89,7 @@ After Installing Docker Engine you need to build required docker containers, go 
  - Create database schema and required data
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate --path=vendor/gzero/cms/src/migrations/
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
 ```
 
  - You can also seed database with example data using this command
