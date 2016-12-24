@@ -9,7 +9,7 @@
                     @endif
                     <p>
                         <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">
-                            @lang('common.getStartedToday')
+                            @lang('common.get_started_today')
                         </a>
                     </p>
                 </div>
@@ -22,7 +22,7 @@
                     @endif
                     <p>
                         <a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">
-                            @lang('common.getStartedToday')
+                            @lang('common.get_started_today')
                         </a>
                     </p>
                 </div>

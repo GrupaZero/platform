@@ -1,13 +1,13 @@
 @extends('layouts.withoutBlocks')
 
 @section('title')
-    @lang('common.passwordReset')
+    @lang('common.password_reset')
 @stop
 
 <!-- Main Content -->
 @section('content')
     <div class="col-md-4 col-md-offset-4">
-        <h1 class="page-header">@lang('common.passwordReset')</h1>
+        <h1 class="page-header">@lang('common.password_reset')</h1>
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-                    @lang('common.sendPasswordResetLink')
+                    @lang('common.send_password_reset_link')
                 </button>
             </div>
         </form>

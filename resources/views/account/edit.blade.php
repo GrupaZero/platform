@@ -34,19 +34,19 @@
                     @endif
                 </div>
                 <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
-                    <label class="control-label" for="firstName">@lang('common.firstName')</label>
+                    <label class="control-label" for="firstName">@lang('common.first_name')</label>
                     <input type="text" id="firstName" name="firstName" class="form-control"
                            value="{{ $user->firstName }}"
-                           placeholder="@lang('common.firstName')">
+                           placeholder="@lang('common.first_name')">
                     @if($errors->first('firstName'))
                         <p class="help-block">{{ $errors->first('firstName') }}</p>
                     @endif
                 </div>
                 <div class="form-group{{ $errors->first('lastName') ? ' has-error' : '' }}">
-                    <label class="control-label" for="lastName">@lang('common.lastName')</label>
+                    <label class="control-label" for="lastName">@lang('common.last_name')</label>
                     <input type="text" id="lastName" name="lastName" class="form-control"
                            value="{{ $user->lastName }}"
-                           placeholder="@lang('common.lastName')">
+                           placeholder="@lang('common.last_name')">
                     @if($errors->first('lastName'))
                         <p class="help-block">{{ $errors->first('lastName') }}</p>
                     @endif
@@ -54,32 +54,32 @@
                 @if(strpos($user->email,'@'))
                     @if($user->password)
                         <div class="separator">
-                            <span>@lang('common.passwordChange')</span>
+                            <span>@lang('common.password_change')</span>
                         </div>
                         <p class="text-muted">
-                            <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.leaveBlank')
+                            <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.leave_blank')
                         </p>
                     @else
                         <div class="separator">
-                            <span>@lang('common.passwordSet')</span>
+                            <span>@lang('common.password_set')</span>
                         </div>
                         <p class="text-success">
-                            <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.setPasswordToLogin')
+                            <i class="fa fa-info-circle"><!-- icon --></i> @lang('common.set_password_to_login')
                         </p>
                     @endif
                     <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
-                        <label class="control-label" for="password">@lang('common.newPassword')</label>
+                        <label class="control-label" for="password">@lang('common.new_password')</label>
                         <input type="password" id="password" name="password" class="form-control"
-                               placeholder="@lang('common.newPassword')">
+                               placeholder="@lang('common.new_password')">
                         @if($errors->first('password'))
                             <p class="help-block">{{ $errors->first('password') }}</p>
                         @endif
                     </div>
                     <div class="form-group{{ $errors->first('password_confirmation') ? ' has-error' : '' }}">
-                        <label class="control-label" for="passwordConfirmation">@lang('common.passwordRepeat')</label>
+                        <label class="control-label" for="passwordConfirmation">@lang('common.password_repeat')</label>
                         <input type="password" id="passwordConfirmation" name="password_confirmation"
                                class="form-control"
-                               placeholder="@lang('common.passwordRepeat')">
+                               placeholder="@lang('common.password_repeat')">
                         @if($errors->first('password_confirmation'))
                             <p class="help-block">{{ $errors->first('password_confirmation') }}</p>
                         @endif
@@ -98,14 +98,14 @@
                 Loading.start('#main-container');
                 $.ajax({
                     url: "/<?php echo (config(
-                            'gzero.multilang.enabled'
+                        'gzero.multilang.enabled'
                     )) ? $lang->code . '/' : '';?>api/v1/account/<?php echo $user->id; ?>",
                     data: $('#edit-account-form').serializeObject(),
                     type: 'PUT',
                     success: function(xhr) {
                         Loading.stop();
                         // set success message
-                        setGlobalMessage('success', "@lang('common.changesSavedMessage')");
+                        setGlobalMessage('success', "@lang('common.changes_saved_message')");
                         hideMessages();
                         clearFormValidationErrors();
                         // reload page to load any view changes

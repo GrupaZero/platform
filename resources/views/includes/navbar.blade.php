@@ -3,13 +3,13 @@
     <div class="container clearfix">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">@lang('common.toggleNavigation')</span>
+                <span class="sr-only">@lang('common.toggle_navigation')</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('gzero.siteName') }}">
-                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('gzero.siteName') }}">
+            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('gzero.site_name') }}">
+                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('gzero.site_name') }}">
             </a>
         </div>
         <div class="collapse navbar-collapse">

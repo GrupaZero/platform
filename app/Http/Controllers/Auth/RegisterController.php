@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\SendWelcomeEmail;
 use App\User;
 use Gzero\Repository\UserRepository;
 use Gzero\Validator\BaseUserValidator;
@@ -78,6 +79,8 @@ class RegisterController extends BaseController {
         event(new Registered($user));
 
         $this->guard()->login($user);
+
+        dispatch(new SendWelcomeEmail($user));
 
         return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }

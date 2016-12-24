@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="checkbox text-right">
-                            <a href="{{ route('password.reset') }}">@lang('common.forgotPassword')</a>
+                            <a href="{{ route('password.reset') }}">@lang('common.forgot_password')</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
         @endif
         <hr/>
         <div class="text-center">
-            @lang('common.notAMember') <a href="{{ route('register') }}"> @lang('common.register')</a>
+            @lang('common.not_a_member') <a href="{{ route('register') }}"> @lang('common.register')</a>
         </div>
     </div>
 @endsection

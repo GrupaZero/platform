@@ -1,12 +1,12 @@
 @extends('layouts.withoutBlocks')
 
 @section('title')
-    @lang('common.passwordReset')
+    @lang('common.password_reset')
 @stop
 
 @section('content')
     <div class="col-md-4 col-md-offset-4">
-        <h1 class="page-header">@lang('common.passwordReset')</h1>
+        <h1 class="page-header">@lang('common.password_reset')</h1>
 
         <form class="form-horizontal" role="form" method="POST" action="{{ route('post.password.reset') }}">
             {{ csrf_field() }}
@@ -29,7 +29,7 @@
                 @endif
             </div>
             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                <label for="password-confirm" class="control-label">@lang('common.passwordConfirm')</label>
+                <label for="password-confirm" class="control-label">@lang('common.password_confirm')</label>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
                 @if ($errors->has('password_confirmation'))
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-                    @lang('common.passwordReset')
+                    @lang('common.password_reset')
                 </button>
             </div>
         </form>

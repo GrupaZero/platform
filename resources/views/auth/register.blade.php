@@ -31,19 +31,19 @@
                 @endif
             </div>
             <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
-                <label class="control-label" for="firstName">@lang('common.firstName')</label>
+                <label class="control-label" for="firstName">@lang('common.first_name')</label>
                 <input id="firstName" type="text" class="form-control" name="firstName"
                        value="{{old('firstName')}}"
-                       placeholder="@lang('common.firstName') (@lang('common.optional'))">
+                       placeholder="@lang('common.first_name') (@lang('common.optional'))">
                 @if($errors->has('firstName'))
                     <p class="help-block">{{ $errors->first('firstName') }}</p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
-                <label class="control-label" for="lastName">@lang('common.lastName')</label>
+                <label class="control-label" for="lastName">@lang('common.last_name')</label>
                 <input id="lastName" type="text" class="form-control" name="lastName"
                        value="{{old('lastName')}}"
-                       placeholder="@lang('common.lastName') (@lang('common.optional'))">
+                       placeholder="@lang('common.last_name') (@lang('common.optional'))">
                 @if($errors->has('lastName'))
                     <p class="help-block">{{ $errors->first('lastName') }}</p>
                 @endif
