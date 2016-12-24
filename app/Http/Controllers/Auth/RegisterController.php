@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Jobs\SendWelcomeEmail;
-use App\User;
 use Gzero\Repository\UserRepository;
 use Gzero\Validator\BaseUserValidator;
-use App\Http\Controllers\BaseController;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Validation\ValidationException;
+use Gzero\Core\Controllers\BaseController;
 
 class RegisterController extends BaseController {
     /*
@@ -42,7 +40,6 @@ class RegisterController extends BaseController {
      */
     public function __construct(UserRepository $userRepo, BaseUserValidator $validator)
     {
-        parent::__construct();
         $this->userRepo  = $userRepo;
         $this->validator = $validator;
         $this->middleware('guest');

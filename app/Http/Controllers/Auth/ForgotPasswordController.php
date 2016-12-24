@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\BaseController;
+use Gzero\Core\Controllers\BaseController;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends BaseController
@@ -27,7 +27,6 @@ class ForgotPasswordController extends BaseController
      */
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('guest');
     }
 }

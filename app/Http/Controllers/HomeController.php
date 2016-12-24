@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Gzero\Repository\ContentRepository;
 use Illuminate\Http\Request;
+use Gzero\Core\Controllers\BaseController;
 
 class HomeController extends BaseController {
 
@@ -14,7 +15,6 @@ class HomeController extends BaseController {
 
     public function __construct(ContentRepository $contentRepo)
     {
-        parent::__construct();
         $this->contentRepo = $contentRepo;
     }
 

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gzero\Core\Controllers\BaseController;
 
 /**
  * This file is part of the GZERO CMS package.
@@ -35,6 +36,5 @@ class AccountController extends BaseController {
         }
 
         return redirect()->route('home');
-
     }
 }

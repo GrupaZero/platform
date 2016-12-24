@@ -1,4 +1,4 @@
-@if(config('gzero.multilang.enabled') && !empty($langs))
+@if(config('gzero.multilang.enabled'))
     <div class="container text-right small">
         <ul class="langs-list list-inline m0">
             @foreach($langs as $availableLang)
