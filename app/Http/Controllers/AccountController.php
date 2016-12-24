@@ -37,4 +37,9 @@ class AccountController extends BaseController {
 
         return redirect()->route('home');
     }
+
+    public function oauth()
+    {
+        return view('account.oauth', ['menu' => app('user.menu')->getMenu(), 'user' => auth()->user()]);
+    }
 }

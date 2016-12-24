@@ -23,11 +23,6 @@
         </p>
     @endif
 
-    <passport-clients></passport-clients>
-    <passport-authorized-clients></passport-authorized-clients>
-    <passport-personal-access-tokens></passport-personal-access-tokens>
-    <example></example>
-
     <a href="{{ route('account.edit') }}" title="@lang('user.edit_account')" class="btn btn-default">
         @lang('user.edit_account')
     </a>

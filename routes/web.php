@@ -23,6 +23,7 @@ Route::group(
                 $router->get('account', 'AccountController@account')->name('account');
                 $router->get('account/edit', 'AccountController@edit')->name('account.edit');
                 $router->get('account/welcome', 'AccountController@welcome')->name('account.welcome');
+                $router->get('account/oauth', 'AccountController@oauth')->name('account.oauth');
             }
         );
         // START Laravel Auth routes

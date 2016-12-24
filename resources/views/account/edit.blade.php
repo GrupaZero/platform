@@ -14,7 +14,6 @@
     <div class="row">
         <div class="col-md-5">
             <form id="edit-account-form" action="#" method="POST" role="form">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group{{ $errors->first('nick') ? ' has-error' : '' }}">
                     <label class="control-label" for="firstName">@lang('common.nick')</label>
                     <input type="text" id="nick" name="nick" class="form-control"
@@ -97,9 +96,11 @@
                 event.preventDefault();
                 Loading.start('#main-container');
                 $.ajax({
-                    url: "/<?php echo (config(
-                        'gzero.multilang.enabled'
-                    )) ? $lang->code . '/' : '';?>api/v1/account/<?php echo $user->id; ?>",
+                    url: "{{ request()->getScheme() }}://api.{{ request()->getHTTPHost() }}/v1/user/account",
+                    headers: {'X-CSRF-TOKEN': Laravel.csrfToken},
+                    xhrFields: {
+                        withCredentials: true
+                    },
                     data: $('#edit-account-form').serializeObject(),
                     type: 'PUT',
                     success: function(xhr) {
@@ -108,17 +109,13 @@
                         setGlobalMessage('success', "@lang('common.changes_saved_message')");
                         hideMessages();
                         clearFormValidationErrors();
-                        // reload page to load any view changes
-                        setTimeout(function() {
-                            location.reload();
-                        }, 1000);
                     },
-                    error: function(xhr, status, error) {
+                    error: function(xhr) {
                         Loading.stop();
-                        if (typeof xhr.responseJSON !== 'undefined') {
+                        if (typeof xhr.responseJSON !== 'undefined' && xhr.status === 422) {
                             // clear previous errors
                             clearFormValidationErrors();
-                            $.each(xhr.responseJSON.errors, function(index, error) {
+                            $.each(xhr.responseJSON.error.errors, function(index, error) {
                                 // set form errors
                                 setFormValidationErrors(index, error);
                             });
