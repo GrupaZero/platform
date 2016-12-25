@@ -2,29 +2,34 @@
 
 use Illuminate\Http\Request;
 use Gzero\Core\Controllers\BaseController;
+use Gzero\Core\Menu\Register;
 
-/**
- * This file is part of the GZERO CMS package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Class AccountController
- *
- * @author     Adrian Skierniewski <adrian.skierniewski@gmail.com>
- * @copyright  Copyright (c) 2014, Adrian Skierniewski
- */
 class AccountController extends BaseController {
+    /**
+     * @var Register
+     */
+    protected $userMenu;
+
+    /**
+     * AccountController constructor.
+     *
+     * @param Register $userMenu
+     */
+    public function __construct(Register $userMenu)
+    {
+        $this->userMenu = $userMenu;
+        $this->userMenu->addLink(route('account'), 'user.my_account');
+    }
 
     public function account()
     {
         /**@TODO we need proper user menu method */
-        return view('account.index', ['menu' => app('user.menu')->getMenu(), 'user' => auth()->user()]);
+        return view('account.index', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
     }
 
     public function edit()
     {
-        return view('account.edit', ['menu' => app('user.menu')->getMenu(), 'user' => auth()->user()]);
+        return view('account.edit', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
     }
 
     public function welcome(Request $request)
@@ -40,6 +45,6 @@ class AccountController extends BaseController {
 
     public function oauth()
     {
-        return view('account.oauth', ['menu' => app('user.menu')->getMenu(), 'user' => auth()->user()]);
+        return view('account.oauth', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
     }
 }
