@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a57e3213de66fad9c90209b00fcbae48",
-    "content-hash": "7c43cd2fb8a178278b1160937b9d52bd",
+    "hash": "5c133f4d6ea8e08a7f3306e8a7c447fa",
+    "content-hash": "c93e5f198f80b49bd36e4eb70fdf57f0",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -1466,6 +1466,51 @@
                 "server"
             ],
             "time": "2016-10-12 14:08:15"
+        },
+        {
+            "name": "martinlindhe/laravel-vue-i18n-generator",
+            "version": "0.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martinlindhe/laravel-vue-i18n-generator.git",
+                "reference": "baa633c4ecbe23c58932e22c499a9976705ce518"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/martinlindhe/laravel-vue-i18n-generator/zipball/baa633c4ecbe23c58932e22c499a9976705ce518",
+                "reference": "baa633c4ecbe23c58932e22c499a9976705ce518",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MartinLindhe\\VueInternationalizationGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Lindhe",
+                    "email": "martin@ubique.se"
+                }
+            ],
+            "description": "Generates a vue-i18n compatible include file from your Laravel translations.",
+            "homepage": "http://github.com/martinlindhe/laravel-vue-i18n-generator",
+            "keywords": [
+                "laravel",
+                "vue-i18n"
+            ],
+            "time": "2016-11-01 08:42:41"
         },
         {
             "name": "monolog/monolog",

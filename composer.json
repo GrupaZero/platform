@@ -60,7 +60,6 @@
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
-            "php artisan vendor:publish --force --tag=passport-components",
             "php artisan optimize"
         ],
         "post-update-cmd": [

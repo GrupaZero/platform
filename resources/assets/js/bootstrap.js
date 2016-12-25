@@ -1,4 +1,5 @@
 
+import Translations from './lang/locales.js';
 window._ = require('lodash');
 
 /**
@@ -25,7 +26,18 @@ window.twbsResponsivePagination = require('jquery.fn.twbs-responsive-pagination'
  */
 
 window.Vue = require('vue');
+require('vue-i18n');
 require('vue-resource');
+
+/**
+ * We'll get the application language and load all available translations
+ */
+Vue.config.lang = document.documentElement.lang;
+
+Object.keys(Translations).forEach(function (lang) {
+    Vue.locale(lang, Translations[lang])
+});
+
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
