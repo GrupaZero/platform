@@ -8,3 +8,5 @@ Homestead.yaml
 /tests/_output
 /public/gzero/*
 tests/_output/*
+.phpstorm.meta.php
+_ide_helper.php
