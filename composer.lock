@@ -3646,16 +3646,16 @@
         },
         {
             "name": "gzero/testing",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/testing.git",
-                "reference": "084897b8c25f7e4fa70ca646a89d9e85500a04d3"
+                "reference": "a4c6bb839b2418ee8639952be96a6af580d14fcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/testing/zipball/084897b8c25f7e4fa70ca646a89d9e85500a04d3",
-                "reference": "084897b8c25f7e4fa70ca646a89d9e85500a04d3",
+                "url": "https://api.github.com/repos/GrupaZero/testing/zipball/a4c6bb839b2418ee8639952be96a6af580d14fcf",
+                "reference": "a4c6bb839b2418ee8639952be96a6af580d14fcf",
                 "shasum": ""
             },
             "type": "library",
@@ -3670,7 +3670,7 @@
                 }
             ],
             "description": "Package that helps testing across our packages",
-            "time": "2016-12-08 19:58:12"
+            "time": "2016-12-25 16:08:31"
         },
         {
             "name": "hamcrest/hamcrest-php",
