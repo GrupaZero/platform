@@ -13,6 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        // @TODO Routes blocks handler
         //'Illuminate\Routing\Events\RouteMatched' => [
         //    'Gzero\Core\Listeners\Events\BlockLoad',
         //],
