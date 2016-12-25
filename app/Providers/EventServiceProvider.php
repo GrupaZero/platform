@@ -13,8 +13,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        //'Illuminate\Routing\Events\RouteMatched' => [
+        //    'Gzero\Core\Listeners\Events\BlockLoad',
+        //],
+        'router.contentMatched' => [
+            'Gzero\Core\Listeners\Events\BlockLoad',
         ],
     ];
 

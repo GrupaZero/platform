@@ -24,6 +24,10 @@ elixir(mix => {
       'node_modules/jquery-colorbox/i18n',
       'public/js/vendor/jquery-colorbox/i18n'
     )
+      .copy(
+      'node_modules/bootstrap-sass/assets/fonts/bootstrap',
+      'public/fonts/bootstrap'
+    )
 
     .sass('app.scss')
     .webpack('app.js');

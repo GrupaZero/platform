@@ -4,7 +4,7 @@
         <p>
             @lang('common.cookies_info_text')
             @if(config('gzero.multilang.enabled'))
-                <a href="{{url() . '/' . $lang->code .'/' . option('general', 'cookies_policy_url') }}"
+                    <a href="{{url() . '/' . $lang->code .'/' . option('general', 'cookies_policy_url') }}"
                    rel="nofollow" title="@lang('common.cookies_info_link_text')">
                     {{ ucfirst(trans('common.cookies_info_link_text')) }}
                 </a>
