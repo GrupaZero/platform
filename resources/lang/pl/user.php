@@ -7,6 +7,6 @@ return [
     'edit_account' => 'Edytuj Konto',
     'get_help'     => 'Pomoc',
     'my_account'   => 'Moje Konto',
-    'oauth'        => 'Oauth',
+    'oauth'        => 'OAuth',
     'user'         => 'Użytkownik',
 ];

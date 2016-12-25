@@ -19,6 +19,7 @@ class AccountController extends BaseController {
     {
         $this->userMenu = $userMenu;
         $this->userMenu->addLink(route('account'), 'user.my_account');
+        $this->userMenu->addLink(route('account.oauth'), 'user.oauth');
     }
 
     public function account()
