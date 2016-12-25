@@ -17,7 +17,9 @@ services:
       - staging_redis
   staging_db:
     image: mariadb:10.1
+    restart: "always"
     env_file:
       - docker.env
   staging_redis:
     image: redis:3
+    restart: "always"
