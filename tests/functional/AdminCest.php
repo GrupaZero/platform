@@ -1,16 +1,6 @@
-<?php namespace platform;
+<?php namespace Platform;
 
 class AdminCest {
-
-    public function _before(FunctionalTester $I)
-    {
-        $I->logout();
-    }
-
-    public function _after(FunctionalTester $I)
-    {
-    }
-
     // tests
     public function cantAccessAdminPanelAsRegularUser(FunctionalTester $I)
     {
@@ -25,6 +15,5 @@ class AdminCest {
         $I->amOnPage('/admin');
         $I->seeResponseCodeIs(200);
     }
-
 }
 

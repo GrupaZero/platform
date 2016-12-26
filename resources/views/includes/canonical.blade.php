@@ -1,7 +1,7 @@
 @if(!empty($paginator) && $paginator->currentPage() > 1)
     <link rel="canonical" href="{{$paginator->url($paginator->currentPage())}}"/>
 @else
-    <link rel="canonical" href="{{Url::current()}}"/>
+    <link rel="canonical" href="{{url()->current()}}"/>
 @endif
 @if(!empty($paginator) && $paginator->hasPages())
     @if($paginator->previousPageUrl())

@@ -1,18 +1,7 @@
-<?php namespace platform;
-
-use DateTime;
+<?php namespace Platform;
 
 class HomePageCest
 {
-
-    public function _before(FunctionalTester $I)
-    {
-    }
-
-    public function _after(FunctionalTester $I)
-    {
-    }
-
     // tests
     public function canViewHomePage(FunctionalTester $I)
     {

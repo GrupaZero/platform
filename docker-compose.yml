@@ -2,14 +2,17 @@ version: '2'
 services:
   dev_web:
     build: .
-    restart: always
+    restart: "no"
     environment:
       OVERRIDE_UMASK: "002"
       NGINX_HOST: "dev.gzero.pl"
+      SSL: "true"
+      XDEBUG: "true"
     volumes:
       - .:/var/www
     ports:
-      - "8000:80"
+      - "80:80"
+      - "443:443"
     links:
       - dev_db
       - dev_db_tests

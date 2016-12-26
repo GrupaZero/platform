@@ -10,7 +10,7 @@
 
             // This adds the custom login/logout functionality
             this.sso = {
-                name: "{{ config('gzero.siteName') }}",
+                name: "{{ config('gzero.site_name') }}",
                 url: "{{ route('login') }}",
                 logout: "{{ route('logout') }}"
             };
@@ -25,7 +25,7 @@
 @endif
 <noscript>
     <div class="alert alert-info" role="alert">
-        @lang('common.commentsNoJsMessage')
+        @lang('common.comments_no_js_message')
     </div>
     <a href="https://disqus.com/?ref_noscript" rel="nofollow"></a>
 </noscript>

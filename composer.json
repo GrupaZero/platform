@@ -15,24 +15,25 @@
         }
     ],
     "require": {
-        "gzero/cms": "0.3.*",
-        "gzero/api": "0.3.*",
-        "gzero/admin": "0.3.*",
-        "gzero/social": "^1.0",
-        "gzero/vanilla-integration": "^1.0",
-        "thomaswelton/laravel-gravatar": "~1.0",
-        "predis/predis": "1.0.*",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "php": ">=7.1.0",
+        "laravel/framework": "5.3.*",
+        "gzero/cms": "dev-master",
+        "gzero/api": "dev-master",
+        "gzero/admin": "dev-master",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "2.0.*",
-        "barryvdh/laravel-debugbar": "2.0.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
-        "codeception/codeception": "2.1.4",
-        "fzaninotto/faker": "1.4.0",
+        "barryvdh/laravel-ide-helper": "2.2.*",
+        "barryvdh/laravel-debugbar": "2.3.*",
+        "codeception/codeception": "2.2.*",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*",
         "satooshi/php-coveralls": "dev-master",
-        "flow/jsonpath": "^0.3.1"
+        "flow/jsonpath": "0.3.*",
+        "gzero/testing": "2.*"
     },
     "autoload": {
         "classmap": [
@@ -43,23 +44,33 @@
         }
     },
     "autoload-dev": {
-        "classmap": []
+        "classmap": [
+            "tests/TestCase.php"
+        ]
     },
     "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate",
+            "php artisan passport:install",
+            "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\""
+        ],
         "post-install-cmd": [
-            "php artisan vendor:publish --tag=public --force",
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
             "php artisan optimize"
         ],
         "post-update-cmd": [
-            "php artisan vendor:publish --tag=public --force",
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
             "php artisan optimize"
         ],
-        "post-create-project-cmd": [
-            "php artisan vendor:publish --tag=public --force",
-            "php -r \"copy('.env.example', '.env');\"",
-            "php artisan key:generate"
+        "test": [
+            "sudo docker exec $(echo ${PWD##*/} | sed -e 's/_//g')_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www --env platform"
         ]
     },
     "config": {

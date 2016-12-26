@@ -10,15 +10,15 @@
 // ----- Variable overrides for Bootstrap and other libraries ----- //
 @import "libs/library-variable-overrides";
 // ----- Twitter Bootstrap ----- //
-@import "libs/bootstrap/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 // ----- Font Awesome ----- //
-@import "libs/font-awesome/font-awesome";
+@import "node_modules/font-awesome/scss/font-awesome";
 // ----- Animate.scss ----- //
-@import "libs/animate/animate";
+@import "node_modules/animate-scss/animate.scss";
 // ----- Metis Menu ----- //
-@import "libs/metisMenu/metisMenu";
+//@import "node_modules/metismenu/dist/metisMenu.css";
 // ----- colorbox ----- //
-@import "libs/colorbox/colorbox";
+//@import "node_modules/jquery-colorbox/colorbox";
 // ----- Reset - Normalize.css ----- //
 // @import "libs/normalize";
 // ----- Compass - Setup: http://compass-style.org/help/ ----- //
@@ -96,7 +96,7 @@
   background-color : #EEE;
 }
 
-#wrapper {
+.wrapper {
   background-color : $white;
 }
 

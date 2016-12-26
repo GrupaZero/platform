@@ -6,7 +6,7 @@
 <body class="@yield('bodyClass') sidebar-left">
 <?php $sidebarClass = 'col-md-3'; ?>
 <?php $contentClass = 12 - (1 * substr($sidebarClass, -1)); ?>
-<div id="wrapper">
+<div id="app" class="wrapper">
     <header>
         @include('includes.langs')
         @include('includes.navbar')

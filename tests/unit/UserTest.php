@@ -1,4 +1,4 @@
-<?php namespace platform;
+<?php namespace Platform;
 
 use App\User;
 
@@ -11,9 +11,9 @@ class UserTest extends \Codeception\TestCase\Test {
     public function testRegister()
     {
         $user = new User();
-        $user->fill(['firstName' => 'John', 'lastName' => 'Doe', 'email' => 'johndoe@example.com']);
-        $this->assertEquals('John', $user->firstName);
-        $this->assertEquals('Doe', $user->lastName);
+        $user->fill(['first_name' => 'John', 'last_name' => 'Doe', 'email' => 'johndoe@example.com']);
+        $this->assertEquals('John', $user->first_name);
+        $this->assertEquals('Doe', $user->last_name);
         $this->assertEquals('johndoe@example.com', $user->email);
     }
 

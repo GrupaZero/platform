@@ -19,6 +19,7 @@ function contains() {
 }
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PACKAGE_DIR="$(basename "$(dirname $SCRIPT_DIR)")"
 PACKAGES=("admin" "api" "cms" "social" "vanilla-integration")
 OPERATIONS=("mount" "umount")
 PACKAGE=$1
@@ -30,7 +31,7 @@ OPERATION=$2
 
 if [ $OPERATION == "mount" ]; then
   # Checking if package was mounted before
-  if grep -qs "platform/vendor/gzero/$PACKAGE" /proc/mounts; then
+  if grep -qs "$PACKAGE_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
       echo -e "\e[1mUnmounting previously mounted package\e[0m"
       sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
       echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
@@ -54,7 +55,7 @@ fi
 
 if [ $OPERATION == "umount" ]; then
   # Checking if package was mounted before
-  if grep -qs "platform/vendor/gzero/$PACKAGE" /proc/mounts; then
+  if grep -qs "$PACKAGE_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
     echo -e "\e[1mUnmounting package \e[91m$PACKAGE\e[0m"
     sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
     if [ $PACKAGE == "admin" ]; then

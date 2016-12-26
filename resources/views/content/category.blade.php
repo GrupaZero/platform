@@ -20,6 +20,7 @@
     </div>
 @stop
 @section('content')
+    @include('includes.notPublishedContentMsg')
     <h1 class="content-title page-header">
         {{ $activeTranslation->title }}
     </h1>
@@ -39,8 +40,8 @@
                         <div class="row article-meta">
                             <div class="col-xs-8">
                                 <p class="text-muted">
-                                    <small> @lang('common.postedBy') {{ $child->authorName() }}</small>
-                                    <small>@lang('common.postedOn') {{ $child->publishDate() }}</small>
+                                    <small> @lang('common.posted_by') {{ $child->authorName() }}</small>
+                                    <small>@lang('common.posted_on') {{ $child->publishDate() }}</small>
                                 </p>
                             </div>
                             @if(config('disqus.enabled') && $child->isCommentAllowed)
@@ -64,7 +65,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <a href="{{ $childUrl }}" class="btn btn-default read-more">
-                                @lang('common.readMore')
+                                @lang('common.read_more')
                             </a>
                         </div>
                         <div class="col-sm-8 text-right text-left-xs mt20-xs">
@@ -73,7 +74,7 @@
                                     @lang('common.rating') {!! $child->ratingStars() !!}
                                 </li>
                                 <li>
-                                    @lang('common.numberOfViews') {{ $child->visits }}
+                                    @lang('common.number_of_views') {{ $child->visits }}
                                 </li>
                             </ul>
                         </div>

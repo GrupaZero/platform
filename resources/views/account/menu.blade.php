@@ -1,6 +1,6 @@
 @section('menuTree')
-    <img src="{{ Gravatar::src(Auth::user()->email, 150) }}" class="center-block img-avatar img-circle">
-    <h3>{{ Auth::user()->getPresenter()->displayName() }}</h3>
+    {{--<img src="{{ Gravatar::src($user->email, 150) }}" class="center-block img-avatar img-circle">--}}
+    <h3>{{ $user->displayName() }}</h3>
     @foreach($menu as $link)
         <li class="{{ (URL::full() ==  $link['url']) ? 'active' : '' }}">
             @if($link['children'])

@@ -3,13 +3,13 @@
     <div class="container clearfix">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">@lang('common.toggleNavigation')</span>
+                <span class="sr-only">@lang('common.toggle_navigation')</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('gzero.siteName') }}">
-                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('gzero.siteName') }}">
+            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('gzero.site_name') }}">
+                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('gzero.site_name') }}">
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -18,7 +18,7 @@
                     <a href="{{ route('home') }}">@lang('common.home')</a>
                 </li>
             </ul>
-            @if (!Auth::check())
+            @if ($user->isGuest())
                 <div class="navbar-right">
                     <a href="{{ route('login') }}" class="btn btn-default navbar-btn"
                        title="@lang('common.login')">
@@ -33,18 +33,18 @@
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img src="{{ Gravatar::src(Auth::user()->email, 35) }}"
-                                 class="navbar-avatar img-circle">
-                            {{ Auth::user()->getPresenter()->displayName() }}
+                            {{--<img src="{{ Gravatar::src($user->email, 35) }}"--}}
+                            {{--class="navbar-avatar img-circle">--}}
+                            {{ $user->nick }}
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            @if (Auth::user()->isAdmin)
-                            <li>
-                                <a href="{{ route('admin') }}" target="_blank">
-                                    @lang('user.admin_panel') <i class="fa fa-cogs pull-right"></i>
-                                </a>
-                            </li>
+                            @if ($user->isSuperAdmin())
+                                <li>
+                                    <a href="{{ route('admin') }}" target="_blank">
+                                        @lang('user.admin_panel') <i class="fa fa-cogs pull-right"></i>
+                                    </a>
+                                </li>
                             @endif
                             <li class="{{ (URL::full() ==  route('account')) ? 'active' : '' }}">
                                 <a href="{{ route('account') }}">
@@ -58,9 +58,15 @@
                             </li>
                             <li class="divider"></li>
                             <li class="{{ (URL::full() ==  route('logout')) ? 'active' : '' }}">
-                                <a href="{{ route('logout') }}">
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     @lang('common.logout') <i class="fa fa-sign-out fa-fw pull-right"></i>
                                 </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->

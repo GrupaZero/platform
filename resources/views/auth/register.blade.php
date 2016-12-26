@@ -8,54 +8,58 @@
     <div class="col-md-4 col-md-offset-4">
         <h1 class="page-header">@lang('common.register')</h1>
 
-        <form id="register-account-form" method="POST" role="form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
+        <form id="register-account-form" method="POST" role="form" action="{{ route('register') }}">
+            {{ csrf_field() }}
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="control-label" for="email">@choice('common.email', 1)</label>
-                <input type="email" id="email" name="email" class="form-control"
-                       value="{{old('email')}}"
-                       placeholder="@choice('common.email', 1)">
-                @if($errors->first('email'))
+                <input id="email" type="email" class="form-control" name="email"
+                       value="{{ old('email') }}"
+                       placeholder="@choice('common.email', 1)"
+                       required autofocus>
+                @if ($errors->has('email'))
                     <p class="help-block">{{ $errors->first('email') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->first('nickName') ? ' has-error' : '' }}">
-                <label class="control-label" for="firstName">@lang('common.nickName')</label>
-                <input type="text" id="nickName" name="nickName" class="form-control"
-                       value="{{old('nickName')}}"
-                       placeholder="@lang('common.nickName')">
-                @if($errors->first('nickName'))
-                    <p class="help-block">{{ $errors->first('nickName') }}</p>
+            <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
+                <label class="control-label" for="nick">@lang('common.nick')</label>
+                <input id="nick" type="text" class="form-control" name="nick"
+                       value="{{old('nick')}}"
+                       placeholder="@lang('common.nick')"
+                       required>
+                @if($errors->has('nick'))
+                    <p class="help-block">{{ $errors->first('nick') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->first('firstName') ? ' has-error' : '' }}">
-                <label class="control-label" for="firstName">@lang('common.firstName')</label>
-                <input type="text" id="firstName" name="firstName" class="form-control"
+            <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
+                <label class="control-label" for="firstName">@lang('common.first_name')</label>
+                <input id="firstName" type="text" class="form-control" name="firstName"
                        value="{{old('firstName')}}"
-                       placeholder="@lang('common.firstName') (@lang('common.optional'))">
-                @if($errors->first('firstName'))
+                       placeholder="@lang('common.first_name') (@lang('common.optional'))">
+                @if($errors->has('firstName'))
                     <p class="help-block">{{ $errors->first('firstName') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->first('lastName') ? ' has-error' : '' }}">
-                <label class="control-label" for="lastName">@lang('common.lastName')</label>
-                <input type="text" id="lastName" name="lastName" class="form-control"
+            <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                <label class="control-label" for="lastName">@lang('common.last_name')</label>
+                <input id="lastName" type="text" class="form-control" name="lastName"
                        value="{{old('lastName')}}"
-                       placeholder="@lang('common.lastName') (@lang('common.optional'))">
-                @if($errors->first('lastName'))
+                       placeholder="@lang('common.last_name') (@lang('common.optional'))">
+                @if($errors->has('lastName'))
                     <p class="help-block">{{ $errors->first('lastName') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label class="control-label" for="password">@lang('common.password')</label>
-                <input type="password" id="password" name="password" class="form-control"
-                       placeholder="@lang('common.password')">
-                @if($errors->first('password'))
+                <input id="password" type="password" class="form-control" name="password"
+                       placeholder="@lang('common.password')" required>
+                @if($errors->has('password'))
                     <p class="help-block">{{ $errors->first('password') }}</p>
                 @endif
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.register')</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    @lang('common.register')
+                </button>
             </div>
             <input id="accountIntent" type="text" name="accountIntent" class="hidden">
         </form>
@@ -63,4 +67,4 @@
             @include('gzero-social::includes.socialLogin')
         @endif
     </div>
-@stop
+@endsection

@@ -1,70 +1,48 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use Gzero\Repository\ContentRepository;
 use Illuminate\Http\Request;
-use Illuminate\Filesystem\Filesystem;
+use Gzero\Core\Controllers\BaseController;
 
 class HomeController extends BaseController {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller renders your application's "dashboard" for users that
-    | are authenticated. Of course, you are free to change or remove the
-    | controller as you wish. It is just here to get your app started!
-    |
-    */
 
     /**
      * @var ContentRepository
      */
     protected $contentRepo;
 
-    /**
-     * @var Filesystem
-     */
-    protected $filesystem;
-
-    public function __construct(ContentRepository $contentRepo, Filesystem $filesystem)
+    public function __construct(ContentRepository $contentRepo)
     {
-        parent::__construct();
         $this->contentRepo = $contentRepo;
-        $this->filesystem  = $filesystem;
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $contents = $this->contentRepo->getContents(
             [
-                ['isActive', '=', true],
-                ['isOnHome', '=', true]
+                ['is_active', '=', true],
+                ['is_on_home', '=', true]
             ],
             [
-                ['isPromoted', 'DESC'],
-                ['isSticky', 'DESC'],
-                ['publishedAt', 'DESC']
+                ['is_promoted', 'DESC'],
+                ['is_sticky', 'DESC'],
+                ['published_at', 'DESC']
             ],
             $request->get('page', 1),
-            option('general', 'defaultPageSize', 20)
+            option('general', 'default_page_size', 20)
         );
 
         $contents->setPath($request->url());
 
-        $slides = $this->filesystem->files(config('gzero.upload.path') . '/slides');
-
-        foreach ($slides as $key => $slide) {
-            $temp         = explode('/slides/', $slide);
-            $slides[$key] = array_pop($temp);
-        }
-
-        return view(
-            'home',
-            [
-                'contents' => $contents,
-                'slides'   => $slides
-            ]
-        );
+        return view('home', ['contents' => $contents]);
     }
 }

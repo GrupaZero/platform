@@ -1,11 +1,23 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="@yield('seoDescription', option('general', 'siteDesc'))">
-<title>@yield('title', option('general', 'siteName'))</title>
+
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<meta name="description" content="@yield('seoDescription', option('general', 'site_desc'))">
+<title>@yield('title', option('general', 'site_name'))</title>
 @yield('metaData')
 
-@if(option('seo', 'googleAnalyticsId'))
+<!-- Scripts -->
+<script>
+    window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+    ]); ?>
+
+</script>
+
+@if(option('seo', 'google_analytics_id'))
 <!-- Google Analytics web tracking code -->
 <script type="text/javascript">
     (function(i, s, o, g, r, a, m) {
@@ -20,12 +32,12 @@
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', '{{ option('seo', 'googleAnalyticsId') }}', 'auto');
+    ga('create', '{{ option('seo', 'google_analytics_id') }}', 'auto');
     ga('require', 'eventTracker');
     ga('require', 'displayfeatures');
     @yield('gaPlugin')
-    @if(Auth::check())
-    ga('set', 'userId', 'gz-user-{{ Auth::user()->id }}');
+    @if(!$user->isGuest())
+    ga('set', 'userId', 'gz-user-{{ $user->id }}');
     @endif
     ga('send', 'pageview');
     @yield('gaEvent')
@@ -39,7 +51,7 @@
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": "{{ config('gzero.siteName') }}",
+      "name": "{{ config('gzero.site_name') }}",
       "url": "{{ route('home') }}"
     },
     {

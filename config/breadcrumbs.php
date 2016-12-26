@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'view' => 'includes/breadcrumbs',
+
+	'view' => 'includes/breadcrumbs',
+
 ];

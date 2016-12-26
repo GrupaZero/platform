@@ -1,5 +1,5 @@
 actor: Tester
-namespace: platform
+namespace: Platform
 coverage:
     enabled: true
     remote: false
@@ -7,7 +7,6 @@ coverage:
         - app/Http/*
         - app/User.php
     exclude:
-        - app/Http/routes.php
         - app/Http/Kernel.php
 include:
     - vendor/gzero/api
@@ -15,18 +14,13 @@ paths:
     tests: tests
     log: tests/_output
     data: tests/_data
-    helpers: tests/_support
-    envs: tests/_envs
+    support: tests/_support
 settings:
     bootstrap: _bootstrap.php
+    lint: true
+    shuffle: true
     colors: true
     memory_limit: 1024M
-modules:
-    config:
-        Db:
-            dsn: 'mysql:host=dev_db_tests;dbname=gzero-cms'
-            user: 'root'
-            password: ''
-            dump: tests/_data/dump.sql
-            populate: true
-            cleanup: false
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed

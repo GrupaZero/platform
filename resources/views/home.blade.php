@@ -2,10 +2,12 @@
 @section('bodyClass', 'home')
 @section('head')
     @parent
-    @include('includes.canonical', ['paginator' => $contents])
+    @if(!empty($contents))
+        @include('includes.canonical', ['paginator' => $contents])
+    @endif
     @if(config('gzero.multilang.enabled'))
         @foreach($langs as $availableLang)
-            <link rel="alternate" href="{{url() . '/' . $availableLang->code}}" hreflang="{{$availableLang->code}}"/>
+            <link rel="alternate" href="{{url('/') . '/' . $availableLang->code}}" hreflang="{{$availableLang->code}}"/>
         @endforeach
     @endif
 @stop
@@ -19,66 +21,68 @@
     @endif
 @stop
 @section('content')
-    @foreach($contents as $index => $child)
-        <?php $activeTranslation = $child->translation($lang->code); ?>
-        @if($activeTranslation)
-            <?php $childUrl = $child->routeUrl($lang->code); ?>
-            <div class="media">
-                <h2 class="page-header">
-                    <a href="{{ $childUrl }}">
-                        {{ $activeTranslation->title }}
-                    </a>
-                </h2>
-                <div class="media-body">
-                    <div class="row article-meta">
-                        <div class="col-xs-8">
-                            <p class="text-muted">
-                                <small> @lang('common.postedBy') {{ $child->authorName() }}</small>
-                                <small>@lang('common.postedOn') {{ $child->publishDate() }}</small>
-                            </p>
-                        </div>
-                        @if(config('disqus.enabled') && $child->isCommentAllowed)
-                            <div class="col-xs-4 text-right">
-                                <a href="{{ $childUrl }}#disqus_thread"
-                                   data-disqus-identifier="{{ $child->id }}"
-                                   class="disqus-comment-count">
-                                    0 @lang('common.comments')
-                                </a>
+    @if(!empty($contents))
+        @foreach($contents as $index => $child)
+            <?php $activeTranslation = $child->translation($lang->code); ?>
+            @if($activeTranslation)
+                <?php $childUrl = $child->routeUrl($lang->code); ?>
+                <div class="media">
+                    <h2 class="page-header">
+                        <a href="{{ $childUrl }}">
+                            {{ $activeTranslation->title }}
+                        </a>
+                    </h2>
+                    <div class="media-body">
+                        <div class="row article-meta">
+                            <div class="col-xs-8">
+                                <p class="text-muted">
+                                    <small>@lang('common.posted_by') {{ $child->authorName() }}</small>
+                                    <small>@lang('common.posted_on') {{ $child->publishDate() }}</small>
+                                </p>
                             </div>
-                        @endif
+                            @if(config('disqus.enabled') && $child->isCommentAllowed)
+                                <div class="col-xs-4 text-right">
+                                    <a href="{{ $childUrl }}#disqus_thread"
+                                       data-disqus-identifier="{{ $child->id }}"
+                                       class="disqus-comment-count">
+                                        0 @lang('common.comments')
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="thumb mb20">
+                            <a href="{{ $childUrl }}" title="{{$activeTranslation->title}}">
+                                <img class="img-responsive" src="http://placehold.it/847x312"
+                                     width="847" height="312" alt="{{$activeTranslation->title}}">
+                            </a>
+                        </div>
+                        {!! $activeTranslation->teaser !!}
                     </div>
-                    <div class="thumb mb20">
-                        <a href="{{ $childUrl }}" title="{{$activeTranslation->title}}">
-                            <img class="img-responsive" src="http://placehold.it/847x312"
-                                 width="847" height="312" alt="{{$activeTranslation->title}}">
-                        </a>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="{{ $childUrl }}" class="btn btn-default read-more">
+                                @lang('common.read_more')
+                            </a>
+                        </div>
+                        <div class="col-sm-8 text-right text-left-xs mt20-xs">
+                            <ul class="list-inline text-muted">
+                                <li>
+                                    @lang('common.rating') {!! $child->ratingStars() !!}
+                                </li>
+                                <li>
+                                    @lang('common.number_of_views') {{ $child->visits }}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    {!! $activeTranslation->teaser !!}
                 </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <a href="{{ $childUrl }}" class="btn btn-default read-more">
-                            @lang('common.readMore')
-                        </a>
-                    </div>
-                    <div class="col-sm-8 text-right text-left-xs mt20-xs">
-                        <ul class="list-inline text-muted">
-                            <li>
-                                @lang('common.rating') {!! $child->ratingStars() !!}
-                            </li>
-                            <li>
-                                @lang('common.numberOfViews') {{ $child->visits }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            @if($index < sizeof($contents) -1)
-            <hr/>
+                @if($index < sizeof($contents) -1)
+                    <hr/>
+                @endif
             @endif
-        @endif
-    @endforeach
-    {!! $contents->render() !!}
+        @endforeach
+        {!! $contents->render() !!}
+    @endif
 @stop
 @section('footerScripts')
     @if(config('disqus.enabled') && config('disqus.domain'))

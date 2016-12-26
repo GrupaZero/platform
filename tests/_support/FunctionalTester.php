@@ -1,8 +1,13 @@
-<?php namespace platform;
+<?php namespace Platform;
 
 use Faker\Factory;
+use Gzero\Entity\Block;
 use Gzero\Entity\Content;
+use Gzero\Entity\File;
+use Gzero\Entity\FileType;
+use Gzero\Repository\BlockRepository;
 use Gzero\Repository\ContentRepository;
+use Gzero\Repository\FileRepository;
 use Gzero\Repository\UserRepository;
 use Gzero\Entity\User;
 use Illuminate\Events\Dispatcher;
@@ -37,6 +42,11 @@ class FunctionalTester extends \Codeception\Actor {
     private $contentRepo;
 
     /**
+     * @var BlockRepository
+     */
+    private $blockRepo;
+
+    /**
      * @var \Faker\Generator
      */
     private $faker;
@@ -48,9 +58,21 @@ class FunctionalTester extends \Codeception\Actor {
      */
     public function __construct(\Codeception\Scenario $scenario)
     {
-        $this->faker        = Factory::create();
-        $this->contentRepo = new ContentRepository(new Content(), new Dispatcher());
-        $this->userRepo     = new UserRepository(new User(), new Dispatcher());
+        $this->faker       = Factory::create();
+        $this->contentRepo = new ContentRepository(
+            new Content(),
+            new Dispatcher(),
+            new FileRepository(
+                new File(), new FileType(), new Dispatcher()
+            )
+        );
+        $this->blockRepo   = new BlockRepository(
+            new Block(), new Dispatcher(),
+            new FileRepository(
+                new File(), new FileType(), new Dispatcher()
+            )
+        );
+        $this->userRepo    = new UserRepository(new User(), new Dispatcher());
         parent::__construct($scenario);
     }
 
@@ -85,17 +107,6 @@ class FunctionalTester extends \Codeception\Actor {
     }
 
     /**
-     * Logout from page
-     */
-    public function logout()
-    {
-        $I = $this;
-        $I->amOnPage('/en/logout');
-        $I->canSeeCurrentUrlEquals('/en');
-        $I->dontSeeAuthentication();
-    }
-
-    /**
      * Create user and return entity
      *
      * @param array $attributes
@@ -105,9 +116,11 @@ class FunctionalTester extends \Codeception\Actor {
     public function haveUser($attributes = [])
     {
         $fakeAttributes = [
-            'firstName' => $this->faker->firstName,
-            'lastName'  => $this->faker->lastName,
-            'email'     => $this->faker->email
+            'nick'       => $this->faker->userName,
+            'first_name' => $this->faker->firstName,
+            'last_name'  => $this->faker->lastName,
+            'email'      => $this->faker->email,
+            'password'   => bcrypt('test123')
         ];
 
         $fakeAttributes = array_merge($fakeAttributes, $attributes);
@@ -127,16 +140,16 @@ class FunctionalTester extends \Codeception\Actor {
     {
         $fakeAttributes = [
             'type'         => ['category', 'content'][rand(0, 1)],
-            'isActive'     => 1,
-            'publishedAt'  => date('Y-m-d H:i:s'),
+            'is_active'    => 1,
+            'published_at' => date('Y-m-d H:i:s'),
             'translations' => [
-                'langCode'       => 'en',
-                'title'          => $this->faker->realText(38, 1),
-                'teaser'         => '<p>' . $this->faker->realText(300) . '</p>',
-                'body'           => $this->faker->realText(1000),
-                'seoTitle'       => $this->faker->realText(60, 1),
-                'seoDescription' => $this->faker->realText(160, 1),
-                'isActive'       => rand(0, 1)
+                'lang_code'       => 'en',
+                'title'           => $this->faker->realText(38, 1),
+                'teaser'          => '<p>' . $this->faker->realText(300) . '</p>',
+                'body'            => $this->faker->realText(1000),
+                'seo_title'       => $this->faker->realText(60, 1),
+                'seo_description' => $this->faker->realText(160, 1),
+                'is_active'       => rand(0, 1)
             ]
         ];
 
@@ -145,5 +158,33 @@ class FunctionalTester extends \Codeception\Actor {
         return $this->contentRepo->create($fakeAttributes, $user);
     }
 
+    /**
+     * Create block and return entity
+     *
+     * @param bool|false $attributes
+     * @param null       $user
+     *
+     * @return Block
+     */
+    public function haveBlock($attributes = false, $user = null)
+    {
+        $fakeAttributes = [
+            'type'         => 'basic',
+            'region'       => 'header',
+            'weight'       => 1,
+            'filter'       => [],
+            'options'      => [],
+            'is_active'    => true,
+            'is_cacheable' => true,
+            'translations' => [
+                'lang_code' => 'en',
+                'title'     => $this->faker->realText(38, 1),
+                'body'      => $this->faker->realText(1000),
+            ]
+        ];
 
+        $fakeAttributes = array_merge($fakeAttributes, $attributes);
+
+        return $this->blockRepo->create($fakeAttributes, $user);
+    }
 }

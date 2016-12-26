@@ -8,22 +8,26 @@
     <div class="col-md-4 col-md-offset-4">
         <h1 class="page-header">@lang('common.login')</h1>
 
-        <form method="POST" role="form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group{{ $errors->first('email') ? ' has-error' : '' }}">
+        <form role="form" method="POST" action="{{ route('post.login') }}">
+            {{ csrf_field() }}
+
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="control-label" for="email">@choice('common.email', 1)</label>
-                <input type="email" id="email" name="email" class="form-control"
-                       value="{{old('email')}}"
-                       placeholder="@choice('common.email', 1)">
-                @if($errors->first('email'))
+                <input id="email" type="email" class="form-control" name="email"
+                       value="{{ old('email') }}"
+                       placeholder="@choice('common.email', 1)"
+                       required autofocus>
+                @if ($errors->has('email'))
                     <p class="help-block">{{ $errors->first('email') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->first('password') ? ' has-error' : '' }}">
-                <label class="control-label" for="password">@lang('common.password')</label>
-                <input type="password" id="password" name="password" class="form-control"
-                       placeholder="@lang('common.password')">
-                @if($errors->first('password'))
+
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <label for="password" class="control-label">@lang('common.password')</label>
+                <input id="password" type="password" class="form-control" name="password"
+                       placeholder="@lang('common.password')"
+                       required>
+                @if ($errors->has('password'))
                     <p class="help-block">{{ $errors->first('password') }}</p>
                 @endif
             </div>
@@ -38,19 +42,21 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="checkbox text-right">
-                            <a href="{{ route('password.remind') }}">@lang('common.forgotPassword')</a>
+                            <a href="{{ route('password.reset') }}">@lang('common.forgot_password')</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">@lang('common.login')</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                @lang('common.login')
+            </button>
         </form>
         @if(isProviderLoaded('Gzero\Social\ServiceProvider'))
             @include('gzero-social::includes.socialLogin')
         @endif
         <hr/>
         <div class="text-center">
-            @lang('common.notAMember') <a href="{{ route('register') }}"> @lang('common.register')</a>
+            @lang('common.not_a_member') <a href="{{ route('register') }}"> @lang('common.register')</a>
         </div>
     </div>
-@stop
+@endsection

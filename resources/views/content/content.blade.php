@@ -27,14 +27,15 @@
     </div>
 @stop
 @section('content')
+    @include('includes.notPublishedContentMsg')
     <h1 class="content-title page-header">
         {{ $activeTranslation->title }}
     </h1>
     <div class="row content-meta">
         <div class="col-sm-7">
             <p class="content-author text-muted">
-                <i>@lang('common.postedBy') {{ $content->authorName() }}</i>
-                <i>@lang('common.postedOn') {{ $content->publishDate() }}</i>
+                <i>@lang('common.posted_by') {{ $content->authorName() }}</i>
+                <i>@lang('common.posted_on') {{ $content->publishDate() }}</i>
             </p>
         </div>
         <div class="col-sm-5 text-right text-left-sm text-left-xs">

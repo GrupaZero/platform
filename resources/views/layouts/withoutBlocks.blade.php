@@ -4,7 +4,7 @@
     @include('includes.head')
 </head>
 <body class="@yield('bodyClass')">
-<div id="wrapper">
+<div id="app" class="wrapper">
     <header>
         @include('includes.langs')
         @include('includes.navbar')

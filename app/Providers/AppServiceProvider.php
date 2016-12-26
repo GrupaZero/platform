@@ -1,28 +1,13 @@
-<?php namespace App\Providers;
+<?php
 
-use Gzero\Core\AbstractServiceProvider;
+namespace App\Providers;
 
-class AppServiceProvider extends AbstractServiceProvider {
+use Barryvdh\Debugbar\ServiceProvider as DebugbarServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-    /**
-     * List of additional providers
-     *
-     * @var array
-     */
-    protected $providers = [
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
-    ];
-
-    /**
-     * List of service providers aliases
-     *
-     * @var array
-     */
-    protected $aliases = [
-        'Debugbar'  => 'Barryvdh\Debugbar\Facade'
-    ];
-
+class AppServiceProvider extends ServiceProvider
+{
     /**
      * Bootstrap any application services.
      *
@@ -35,7 +20,7 @@ class AppServiceProvider extends AbstractServiceProvider {
             function ($view) {
                 $data = [];
                 $user = auth()->user();
-                if ($user) {
+                if (!$user->isGuest()) {
                     $data = [
                         "id"       => $user["id"],
                         "username" => $user->getPresenter()->displayName(),
@@ -78,20 +63,13 @@ class AppServiceProvider extends AbstractServiceProvider {
     /**
      * Register any application services.
      *
-     * This service provider is a great spot to register your various container
-     * bindings with the application. As you can see, we are registering our
-     * "Registrar" implementation here. You can add your own bindings too!
-     *
      * @return void
      */
     public function register()
     {
-        $this->registerAdditionalProviders();
-        $this->registerProvidersAliases();
-        $this->app->bind(
-            'Illuminate\Contracts\Auth\Registrar',
-            'App\Services\Registrar'
-        );
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(DebugbarServiceProvider::class);
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
     }
-
 }
