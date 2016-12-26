@@ -20,6 +20,7 @@
     </div>
 @stop
 @section('content')
+    @include('includes.notPublishedContentMsg')
     <h1 class="content-title page-header">
         {{ $activeTranslation->title }}
     </h1>
