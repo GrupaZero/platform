@@ -6,6 +6,7 @@ use Gzero\Core\DynamicRouter;
 use Gzero\Repository\LangRepository;
 use Gzero\Repository\RepositoryException;
 use Gzero\Core\Controllers\BaseController;
+use Illuminate\Http\Request;
 
 class ContentController extends BaseController {
 
@@ -28,25 +29,36 @@ class ContentController extends BaseController {
     /**
      * Dynamic router handles CMS content
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Support\Facades\View
      */
-    public function dynamicRouter()
+    public function dynamicRouter(Request $request)
     {
         // If no current language detected
         if (!$this->langRepository->getCurrent()) {
             abort(404);
         }
         try {
-            return $this->dynamicRouter->handleRequest($this->getRequestedUrl(), $this->langRepository->getCurrent());
+            return $this->dynamicRouter->handleRequest(
+                $this->getRequestedUrl($request),
+                $this->langRepository->getCurrent(),
+                $request
+            );
         } catch (RepositoryException $e) {
             abort(404);
         }
     }
 
-    protected function getRequestedUrl()
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
+    protected function getRequestedUrl(Request $request)
     {
         if (config('gzero.multilang.enabled') and !config('gzero.multilang.subdomain')) {
-            $segments = request()->segments();
+            $segments = $request->segments();
             array_shift($segments);
             return implode('/', $segments);
         }
