@@ -1,9 +1,11 @@
 <?php namespace Platform;
 
 use Faker\Factory;
+use Gzero\Entity\Block;
 use Gzero\Entity\Content;
 use Gzero\Entity\File;
 use Gzero\Entity\FileType;
+use Gzero\Repository\BlockRepository;
 use Gzero\Repository\ContentRepository;
 use Gzero\Repository\FileRepository;
 use Gzero\Repository\UserRepository;
@@ -40,6 +42,11 @@ class FunctionalTester extends \Codeception\Actor {
     private $contentRepo;
 
     /**
+     * @var BlockRepository
+     */
+    private $blockRepo;
+
+    /**
      * @var \Faker\Generator
      */
     private $faker;
@@ -55,6 +62,12 @@ class FunctionalTester extends \Codeception\Actor {
         $this->contentRepo = new ContentRepository(
             new Content(),
             new Dispatcher(),
+            new FileRepository(
+                new File(), new FileType(), new Dispatcher()
+            )
+        );
+        $this->blockRepo   = new BlockRepository(
+            new Block(), new Dispatcher(),
             new FileRepository(
                 new File(), new FileType(), new Dispatcher()
             )
@@ -145,5 +158,33 @@ class FunctionalTester extends \Codeception\Actor {
         return $this->contentRepo->create($fakeAttributes, $user);
     }
 
+    /**
+     * Create block and return entity
+     *
+     * @param bool|false $attributes
+     * @param null       $user
+     *
+     * @return Block
+     */
+    public function haveBlock($attributes = false, $user = null)
+    {
+        $fakeAttributes = [
+            'type'         => 'basic',
+            'region'       => 'header',
+            'weight'       => 1,
+            'filter'       => [],
+            'options'      => [],
+            'is_active'    => true,
+            'is_cacheable' => true,
+            'translations' => [
+                'lang_code' => 'en',
+                'title'     => $this->faker->realText(38, 1),
+                'body'      => $this->faker->realText(1000),
+            ]
+        ];
 
+        $fakeAttributes = array_merge($fakeAttributes, $attributes);
+
+        return $this->blockRepo->create($fakeAttributes, $user);
+    }
 }
