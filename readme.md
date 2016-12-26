@@ -2,7 +2,7 @@
 
 GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
-**[VIEW DEMO](http://staging.gzero.pl/en)** - you can log in with this credentials:
+**[VIEW DEMO](https://staging.gzero.pl/en)** - you can log in with this credentials:
 
 ```
 login: admin@gzero.pl
@@ -11,21 +11,26 @@ pass: test
 
 **The project is still in the phase of intensive development**
 
-**The project uses [Docker](https://www.docker.com/what-docker) containers to package entire application with all of its dependencies into a standardized unit for 
-software development.**
+**The project uses [Docker](https://www.docker.com/what-docker) containers to package entire application with all of its dependencies into a standardized unit.**
 
 ## Installation
 
-Clone this project directly form github
+Use composer to create new project:
+
+```
+composer create-project --prefer-dist gzero/platform project_name dev-master
+```
 
 ##### Install dependencies
 To install all required dependencies run:
+
 ```
 composer install
 ```
 
 ##### Directories permissions
-Set permissions to storage & bootstrap cache
+Set permissions to storage & bootstrap cache:
+
 ```
 sudo chmod 777 -R storage/
 sudo chmod 777 -R bootstrap/cache/
@@ -56,7 +61,6 @@ Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation inst
 After Installing Docker Engine you need to build required docker containers, go to project directory and run:
 
  - Build docker containers
-
  
  ```
  sudo docker-compose build
@@ -90,6 +94,12 @@ After Installing Docker Engine you need to build required docker containers, go 
  
 ```
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
+```
+ 
+ - Create laravel passport oauth keys & db entries
+ 
+```
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:install
 ```
 
  - You can also seed database with example data using this command
