@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -13,12 +12,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // @TODO Routes blocks handler
-        //'Illuminate\Routing\Events\RouteMatched' => [
-        //    'Gzero\Core\Listeners\Events\BlockLoad',
-        //],
-        'router.contentMatched' => [
-            'Gzero\Core\Listeners\Events\BlockLoad',
+        'Illuminate\Routing\Events\RouteMatched' => [
+            'Gzero\Core\Listeners\BlockLoad',
+        ],
+        'Gzero\Core\Events\ContentRouteMatched' => [
+            'Gzero\Core\Listeners\BlockLoad',
         ],
     ];
 

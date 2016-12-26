@@ -312,23 +312,23 @@ class BlockCest {
         // Block visible on all pages
         $I->canSee($block1Translation->title);
         $I->canSee($block1Translation->body);
-        // Block visible on all root children's pages
+        // Block visible only on all content children's pages
         $I->cantSee($block2Translation->title);
         $I->cantSee($block2Translation->body);
-        // Block hidden on all root children's pages
-        $I->cantSee($block3Translation->title);
-        $I->cantSee($block3Translation->body);
+        // Block hidden only on all content children's pages
+        $I->canSee($block3Translation->title);
+        $I->canSee($block3Translation->body);
         // Block visible only on homepage
         $I->canSee($block4Translation->title);
         $I->canSee($block4Translation->body);
         // Block hidden only on homepage
         $I->cantSee($block5Translation->title);
         $I->cantSee($block5Translation->body);
-        // Block visible for all content parents children's
+        // Block visible only on all content parents children's
         $I->cantSee($block6Translation->title);
         $I->cantSee($block6Translation->body);
-        // Block hidden for all content parents children's
-        $I->cantSee($block7Translation->title);
-        $I->cantSee($block7Translation->body);
+        // Block hidden only on  all content parents children's
+        $I->canSee($block7Translation->title);
+        $I->canSee($block7Translation->body);
     }
 }
