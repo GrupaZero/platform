@@ -27,12 +27,12 @@ class AccountController extends BaseController {
     public function account()
     {
         /**@TODO we need proper user menu method */
-        return view('account.index', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
+        return view('account.index', ['menu' => $this->userMenu->getMenu()]);
     }
 
     public function edit()
     {
-        return view('account.edit', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
+        return view('account.edit', ['menu' => $this->userMenu->getMenu()]);
     }
 
     public function welcome(Request $request)
@@ -48,6 +48,6 @@ class AccountController extends BaseController {
 
     public function oauth()
     {
-        return view('account.oauth', ['menu' => $this->userMenu->getMenu(), 'user' => auth()->user()]);
+        return view('account.oauth', ['menu' => $this->userMenu->getMenu()]);
     }
 }

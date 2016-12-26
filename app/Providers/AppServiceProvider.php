@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
             function ($view) {
                 $data = [];
                 $user = auth()->user();
-                if ($user) {
+                if (!$user->isGuest()) {
                     $data = [
                         "id"       => $user["id"],
                         "username" => $user->getPresenter()->displayName(),
