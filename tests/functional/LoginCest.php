@@ -120,7 +120,7 @@ class LoginCest {
 
     public function loginNonExistingUser(FunctionalTester $I)
     {
-        $I->wantTo('prevent login as a none existing usr');
+        $I->wantTo('prevent login as a none existing user');
         $I->amOnPage('/en/login');
         $I->fillField('email', 'john@doe.com');
         $I->fillField('password', 'password');

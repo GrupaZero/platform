@@ -84,8 +84,9 @@ class ContentCest {
 
     public function canSeeNotPublishedContentAsAdmin(FunctionalTester $I)
     {
-        $category     = $I->haveContent(['type' => 'category', 'is_active' => 1]);
-        $content      = $I->haveContent(['type' => 'content', 'is_active' => 0, 'parent_id' => $category->id]);
+        $user         = $I->haveUser();
+        $category     = $I->haveContent(['type' => 'category', 'is_active' => 1], $user);
+        $content      = $I->haveContent(['type' => 'content', 'is_active' => 0, 'parent_id' => $category->id], $user);
         $contentRoute = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
 
         $I->wantTo('see not published content as admin user');
@@ -99,12 +100,30 @@ class ContentCest {
 
     public function cantSeeNotPublishedContentAsRegularUser(FunctionalTester $I)
     {
-        $content = $I->haveContent(['type' => 'content', 'is_active' => 0]);
-        $route   = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
+        $user      = $I->haveUser(['email' => 'user@example.com', 'password' => bcrypt('test123')]);
+        $otherUser = $I->haveUser();
+        $content   = $I->haveContent(['type' => 'content', 'is_active' => 0], $otherUser);
+        $route     = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
 
         $I->wantTo('try to see not published content as regular user');
+        $I->login('user@example.com', 'test123');
         $I->amOnPage($route);
         $I->seeResponseCodeIs(404);
+    }
+
+    public function canSeeNotPublishedContentAsAuthor(FunctionalTester $I)
+    {
+        $user         = $I->haveUser(['email' => 'user@example.com', 'password' => bcrypt('test123')]);
+        $content      = $I->haveContent(['type' => 'content', 'is_active' => 0], $user);
+        $contentRoute = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
+
+        $I->wantTo('see not published content as author');
+        $I->login('user@example.com', 'test123');
+        $I->amOnPage($contentRoute);
+        $I->seeResponseCodeIs(200);
+
+        $I->see($content->translations[0]->title);
+        $I->see('This content is not published.');
     }
 
     public function seeStickyContentOnTopOfTheList(FunctionalTester $I)
