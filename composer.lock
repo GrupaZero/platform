@@ -265,16 +265,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa"
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/2abce9d956589122c6443d6265f01cf7e9388e3c",
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +321,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-10-11 15:32:23"
+            "time": "2016-12-26 16:13:31"
         },
         {
             "name": "firebase/php-jwt",
@@ -584,12 +584,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "3791a3ce04e57c03c4bcf3947c181a16a93f485e"
+                "reference": "3f64463811445514872a4b55f5091b060230556c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/3791a3ce04e57c03c4bcf3947c181a16a93f485e",
-                "reference": "3791a3ce04e57c03c4bcf3947c181a16a93f485e",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/3f64463811445514872a4b55f5091b060230556c",
+                "reference": "3f64463811445514872a4b55f5091b060230556c",
                 "shasum": ""
             },
             "require": {
@@ -623,7 +623,7 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2016-12-26 09:16:23"
+            "time": "2016-12-26 16:18:16"
         },
         {
             "name": "gzero/api",
@@ -631,12 +631,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "8b1aef4377fed4e58e0b6431f5d45e11164ded3c"
+                "reference": "3b9c8422bab11afe4b00a0d61ed57052b4caf6c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8b1aef4377fed4e58e0b6431f5d45e11164ded3c",
-                "reference": "8b1aef4377fed4e58e0b6431f5d45e11164ded3c",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/3b9c8422bab11afe4b00a0d61ed57052b4caf6c6",
+                "reference": "3b9c8422bab11afe4b00a0d61ed57052b4caf6c6",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +685,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2016-12-22 14:31:21"
+            "time": "2016-12-26 16:03:24"
         },
         {
             "name": "gzero/cms",
