@@ -69,9 +69,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::group([
+            'domain'     => 'api.' . config('gzero.domain'),
             'middleware' => 'api',
             'namespace' => $this->namespace,
-            'prefix' => 'api',
+            'prefix' => 'v1',
         ], function ($router) {
             require base_path('routes/api.php');
         });

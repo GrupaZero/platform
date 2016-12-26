@@ -29,7 +29,7 @@ before_script:
   - docker exec -i platform_dev_web_1 phpenmod xdebug # enabling xdebug for code coverage
 
 script:
-  - docker exec -i platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml --coverage --coverage-xml --env platform
+  - "docker exec -i platform_dev_web_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml -o \"settings: lint: false\" --coverage --coverage-xml --env platform"
   - docker exec -i platform_dev_web_1 mkdir -p /var/www/build/logs
   - docker exec -i platform_dev_web_1 cp /var/www/tests/_output/coverage.xml /var/www/build/logs/clover.xml
 

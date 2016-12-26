@@ -105,8 +105,8 @@ $(function() {
     Loading.start('#main-container');
   });
   // Responsive pagination
-  $(".pagination").twbsResponsivePagination();
-  // Clolorbox
+  $(".pagination").rPage();
+  // Colorbox
   $('img.colorbox').click(function() {
     $(this).colorbox({
       href: $(this).parent('a').attr('href'),

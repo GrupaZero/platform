@@ -10,14 +10,13 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
-
+require('./vendor/responsive-paginate');
 /**
  * We'll load jQuery Plugins
  */
 
 window.colorbox = require('jquery-colorbox');
 window.matchHeight = require('jquery-match-height');
-window.twbsResponsivePagination = require('jquery.fn.twbs-responsive-pagination');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

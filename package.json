@@ -20,7 +20,6 @@
     "font-awesome": "^4.6.3",
     "jquery-colorbox": "^1.6.4",
     "jquery-match-height": "^0.7.0",
-    "jquery.fn.twbs-responsive-pagination": "^0.1.2",
     "vue-i18n": "^4.9.0"
   }
 }

@@ -77,8 +77,6 @@ class RegisterController extends BaseController {
 
         $this->guard()->login($user);
 
-        dispatch(new SendWelcomeEmail($user));
-
         return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 
@@ -102,7 +100,7 @@ class RegisterController extends BaseController {
      */
     protected function registered(Request $request, $user)
     {
-        //@TODO send welcome email
+        dispatch(new SendWelcomeEmail($user));
         session()->put('showWelcomePage', true);
         return redirect()->route('account.welcome', ['method' => 'Signup form']);
     }
