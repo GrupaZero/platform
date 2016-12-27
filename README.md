@@ -38,7 +38,7 @@ sudo chmod 777 -R public/
 ```
 
 ##### Environment Configuration.
- Copy .env.example as .env in root directory (only if manually cloned).
+ Environment configuration is stored in .env file (copied from .env.example during create-project stage).
  
 ##### Setting the local domains
 For proper communication with the API is required to modify the hosts file in your OS.
@@ -96,10 +96,11 @@ After Installing Docker Engine you need to build required docker containers, go 
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
 ```
  
- - Create laravel passport oauth keys & db entries
+ - Create laravel passport oauth db entries
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:install
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
 ```
 
  - You can also seed database with example data using this command
