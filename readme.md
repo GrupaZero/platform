@@ -38,7 +38,7 @@ sudo chmod 777 -R public/
 ```
 
 ##### Environment Configuration.
- Copy .env.example as .env in root directory.
+ Copy .env.example as .env in root directory (only if manually cloned).
  
 ##### Setting the local domains
 For proper communication with the API is required to modify the hosts file in your OS.
@@ -81,7 +81,7 @@ After Installing Docker Engine you need to build required docker containers, go 
   sudo docker-compose up -d
   ```
   
-  This will run all application containers
+  This will run all application containers (give some time to ssl certs to generate)
  
  ```
   Starting platform_dev_db_1
@@ -90,7 +90,7 @@ After Installing Docker Engine you need to build required docker containers, go 
   Starting platform_dev_web_1
  ```
  
- - Create database schema and required data
+ - Create database schema and required data __(NOTICE: container uses directory name as a prefix)__
  
 ```
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
