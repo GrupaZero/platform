@@ -1,0 +1,33 @@
+image: gzero/platform-ci-runner:v1
+
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  variables:
+    MYSQL_ROOT_PASSWORD: ''
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: "gzero-cms"
+    DB_HOST: "mariadb"
+    REDIS_HOST: "redis"
+    REDIS_PORT: "6379" # Bug caused by env variable colision docker/laravel
+  services:
+    - mariadb:10.1
+    - redis:3-alpine
+  script:
+    - composer install --prefer-dist --no-interaction --no-suggest
+    - "php vendor/bin/codecept run -c codeception.yml -o \"settings: lint: false\" --env platform"
+
+build:
+  stage: build
+  variables:
+    DOCKER_DRIVER: overlay
+  services:
+    - docker:1.12.5-dind
+  script:
+    - composer install --prefer-dist --no-interaction --no-dev --no-suggest
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build --pull -t registry.gitlab.com/grupazero/staging:latest .
+    - docker push registry.gitlab.com/grupazero/staging:latest

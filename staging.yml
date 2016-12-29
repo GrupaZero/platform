@@ -1,7 +1,7 @@
 version: '2'
 services:
   staging_web:
-    build: .
+    image: registry.gitlab.com/grupazero/staging:latest
     restart: "always"
     environment:
       OVERRIDE_UMASK: "022"
@@ -21,5 +21,5 @@ services:
     env_file:
       - docker.env
   staging_redis:
-    image: redis:3
+    image: redis:3-alpine
     restart: "always"

@@ -1,7 +1,7 @@
 version: '2'
 services:
   dev_web:
-    build: .
+    image: gzero/platform-container:v2
     restart: "no"
     environment:
       OVERRIDE_UMASK: "002"
@@ -35,6 +35,6 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: "gzero-cms"
   dev_redis:
-    image: redis:3
+    image: redis:3-alpine
     ports:
       - "6379:6379"
