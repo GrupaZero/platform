@@ -18,7 +18,7 @@ pass: test
 Use composer to create new project:
 
 ```
-composer create-project --prefer-dist gzero/platform project_name dev-master
+composer create-project --prefer-dist gzero/platform platform dev-master
 ```
 
 ##### Directories permissions
@@ -68,17 +68,16 @@ After Installing Docker Engine you need to start docker containers, go to projec
   Starting platform_dev_web_1
  ```
  
- - Create database schema and required data __(NOTICE: container uses directory name as a prefix)__
+ - Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
  
 ```
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
 ```
  
- - Create laravel passport oauth db entries
+ - Create laravel passport oauth keys & db entries
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:install
 ```
 
  - You can also seed database with example data using this command
@@ -87,7 +86,7 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
- - Publish vendor assets
+ - You may want to aublish vendor assets as well
  
 ```
 sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
@@ -95,10 +94,8 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
 
  - Done
  
- To check progress on project development you can occasionally run composer install.
-
 #### Stopping Docker
- If you want to stop docker just run:
+ If you want to stop docker containers just run:
  
   ```
   sudo docker-compose stop
@@ -111,6 +108,12 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
  Stopping platform_dev_db_tests_1 ... done
  Stopping platform_dev_redis_1 ... done
  Stopping platform_dev_db_1 ... done
+ ```
+ 
+ To remove stopped containers run:
+ 
+ ```
+   sudo docker-compose rm
  ```
  
 #### Viewing docker logs
