@@ -21,13 +21,6 @@ Use composer to create new project:
 composer create-project --prefer-dist gzero/platform project_name dev-master
 ```
 
-##### Install dependencies
-To install all required dependencies run:
-
-```
-composer install
-```
-
 ##### Directories permissions
 Set permissions to storage & bootstrap cache:
 
@@ -58,24 +51,9 @@ Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation inst
  page](https://docs.docker.com/engine/installation/) 
 
 ##### Build Docker container for platform
-After Installing Docker Engine you need to build required docker containers, go to project directory and run:
+After Installing Docker Engine you need to start docker containers, go to project directory and run:
 
- - Build docker containers
- 
- ```
- sudo docker-compose build
- ```
- 
- This will download and build application containers
- 
- ```
- Building dev_db
- Building dev_redis
- Building dev_db_tests
- Building dev_web
- ```
-  
- - Start Docker
+ - Start Docker containers
  
   ```
   sudo docker-compose up -d
@@ -142,9 +120,9 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
    ```
    
 #### Updating Docker container for platform
-   To check for changes in Docker container for platform u can occasionally run  
+   To check for changes in Docker containers for platform u can occasionally run  
    ```
-  sudo docker-compose build --pull
+   sudo docker-compose pull
    ```
   
 ## Testing
