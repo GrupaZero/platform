@@ -62,34 +62,34 @@ After Installing Docker Engine you need to start docker containers, go to projec
   This will run all application containers (give some time to ssl certs to generate)
  
  ```
-  Starting platform_dev_db_1
-  Starting platform_dev_redis_1
-  Starting platform_dev_db_tests_1
-  Starting platform_dev_web_1
+  Starting platform_db_server_1
+  Starting platform_redis_server_1
+  Starting platform_db_tests_server_1
+  Starting platform_web_server_1
  ```
  
  - Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan migrate
+sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan migrate
 ```
  
  - Create laravel passport oauth keys & db entries
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:install
+sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:install
 ```
 
  - You can also seed database with example data using this command
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
+sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
  - You may want to aublish vendor assets as well
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
+sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
 ```
 
  - Done
@@ -104,10 +104,10 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
   This will stop all running application containers
  
  ```
- Stopping platform_dev_web_1 ... done
- Stopping platform_dev_db_tests_1 ... done
- Stopping platform_dev_redis_1 ... done
- Stopping platform_dev_db_1 ... done
+ Stopping platform_web_server_1 ... done
+ Stopping platform_db_tests_server_1 ... done
+ Stopping platform_redis_server_1 ... done
+ Stopping platform_db_server_1 ... done
  ```
  
  To remove stopped containers run:
@@ -119,7 +119,7 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
 #### Viewing docker logs
   If you want to view logs from docker you can run:
    ```
-   sudo docker-compose logs dev_web
+   sudo docker-compose logs web_server
    ```
    
 #### Updating Docker container for platform
