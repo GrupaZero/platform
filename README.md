@@ -77,7 +77,8 @@ sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artis
  - Create laravel passport oauth keys & db entries
  
 ```
-sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:install
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
+sudo docker exec -i -t platform_dev_web_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
 ```
 
  - You can also seed database with example data using this command
