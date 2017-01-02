@@ -1,6 +1,6 @@
 version: '2'
 services:
-  staging_web:
+  web_server:
     image: registry.gitlab.com/grupazero/staging:latest
     restart: "always"
     environment:
@@ -13,13 +13,13 @@ services:
       - "80:80"
       - "443:443"
     links:
-      - staging_db
-      - staging_redis
-  staging_db:
+      - db_server
+      - redis_server
+  db_server:
     image: mariadb:10.1
     restart: "always"
     env_file:
       - docker.env
-  staging_redis:
+  redis_server:
     image: redis:3-alpine
     restart: "always"

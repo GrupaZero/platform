@@ -1,6 +1,6 @@
 version: '2'
 services:
-  dev_web:
+  web_server:
     image: gzero/platform-container:v2
     restart: "no"
     environment:
@@ -14,10 +14,10 @@ services:
       - "80:80"
       - "443:443"
     links:
-      - dev_db
-      - dev_db_tests
-      - dev_redis
-  dev_db:
+      - db_server
+      - db_tests_server
+      - redis_server
+  db_server:
     image: mariadb:10.1
     ports:
       - "3307:3306"
@@ -26,7 +26,7 @@ services:
       MYSQL_USER: "gzero-cms"
       MYSQL_PASSWORD: "test"
       MYSQL_DATABASE: "gzero-cms"
-  dev_db_tests:
+  db_tests_server:
     image: mariadb:10.1
     ports:
       - "3308:3306"
@@ -34,7 +34,7 @@ services:
       MYSQL_ROOT_PASSWORD: ''
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: "gzero-cms"
-  dev_redis:
+  redis_server:
     image: redis:3-alpine
     ports:
       - "6379:6379"
