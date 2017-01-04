@@ -1,0 +1,29 @@
+version: "2"
+services:
+  web_server:
+    image: registry.gitlab.com/grupazero/staging:{{ APP_VERSION | default('latest', true) }}
+    restart: "always"
+    environment:
+      OVERRIDE_UMASK: "022"
+      NGINX_HOST: "{{ DOMAIN | default('staging.gzero.pl') }}"
+      SSL: "{{ SSL | default('true') }}"
+    volumes:
+        - ./backups:/var/www/backups # Volume to save backups outside container
+        - ./env:/var/www/.env # We need to pass all credentials
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - db_server
+      - redis_server
+  db_server:
+    image: mariadb:10.1
+    restart: "always"
+    environment:
+      MYSQL_ROOT_PASSWORD: {{ MYSQL_ROOT_PASSWORD }}
+      MYSQL_USER: {{ MYSQL_USER }}
+      MYSQL_PASSWORD: {{ MYSQL_PASSWORD }}
+      MYSQL_DATABASE: {{ MYSQL_DATABASE }}
+  redis_server:
+    image: redis:3-alpine
+    restart: "always"

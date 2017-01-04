@@ -1,0 +1,2 @@
+[all]
+staging.gzero.pl ansible_port=22

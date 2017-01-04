@@ -3,6 +3,12 @@ image: gzero/platform-ci-runner:v1
 stages:
   - test
   - build
+  - deploy
+
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - vendor/
 
 test:
   stage: test
@@ -29,5 +35,50 @@ build:
   script:
     - composer install --prefer-dist --no-interaction --no-dev --no-suggest
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-    - docker build --pull -t registry.gitlab.com/grupazero/staging:latest .
-    - docker push registry.gitlab.com/grupazero/staging:latest
+    - if [ -n "${CI_BUILD_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:${CI_BUILD_TAG} .; fi
+    - if [ -n "${CI_BUILD_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:${CI_BUILD_TAG}; fi
+    - if [ -z "${CI_BUILD_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:latest .; fi
+    - if [ -z "${CI_BUILD_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:latest; fi
+
+deploy to staging:
+  image: williamyeh/ansible:alpine3
+  stage: deploy
+  environment: staging
+  before_script:
+      - eval $(ssh-agent -s)
+      - echo "$SSH_PRIVATE_KEY" > ssh.key
+      - chmod 600 ssh.key
+      - ssh-add ssh.key
+      - mkdir -p ~/.ssh
+      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - "ansible-playbook -i ansible/hosts
+      -e APP_KEY=$CI_APP_KEY
+      -e APP_VERSION=$CI_BUILD_TAG
+      -e DOMAIN=$CI_DOMAIN
+      -e MYSQL_ROOT_PASSWORD=$CI_DB_ROOT_PASSWORD
+      -e MYSQL_USER=$CI_DB_USER
+      -e MYSQL_PASSWORD=$CI_DB_PASSWORD
+      -e MYSQL_DATABASE=$CI_DB_DATABASE
+      ansible/playbooks/deploy-staging.yml"
+  only:
+    - tags
+    - master
+
+deploy to production:
+  image: williamyeh/ansible:alpine3
+  stage: deploy
+  environment: production
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" > ssh.key
+    - chmod 600 ssh.key
+    - ssh-add ssh.key
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+  - exit 2 # @TODO Implement
+  only:
+    - tags
+    - master
+  when: manual
