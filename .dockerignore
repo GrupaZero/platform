@@ -1,5 +1,10 @@
+.env
+.env.example
+.env.testing
 .git
+.gitattributes
 .gitignore
+.gitlab-ci.yml
 .phpstorm.meta.php
 .release.json
 .travis.yml
@@ -8,11 +13,12 @@ backups
 build
 codeception.yml
 docker-compose.yml
+Dockerfile
 gulpfile.js
 node_modules
+package.json
 phpunit.xml
 README.md
 scripts
 server.php
-staging.yml
 tests
