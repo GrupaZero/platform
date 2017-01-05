@@ -11,7 +11,9 @@
     - name: Stop existing containers
       shell: docker-compose -p staging stop
     - name: Destroy existing containers
-      shell: docker-compose -p staging rm -f 
+      shell: docker-compose -p staging rm -f
+    - name: Pull new containers
+      shell: docker-compose -p staging pull
     - name: Run new containers
       shell: docker-compose -p staging up -d
     - name: Remove old volumes
