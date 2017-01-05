@@ -77,7 +77,7 @@ deploy to production:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-  - exit 2 # @TODO Implement
+  - echo "@TODO Implement"
   only:
     - tags
     - master

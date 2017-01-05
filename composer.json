@@ -4,7 +4,9 @@
     "keywords": [
         "framework",
         "laravel",
-        "cms"
+        "cms",
+        "docker",
+        "ansible"
     ],
     "license": "MIT",
     "type": "project",

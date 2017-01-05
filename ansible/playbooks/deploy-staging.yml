@@ -3,11 +3,11 @@
   remote_user: root
   tasks:
     - name: Creates backups directory
-      file: path=/root/backups state=directory
+      file: path=/root/backups state=directory owner=www-data group=www-data mode=0755
     - name: Copy docker-compose file
-      template: src=../templates/staging-compose.yml dest=/root/docker-compose.yml backup=true force=yes
+      template: src=../templates/staging-compose.yml dest=/root/docker-compose.yml force=yes
     - name: Copy env file
-      template: src=../templates/env dest=/root/env backup=true force=yes
+      template: src=../templates/env dest=/root/env force=yes
     - name: Stop existing containers
       shell: docker-compose -p staging stop
     - name: Destroy existing containers
