@@ -1,7 +1,7 @@
 <?php namespace Platform;
 
 class ContentCest {
-    // tests
+
     public function canViewArticle(FunctionalTester $I)
     {
         $user        = $I->haveUser();

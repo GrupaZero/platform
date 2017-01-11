@@ -5,11 +5,13 @@ modules:
         - Platform\Helper\Functional
         - Asserts
         - Laravel5:
-            cleanup: false
-            disable_events: false
-            disable_exception_handling: false
-            disable_middleware: false
-            disable_model_events: false
-            environment_file: .env.testing
+              cleanup: false
+              disable_events: false
+              disable_exception_handling: false
+              disable_middleware: false
+              disable_model_events: false
+              environment_file: .env.testing
         - REST:
             depends: Laravel5
+env:
+    ml_disabled: # We're just using it to distinguish tests that need special setup
