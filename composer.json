@@ -70,12 +70,10 @@
             "php artisan ide-helper:meta",
             "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\"",
             "php artisan optimize"
-        ],
-        "test": [
-            "sudo docker exec $(echo ${PWD##*/} | sed -e 's/_//g')_web_server_1 php /var/www/vendor/bin/codecept run -c /var/www --env platform,ml_disabled"
         ]
     },
     "config": {
+        "cache-dir": "/tmp/.composer",
         "preferred-install": "dist"
     },
     "minimum-stability": "stable"

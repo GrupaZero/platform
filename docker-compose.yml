@@ -10,15 +10,18 @@ services:
       XDEBUG: "true"
     volumes:
       - .:/var/www
+    networks:
+     - gznet
     ports:
       - "80:80"
       - "443:443"
-    links:
-      - db_server
-      - db_tests_server
-      - redis_server
   db_server:
     image: mariadb:10.1
+    restart: "no"
+    volumes:
+     - dbdata:/var/lib/mysql
+    networks:
+     - gznet
     ports:
       - "3307:3306"
     environment:
@@ -28,6 +31,9 @@ services:
       MYSQL_DATABASE: "gzero-cms"
   db_tests_server:
     image: mariadb:10.1
+    restart: "no"
+    networks:
+     - gznet
     ports:
       - "3308:3306"
     environment:
@@ -36,5 +42,23 @@ services:
       MYSQL_DATABASE: "gzero-cms"
   redis_server:
     image: redis:3-alpine
+    restart: "no"
+    volumes:
+     - redisdata:/data
+    networks:
+     - gznet
     ports:
       - "6379:6379"
+  node_server:
+    image: node:6
+    restart: "no"
+    volumes:
+      - .:/var/www
+networks:
+  gznet:
+    driver: "bridge"
+volumes:
+  dbdata:
+    driver: "local"
+  redisdata:
+    driver: "local"

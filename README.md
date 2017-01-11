@@ -27,6 +27,12 @@ composer create-project --prefer-dist gzero/platform platform dev-master
 Set permissions to storage & bootstrap cache:
 
 ```
+sudo usermod -a -G www-data user
+```
+
+or
+
+```
 sudo chmod 777 -R storage/
 sudo chmod 777 -R bootstrap/cache/
 sudo chmod 777 -R public/
@@ -61,7 +67,7 @@ After Installing Docker Engine you need to start docker containers, go to projec
 - Start Docker containers
  
 ```
-sudo docker-compose up -d
+./gzero up -d
 ```
   
 This will run all application containers (give some time to ssl certs to generate)
@@ -76,26 +82,26 @@ Starting platform_web_server_1
 - Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan migrate
+./gzero artisan migrate
 ```
  
 - Create laravel passport oauth keys & db entries
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
+./gzero artisan passport:client --personal
+./gzero artisan passport:client --password
 ```
 
 - You can also seed database with example data using this command
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
+./gzero artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
 - You may want to aublish vendor assets as well
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
+./gzero artisan vendor:publish --tag=public --force
 ```
 
  - Done
@@ -104,7 +110,7 @@ sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/ar
 If you want to stop docker containers just run:
 
 ```
-sudo docker-compose stop
+./gzero stop
 ```
 
 This will stop all running application containers
@@ -119,21 +125,21 @@ Stopping platform_db_server_1 ... done
 To remove stopped containers run:
  
 ```
- sudo docker-compose rm
+./gzero rm
 ```
  
 #### Viewing docker logs
 If you want to view logs from docker you can run:
 
 ```
-sudo docker-compose logs web_server
+./gzero logs web_server
 ```
    
 #### Updating Docker container for platform
 To check for changes in Docker containers for platform u can occasionally run  
 
 ```
-sudo docker-compose pull
+./gzero pull
 ```
   
 ## Testing
@@ -141,7 +147,7 @@ sudo docker-compose pull
 To run tests use:
 
 ```
-composer test
+./gzero test
 ```
 
 ## Continuous Integration

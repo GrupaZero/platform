@@ -11,10 +11,11 @@ coverage:
 include:
     - vendor/gzero/api
 paths:
-    tests: tests
-    log: tests/_output
     data: tests/_data
+    envs: tests/_envs
+    log: tests/_output
     support: tests/_support
+    tests: tests
 settings:
     bootstrap: _bootstrap.php
     lint: true
