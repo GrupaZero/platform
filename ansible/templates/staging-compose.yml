@@ -13,12 +13,13 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    links:
-      - db_server
-      - redis_server
+    networks:
+     - gznet
   db_server:
     image: mariadb:10.1
     restart: "always"
+    networks:
+     - gznet
     environment:
       MYSQL_ROOT_PASSWORD: {{ MYSQL_ROOT_PASSWORD }}
       MYSQL_USER: {{ MYSQL_USER }}
@@ -27,3 +28,6 @@ services:
   redis_server:
     image: redis:3-alpine
     restart: "always"
+networks:
+  gznet:
+    driver: "bridge"

@@ -32,6 +32,16 @@ sudo chmod 777 -R bootstrap/cache/
 sudo chmod 777 -R public/
 ```
 
+_[optional]_
+
+If you have www-data group in your system you can consider adding you to it.
+This will allow you to write to files created by php due to umask 002 set in dev mode.
+
+```
+sudo usermod -a -G www-data user
+
+```
+
 ##### Environment Configuration.
 
 Environment configuration is stored in .env file (copied from .env.example during create-project stage).
@@ -61,7 +71,7 @@ After Installing Docker Engine you need to start docker containers, go to projec
 - Start Docker containers
  
 ```
-sudo docker-compose up -d
+./develop up -d
 ```
   
 This will run all application containers (give some time to ssl certs to generate)
@@ -76,26 +86,26 @@ Starting platform_web_server_1
 - Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan migrate
+./develop artisan migrate
 ```
  
 - Create laravel passport oauth keys & db entries
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
+./develop artisan passport:client --personal
+./develop artisan passport:client --password
 ```
 
 - You can also seed database with example data using this command
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan db:seed --class="Gzero\Core\CMSSeeder"
+./develop artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
 - You may want to aublish vendor assets as well
  
 ```
-sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
+./develop artisan vendor:publish --tag=public --force
 ```
 
  - Done
@@ -104,7 +114,7 @@ sudo docker exec -i -t platform_web_server_1 ./commandWrapper.sh php /var/www/ar
 If you want to stop docker containers just run:
 
 ```
-sudo docker-compose stop
+./develop stop
 ```
 
 This will stop all running application containers
@@ -119,21 +129,21 @@ Stopping platform_db_server_1 ... done
 To remove stopped containers run:
  
 ```
- sudo docker-compose rm
+./develop rm
 ```
  
 #### Viewing docker logs
 If you want to view logs from docker you can run:
 
 ```
-sudo docker-compose logs web_server
+./develop logs web_server
 ```
    
 #### Updating Docker container for platform
 To check for changes in Docker containers for platform u can occasionally run  
 
 ```
-sudo docker-compose pull
+./develop pull
 ```
   
 ## Testing
@@ -141,7 +151,7 @@ sudo docker-compose pull
 To run tests use:
 
 ```
-composer test
+./develop test
 ```
 
 ## Continuous Integration

@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+# Detect if sudo needed
+USER="$(whoami)"
+SUDO=""
+if [ ! "${USER}" == "root" ];then
+  SUDO=$(id -Gn $USER | grep -q docker) || SUDO="sudo "
+fi
+
+COMPOSE="${SUDO}docker-compose"
+
+if [ $# -gt 0 ];then
+
+  if [ "$1" == "test" ]; then
+    shift 1
+    ${COMPOSE} run --rm -w /var/www \
+        -u $(id -u) \
+        web_server \
+        vendor/bin/codecept run --env platform,ml_disabled "$@"
+
+  elif [ "$1" == "artisan" ]; then
+    shift 1
+    ${COMPOSE} run --rm -w /var/www \
+        -u $(id -u) \
+        web_server \
+        php artisan "$@"
+
+  elif [ "$1" == "composer" ]; then
+    shift 1
+    ${COMPOSE} run --rm -w /var/www \
+        -u $(id -u) \
+        web_server \
+        composer "$@"
+
+  elif [ "$1" == "npm" ]; then
+    shift 1
+    ${COMPOSE} run --rm -w /var/www \
+        -u $(id -u) \
+        node_server \
+        npm "$@"
+
+  elif [ "$1" == "gulp" ]; then
+    shift 1
+    ${COMPOSE} run --rm -w /var/www \
+        -u $(id -u) \
+        node_server \
+        ./node_modules/.bin/gulp "$@"
+
+  elif [ "$1" == "link" ]; then
+    shift 1
+    ./scripts/link_package.sh "$@"
+
+  else
+      ${COMPOSE} "$@"
+  fi
+else
+  ${COMPOSE} ps
+fi
