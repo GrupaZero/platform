@@ -154,6 +154,28 @@ To run tests use:
 ./develop test
 ```
 
+## Working on frontend
+
+Install required npm modules:
+
+```
+./develop npm install
+```
+
+To use gulp:
+
+```
+./develop gulp {command}
+```
+
+## Updating composer dependencies
+
+You can run composer directly from docker:
+
+```
+./develop composer update
+```
+
 ## Continuous Integration
 
 We're providing some boilerplate configs for travis & gitlab-ci so that you can modify them to match your requirements.

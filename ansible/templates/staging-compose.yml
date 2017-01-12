@@ -28,6 +28,8 @@ services:
   redis_server:
     image: redis:3-alpine
     restart: "always"
+    networks:
+     - gznet
 networks:
   gznet:
     driver: "bridge"
