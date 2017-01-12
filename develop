@@ -7,6 +7,7 @@ if [ ! "${USER}" == "root" ];then
   SUDO=$(id -Gn $USER | grep -q docker) || SUDO="sudo "
 fi
 
+DOCKER="${SUDO}docker"
 COMPOSE="${SUDO}docker-compose"
 
 if [ $# -gt 0 ];then
@@ -14,41 +15,46 @@ if [ $# -gt 0 ];then
   if [ "$1" == "test" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u) \
+        -u $(id -u):www-data \
         web_server \
         vendor/bin/codecept run --env platform,ml_disabled "$@"
 
   elif [ "$1" == "artisan" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u) \
+        -u $(id -u):www-data \
         web_server \
         php artisan "$@"
 
   elif [ "$1" == "composer" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u) \
+        -u $(id -u):www-data \
         web_server \
         composer "$@"
 
   elif [ "$1" == "npm" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u) \
+        -u $(id -u):www-data \
         node_server \
         npm "$@"
 
   elif [ "$1" == "gulp" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u) \
+        -u $(id -u):www-data \
         node_server \
         ./node_modules/.bin/gulp "$@"
 
   elif [ "$1" == "link" ]; then
     shift 1
     ./scripts/link_package.sh "$@"
+
+  elif [ "$1" == "clean" ]; then
+    shift 1
+    ${DOCKER} volume ls -qf dangling=true | xargs -r ${DOCKER} volume rm
+    ${DOCKER} images -q --no-trunc | xargs -r ${DOCKER} rmi || true
 
   else
       ${COMPOSE} "$@"

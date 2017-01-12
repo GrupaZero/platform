@@ -12,6 +12,7 @@ _ide_helper.php
 backups
 build
 codeception.yml
+develop
 docker-compose.yml
 Dockerfile
 gulpfile.js

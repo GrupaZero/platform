@@ -19,7 +19,7 @@
     - name: Remove old volumes
       shell: docker volume ls -qf dangling=true | xargs -r docker volume rm
     - name: Remove old images
-      shell: docker images -q --no-trunc |  xargs -r docker rmi || true
+      shell: docker images -q --no-trunc | xargs -r docker rmi || true
     - name: Wait for docker containers
       wait_for:
           port: 443
