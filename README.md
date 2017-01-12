@@ -27,15 +27,19 @@ composer create-project --prefer-dist gzero/platform platform dev-master
 Set permissions to storage & bootstrap cache:
 
 ```
-sudo usermod -a -G www-data user
-```
-
-or
-
-```
 sudo chmod 777 -R storage/
 sudo chmod 777 -R bootstrap/cache/
 sudo chmod 777 -R public/
+```
+
+_[optional]_
+
+If you have www-data group in your system you can consider adding you to it.
+This will allow you to write to files created by php due to umask 002 set in dev mode.
+
+```
+sudo usermod -a -G www-data user
+
 ```
 
 ##### Environment Configuration.
@@ -67,7 +71,7 @@ After Installing Docker Engine you need to start docker containers, go to projec
 - Start Docker containers
  
 ```
-./gzero up -d
+./develop up -d
 ```
   
 This will run all application containers (give some time to ssl certs to generate)
@@ -82,26 +86,26 @@ Starting platform_web_server_1
 - Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
  
 ```
-./gzero artisan migrate
+./develop artisan migrate
 ```
  
 - Create laravel passport oauth keys & db entries
  
 ```
-./gzero artisan passport:client --personal
-./gzero artisan passport:client --password
+./develop artisan passport:client --personal
+./develop artisan passport:client --password
 ```
 
 - You can also seed database with example data using this command
  
 ```
-./gzero artisan db:seed --class="Gzero\Core\CMSSeeder"
+./develop artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
 - You may want to aublish vendor assets as well
  
 ```
-./gzero artisan vendor:publish --tag=public --force
+./develop artisan vendor:publish --tag=public --force
 ```
 
  - Done
@@ -110,7 +114,7 @@ Starting platform_web_server_1
 If you want to stop docker containers just run:
 
 ```
-./gzero stop
+./develop stop
 ```
 
 This will stop all running application containers
@@ -125,21 +129,21 @@ Stopping platform_db_server_1 ... done
 To remove stopped containers run:
  
 ```
-./gzero rm
+./develop rm
 ```
  
 #### Viewing docker logs
 If you want to view logs from docker you can run:
 
 ```
-./gzero logs web_server
+./develop logs web_server
 ```
    
 #### Updating Docker container for platform
 To check for changes in Docker containers for platform u can occasionally run  
 
 ```
-./gzero pull
+./develop pull
 ```
   
 ## Testing
@@ -147,7 +151,7 @@ To check for changes in Docker containers for platform u can occasionally run
 To run tests use:
 
 ```
-./gzero test
+./develop test
 ```
 
 ## Continuous Integration

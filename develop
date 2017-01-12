@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-# @TODO Detect if sudo needed
+# Detect if sudo needed
+USER="$(whoami)"
+SUDO=""
+if [ ! "${USER}" == "root" ];then
+  SUDO=$(id -Gn $USER | grep -q docker) || SUDO="sudo "
+fi
 
-COMPOSE="docker-compose"
+COMPOSE="${SUDO}docker-compose"
 
 if [ $# -gt 0 ];then
 
