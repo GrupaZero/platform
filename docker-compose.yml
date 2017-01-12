@@ -18,6 +18,8 @@ services:
   db_server:
     image: mariadb:10.1
     restart: "no"
+    networks:
+     - gznet
     volumes:
      - dbdata:/var/lib/mysql
     networks:
