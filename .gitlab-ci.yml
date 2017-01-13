@@ -18,7 +18,7 @@ test:
     MYSQL_DATABASE: "gzero-cms"
     DB_HOST: "mariadb"
     REDIS_HOST: "redis"
-    REDIS_PORT: "6379" # Bug caused by env variable colision docker/laravel
+    REDIS_PORT: "6379" # Bug caused by env variable collision docker/laravel
   services:
     - mariadb:10.1
     - redis:3-alpine
