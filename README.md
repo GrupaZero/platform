@@ -102,7 +102,7 @@ Starting platform_web_server_1
 ./develop artisan db:seed --class="Gzero\Core\CMSSeeder"
 ```
 
-- You may want to aublish vendor assets as well
+- You may want to publish vendor assets as well
  
 ```
 ./develop artisan vendor:publish --tag=public --force
