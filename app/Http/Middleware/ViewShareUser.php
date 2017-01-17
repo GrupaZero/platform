@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\GuestUser;
+use App\Models\GuestUser;
 use Closure;
 
 class ViewShareUser {
