@@ -1,6 +1,6 @@
 <?php namespace Platform;
 
-use App\User;
+use App\Models\User;
 
 class UserTest extends \Codeception\TestCase\Test {
     /**
