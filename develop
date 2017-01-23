@@ -42,7 +42,7 @@ if [ $# -gt 0 ];then
 
   elif [ "$1" == "gulp" ]; then
     shift 1
-    ${COMPOSE} run --rm -w /var/www \
+    ${COMPOSE} run -T --rm -w /var/www \
         -u $(id -u):www-data \
         node_server \
         ./node_modules/.bin/gulp "$@"
