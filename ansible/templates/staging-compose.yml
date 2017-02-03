@@ -8,28 +8,36 @@ services:
       NGINX_HOST: "{{ DOMAIN | default('staging.gzero.pl') }}"
       SSL: "{{ SSL | default('true') }}"
     volumes:
-        - ./backups:/var/www/backups # Volume to save backups outside container
-        - ./env:/var/www/.env # We need to pass all credentials
+      - ./env:/var/www/.env # We need to pass all credentials
     ports:
       - "80:80"
       - "443:443"
     networks:
-     - gznet
+      - gznet
   db_server:
-    image: mariadb:10.1
+    image: postgres:9.6-alpine
     restart: "always"
     networks:
-     - gznet
+      - gznet
+    volumes:
+      - ./backups:/backups
+      - dbdata:/var/lib/postgresql
     environment:
-      MYSQL_ROOT_PASSWORD: {{ MYSQL_ROOT_PASSWORD }}
-      MYSQL_USER: {{ MYSQL_USER }}
-      MYSQL_PASSWORD: {{ MYSQL_PASSWORD }}
-      MYSQL_DATABASE: {{ MYSQL_DATABASE }}
+      POSTGRES_PASSWORD: {{ POSTGRES_PASSWORD }}
+      POSTGRES_USER: {{ POSTGRES_USER }}
+      POSTGRES_DB: {{ POSTGRES_DATABASE }}
   redis_server:
     image: redis:3-alpine
     restart: "always"
+    volumes:
+      - redisdata:/data
     networks:
-     - gznet
+      - gznet
 networks:
   gznet:
     driver: "bridge"
+volumes:
+  dbdata:
+    driver: "local"
+  redisdata:
+    driver: "local"
