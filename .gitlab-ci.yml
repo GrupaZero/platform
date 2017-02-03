@@ -56,10 +56,9 @@ deploy to staging:
       -e APP_KEY=$CI_APP_KEY
       -e APP_VERSION=$CI_BUILD_TAG
       -e DOMAIN=$CI_DOMAIN
-      -e MYSQL_ROOT_PASSWORD=$CI_DB_ROOT_PASSWORD
-      -e MYSQL_USER=$CI_DB_USER
-      -e MYSQL_PASSWORD=$CI_DB_PASSWORD
-      -e MYSQL_DATABASE=$CI_DB_DATABASE
+      -e POSTGRES_USER=$CI_DB_USER
+      -e POSTGRES_PASSWORD=$CI_DB_PASSWORD
+      -e POSTGRES_DATABASE=$CI_DB_DATABASE
       ansible/playbooks/deploy-staging.yml"
   only:
     - tags

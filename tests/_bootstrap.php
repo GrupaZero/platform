@@ -11,8 +11,12 @@ if (file_exists(dirname(__DIR__) . '/.env.testing')) {
 Passport::loadKeysFrom(dirname(__DIR__) . '/vendor/gzero/testing/oauth/');
 
 \Codeception\Configuration::$defaultSuiteSettings['modules']['config']['Db'] = [
-    'dsn'      => 'mysql:host=' . env('DB_HOST', 'db_tests_server') . ';dbname=' . env('DB_DATABASE', 'gzero-cms'),
-    'user'     => env('DB_USERNAME', 'root'),
+    'dsn'      => 'pgsql:host=' . env('DB_HOST', 'db_tests_server') .
+        ';port=' . env('DB_PORT', 5432) .
+        ';dbname=' . env('DB_DATABASE', 'gzero_cms') .
+        ';user=' . env('DB_USERNAME', 'gzero_cms') .
+        ';password=',
+    'user'     => env('DB_USERNAME', 'postgres'),
     'password' => env('DB_PASSWORD', ''),
     'dump'     => 'vendor/gzero/testing/db/dump.sql',
     'populate' => true,
