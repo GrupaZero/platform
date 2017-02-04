@@ -13,14 +13,14 @@ cache:
 test:
   stage: test
   variables:
-    MYSQL_ROOT_PASSWORD: ''
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_DATABASE: "gzero-cms"
-    DB_HOST: "mariadb"
+    POSTGRES_PASSWORD: ""
+    POSTGRES_USER: "gzero_cms"
+    POSTGRES_DB: "gzero_cms"
+    DB_HOST: "postgres"
     REDIS_HOST: "redis"
     REDIS_PORT: "6379" # Bug caused by env variable collision docker/laravel
   services:
-    - mariadb:10.1
+    - postgres:9.6-alpine
     - redis:3-alpine
   script:
     - composer install --prefer-dist --no-interaction --no-suggest

@@ -27,10 +27,8 @@
           state: drained
           timeout: 300
     - name: Run migrations
-      shell: docker exec -i staging_web_server_1 ./commandWrapper.sh php /var/www/artisan migrate --force
+      shell: docker exec -i staging_web_server_1 php /var/www/artisan migrate --force
     - name: Install passport password client
-      shell: docker exec -i staging_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --password
+      shell: docker exec -i staging_web_server_1 php /var/www/artisan passport:client --password
     - name: Install passport password client
-      shell: docker exec -i staging_web_server_1 ./commandWrapper.sh php /var/www/artisan passport:client --personal
-    - name: Publish assets
-      shell: docker exec -i staging_web_server_1 ./commandWrapper.sh php /var/www/artisan vendor:publish --tag=public --force
+      shell: docker exec -i staging_web_server_1 php /var/www/artisan passport:client --personal
