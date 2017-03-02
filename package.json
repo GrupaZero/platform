@@ -20,6 +20,9 @@
     "font-awesome": "^4.6.3",
     "jquery-colorbox": "^1.6.4",
     "jquery-match-height": "^0.7.0",
+    "vue": "2.1",
+    "vue-resource": "1.0",
+    "vue-template-compiler": "2.1",
     "vue-i18n": "^4.9.0"
   }
 }
