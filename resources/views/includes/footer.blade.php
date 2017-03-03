@@ -8,7 +8,7 @@
         </div>
     @show
 
-    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ elixir('/js/app.js') }}"></script>
     @section('footerScripts')
     @show
 </div>
