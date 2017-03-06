@@ -120,6 +120,12 @@ $(function() {
     maxWidth: "95%",
     maxHeight: "95%"
   });
+  $('a.colorbox-iframe').colorbox({
+      iframe: true,
+      innerWidth: 640,
+      innerHeight: 360
+    }
+  );
   // Load translation files
   if (lang !== 'en') {
     $.getScript('/js/vendor/jquery-colorbox/i18n/jquery.colorbox-' + lang + '.js');
