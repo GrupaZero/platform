@@ -5,6 +5,17 @@ class HomePageCest {
     /**
      * @param FunctionalTester $I
      */
+    public function canSee301Redirect(FunctionalTester $I)
+    {
+        $I->wantTo('can view home page');
+        $I->stopFollowingRedirects();
+        $I->amOnPage('/');
+        $I->seeResponseCodeIs(301);
+    }
+
+    /**
+     * @param FunctionalTester $I
+     */
     public function canViewHomePage(FunctionalTester $I)
     {
         $I->wantTo('can view home page');
