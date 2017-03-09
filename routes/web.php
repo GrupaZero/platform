@@ -60,7 +60,7 @@ if (config('gzero.multilang.enabled')) {
             $router->get(
                 '/',
                 function () {
-                    return redirect()->to(route('home'));
+                    return redirect()->to(route('home'), 301);
                 }
             );
             // We are doing this because we want to have access to user session on 404 page
