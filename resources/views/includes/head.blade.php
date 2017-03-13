@@ -17,7 +17,7 @@
 
 </script>
 
-@if(option('seo', 'google_analytics_id') && env('production'))
+@if(option('seo', 'google_analytics_id') && env('APP_ENV') === 'production')
 <!-- Google Analytics web tracking code -->
 <script type="text/javascript">
     (function(i, s, o, g, r, a, m) {
