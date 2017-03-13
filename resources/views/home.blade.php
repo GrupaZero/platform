@@ -6,6 +6,7 @@
         @include('includes.canonical', ['paginator' => $contents])
     @endif
     @if(config('gzero.multilang.enabled'))
+        <link rel="alternate" href="{{env('APP_URL')}}" hreflang="x-default" />
         @foreach($langs as $availableLang)
             <link rel="alternate" href="{{url('/') . '/' . $availableLang->code}}" hreflang="{{$availableLang->code}}"/>
         @endforeach
