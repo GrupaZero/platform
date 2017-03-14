@@ -1,0 +1,22 @@
+---
+ansible_user: root
+ansible_port: 22
+ag_motd_content: |
+  --------------------------------------------------------------------------
+                      This system is managed by Ansible
+  --------------------------------------------------------------------------
+
+  This is {{ ansible_fqdn }} running {{ ansible_distribution }}.
+
+  NOTE: System and application configuration for this host is managed by
+  automated systems. To ensure that any changes you make here are not lost,
+  please contact with your system administrators.
+  
+  {% for item in ag_motd_info %}
+  {% for key, value in item.iteritems() %}
+  {{ key }}{{ value }}
+  {% endfor %}
+  {% endfor %}
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Last ansible run: {{ ansible_date_time.iso8601 }}

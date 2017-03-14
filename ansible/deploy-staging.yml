@@ -1,0 +1,105 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Check if local staging.htpasswd file exists
+      local_action: stat path="./staging.htpasswd"
+      register: st
+    - name: Create directories
+      file:
+        path: "{{ item.path }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: 0755
+      with_items:
+        - { path: '/root/backups'}
+        - { path: '/root/backups/deployment'}
+        - { path: '/root/staging'}
+        - { path: '/root/staging/volumes'}
+        - { path: '/root/staging/volumes/certs'}
+        - { path: '/root/staging/volumes/conf.d'}
+        - { path: '/root/staging/volumes/htpasswd'}
+        - { path: '/root/staging/volumes/vhost.d'}
+        - { path: '/root/staging/volumes/templates'}
+    - name: 'Ensure that database exists'
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: "{{ POSTGRES_DATABASE }}"
+        encoding: UTF-8
+        lc_collate: pl_PL.UTF-8
+        lc_ctype: pl_PL.UTF-8
+        template: template0
+    - name: 'Ensure that database user exists'
+      become: true
+      become_user: postgres
+      postgresql_user:
+        db: "{{ POSTGRES_DATABASE }}"
+        name: "{{ POSTGRES_USER }}"
+        password: "{{ POSTGRES_PASSWORD }}"
+        priv: "ALL"
+    - name: Backup database
+      become: true
+      become_user: postgres
+      shell: >
+        pg_dump --clean --if-exists {{ POSTGRES_DATABASE }} |
+        gzip > {{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
+    - name: Move backup to backups dir
+      shell: >
+        mv /var/lib/postgresql/{{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
+        /root/backups/deployment/{{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
+    - name: Copy nginx proxy template file
+      copy:
+        src: ./templates/nginx-proxy.tmpl
+        dest: /root/staging/volumes/templates/nginx.tmpl
+        owner: www-data
+        group: www-data
+        mode: 0644
+    - name: Copy nginx htpasswd file
+      copy:
+        src: ./staging.htpasswd
+        dest: "/root/staging/volumes/htpasswd/{{ item.dest }}"
+        owner: www-data
+        group: www-data
+        mode: 0644
+      with_items:
+        - { dest: '{{ DOMAIN }}'}
+        - { dest: 'api.{{ DOMAIN }}'}
+        - { dest: 'www.{{ DOMAIN }}'}
+      when: st.stat.exists
+    - name: Copy docker-compose file
+      template:
+        src: ../templates/staging-compose.yml
+        dest: /root/staging/docker-compose.yml
+        force: yes
+    - name: Copy env file
+      template:
+        src: ../templates/env.j2
+        dest: /root/staging/env
+        force: yes
+    - name: Stop existing containers
+      docker_service:
+        project_src: staging
+        state: absent
+        remove_images: local
+        remove_volumes: true
+    - name: Run docker & docker-compose commands
+      shell: "{{ item.command }}"
+      args:
+        chdir: /root/staging
+      with_items:
+        - { command: 'docker-compose pull'}
+        - { command: 'docker-compose up -d --remove-orphans'}
+        - { command: 'docker volume ls -qf dangling=true | xargs -r docker volume rm'} # Remove unused volumes
+        - { command: 'docker images -q --no-trunc | xargs -r docker rmi || true'} # Remove unused images
+    - name: Wait for docker containers
+      wait_for:
+          port: 443
+          delay: 15
+          state: drained
+          timeout: 300
+    - name: Run migrations
+      shell: docker-compose exec -T web_server php /var/www/artisan migrate --force
+      args:
+        chdir: /root/staging

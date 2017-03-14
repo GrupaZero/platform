@@ -182,4 +182,4 @@ We're providing some boilerplate configs for travis & gitlab-ci so that you can 
  
 ## Deployment
 
-We're using ansible to as automation tool. We include example deploy-staging.yml playbook.
+We're using Ansible as automation tool. We include some example playbooks.
