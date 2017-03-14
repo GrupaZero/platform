@@ -1,14 +1,15 @@
 .env
-.env.example
-.env.testing
+.env.*
 .git
 .gitattributes
 .gitignore
 .gitlab-ci.yml
 .phpstorm.meta.php
 .release.json
+.server/ssl
 .travis.yml
 _ide_helper.php
+ansible
 backups
 build
 codeception.yml

@@ -1,0 +1,2 @@
+[webservers]
+staging1 ansible_host=staging1.grupazero.pl ansible_fqdn=staging1.grupazero.pl

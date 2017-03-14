@@ -1,20 +1,28 @@
-version: '2'
+version: '2.1'
 services:
+  proxy_server:
+    image: jwilder/nginx-proxy:alpine
+    restart: "no"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+    - ./.server/ssl:/etc/nginx/certs:ro
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+     - gznet
   web_server:
-    image: gzero/platform-container:v2
+    image: gzero/platform-container:v3
     restart: "no"
     environment:
       OVERRIDE_UMASK: "002"
-      NGINX_HOST: "dev.gzero.pl"
-      SSL: "true"
       XDEBUG: "true"
+      DEFAULT_HOST: "dev.gzero.pl"
+      VIRTUAL_HOST: "dev.gzero.pl,api.dev.gzero.pl,www.dev.gzero.pl"
     volumes:
       - .:/var/www
     networks:
      - gznet
-    ports:
-      - "80:80"
-      - "443:443"
   db_server:
     image: postgres:9.6-alpine
     restart: "no"
