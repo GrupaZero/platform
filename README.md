@@ -88,13 +88,6 @@ Starting platform_web_server_1
 ```
 ./develop artisan migrate
 ```
- 
-- Create laravel passport oauth keys & db entries
- 
-```
-./develop artisan passport:client --personal
-./develop artisan passport:client --password
-```
 
 - You can also seed database with example data using this command
  
