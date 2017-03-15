@@ -56,7 +56,6 @@
         ],
         "post-create-project-cmd": [
             "php artisan key:generate",
-            "php artisan passport:keys",
             "php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\""
         ],
         "post-install-cmd": [
