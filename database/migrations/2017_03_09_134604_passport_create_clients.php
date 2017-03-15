@@ -30,13 +30,13 @@ class PassportCreateClients extends Migration
      */
     public function down()
     {
-        /**
-         * 'regexp' sims to not work for postgresql.
-         * Need to use 'similar to' instead.
-         */
         if (Schema::hasTable('oauth_clients')) {
-            $records = DB::table('oauth_clients')
-                ->where('name', 'similar to', '(Password Grant|Personal Access) Client')
+            DB::table('oauth_clients')
+                ->where('name', 'like', 'Password Grant Client')
+                ->delete();
+
+            DB::table('oauth_clients')
+                ->where('name', 'like', 'Personal Access Client')
                 ->delete();
         }
     }
