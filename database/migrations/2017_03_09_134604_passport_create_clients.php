@@ -14,12 +14,12 @@ class PassportCreateClients extends Migration
     {
         Artisan::call('passport:client', [
             '--password' => true,
-            '--name' => config('app.name') . ' Password Grant Client'
+            '--name' => 'Password Grant Client'
         ]);
 
         Artisan::call('passport:client', [
             '--personal' => true,
-            '--name' => config('app.name') . ' Personal Access Client'
+            '--name' => 'Personal Access Client'
         ]);
     }
 
@@ -30,9 +30,13 @@ class PassportCreateClients extends Migration
      */
     public function down()
     {
+        /**
+         * 'regexp' sims to not work for postgresql.
+         * Need to use 'similar to' instead.
+         */
         if (Schema::hasTable('oauth_clients')) {
             $records = DB::table('oauth_clients')
-                ->where('name', 'like', config('app.name') . ' % Client')
+                ->where('name', 'similar to', '(Password Grant|Personal Access) Client')
                 ->delete();
         }
     }
