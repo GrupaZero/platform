@@ -32,11 +32,11 @@ class PassportCreateClients extends Migration
     {
         if (Schema::hasTable('oauth_clients')) {
             DB::table('oauth_clients')
-                ->where('name', 'like', 'Password Grant Client')
+                ->where('name', 'Password Grant Client')
                 ->delete();
 
             DB::table('oauth_clients')
-                ->where('name', 'like', 'Personal Access Client')
+                ->where('name', 'Personal Access Client')
                 ->delete();
         }
     }
