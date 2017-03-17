@@ -11,6 +11,10 @@
 |
 */
 
+// We need to handle Croppa here because of our catch all routes bellow
+Route::get('{path}', '\Bkwld\Croppa\Handler@handle')
+    ->where('path', app('Bkwld\Croppa\URL')->routePattern());
+
 Route::group(
     setMultilangRouting(['middleware' => ['web']]),
     function ($router) {
@@ -67,7 +71,6 @@ if (config('gzero.multilang.enabled')) {
             $router->get(
                 '{path?}',
                 function () {
-
                     return abort(404);
                 }
             )->where('path', '.*');

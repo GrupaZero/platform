@@ -65,7 +65,6 @@
         mode: 0644
       with_items:
         - { dest: '{{ DOMAIN }}'}
-        - { dest: 'api.{{ DOMAIN }}'}
         - { dest: 'www.{{ DOMAIN }}'}
       when: st.stat.exists
     - name: Copy docker-compose file
