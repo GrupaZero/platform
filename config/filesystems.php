@@ -75,6 +75,10 @@ return [
             'region' => env('S3_REGION', 'your-region'),
             'bucket' => env('S3_BUCKET', 'your-bucket'),
         ],
+
+        'test' => [
+            'driver' => 'nullAdapter',
+        ],
     ],
 
 ];
