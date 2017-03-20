@@ -15,10 +15,9 @@
 	 *			| string	 IoC binding name of League\Flysystem\Filesystem
 	 *			| string	 IoC binding name of League\Flysystem\Cached\CachedAdapter
 	 */
-    //'src_dir' => base_path() . '/uploads',
-    'src_dir' => 'croppa.s3', // S3
+    'src_dir' => 'croppa.src_dir',
 
-	/**
+    /**
 	 * The directory where cropped images should be saved. The route to the
 	 * cropped versions is what should be rendered in your markup; it must be a
 	 * web accessible directory.
@@ -27,8 +26,7 @@
 	 *			| string	 IoC binding name of League\Flysystem\Filesystem
 	 *			| string	 IoC binding name of League\Flysystem\Cached\CachedAdapter
 	 */
-	//'crops_dir' => public_path() . '/uploads',
-    'crops_dir' => public_path(), // S3
+    'crops_dir' => public_path() . '/uploads',
 
 	/**
 	 * Maximum number of sizes to allow for a particular source file. This is to
@@ -39,7 +37,6 @@
 	 * @var integer | boolean
 	 */
 	'max_crops' => false,
-
 
 	/*
 	|-----------------------------------------------------------------------------
@@ -57,8 +54,7 @@
 	 *
 	 * @var string
 	 */
-	//'path' => 'uploads/(.*)$',
-    'path' => '(.*)$', // S3
+    'path' => '(?:uploads/)?(.*)$',
 
     /**
 	 * A regex pattern that works like `path` except it is only used by the
@@ -75,8 +71,7 @@
 	 * A string that is prepended to the path captured by the `path` pattern
 	 * (above) that is used to from the URL to crops.
 	 */
-	 'url_prefix' => '/uploads/',         // Local
-	// 'url_prefix' => 'https://your-bucket.s3.amazonaws.com/uploads/', // S3
+	 'url_prefix' => '/uploads/',
 
 	/**
 	 * Reject attempts to maliciously create images by signing the generated
