@@ -61,16 +61,10 @@ class FunctionalTester extends \Codeception\Actor {
         $this->faker       = Factory::create();
         $this->contentRepo = new ContentRepository(
             new Content(),
-            new Dispatcher(),
-            new FileRepository(
-                new File(), new FileType(), new Dispatcher()
-            )
+            new Dispatcher()
         );
         $this->blockRepo   = new BlockRepository(
-            new Block(), new Dispatcher(),
-            new FileRepository(
-                new File(), new FileType(), new Dispatcher()
-            )
+            new Block(), new Dispatcher()
         );
         $this->userRepo    = new UserRepository(new User(), new Dispatcher());
         parent::__construct($scenario);
