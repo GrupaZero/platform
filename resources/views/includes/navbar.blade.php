@@ -8,8 +8,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('gzero.site_name') }}">
-                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('gzero.site_name') }}">
+            <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('app.name') }}">
+                <img src="{{ asset('/images/logo.png') }}" alt="{{ config('app.name') }}">
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -35,7 +35,11 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             {{--<img src="{{ Gravatar::src($user->email, 35) }}"--}}
                             {{--class="navbar-avatar img-circle">--}}
-                            {{ $user->nick }}
+                            @if (config('gzero.use_users_nicks'))
+                                {{ $user->nick }}
+                            @else
+                                {{ $user->first_name }} {{ $user->last_name }}
+                            @endif
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">

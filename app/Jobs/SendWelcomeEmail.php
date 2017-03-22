@@ -41,7 +41,7 @@ class SendWelcomeEmail implements ShouldQueue
                 ['user' => $this->user],
                 function ($m) {
                     $m->to($this->user->email, $this->user->name)
-                        ->subject(trans('emails.welcome.subject', ['siteName' => config('gzero.site_name')]));
+                        ->subject(trans('emails.welcome.subject', ['siteName' => config('app.name')]));
                 }
             );
         } catch (\Swift_TransportException $e) {
