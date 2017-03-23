@@ -10,7 +10,7 @@
 
             // This adds the custom login/logout functionality
             this.sso = {
-                name: "{{ config('gzero.site_name') }}",
+                name: "{{ config('app.name') }}",
                 url: "{{ route('login') }}",
                 logout: "{{ route('logout') }}"
             };

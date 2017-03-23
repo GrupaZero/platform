@@ -5,7 +5,7 @@
 @stop
 
 @section('sidebarLeft')
-    @include('account.menu', ['menu' => $menu])
+    @include('account.menu')
 @stop
 
 @section('content')
@@ -27,7 +27,8 @@
         @lang('user.edit_account')
     </a>
 
-    <a href="{{ route('logout') }}" title="@lang('common.logout')" class="btn btn-danger">
+    <a href="{{ route('logout') }}" title="@lang('common.logout')" class="btn btn-danger"
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         @lang('common.logout')
     </a>
 

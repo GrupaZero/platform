@@ -4,35 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gzero\Core\Controllers\BaseController;
-use Gzero\Core\Menu\Register;
 
 class AccountController extends BaseController {
-    /**
-     * @var Register
-     */
-    protected $userMenu;
-
-    /**
-     * AccountController constructor.
-     *
-     * @param Register $userMenu
-     */
-    public function __construct(Register $userMenu)
-    {
-        $this->userMenu = $userMenu;
-        $this->userMenu->addLink(route('account'), 'user.my_account');
-        $this->userMenu->addLink(route('account.oauth'), 'user.oauth');
-    }
 
     public function account()
     {
-        /**@TODO we need proper user menu method */
-        return view('account.index', ['menu' => $this->userMenu->getMenu()]);
+        return view('account.index');
     }
 
     public function edit()
     {
-        return view('account.edit', ['menu' => $this->userMenu->getMenu()]);
+        return view('account.edit');
     }
 
     public function welcome(Request $request)
@@ -48,6 +30,6 @@ class AccountController extends BaseController {
 
     public function oauth()
     {
-        return view('account.oauth', ['menu' => $this->userMenu->getMenu()]);
+        return view('account.oauth');
     }
 }

@@ -51,7 +51,7 @@
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": "{{ config('gzero.site_name') }}",
+      "name": "{{ config('app.name') }}",
       "url": "{{ route('home') }}"
     },
     {

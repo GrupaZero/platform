@@ -5,7 +5,7 @@
 @stop
 
 @section('sidebarLeft')
-    @include('account.menu', ['menu' => $menu])
+    @include('account.menu')
 @stop
 
 @section('content')
