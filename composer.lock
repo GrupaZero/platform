@@ -772,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "fddb40373b57e6231ee49abd5b39fcc4d172df82"
+                "reference": "52f8c454e1698b189d79b77f6935936899b86a68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/fddb40373b57e6231ee49abd5b39fcc4d172df82",
-                "reference": "fddb40373b57e6231ee49abd5b39fcc4d172df82",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/52f8c454e1698b189d79b77f6935936899b86a68",
+                "reference": "52f8c454e1698b189d79b77f6935936899b86a68",
                 "shasum": ""
             },
             "require": {
@@ -826,7 +826,7 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2017-03-23T10:38:56+00:00"
+            "time": "2017-03-24T13:20:11+00:00"
         },
         {
             "name": "gzero/cms",
@@ -834,12 +834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "d27eb62a2452e0cce9bbc48d3369162bcfa2fc8c"
+                "reference": "00eb389af6212e410298f500880c1148a7dc7f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/d27eb62a2452e0cce9bbc48d3369162bcfa2fc8c",
-                "reference": "d27eb62a2452e0cce9bbc48d3369162bcfa2fc8c",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/00eb389af6212e410298f500880c1148a7dc7f66",
+                "reference": "00eb389af6212e410298f500880c1148a7dc7f66",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +892,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-24T13:19:38+00:00"
+            "time": "2017-03-24T14:14:55+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
