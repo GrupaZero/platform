@@ -22,7 +22,7 @@
         "gzero/cms": "dev-master",
         "gzero/api": "dev-master",
         "gzero/admin": "dev-master",
-        "gzero/social": "dev-#61_fix_gzero_social",
+        "gzero/social": "dev-master",
         "predis/predis": "^1.1",
         "league/flysystem-aws-s3-v3": "^1.0"
     },

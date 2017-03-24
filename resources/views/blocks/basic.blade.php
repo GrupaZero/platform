@@ -1,10 +1,11 @@
 <div class="block {{isset($block->theme) ? $block->theme : 'col-sm-12'}}">
-    @if(isset($translations))
+    <?php $activeTranslation = $block->translation($lang->code); ?>
+    @if(isset($activeTranslation))
         <div class="block-title">
-            <h2>{{ $translations->title }}</h2>
+            <h2>{{ $activeTranslation->title }}</h2>
         </div>
         <div class="block-body">
-            {!! $translations->body !!}
+            {!! $activeTranslation->body !!}
         </div>
     @endif
 </div>
