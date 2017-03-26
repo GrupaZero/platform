@@ -55,13 +55,13 @@
                             @endif
                         </div>
                         @if($child->thumb)
+                            <?php $thumbTranslation = $child->thumb->translation($lang->code); ?>
                             <div class="thumb mb20">
-                                <a href="{{ $childUrl }}" title="{{$activeTranslation->title}}">
-                                    <img class="img-responsive"
-                                         src="{{croppaUrl($child->thumb->getFullPath(),
-                                          config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
-                                         alt="{{$activeTranslation->title}}">
-                                </a>
+                                <img class="img-responsive"
+                                     title="{{($thumbTranslation)? $thumbTranslation->title : ''}}"
+                                     src="{{croppaUrl($child->thumb->getFullPath(),
+                                    config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
+                                     alt="{{($thumbTranslation)? $thumbTranslation->title : ''}}">
                             </div>
                         @endif
                         {!! $activeTranslation->teaser !!}

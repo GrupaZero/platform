@@ -47,14 +47,17 @@
         </div>
     </div>
     @if($content->thumb)
+        <?php $thumbTranslation = $content->thumb->translation($lang->code); ?>
         <div class="thumb mb20">
             <img class="img-responsive"
+                 title="{{($thumbTranslation)? $thumbTranslation->title : ''}}"
                  src="{{croppaUrl($content->thumb->getFullPath(),
                   config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
-                 alt="{{$activeTranslation->title}}">
+                 alt="{{($thumbTranslation)? $thumbTranslation->title : ''}}">
         </div>
     @endif
     {!! $activeTranslation->body !!}
+    @include('includes.gallery', ['images' => $images])
     @if(config('disqus.enabled') && $content->isCommentAllowed)
         <div class="text-center">
             @include('includes.disqus.disqus', ['contentId' => $content->id, 'url' => $url])

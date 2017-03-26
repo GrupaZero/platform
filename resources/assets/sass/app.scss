@@ -244,6 +244,15 @@
   background : $gray-ultra-lighter;
 }
 
+.image-gallery {
+  .image {
+    &:nth-child(5){
+      clear: left;
+    }
+  }
+}
+
+
 @media only screen and (min-width : 799px) {
   header .navbar-brand {
     padding : 10px 15px;
@@ -340,6 +349,16 @@
   header {
     .main-nav a {
       padding : 10px 8px;
+    }
+  }
+}
+
+@media (max-width : 768px) {
+  .image-gallery {
+    .image {
+      &:nth-child(3){
+        clear: left;
+      }
     }
   }
 }
