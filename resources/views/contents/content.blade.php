@@ -46,6 +46,14 @@
             @endif
         </div>
     </div>
+    @if($content->thumb)
+        <div class="thumb mb20">
+            <img class="img-responsive"
+                 src="{{croppaUrl($content->thumb->getFullPath(),
+                  config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
+                 alt="{{$activeTranslation->title}}">
+        </div>
+    @endif
     {!! $activeTranslation->body !!}
     @if(config('disqus.enabled') && $content->isCommentAllowed)
         <div class="text-center">

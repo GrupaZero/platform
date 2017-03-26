@@ -835,12 +835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "948a54a8ef7b2dd33b2ace91134a6d0271212794"
+                "reference": "caae68e6466ba34b8e430a6e29b460aaba090d9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/948a54a8ef7b2dd33b2ace91134a6d0271212794",
-                "reference": "948a54a8ef7b2dd33b2ace91134a6d0271212794",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/caae68e6466ba34b8e430a6e29b460aaba090d9d",
+                "reference": "caae68e6466ba34b8e430a6e29b460aaba090d9d",
                 "shasum": ""
             },
             "require": {
@@ -893,7 +893,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-25 12:51:12"
+            "time": "2017-03-26 14:27:10"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -4107,16 +4107,16 @@
         },
         {
             "name": "gzero/testing",
-            "version": "v3.0.4",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/testing.git",
-                "reference": "cccbe1aef5f380c9f709b331ab391b4de872b1fb"
+                "reference": "3e747e3b1ab12f4a35a75c09a93a1ec6abb30086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/testing/zipball/cccbe1aef5f380c9f709b331ab391b4de872b1fb",
-                "reference": "cccbe1aef5f380c9f709b331ab391b4de872b1fb",
+                "url": "https://api.github.com/repos/GrupaZero/testing/zipball/3e747e3b1ab12f4a35a75c09a93a1ec6abb30086",
+                "reference": "3e747e3b1ab12f4a35a75c09a93a1ec6abb30086",
                 "shasum": ""
             },
             "type": "library",
@@ -4131,7 +4131,7 @@
                 }
             ],
             "description": "Package that helps testing across our packages",
-            "time": "2017-03-22 18:29:49"
+            "time": "2017-03-26 14:02:17"
         },
         {
             "name": "hamcrest/hamcrest-php",
