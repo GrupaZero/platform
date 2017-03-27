@@ -6,7 +6,7 @@
         @include('includes.canonical', ['paginator' => $contents])
     @endif
     @if(config('gzero.multilang.enabled'))
-        <link rel="alternate" href="{{env('APP_URL')}}" hreflang="x-default" />
+        <link rel="alternate" href="{{env('APP_URL')}}" hreflang="x-default"/>
         @foreach($langs as $availableLang)
             <link rel="alternate" href="{{url('/') . '/' . $availableLang->code}}" hreflang="{{$availableLang->code}}"/>
         @endforeach
@@ -51,12 +51,16 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="thumb mb20">
-                            <a href="{{ $childUrl }}" title="{{$activeTranslation->title}}">
-                                <img class="img-responsive" src="http://placehold.it/847x312"
-                                     width="847" height="312" alt="{{$activeTranslation->title}}">
-                            </a>
-                        </div>
+                        @if($child->thumb)
+                            <?php $thumbTranslation = $child->thumb->translation($lang->code); ?>
+                            <div class="thumb mb20">
+                                <img class="img-responsive"
+                                     title="{{($thumbTranslation)? $thumbTranslation->title : ''}}"
+                                     src="{{croppaUrl($child->thumb->getFullPath(),
+                                    config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
+                                     alt="{{($thumbTranslation)? $thumbTranslation->title : ''}}">
+                            </div>
+                        @endif
                         {!! $activeTranslation->teaser !!}
                     </div>
                     <div class="row">
