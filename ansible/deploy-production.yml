@@ -35,16 +35,19 @@
         name: "{{ POSTGRES_USER }}"
         password: "{{ POSTGRES_PASSWORD }}"
         priv: "ALL"
+    - name: Register backup timestamp
+      shell: date +%Y%m%d_%H%M
+      register: backup_timestamp
     - name: Backup database
       become: true
       become_user: postgres
       shell: >
         pg_dump --clean --if-exists {{ POSTGRES_DATABASE }} |
-        gzip > {{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
+        gzip > {{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
     - name: Move backup to backups dir
       shell: >
-        mv /var/lib/postgresql/{{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
-        /root/backups/deployment/{{ POSTGRES_DATABASE }}_$(date +%Y%m%d_%H%M).sql.gz
+        mv /var/lib/postgresql/{{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
+        /root/backups/deployment/{{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
     - name: Copy nginx proxy template file
       copy:
         src: ./templates/nginx-proxy.tmpl
