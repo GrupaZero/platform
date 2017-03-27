@@ -19,10 +19,9 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.3.*",
-        "gzero/cms": "dev-master",
-        "gzero/api": "dev-master",
-        "gzero/admin": "dev-master",
-        "gzero/social": "dev-master",
+        "gzero/cms": "^1.0",
+        "gzero/api": "^1.0",
+        "gzero/admin": "^1.0",
         "predis/predis": "^1.1",
         "league/flysystem-aws-s3-v3": "^1.0"
     },

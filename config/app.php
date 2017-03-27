@@ -170,7 +170,6 @@ return [
         Gzero\Core\ServiceProvider::class,
         Gzero\Api\ServiceProvider::class,
         Gzero\Admin\ServiceProvider::class,
-        Gzero\Social\ServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -2,15 +2,6 @@
 
 GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 
-**[VIEW DEMO](https://staging.gzero.pl/en)** - you can log in with this credentials:
-
-```
-login: admin@gzero.pl
-pass: test
-```
-
-**The project is still in the phase of intensive development**
-
 **The project uses [Docker](https://www.docker.com/what-docker) containers to package entire application with all of its dependencies into a standardized unit.**
 
 **The project uses [Ansible](https://www.ansible.com/how-ansible-works) automation engine to deploy entire application.**

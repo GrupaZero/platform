@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa7365c65913b25748784f10e0d30c17",
+    "content-hash": "aa700daac5a0f80509adc8e54bd4ab2f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -721,21 +721,20 @@
         },
         {
             "name": "gzero/admin",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "0fe38c09b7551988e4f39b945abfc858884a6225"
+                "reference": "c59a4a83eec16fddf650454cc456f5dd7a10745e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/0fe38c09b7551988e4f39b945abfc858884a6225",
-                "reference": "0fe38c09b7551988e4f39b945abfc858884a6225",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/c59a4a83eec16fddf650454cc456f5dd7a10745e",
+                "reference": "c59a4a83eec16fddf650454cc456f5dd7a10745e",
                 "shasum": ""
             },
             "require": {
-                "gzero/core": "dev-master",
-                "illuminate/routing": "5.3.*",
+                "gzero/core": "^1.0",
                 "php": ">=7.1.0"
             },
             "require-dev": {
@@ -764,29 +763,29 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2017-03-26T17:25:02+00:00"
+            "time": "2017-03-27T13:09:27+00:00"
         },
         {
             "name": "gzero/api",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/api.git",
-                "reference": "8fc9e935e513b6e1124d48a96e7a841b734c0f81"
+                "reference": "d22aef8de1744184803abf38180f391a5daa7e58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/api/zipball/8fc9e935e513b6e1124d48a96e7a841b734c0f81",
-                "reference": "8fc9e935e513b6e1124d48a96e7a841b734c0f81",
+                "url": "https://api.github.com/repos/GrupaZero/api/zipball/d22aef8de1744184803abf38180f391a5daa7e58",
+                "reference": "d22aef8de1744184803abf38180f391a5daa7e58",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/laravel-cors": "0.9.*",
                 "flow/jsonpath": "^0.3.4",
-                "gzero/core": "dev-master",
-                "gzero/entity": "dev-master",
-                "gzero/repository": "dev-master",
-                "gzero/validator": "dev-master",
+                "gzero/core": "^1.0",
+                "gzero/entity": "^1.0",
+                "gzero/repository": "^1.0",
+                "gzero/validator": "^1.0",
                 "illuminate/pagination": "5.3.*",
                 "illuminate/routing": "5.3.*",
                 "laravel/passport": "^1.0",
@@ -826,20 +825,20 @@
                 "cms",
                 "laravel"
             ],
-            "time": "2017-03-26T17:18:26+00:00"
+            "time": "2017-03-27T12:58:25+00:00"
         },
         {
             "name": "gzero/cms",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "85de33374e25a1e3eb2bf1990c25167b9ba517c9"
+                "reference": "684f40150567b09b352a7b3fdec6162d5e4288a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/85de33374e25a1e3eb2bf1990c25167b9ba517c9",
-                "reference": "85de33374e25a1e3eb2bf1990c25167b9ba517c9",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/684f40150567b09b352a7b3fdec6162d5e4288a3",
+                "reference": "684f40150567b09b352a7b3fdec6162d5e4288a3",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +891,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-26T16:50:02+00:00"
+            "time": "2017-03-27T12:46:47+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -941,64 +940,6 @@
                 "laravel"
             ],
             "time": "2017-02-15T16:24:49+00:00"
-        },
-        {
-            "name": "gzero/social",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrupaZero/social.git",
-                "reference": "c06f330013ec8340a9e660a5523dbf4a4723cce8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/social/zipball/c06f330013ec8340a9e660a5523dbf4a4723cce8",
-                "reference": "c06f330013ec8340a9e660a5523dbf4a4723cce8",
-                "shasum": ""
-            },
-            "require": {
-                "gzero/core": "dev-master@dev",
-                "gzero/entity": "dev-master@dev",
-                "gzero/repository": "dev-master@dev",
-                "laravel/socialite": "^2.0",
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "1.6.0",
-                "mockery/mockery": "0.9.*",
-                "phpmd/phpmd": "2.*",
-                "phpunit/phpunit": "~6.0",
-                "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Gzero\\": "src/Gzero"
-                },
-                "classmap": [
-                    "database/migrations"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Skierniewski",
-                    "email": "adrian.skierniewski@gmail.com"
-                }
-            ],
-            "description": "Gzero Social Plugin",
-            "keywords": [
-                "cms",
-                "framework",
-                "laravel",
-                "plugin",
-                "social"
-            ],
-            "time": "2017-03-26T18:52:39+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1338,60 +1279,6 @@
             "time": "2016-12-21T13:51:02+00:00"
         },
         {
-            "name": "laravel/socialite",
-            "version": "v2.0.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/socialite.git",
-                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/aca8de9a93a28a119714e289c8bc599bd81aa88d",
-                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~5.0|~6.0",
-                "illuminate/contracts": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/support": "~5.0",
-                "league/oauth1-client": "~1.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0|~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Socialite\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
-            "keywords": [
-                "laravel",
-                "oauth"
-            ],
-            "time": "2016-11-01T18:49:10+00:00"
-        },
-        {
             "name": "lcobucci/jwt",
             "version": "3.2.1",
             "source": {
@@ -1691,69 +1578,6 @@
                 "rest"
             ],
             "time": "2015-03-19T15:16:43+00:00"
-        },
-        {
-            "name": "league/oauth1-client",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "fca5f160650cb74d23fc11aa570dd61f86dcf647"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/fca5f160650cb74d23fc11aa570dd61f86dcf647",
-                "reference": "fca5f160650cb74d23fc11aa570dd61f86dcf647",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9",
-                "phpunit/phpunit": "^4.0",
-                "squizlabs/php_codesniffer": "^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\OAuth1\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Corlett",
-                    "email": "bencorlett@me.com",
-                    "homepage": "http://www.webcomm.com.au",
-                    "role": "Developer"
-                }
-            ],
-            "description": "OAuth 1.0 Client Library",
-            "keywords": [
-                "Authentication",
-                "SSO",
-                "authorization",
-                "bitbucket",
-                "identity",
-                "idp",
-                "oauth",
-                "oauth1",
-                "single sign on",
-                "trello",
-                "tumblr",
-                "twitter"
-            ],
-            "time": "2016-08-17T00:36:58+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -6050,10 +5874,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/cms": 20,
-        "gzero/api": 20,
-        "gzero/admin": 20,
-        "gzero/social": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,
