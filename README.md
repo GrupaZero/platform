@@ -18,10 +18,10 @@ composer create-project --prefer-dist gzero/platform platform
 Set permissions to storage & bootstrap cache:
 
 ```
-sudo chmod 777 -R storage/
-sudo chmod 777 -R bootstrap/cache/
-sudo chmod 777 -R uploads/
-sudo chmod 777 -R public/
+chmod 777 -R storage/
+chmod 777 -R bootstrap/cache/
+chmod 777 -R uploads/
+chmod 777 -R public/
 ```
 
 _[optional]_
@@ -32,6 +32,14 @@ This will allow you to write to files created by php due to umask 002 set in dev
 ```
 sudo usermod -a -G www-data user
 
+```
+
+##### Generating self-signed SSL cert
+
+If you want develop using ssl connection you can generate self-signed cert using:
+
+```
+./develop generate-cert dev.gzero.pl
 ```
 
 ##### Environment Configuration.
