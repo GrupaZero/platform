@@ -14,7 +14,7 @@
   "requireCleanWorkingDir": false,
   "src": {
     "pushRepo": null,
-    "beforeStartCommand": "composer update",
+    "beforeStartCommand": false,
     "beforeStageCommand": false,
     "afterReleaseCommand": false
   },
