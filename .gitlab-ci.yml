@@ -6,7 +6,7 @@ stages:
   - deploy
 
 cache:
-  key: "$CI_BUILD_REF_NAME"
+  key: "$CI_COMMIT_REF_NAME"
   paths:
     - vendor/
 
@@ -34,11 +34,11 @@ build:
     - docker:1.12.5-dind
   script:
     - composer install --prefer-dist --no-interaction --no-dev --no-suggest --no-progress --optimize-autoloader
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-    - if [ -n "${CI_BUILD_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:${CI_BUILD_TAG} .; fi
-    - if [ -n "${CI_BUILD_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:${CI_BUILD_TAG}; fi
-    - if [ -z "${CI_BUILD_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:latest .; fi
-    - if [ -z "${CI_BUILD_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:latest; fi
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - if [ -n "${CI_COMMIT_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:${CI_COMMIT_TAG} .; fi
+    - if [ -n "${CI_COMMIT_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:${CI_COMMIT_TAG}; fi
+    - if [ -z "${CI_COMMIT_TAG}" ]; then docker build --pull -t registry.gitlab.com/grupazero/staging:latest .; fi
+    - if [ -z "${CI_COMMIT_TAG}" ]; then docker push registry.gitlab.com/grupazero/staging:latest; fi
   only:
     - tags
     - master
@@ -58,7 +58,7 @@ deploy to staging:
     # TODO Validate if all env values are present
     - "ansible-playbook -i ansible/staging
       -e APP_KEY=$STAGING_APP_KEY
-      -e APP_VERSION=$CI_BUILD_TAG
+      -e APP_VERSION=$CI_COMMIT_TAG
       -e DOMAIN=$STAGING_DOMAIN
       -e POSTGRES_USER=$STAGING_DB_USER
       -e POSTGRES_PASSWORD=$STAGING_DB_PASSWORD
@@ -90,7 +90,7 @@ deploy to production:
     # TODO Validate if all env values are present
     - "ansible-playbook -i ansible/production
       -e APP_KEY=$PRODUCTION_APP_KEY
-      -e APP_VERSION=$CI_BUILD_TAG
+      -e APP_VERSION=$CI_COMMIT_TAG
       -e DOMAIN=$PRODUCTION_DOMAIN
       -e POSTGRES_USER=$PRODUCTION_DB_USER
       -e POSTGRES_PASSWORD=$PRODUCTION_DB_PASSWORD

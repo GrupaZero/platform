@@ -59,6 +59,13 @@
         owner: www-data
         group: www-data
         mode: 0644
+    - name: Remove nginx htpasswd files
+      file:
+        path: "/root/staging/volumes/htpasswd/{{ item.name }}"
+        state: absent
+      with_items:
+        - { name: '{{ DOMAIN }}'}
+        - { name: 'www.{{ DOMAIN }}'}
     - name: Copy nginx htpasswd file
       copy:
         src: ./staging.htpasswd
