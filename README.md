@@ -10,7 +10,7 @@ GZERO CMS PLATFORM it's a base to build custom application on GZERO CMS
 Use composer to create new project:
 
 ```
-composer create-project --prefer-dist gzero/platform platform dev-master
+composer create-project --prefer-dist gzero/platform platform
 ```
 
 ##### Directories permissions
