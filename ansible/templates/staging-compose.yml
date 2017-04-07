@@ -3,7 +3,7 @@ services:
   proxy_server:
     image: nginx:1.11-alpine
     container_name: staging_proxy_server
-    restart: unless-stopped
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -17,7 +17,7 @@ services:
       - gznet
   web_server:
     image: registry.gitlab.com/grupazero/staging:{{ APP_VERSION | default('latest', true) }}
-    restart: unless-stopped
+    restart: always
     environment:
       OVERRIDE_UMASK: "022"
       XDEBUG: "false"
@@ -33,14 +33,14 @@ services:
       - gznet
   redis_server:
     image: redis:3-alpine
-    restart: unless-stopped
+    restart: always
     volumes:
       - redisdata:/data
     networks:
       - gznet
   letsencrypt_service:
     image: jrcs/letsencrypt-nginx-proxy-companion:v1.4
-    restart: unless-stopped
+    restart: always
     depends_on:
       - proxy_server
       - docker_gen_service
@@ -56,7 +56,7 @@ services:
   docker_gen_service:
     image: jwilder/docker-gen:0.7.3
     container_name: staging_docker_gen_service
-    restart: unless-stopped
+    restart: always
     depends_on:
       - proxy_server
     volumes_from:
