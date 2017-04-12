@@ -37,7 +37,10 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-// Vue.http.options.credentials = true; // We need this to send cookie to subdomain
+/**
+ * We need to pass cookie to api subdomain
+ */
+window.axios.defaults.withCredentials = true;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
