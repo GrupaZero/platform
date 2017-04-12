@@ -1,5 +1,3 @@
-
-import Translations from './lang/locales.js';
 window._ = require('lodash');
 
 /**
@@ -26,15 +24,6 @@ window.matchHeight = require('jquery-match-height');
  */
 
 window.Vue = require('vue');
-
-/**
- * We'll get the application language and load all available translations
- */
-Vue.config.lang = document.documentElement.lang;
-
-Object.keys(Translations).forEach(function (lang) {
-    Vue.locale(lang, Translations[lang])
-});
 
 
 /**

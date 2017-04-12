@@ -1,3 +1,5 @@
+import Translations from './lang/locales.js';
+import VueI18n from 'vue-i18n';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -15,7 +17,13 @@ require('./cookies');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-// Vue.component('example', require('./components/Example.vue'));
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+    locale: document.documentElement.lang,
+    fallbackLocale: 'en',
+    messages: Translations
+});
 
 /**
  * Laravel Passport
@@ -36,5 +44,6 @@ Vue.component(
 );
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    i18n: i18n
 });
