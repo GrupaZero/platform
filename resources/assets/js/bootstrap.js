@@ -1,5 +1,3 @@
-
-import Translations from './lang/locales.js';
 window._ = require('lodash');
 
 /**
@@ -9,6 +7,7 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
+
 require('bootstrap-sass');
 require('./vendor/responsive-paginate');
 /**
@@ -25,31 +24,23 @@ window.matchHeight = require('jquery-match-height');
  */
 
 window.Vue = require('vue');
-require('vue-i18n');
-require('vue-resource');
-
-/**
- * We'll get the application language and load all available translations
- */
-Vue.config.lang = document.documentElement.lang;
-
-Object.keys(Translations).forEach(function (lang) {
-    Vue.locale(lang, Translations[lang])
-});
 
 
 /**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-Vue.http.options.credentials = true; // We need this to send cookie to subdomain
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
+window.axios = require('axios');
 
-    next();
-});
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/**
+ * We need to pass cookie to api subdomain
+ */
+window.axios.defaults.withCredentials = true;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -58,6 +49,8 @@ Vue.http.interceptors.push((request, next) => {
  */
 
 // import Echo from "laravel-echo"
+
+// window.Pusher = require('pusher-js');
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

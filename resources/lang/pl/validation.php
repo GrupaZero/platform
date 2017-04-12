@@ -39,7 +39,7 @@ return [
     'email'                => 'Format :attribute jest nieprawidłowy.',
     'exists'               => 'Zaznaczony :attribute jest nieprawidłowy.',
     'file'                 => ':attribute musi być plikiem.',
-    'filled'               => 'Pole :attribute jest wymagane.',
+    'filled'               => 'Pole :attribute musi mieć wartość.',
     'image'                => ':attribute musi być obrazkiem.',
     'in'                   => 'Zaznaczony :attribute jest nieprawidłowy.',
     'in_array'             => ':attribute nie znajduje się w :other.',

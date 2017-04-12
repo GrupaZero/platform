@@ -14,6 +14,9 @@ class Kernel extends HttpKernel {
      */
     protected $middleware = [
         \Gzero\Core\Middleware\Init::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         // @TODO It Fixes Codeception tests, pls remove it after CORS service provider fix
         \Barryvdh\Cors\HandlePreflight::class

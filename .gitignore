@@ -11,3 +11,5 @@ tests/_output/*
 .phpstorm.meta.php
 _ide_helper.php
 .vscode
++/public/hot
++/.vagrant
