@@ -155,10 +155,24 @@ Install required npm modules:
 ./develop npm install
 ```
 
-To use gulp:
+To run webpack:
 
 ```
-./develop gulp {command}
+./develop npm run dev
+```
+  or
+```
+./develop npm run watch
+```
+
+To run ava tests:
+
+```
+./develop npm test
+```
+  or
+```
+./develop npm run test:watch
 ```
 
 ## Updating composer dependencies
