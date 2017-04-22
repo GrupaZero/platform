@@ -1,12 +1,19 @@
-import {mount} from 'avoriaz';
 import test from 'ava';
+import {mount} from 'avoriaz';
 import Bluebird from 'bluebird';
 import VueI18n from 'vue-i18n';
 import Clients from './Clients.vue'
 
-/** @TODO extend mount to use i18n? **/
+/** @TODO ESLint for ava and source code */
+/** @TODO Travis & Gitlab setup */
+/** @TODO Simple tests for other components */
+/** @TODO Simple tests for ES6 class with sinon mock */
+/** @TODO Code auto completion ? */
+/** @TODO Production build with cache buster ? */
+
+/** @TODO extend mount to use i18n? */
 Clients.i18n = new VueI18n({
-    locale: "en",
+    locale: 'en',
     fallbackLocale: 'en',
     messages: vueTranslations
 });
@@ -37,17 +44,16 @@ test.serial('Init state without clients', t => {
 test.serial('Should render OAuth clients table', t => {
     t.plan(3);
 
-    axiosMock.onGet('/oauth/clients').reply(200,
-        [
+    axiosMock.onGet('/oauth/clients')
+        .reply(200, [
             {id: 1, name: 'OAuth Client 1'},
             {id: 2, name: 'OAuth Client 2'}
-        ]
-    );
+        ]);
 
     const wrapper = mount(Clients);
     t.is(0, wrapper.find('tr').length); // Before rendering
 
-    /** @TODO Change to promise **/
+    /** @TODO Change to promise */
     return Bluebird.fromCallback((callback) => {
             setImmediate(() => {
                 t.snapshot(wrapper.html());
