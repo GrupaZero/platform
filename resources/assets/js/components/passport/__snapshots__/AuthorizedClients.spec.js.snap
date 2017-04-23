@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Init state without tokens 1`] = `"<div><!----></div>"`;
+
+exports[`Should render OAuth tokens table 1`] = `
+"<div><div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\">Authorized Applications</div><div class=\\"panel-body\\"><table class=\\"table table-borderless m-b-none\\"><thead><tr><th>Name</th><th>Scopes</th><th></th></tr></thead><tbody><tr><td style=\\"vertical-align: middle;\\">
+                                    OAuth Token 1
+                                </td><td style=\\"vertical-align: middle;\\"><span>
+                                        scope1, scope2
+                                    </span></td><td style=\\"vertical-align: middle;\\"><a class=\\"action-link text-danger\\">
+                                        Revoke
+                                    </a></td></tr><tr><td style=\\"vertical-align: middle;\\">
+                                    OAuth Token 2
+                                </td><td style=\\"vertical-align: middle;\\"><span>
+                                        scope1, scope3
+                                    </span></td><td style=\\"vertical-align: middle;\\"><a class=\\"action-link text-danger\\">
+                                        Revoke
+                                    </a></td></tr></tbody></table></div></div></div></div>"
+`;
+
+exports[`Should render OAuth tokens table after 100 ms delay 1`] = `
+"<div><div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\">Authorized Applications</div><div class=\\"panel-body\\"><table class=\\"table table-borderless m-b-none\\"><thead><tr><th>Name</th><th>Scopes</th><th></th></tr></thead><tbody><tr><td style=\\"vertical-align: middle;\\">
+                                    OAuth Token 1
+                                </td><td style=\\"vertical-align: middle;\\"><span>
+                                        scope1, scope2
+                                    </span></td><td style=\\"vertical-align: middle;\\"><a class=\\"action-link text-danger\\">
+                                        Revoke
+                                    </a></td></tr><tr><td style=\\"vertical-align: middle;\\">
+                                    OAuth Token 2
+                                </td><td style=\\"vertical-align: middle;\\"><span>
+                                        scope1, scope3
+                                    </span></td><td style=\\"vertical-align: middle;\\"><a class=\\"action-link text-danger\\">
+                                        Revoke
+                                    </a></td></tr></tbody></table></div></div></div></div>"
+`;

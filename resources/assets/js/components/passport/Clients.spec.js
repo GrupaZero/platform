@@ -5,7 +5,6 @@ import Clients from './Clients.vue'
 
 /** @TODO Gitlab setup */
 /** @TODO Simple tests for other components */
-/** @TODO Simple tests for ES6 class with sinon mock */
 /** @TODO Production build with cache buster ? */
 
 test.beforeEach(() => {
