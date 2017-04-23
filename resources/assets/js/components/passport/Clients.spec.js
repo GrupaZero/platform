@@ -1,7 +1,6 @@
 import test from 'ava';
-import {mount} from 'avoriaz';
+import {vueMount} from '../../utils/test';
 import Bluebird from 'bluebird';
-import VueI18n from 'vue-i18n';
 import Clients from './Clients.vue'
 
 /** @TODO ESLint for ava and source code */
@@ -11,16 +10,9 @@ import Clients from './Clients.vue'
 /** @TODO Code auto completion ? */
 /** @TODO Production build with cache buster ? */
 
-/** @TODO extend mount to use i18n? */
-Clients.i18n = new VueI18n({
-    locale: 'en',
-    fallbackLocale: 'en',
-    messages: vueTranslations
-});
-
-
 test.beforeEach(t => {
     axiosMock.reset();
+    axiosMock.delayResponse = 0;
 });
 
 test.serial('Init state without clients', t => {
@@ -28,16 +20,13 @@ test.serial('Init state without clients', t => {
 
     axiosMock.onGet('/oauth/clients').reply(200, []);
 
-    const wrapper = mount(Clients);
+    const wrapper = vueMount(Clients);
 
-    /** @TODO Change to promise **/
-    return Bluebird.fromCallback((callback) => {
-            setImmediate(() => {
-                t.snapshot(wrapper.html());
-                return callback();
-            })
-        }
-    );
+    return Bluebird
+        .delay()
+        .then(() => {
+            t.snapshot(wrapper.html());
+        });
 
 });
 
@@ -50,17 +39,37 @@ test.serial('Should render OAuth clients table', t => {
             {id: 2, name: 'OAuth Client 2'}
         ]);
 
-    const wrapper = mount(Clients);
+    const wrapper = vueMount(Clients);
     t.is(0, wrapper.find('tr').length); // Before rendering
 
-    /** @TODO Change to promise */
-    return Bluebird.fromCallback((callback) => {
-            setImmediate(() => {
-                t.snapshot(wrapper.html());
-                t.is(3, wrapper.find('tr').length); // 2 clients + header
-                return callback();
-            })
-        }
-    );
+    return Bluebird
+        .delay()
+        .then(() => {
+            t.snapshot(wrapper.html());
+            t.is(3, wrapper.find('tr').length); // 2 clients + header
+        });
+
+});
+
+test.serial('Should render OAuth clients table after 100 ms delay', t => {
+    t.plan(3);
+
+    axiosMock.delayResponse = 100;
+
+    axiosMock.onGet('/oauth/clients')
+        .reply(200, [
+            {id: 1, name: 'OAuth Client 1'},
+            {id: 2, name: 'OAuth Client 2'}
+        ]);
+
+    const wrapper = vueMount(Clients);
+    t.is(0, wrapper.find('tr').length); // Before rendering
+
+    return Bluebird
+        .delay(105)
+        .then(() => {
+            t.snapshot(wrapper.html());
+            t.is(3, wrapper.find('tr').length); // 2 clients + header
+        });
 
 });
