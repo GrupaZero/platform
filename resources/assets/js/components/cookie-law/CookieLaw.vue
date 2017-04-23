@@ -19,22 +19,26 @@
   <transition appear name="slideFromBottom">
     <div class="cookies-info container" v-if="isOpen">
       <div class="cookies-info-message">
-        {{ $t('cookieLaw.message') }}
-        <a :href="policyUrl">{{ $t('cookieLaw.link_text') }}</a>
+        {{ $t('cookie_law.message') }}
+        <a :href="policyUrl">{{ $t('cookie_law.link_text') }}</a>
       </div>
-      <button class="btn btn-success btn-sm" @click="accept">{{ $t('cookieLaw.button_text') }}</button>
+      <button class="btn btn-success btn-sm" @click="accept">{{ $t('cookie_law.button_text') }}</button>
     </div>
   </transition>
 </template>
 
 <script>
     import Cookies from 'js-cookie'
-    export default {
+
+    const Component = {
         props: {
             policyUrl: {
                 type: String,
                 required: true
             }
+        },
+        _getCookiesInstance(){
+            return Cookies
         },
         data () {
             return {
@@ -47,15 +51,11 @@
             }
         },
         methods: {
-            _getCookiesInstance () {
-                return Cookies
-            },
             setVisited () {
-                this._getCookiesInstance().set('cookies_policy', 'accepted', {expires: 365})
+                Component._getCookiesInstance().set('cookies_policy', 'accepted', {expires: 365})
             },
             getVisited () {
-                console.log(this);
-                return this._getCookiesInstance().get('cookies_policy')
+                return Component._getCookiesInstance().get('cookies_policy')
             },
             accept () {
                 this.setVisited()
@@ -63,4 +63,6 @@
             }
         }
     }
+
+    export default Component
 </script>

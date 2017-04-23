@@ -1,26 +1,33 @@
 import test from 'ava'
+import Vue from 'vue'
 import sinion from 'sinon'
-import {vueMount} from '../../utils/test'
-import Bluebird from 'bluebird'
 import CookieLaw from './CookieLaw.vue'
 
-test.serial('Should display cookies law info', t => {
-    t.plan(1)
+test.serial('Should hide cookies info after accept', t => {
+    t.plan(2)
 
-    CookieLaw.methods._getCookiesInstance = {
-        get: sinion.stub(),
-        set: sinion.stub()
-    }
+    // Mocking
+    let CookiesMock = sinion.mock(CookieLaw._getCookiesInstance())
 
+    CookiesMock
+        .expects('get')
+        .once()
+        .withArgs('cookies_policy')
+        .returns(false)
+    CookiesMock
+        .expects('set')
+        .once()
+        .withArgs('cookies_policy', 'accepted', {expires: 365})
 
-    const wrapper = vueMount(CookieLaw, {
-        propsData: { policyUrl: 'xxx' }
-    })
+    let N = Vue.extend(CookieLaw)
+    let vm = new N({propsData: {policyUrl: 'url'}})
 
-    return Bluebird
-    .delay()
-    .then(() => {
-        t.snapshot(wrapper.html())
-    })
+    t.is(vm.isOpen, true)
+
+    vm.accept()
+
+    t.is(vm.isOpen, false)
+
+    CookiesMock.verify()
 
 })

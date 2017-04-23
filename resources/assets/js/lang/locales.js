@@ -29,7 +29,7 @@ export default {
             "you_have_not_created_any_personal_access_tokens": "You have not created any personal access tokens.",
             "your_applications_authorization_callback_url": "Your application's authorization callback URL."
         },
-        "cookieLaw": {
+        "cookie_law": {
             "link_text": "read more about our cookies policy.",
             "button_text": "Ok",
             "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies, "
@@ -65,7 +65,7 @@ export default {
             "you_have_not_created_any_personal_access_tokens": "Nie utworzono żadnych tokenów personalnego dostępu.",
             "your_applications_authorization_callback_url": "URL do metody autoryzacyjnej twojej aplikacji."
         },
-        "cookieLaw": {
+        "cookie_law": {
             "link_text": "dowiedz się więcej o polityce cookies.",
             "button_text": "Ok",
             "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie, "
