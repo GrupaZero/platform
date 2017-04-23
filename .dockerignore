@@ -4,6 +4,7 @@
 .gitattributes
 .gitignore
 .gitlab-ci.yml
+.nyc_output
 .phpstorm.meta.php
 .release.json
 .server/ssl
@@ -13,6 +14,7 @@ ansible
 backups
 build
 codeception.yml
+coverage
 develop
 docker-compose.yml
 Dockerfile

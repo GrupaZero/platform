@@ -6,9 +6,7 @@ import Clients from './Clients.vue'
 /** @TODO Gitlab setup */
 /** @TODO Simple tests for other components */
 /** @TODO Simple tests for ES6 class with sinon mock */
-/** @TODO Code auto completion ? */
 /** @TODO Production build with cache buster ? */
-/** @TODO Code coverage ? */
 
 test.beforeEach(() => {
     axiosMock.reset()
