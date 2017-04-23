@@ -169,6 +169,7 @@ To simply enable all watchers you can use:
  ```
  ./develop frontend-test
  ```
+## Testing on frontend
 
 To run only ava tests:
 

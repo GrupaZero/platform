@@ -13,21 +13,28 @@ function addLoadEvent() {
 
 addLoadEvent()
 
-function getCookie(c_name) {
-    var i, x, y, ARRcookies = document.cookie.split("")
-
-    for (i = 0; i < ARRcookies.length; i++) {
-        x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="))
-        y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1)
-        x = x.replace(/^\s+|\s+$/g, "")
-        if (x === c_name) { return unescape(y) }
+function getCookie(cname) {
+    var name = cname + "="
+    var decodedCookie = decodeURIComponent(document.cookie)
+    var ca = decodedCookie.split(';')
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1)
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length)
+        }
     }
+    return ""
 }
 
 function setCookie() {
     var exdate = new Date()
+    var c_value = escape('1') + ',domain=.' + document.domain
+
     exdate.setDate(exdate.getDate() + 365)
-    var c_value = escape('1') + ',domain=.' + document.domain + ((365 == null) ? "" : " path=/ expires=" + exdate.toUTCString())
+    c_value += (" path=/ expires=" + exdate.toUTCString())
     document.cookie = 'cookies_info' + "=" + c_value
 
     document.getElementById('cookie-info').getAttributeNode("class").value = "cookie-box"
@@ -35,13 +42,13 @@ function setCookie() {
 
 function checkCookie() {
     var cookies_info = getCookie("cookies_info")
-    if (cookies_info === null || cookies_info === "") {
+    var element = document.getElementById('close-cookie-info')
+
+    if (cookies_info === null || cookies_info === "" || (typeof cookies_info === 'undefined' && typeof element !== 'undefined')) {
 
         setTimeout(function() {
             document.getElementById('cookie-info').getAttributeNode("class").value = "active"
         }, 10)
-
-        var element = document.getElementById('close-cookie-info')
 
         if (element.addEventListener) {
             element.addEventListener('click', function() { setCookie() }, false)
