@@ -1,4 +1,4 @@
-window._ = require('lodash');
+window._ = require('lodash')
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -6,25 +6,16 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = require('jquery')
 
-require('bootstrap-sass');
-require('./vendor/responsive-paginate');
+require('bootstrap-sass')
+require('./vendor/responsive-paginate')
 /**
  * We'll load jQuery Plugins
  */
 
-window.colorbox = require('jquery-colorbox');
-window.matchHeight = require('jquery-match-height');
-
-/**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
- */
-
-window.Vue = require('vue');
-
+window.colorbox = require('jquery-colorbox')
+window.matchHeight = require('jquery-match-height')
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -32,15 +23,15 @@ window.Vue = require('vue');
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require('axios')
 
-window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /**
  * We need to pass cookie to api subdomain
  */
-window.axios.defaults.withCredentials = true;
+window.axios.defaults.withCredentials = true
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

@@ -9,7 +9,8 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "test": "ava",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint resources/assets/js/"
   },
   "babel": {
     "presets": [
@@ -32,6 +33,50 @@
       "./test-setup.js"
     ]
   },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "$": true,
+      "jQuery": true,
+      "axiosMock": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "ava"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:ava/recommended"
+    ],
+    "rules": {
+      "ava/prefer-async-await": "off",
+      "ava/no-cb-test": "error",
+      "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+      "comma-dangle": "error",
+      "curly": "error",
+      "default-case": "error",
+      "eqeqeq": ["error", "always"],
+      "guard-for-in": "error",
+      "linebreak-style": ["error", "unix"],
+      "no-alert": "error",
+      "no-confusing-arrow": "error",
+      "no-else-return": "error",
+      "no-floating-decimal": "error",
+      "no-multi-spaces": "error",
+      "no-useless-rename": "error",
+      "no-useless-return": "error",
+      "semi": ["error", "never"],
+      "valid-jsdoc": "error",
+      "vars-on-top": "error"
+    }
+  },
   "devDependencies": {
     "animate-scss": "^3.2.1",
     "ava": "^0.19.1",
@@ -44,6 +89,8 @@
     "bootstrap-sass": "^3.3.7",
     "browser-env": "^2.0.30",
     "cross-env": "^3.2.3",
+    "eslint": "^3.19.0",
+    "eslint-plugin-ava": "^4.2.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "jquery-colorbox": "^1.6.4",

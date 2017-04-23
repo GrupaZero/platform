@@ -34,6 +34,7 @@ before_script:
   - docker exec -i platform_web_server_1 phpenmod xdebug # enabling xdebug for code coverage
 
 script:
+  - docker-compose run --rm -w /var/www node_server npm -s lint
   - docker-compose run --rm -w /var/www node_server npm -s test -- --verbose
   - "docker exec -i platform_web_server_1 php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml -o \"settings: lint:false\" --coverage --coverage-xml --env platform,ml_disabled"
   - docker exec -i platform_web_server_1 mkdir -p /var/www/build/logs
