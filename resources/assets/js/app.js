@@ -10,7 +10,6 @@ import VueI18n from 'vue-i18n'
 
 require('./bootstrap')
 require('./common')
-require('./cookies')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -44,7 +43,12 @@ Vue.component(
   require('./components/passport/PersonalAccessTokens.vue')
 )
 
+Vue.component(
+    'cookie-law',
+    require('./components/cookie-law/CookieLaw.vue')
+)
+
 new Vue({
-    el: '#app',
+    el: '#root',
     i18n: i18n
 })

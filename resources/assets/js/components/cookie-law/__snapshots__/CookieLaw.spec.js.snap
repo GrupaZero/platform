@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should display cookies law info 1`] = `
+"<div class=\\"cookies-info container slideFromBottom-enter slideFromBottom-enter-active\\"><div class=\\"cookies-info-message\\">
+        We use cookies and similar technologies. By using the Site you agree to the use of cookies, 
+        <a href=\\"xxx\\">read more about our cookies policy.</a></div><button class=\\"btn btn-success btn-sm\\">Ok</button></div>"
+`;
