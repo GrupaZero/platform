@@ -13,6 +13,12 @@
     padding         : 10px;
     box-shadow      : -1px 3px 8px #000;
   }
+
+  @media (max-width : 768px) {
+    .cookies-info-message {
+      width : 75%;
+    }
+  }
 </style>
 
 <template>

@@ -12191,12 +12191,15 @@ var _jsCookie2 = _interopRequireDefault(_jsCookie);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
+var Component = {
     props: {
         policyUrl: {
             type: String,
             required: true
         }
+    },
+    _getCookiesInstance: function _getCookiesInstance() {
+        return _jsCookie2.default;
     },
     data: function data() {
         return {
@@ -12210,14 +12213,11 @@ exports.default = {
     },
 
     methods: {
-        _getCookiesInstance: function _getCookiesInstance() {
-            return _jsCookie2.default;
-        },
         setVisited: function setVisited() {
-            this._getCookiesInstance().set('cookies_policy', 'accepted', { expires: 365 });
+            Component._getCookiesInstance().set('cookies_policy', 'accepted', { expires: 365 });
         },
         getVisited: function getVisited() {
-            return this._getCookiesInstance().get('cookies_policy');
+            return Component._getCookiesInstance().get('cookies_policy');
         },
         accept: function accept() {
             this.setVisited();
@@ -12253,6 +12253,14 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
+exports.default = Component;
 
 /***/ }),
 /* 35 */
@@ -13340,7 +13348,7 @@ exports.default = {
             "you_have_not_created_any_personal_access_tokens": "You have not created any personal access tokens.",
             "your_applications_authorization_callback_url": "Your application's authorization callback URL."
         },
-        "cookieLaw": {
+        "cookie_law": {
             "link_text": "read more about our cookies policy.",
             "button_text": "Ok",
             "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies, "
@@ -13376,7 +13384,7 @@ exports.default = {
             "you_have_not_created_any_personal_access_tokens": "Nie utworzono żadnych tokenów personalnego dostępu.",
             "your_applications_authorization_callback_url": "URL do metody autoryzacyjnej twojej aplikacji."
         },
-        "cookieLaw": {
+        "cookie_law": {
             "link_text": "dowiedz się więcej o polityce cookies.",
             "button_text": "Ok",
             "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie, "
@@ -15938,7 +15946,7 @@ exports.push([module.i, "\n.action-link[data-v-2d3abfec] {\n    cursor: pointer;
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n.cookies-info {\n  position: fixed;\n  overflow: hidden;\n  box-sizing: border-box;\n  z-index: 9999;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 10px;\n  box-shadow: -1px 3px 8px #000;\n}\n", ""]);
+exports.push([module.i, "\n.cookies-info {\n  position: fixed;\n  overflow: hidden;\n  box-sizing: border-box;\n  z-index: 9999;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  bottom: 0;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 10px;\n  box-shadow: -1px 3px 8px #000;\n}\n@media (max-width: 768px) {\n.cookies-info-message {\n    width: 75%;\n}\n}\n", ""]);
 
 /***/ }),
 /* 45 */
@@ -36071,16 +36079,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cookies-info container"
   }, [_c('div', {
     staticClass: "cookies-info-message"
-  }, [_vm._v("\n      " + _vm._s(_vm.$t('cookieLaw.message')) + "\n      "), _c('a', {
+  }, [_vm._v("\n      " + _vm._s(_vm.$t('cookie_law.message')) + "\n      "), _c('a', {
     attrs: {
       "href": _vm.policyUrl
     }
-  }, [_vm._v(_vm._s(_vm.$t('cookieLaw.link_text')))])]), _vm._v(" "), _c('button', {
+  }, [_vm._v(_vm._s(_vm.$t('cookie_law.link_text')))])]), _vm._v(" "), _c('button', {
     staticClass: "btn btn-success btn-sm",
     on: {
       "click": _vm.accept
     }
-  }, [_vm._v(_vm._s(_vm.$t('cookieLaw.button_text')))])]) : _vm._e()])
+  }, [_vm._v(_vm._s(_vm.$t('cookie_law.button_text')))])]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
