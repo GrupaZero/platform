@@ -3,10 +3,6 @@ import {vueMount} from '../../utils/test'
 import Bluebird from 'bluebird'
 import Clients from './Clients.vue'
 
-/** @TODO Gitlab setup */
-/** @TODO Simple tests for other components */
-/** @TODO Production build with cache buster ? */
-
 test.beforeEach(() => {
     axiosMock.reset()
     axiosMock.delayResponse = 0
