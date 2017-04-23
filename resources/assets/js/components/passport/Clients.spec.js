@@ -9,6 +9,7 @@ import Clients from './Clients.vue'
 /** @TODO Simple tests for ES6 class with sinon mock */
 /** @TODO Code auto completion ? */
 /** @TODO Production build with cache buster ? */
+/** @TODO Code coverage ? */
 
 test.beforeEach(t => {
     axiosMock.reset();
@@ -16,7 +17,7 @@ test.beforeEach(t => {
 });
 
 test.serial('Init state without clients', t => {
-    t.plan(2);
+    t.plan(1);
 
     axiosMock.onGet('/oauth/clients').reply(200, []);
 
