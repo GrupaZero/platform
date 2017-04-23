@@ -8,9 +8,11 @@
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "start": "npm-run-all --parallel --silent -c lint:watch test:watch",
     "test": "ava",
-    "test:watch": "npm test -- --watch",
-    "lint": "eslint resources/assets/js/"
+    "test:watch": "npm run test -- --watch",
+    "lint": "esw resources/assets/js/ --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "babel": {
     "presets": [
@@ -58,13 +60,25 @@
     "rules": {
       "ava/prefer-async-await": "off",
       "ava/no-cb-test": "error",
-      "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
       "comma-dangle": "error",
       "curly": "error",
       "default-case": "error",
-      "eqeqeq": ["error", "always"],
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
       "guard-for-in": "error",
-      "linebreak-style": ["error", "unix"],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
       "no-alert": "error",
       "no-confusing-arrow": "error",
       "no-else-return": "error",
@@ -72,7 +86,10 @@
       "no-multi-spaces": "error",
       "no-useless-rename": "error",
       "no-useless-return": "error",
-      "semi": ["error", "never"],
+      "semi": [
+        "error",
+        "never"
+      ],
       "valid-jsdoc": "error",
       "vars-on-top": "error"
     }
@@ -91,12 +108,14 @@
     "cross-env": "^3.2.3",
     "eslint": "^3.19.0",
     "eslint-plugin-ava": "^4.2.0",
+    "eslint-watch": "^3.1.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "jquery-colorbox": "^1.6.4",
     "jquery-match-height": "^0.7.2",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "npm-run-all": "^4.0.2",
     "require-extension-hooks": "^0.2.0",
     "require-extension-hooks-babel": "^0.1.0",
     "require-extension-hooks-vue": "^0.2.1",

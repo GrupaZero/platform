@@ -165,7 +165,12 @@ To run webpack:
 ./develop npm run watch
 ```
 
-To run ava tests:
+To simply enable all watchers you can use:
+ ```
+ ./develop frontend-test
+ ```
+
+To run only ava tests:
 
 ```
 ./develop npm test
@@ -173,6 +178,16 @@ To run ava tests:
   or
 ```
 ./develop npm run test:watch
+```
+
+To run only eslint:
+
+```
+./develop npm lint
+```
+  or
+```
+./develop npm run lint:watch
 ```
 
 ## Updating composer dependencies
