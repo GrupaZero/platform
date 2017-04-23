@@ -16,7 +16,7 @@ test.beforeEach(t => {
 });
 
 test.serial('Init state without clients', t => {
-    t.plan(1);
+    t.plan(2);
 
     axiosMock.onGet('/oauth/clients').reply(200, []);
 
