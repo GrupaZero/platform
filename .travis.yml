@@ -1,5 +1,5 @@
 language: php
-sudo: false
+sudo: required
 cache:
   timeout: 1000
   directories:
