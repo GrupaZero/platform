@@ -5,9 +5,6 @@ language: php
 php:
   - '7.1'
 
-node_js:
-  - '7'
-
 services:
   - docker
 
@@ -16,8 +13,6 @@ env:
   DOCKER_COMPOSE_VERSION: 1.9.0
 
 before_install:
-  - npm --version
-  - npm install
   - apt-cache madison docker-engine # list docker-engine versions
   - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-engine=${DOCKER_VERSION} # upgrade docker-engine
   - sudo rm /usr/local/bin/docker-compose
@@ -29,6 +24,7 @@ before_script:
   - docker version
   - docker-compose version
   - docker-compose up -d
+  - docker-compose run --rm -w /var/www node_server npm install
   - docker exec -i platform_web_server_1 phpdismod xdebug # disabling xdebug to speed up composer
   - docker exec -i platform_web_server_1 composer install -d /var/www/ --prefer-dist --no-interaction || true
   - docker exec -i platform_web_server_1 phpenmod xdebug # enabling xdebug for code coverage
