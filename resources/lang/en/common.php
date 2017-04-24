@@ -15,8 +15,6 @@ return [
     'comments_no_js_message'       => 'Please enable JavaScript to view the comments.',
     'content_not_published'        => 'This content is not published.',
     'contents_list'                => 'Contents list',
-    'cookies_info_link_text'       => 'read more about our cookies policy',
-    'cookies_info_text'            => 'We use cookies and similar technologies. By using the Site you agree to the use of cookies.',
     'edit'                         => 'Edit',
     'email'                        => 'E-mail|Emails',
     'email_already_in_use_message' => 'This email is already registered.',

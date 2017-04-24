@@ -4,9 +4,10 @@
     @include('includes.head')
 </head>
 <body class="@yield('bodyClass') sidebar-left">
+<div id="root" class="page">
 <?php $sidebarClass = 'col-md-3'; ?>
 <?php $contentClass = 12 - (1 * substr($sidebarClass, -1)); ?>
-<div id="app" class="wrapper">
+<div class="wrapper">
     <header>
         @include('includes.langs')
         @if(!empty($blocks) && $blocks->has('header'))
@@ -66,5 +67,8 @@
     </div>
     @include('includes.footer')
 </footer>
+</div>
+<!-- end #root -->
+@include('includes.footerScripts')
 </body>
 </html>

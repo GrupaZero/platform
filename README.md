@@ -145,6 +145,7 @@ To run tests use:
 
 ```
 ./develop test
+./develop frontend-test
 ```
 
 ## Working on frontend
@@ -155,10 +156,36 @@ Install required npm modules:
 ./develop npm install
 ```
 
-To use gulp:
+To run webpack:
 
 ```
-./develop gulp {command}
+./develop npm run dev
+```
+  or
+```
+./develop npm run watch
+```
+
+## Testing on frontend
+
+To run only ava tests:
+
+```
+./develop npm test
+```
+  or
+```
+./develop npm run test:watch
+```
+
+To run only eslint:
+
+```
+./develop npm lint
+```
+  or
+```
+./develop npm run lint:watch
 ```
 
 ## Updating composer dependencies

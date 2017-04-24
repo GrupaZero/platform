@@ -1,5 +1,6 @@
-import Translations from './lang/locales.js';
-import VueI18n from 'vue-i18n';
+import Translations from './lang/locales.js'
+import Vue from 'vue'
+import VueI18n from 'vue-i18n'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -7,9 +8,8 @@ import VueI18n from 'vue-i18n';
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-require('./common');
-require('./cookies');
+require('./bootstrap')
+require('./common')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,13 +17,13 @@ require('./cookies');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.use(VueI18n);
+Vue.use(VueI18n)
 
 const i18n = new VueI18n({
     locale: document.documentElement.lang,
     fallbackLocale: 'en',
     messages: Translations
-});
+})
 
 /**
  * Laravel Passport
@@ -31,19 +31,24 @@ const i18n = new VueI18n({
 Vue.component(
   'passport-clients',
   require('./components/passport/Clients.vue')
-);
+)
 
 Vue.component(
   'passport-authorized-clients',
   require('./components/passport/AuthorizedClients.vue')
-);
+)
 
 Vue.component(
   'passport-personal-access-tokens',
   require('./components/passport/PersonalAccessTokens.vue')
-);
+)
 
-const app = new Vue({
-    el: '#app',
+Vue.component(
+    'cookie-law',
+    require('./components/cookie-law/CookieLaw.vue')
+)
+
+new Vue({
+    el: '#root',
     i18n: i18n
-});
+})

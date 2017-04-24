@@ -4,27 +4,31 @@
     @include('includes.head')
 </head>
 <body class="@yield('bodyClass')">
-<div id="app" class="wrapper">
-    <header>
-        @include('includes.langs')
-        @include('includes.navbar')
-    </header>
-    @yield('breadcrumbs')
-    <div id="main-container" class="container">
-        <div class="row">
-            <div id="content" class="col-sm-12 mh-column">
-                @include('includes.messages')
-                @section('content')
-                    {{-- CONTENT SECTION --}}
-                @show
+<div id="root" class="page">
+    <div class="wrapper">
+        <header>
+            @include('includes.langs')
+            @include('includes.navbar')
+        </header>
+        @yield('breadcrumbs')
+        <div id="main-container" class="container">
+            <div class="row">
+                <div id="content" class="col-sm-12 mh-column">
+                    @include('includes.messages')
+                    @section('content')
+                        {{-- CONTENT SECTION --}}
+                    @show
+                </div>
+                <!-- end #content -->
             </div>
-            <!-- end #content -->
         </div>
+        <!-- end #main-container -->
     </div>
-    <!-- end #main-container -->
+    <footer id="footer" class="clearfix">
+        @include('includes.footer')
+    </footer>
 </div>
-<footer id="footer" class="clearfix">
-    @include('includes.footer')
-</footer>
+<!-- end #root -->
+@include('includes.footerScripts')
 </body>
 </html>

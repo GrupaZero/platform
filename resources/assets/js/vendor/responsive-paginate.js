@@ -40,7 +40,6 @@
     	    {
     	    	this.reset();
     	    	var width = this.calculateWidth();
-                console.log(width);
 
     	    	while (width > this.els.parent().parent().width() - 10)
     	    	{

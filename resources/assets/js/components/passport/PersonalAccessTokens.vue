@@ -158,6 +158,7 @@
 </template>
 
 <script>
+    import _ from 'lodash'
     export default {
         /*
          * The component's data.

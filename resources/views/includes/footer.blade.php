@@ -7,12 +7,6 @@
             </div>
         </div>
     @show
-
-    <script src="{{ mix('/js/manifest.js') }}"></script>
-    <script src="{{ mix('/js/vendor.js') }}"></script>
-    <script src="{{ mix('/js/app.js') }}"></script>
-    @section('footerScripts')
-    @show
 </div>
 @if(option('general', 'cookies_policy_url'))
     @include('includes.cookieInfo')
