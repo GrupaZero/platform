@@ -145,6 +145,7 @@ To run tests use:
 
 ```
 ./develop test
+./develop frontend-test
 ```
 
 ## Working on frontend
@@ -165,10 +166,6 @@ To run webpack:
 ./develop npm run watch
 ```
 
-To simply enable all watchers you can use:
- ```
- ./develop frontend-test
- ```
 ## Testing on frontend
 
 To run only ava tests:
