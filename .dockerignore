@@ -1,5 +1,7 @@
+.dockerignore
 .env
 .env.*
+.eslintignore
 .git
 .gitattributes
 .gitignore
@@ -14,7 +16,11 @@ ansible
 backups
 build
 codeception.yml
+composer.json
+composer.lock
 coverage
+database/factories
+database/seeds
 develop
 docker-compose.yml
 Dockerfile
@@ -23,6 +29,8 @@ node_modules
 package.json
 phpunit.xml
 README.md
+resources/assets
 scripts
 server.php
 tests
+webpack.mix.js

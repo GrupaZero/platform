@@ -1,6 +1,19 @@
 ---
 - hosts: all
   remote_user: root
+  pre_tasks:
+      - assert:
+          that:
+            - "APP_KEY is defined"
+            - "DOCKER_APP_IMAGE is defined"
+            - "DOMAIN is defined"
+            - "LETSENCRYPT_EMAIL is defined"
+            - "MAIL_PASSWORD is defined"
+            - "MAIL_USERNAME is defined"
+            - "POSTGRES_DATABASE is defined"
+            - "POSTGRES_PASSWORD is defined"
+            - "POSTGRES_PASSWORD is defined"
+            - "POSTGRES_USER is defined"
   tasks:
     - name: Check if local staging.htpasswd file exists
       local_action: stat path="./staging.htpasswd"
