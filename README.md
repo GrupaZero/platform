@@ -56,7 +56,7 @@ In Ubuntu hosts file should looks like the following:
 127.0.0.1	localhost
 ...
 127.0.0.1	dev.gzero.pl
-127.0.0.1   api.dev.gzero.pl
+127.0.0.1 api.dev.gzero.pl
 ...
 ```
  

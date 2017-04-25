@@ -16,7 +16,7 @@ services:
     networks:
       - gznet
   web_server:
-    image: registry.gitlab.com/grupazero/staging:{{ APP_VERSION | default('latest', true) }}
+    image: "{{ DOCKER_APP_IMAGE }}:{{ APP_VERSION | default('latest', true) }}"
     restart: always
     environment:
       OVERRIDE_UMASK: "022"

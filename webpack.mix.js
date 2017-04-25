@@ -1,4 +1,4 @@
-const {mix} = require('laravel-mix');
+const {mix} = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -12,11 +12,11 @@ const {mix} = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue'])
-    .sass('resources/assets/sass/app.scss', 'public/css');
+    .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie'])
+    .sass('resources/assets/sass/app.scss', 'public/css')
 
 if (mix.config.inProduction) {
-    mix.version();
+    mix.version()
 }
 
 // If you want to use BrowserSync you'd need to proxy requests to docker container, but then you'd need
