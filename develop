@@ -19,10 +19,9 @@ if [ $# -gt 0 ];then
 
   if [ "$1" == "test" ]; then
     shift 1
-    ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u):www-data \
-        web_server \
-        vendor/bin/codecept run --env platform,ml_disabled "$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      "cd /var/www && vendor/bin/codecept run --env platform,ml_disabled $@"
 
   elif [ "$1" == "frontend-test" ]; then
     shift 1
@@ -33,17 +32,15 @@ if [ $# -gt 0 ];then
 
   elif [ "$1" == "artisan" ]; then
     shift 1
-    ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u):www-data \
-        web_server \
-        php artisan "$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      "cd /var/www && php artisan $@"
 
   elif [ "$1" == "composer" ]; then
     shift 1
-    ${COMPOSE} run --rm -w /var/www \
-        -u $(id -u):www-data \
-        web_server \
-        composer "$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      "cd /var/www && composer $@"
 
   elif [ "$1" == "npm" ]; then
     shift 1

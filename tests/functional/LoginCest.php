@@ -1,6 +1,9 @@
 <?php namespace Platform;
 
 use DateTime;
+use Gzero\Entity\User;
+use Illuminate\Contracts\Mail\Mailer;
+use Mockery as m;
 
 class LoginCest {
 
@@ -28,11 +31,11 @@ class LoginCest {
         $I->haveRecord(
             'users',
             [
-                'nick'  => 'nick',
+                'nick'       => 'nick',
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
-                'email'     => 'john@doe.com',
-                'password'  => bcrypt('password'),
+                'email'      => 'john@doe.com',
+                'password'   => bcrypt('password'),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]
@@ -71,6 +74,44 @@ class LoginCest {
     public function seeWelcomePage(FunctionalTester $I)
     {
         $I->wantTo('register a user and see welcome page');
+
+        // Mocking Mailer
+        $mock = m::mock(Mailer::class);
+        $I->haveSingleton(
+            Mailer::class,
+            function () use ($mock) {
+                return $mock;
+            }
+        );
+
+        $mock->shouldReceive('send')->once()
+            ->with(
+                'emails.auth.welcome',
+                m::on(
+                    function ($data) use ($I) {
+                        $I->assertArrayHasKey('user', $data);
+                        $I->assertInstanceOf(User::class, $data['user']);
+                        return true;
+                    }
+                ),
+                m::on(
+                    function ($closure) use ($I) {
+                        $message = m::mock();
+                        $message->shouldReceive('to')
+                            ->with('example@example.com', 'nick')
+                            ->andReturn(m::self());
+                        $message->shouldReceive('subject')
+                            ->with('Welcome to GZERO-CMS')
+                            ->andReturn(m::self());
+                        try {
+                            $closure($message);
+                        } catch (m\Exception $e) {
+                            $I->fail($e->getMessage());
+                        }
+                        return true;
+                    }
+                )
+            );
 
         $I->amOnPage('/en/register');
         $I->fillField('nick', 'nick');

@@ -37,7 +37,7 @@ class SendWelcomeEmail implements ShouldQueue {
             'emails.auth.welcome',
             ['user' => $this->user],
             function ($m) {
-                $m->to($this->user->email, $this->user->name)
+                $m->to($this->user->email, $this->user->getPresenter()->displayName())
                     ->subject(trans('emails.welcome.subject', ['siteName' => config('app.name')]));
             }
         );
