@@ -8,10 +8,8 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Log;
 
-class SendWelcomeEmail implements ShouldQueue
-{
+class SendWelcomeEmail implements ShouldQueue {
     use InteractsWithQueue, Queueable, SerializesModels;
 
     protected $user;
@@ -35,23 +33,13 @@ class SendWelcomeEmail implements ShouldQueue
      */
     public function handle(Mailer $mailer)
     {
-        try {
-            $mailer->send(
-                'emails.auth.welcome',
-                ['user' => $this->user],
-                function ($m) {
-                    $m->to($this->user->email, $this->user->name)
-                        ->subject(trans('emails.welcome.subject', ['siteName' => config('app.name')]));
-                }
-            );
-        } catch (\Swift_TransportException $e) {
-            Log::error(
-                'There was a problem with sending an welcome e-mail.',
-                [
-                    'email'   => $this->user->email,
-                    'message' => $e->getMessage()
-                ]
-            );
-        }
+        $mailer->send(
+            'emails.auth.welcome',
+            ['user' => $this->user],
+            function ($m) {
+                $m->to($this->user->email, $this->user->name)
+                    ->subject(trans('emails.welcome.subject', ['siteName' => config('app.name')]));
+            }
+        );
     }
 }
