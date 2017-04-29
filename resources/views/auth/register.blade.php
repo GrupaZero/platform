@@ -30,22 +30,22 @@
                     <p class="help-block">{{ $errors->first('nick') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
-                <label class="control-label" for="firstName">@lang('common.first_name')</label>
-                <input id="firstName" type="text" class="form-control" name="firstName"
-                       value="{{old('firstName')}}"
+            <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                <label class="control-label" for="first_name">@lang('common.first_name')</label>
+                <input id="first_name" type="text" class="form-control" name="first_name"
+                       value="{{old('first_name')}}"
                        placeholder="@lang('common.first_name') (@lang('common.optional'))">
-                @if($errors->has('firstName'))
-                    <p class="help-block">{{ $errors->first('firstName') }}</p>
+                @if($errors->has('first_name'))
+                    <p class="help-block">{{ $errors->first('first_name') }}</p>
                 @endif
             </div>
-            <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
-                <label class="control-label" for="lastName">@lang('common.last_name')</label>
-                <input id="lastName" type="text" class="form-control" name="lastName"
-                       value="{{old('lastName')}}"
+            <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                <label class="control-label" for="last_name">@lang('common.last_name')</label>
+                <input id="last_name" type="text" class="form-control" name="last_name"
+                       value="{{old('last_name')}}"
                        placeholder="@lang('common.last_name') (@lang('common.optional'))">
-                @if($errors->has('lastName'))
-                    <p class="help-block">{{ $errors->first('lastName') }}</p>
+                @if($errors->has('last_name'))
+                    <p class="help-block">{{ $errors->first('last_name') }}</p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
