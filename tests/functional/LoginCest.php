@@ -14,14 +14,44 @@ class LoginCest {
 
         $I->amOnPage('/en/register');
         $I->fillField('nick', 'nick');
-        $I->fillField('firstName', 'John');
-        $I->fillField('lastName', 'Doe');
+        $I->fillField('first_name', 'John');
+        $I->fillField('last_name', 'Doe');
         $I->fillField('email', 'example@example.com');
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
 
         $I->amOnPage('/');
-        $I->seeRecord('users', ['email' => 'example@example.com']);
+        $I->seeRecord(
+            'users',
+            [
+                'email'      => 'example@example.com',
+                'nick'       => 'nick',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
+            ]
+        );
+        $I->seeAuthentication();
+    }
+
+    public function registerWithoutFirstAndLastName(FunctionalTester $I)
+    {
+        $I->wantTo('register a user without first and last name');
+        $I->amOnPage('/en/register');
+        $I->fillField('nick', 'nick');
+        $I->fillField('email', 'example@example.com');
+        $I->fillField('password', 'password');
+        $I->click('button[type=submit]');
+
+        $I->amOnPage('/');
+        $I->seeRecord(
+            'users',
+            [
+                'email'      => 'example@example.com',
+                'nick'       => 'nick',
+                'first_name' => null,
+                'last_name'  => null,
+            ]
+        );
         $I->seeAuthentication();
     }
 
@@ -43,8 +73,8 @@ class LoginCest {
 
         $I->amOnPage('/en/register');
         $I->fillField('nick', 'nick');
-        $I->fillField('firstName', 'John');
-        $I->fillField('lastName', 'Doe');
+        $I->fillField('first_name', 'John');
+        $I->fillField('last_name', 'Doe');
         $I->fillField('email', 'john@doe.com');
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
@@ -59,8 +89,8 @@ class LoginCest {
 
         $I->amOnPage('/en/register');
         $I->fillField('nick', 'nick');
-        $I->fillField('firstName', 'John');
-        $I->fillField('lastName', 'Doe');
+        $I->fillField('first_name', 'John');
+        $I->fillField('last_name', 'Doe');
         $I->fillField('email', 'example@example.com');
         $I->fillField('password', 'password');
         $I->fillField('accountIntent', 'randomstring');
@@ -115,8 +145,8 @@ class LoginCest {
 
         $I->amOnPage('/en/register');
         $I->fillField('nick', 'nick');
-        $I->fillField('firstName', 'John');
-        $I->fillField('lastName', 'Doe');
+        $I->fillField('first_name', 'John');
+        $I->fillField('last_name', 'Doe');
         $I->fillField('email', 'example@example.com');
         $I->fillField('password', 'password');
         $I->click('button[type=submit]');
@@ -126,7 +156,15 @@ class LoginCest {
         $I->see('Your account was successfully created. Thank you for your registration!');
         $I->see('My Account');
         $I->see('Return to the homepage');
-        $I->seeRecord('users', ['email' => 'example@example.com']);
+        $I->seeRecord(
+            'users',
+            [
+                'email'      => 'example@example.com',
+                'nick'       => 'nick',
+                'first_name' => 'John',
+                'last_name'  => 'Doe',
+            ]
+        );
         $I->seeAuthentication();
     }
 
