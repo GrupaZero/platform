@@ -1,4 +1,4 @@
-@if(!empty($images))
+@if(!empty($images) && $images->isNotEmpty())
     <div class="row image-gallery">
         @foreach($images as $image)
             <?php $imageTranslation = $image->translation($lang->code); ?>
