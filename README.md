@@ -83,7 +83,7 @@ Starting platform_db_tests_server_1
 Starting platform_web_server_1
 ```
  
-- Create database schema and required data __(NOTICE: container uses directory name without _ as a prefix)__
+- Create database schema and required data
  
 ```
 ./develop artisan migrate
