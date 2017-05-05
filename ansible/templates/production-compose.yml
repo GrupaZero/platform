@@ -40,7 +40,7 @@ services:
     networks:
       - gznet
   letsencrypt_service:
-    image: jrcs/letsencrypt-nginx-proxy-companion:v1.4
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
     restart: always
     depends_on:
       - proxy_server

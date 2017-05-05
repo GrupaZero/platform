@@ -64,7 +64,7 @@ if [ $# -gt 0 ];then
   elif [ "$1" == "db-dump" ]; then
     shift 1
     [ ! -z $1 ] || die "Please specify database name"
-    ${COMPOSE} exec db_server sh -c "pg_dump -U postgres --clean --if-exists --no-owner $1 | gzip > /backups/$1_$(date +%Y%m%d_%H%M).sql.gz"
+    ${COMPOSE} exec db_server sh -c "pg_dump -U postgres --clean --if-exists --no-owner -n public $1 | gzip > /backups/$1_$(date +%Y%m%d_%H%M).sql.gz"
 
   elif [ "$1" == "db-restore" ]; then
     shift 1
