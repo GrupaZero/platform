@@ -18,6 +18,8 @@ services:
     image: "{{ DOCKER_APP_IMAGE }}:{{ APP_VERSION | default('latest', true) }}"
     restart: always
     depends_on:
+      - proxy_server
+      - docker_gen_service
       - redis_server
     environment:
       OVERRIDE_UMASK: "022"

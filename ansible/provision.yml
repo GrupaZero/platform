@@ -55,6 +55,13 @@
       apt:
         name: htop 
         state: present
+    - name: Install awscli
+      pip:
+       name: awscli
+    - name: Create .aws dir
+      file:
+        path: "~/.aws"
+        state: directory
     - name: Disallow password authentication
       lineinfile: 
         dest: /etc/ssh/sshd_config 
