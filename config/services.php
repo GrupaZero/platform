@@ -50,4 +50,9 @@ return [
         'client_secret' => env('OAUTH_TWITTER_CLIENT_SECRET'),
     ],
 
+    'rollbar' => [
+        'access_token' => env('ROLLBAR_TOKEN'),
+        'level'        => env('ROLLBAR_LEVEL'),
+    ],
+
 ];
