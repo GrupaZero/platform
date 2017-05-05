@@ -35,7 +35,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
+        /**
+         * To use Rollbar first install composer package: composer require jenssegers/rollbar
+         *
+         * if ($this->app->environment() === 'production' && env('ROLLBAR_TOKEN', false)) {
+         *  $this->app->register(\Jenssegers\Rollbar\RollbarServiceProvider::class);
+         * }
+         */
+        if ($this->app->environment() === 'local') {
             $this->app->register(DebugbarServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }

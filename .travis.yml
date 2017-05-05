@@ -25,7 +25,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - cp .env.example .env
   - docker version
   - docker-compose version
   - docker-compose up -d

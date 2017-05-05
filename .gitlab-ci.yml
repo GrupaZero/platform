@@ -24,7 +24,6 @@ test:
     - postgres:9.6-alpine
     - redis:3-alpine
   script:
-    - cp .env.example .env
     - composer install --prefer-dist --no-interaction --no-suggest --no-progress
     - "php vendor/bin/codecept run -c codeception.yml -o \"settings: lint: false\" --env platform"
     - npm -s install
@@ -38,7 +37,6 @@ build:
   services:
     - docker:1.12.5-dind
   script:
-    - cp .env.example .env
     - composer install --prefer-dist --no-interaction --no-dev --no-suggest --no-progress --optimize-autoloader
     - npm -s install
     - npm -s run production
