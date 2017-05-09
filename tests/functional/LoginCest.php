@@ -114,6 +114,8 @@ class LoginCest {
             }
         );
 
+        $appName = $I->getApplication()->make('config')->get('app.name');
+
         $mock->shouldReceive('send')->once()
             ->with(
                 'emails.auth.welcome',
@@ -125,13 +127,13 @@ class LoginCest {
                     }
                 ),
                 m::on(
-                    function ($closure) use ($I) {
+                    function ($closure) use ($I, $appName) {
                         $message = m::mock();
                         $message->shouldReceive('to')
                             ->with('example@example.com', 'nick')
                             ->andReturn(m::self());
                         $message->shouldReceive('subject')
-                            ->with('Welcome to GZERO-CMS')
+                            ->with("Welcome to $appName")
                             ->andReturn(m::self());
                         try {
                             $closure($message);
