@@ -27,8 +27,7 @@
         @lang('user.edit_account')
     </a>
 
-    <a href="{{ route('logout') }}" title="@lang('common.logout')" class="btn btn-danger"
-       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <a href="{{ route('logout') }}" title="@lang('common.logout')" class="btn btn-danger">
         @lang('common.logout')
     </a>
 

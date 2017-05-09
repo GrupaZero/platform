@@ -5,7 +5,7 @@
 return [
     '404_message'                  => 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
     'account'                      => 'Account',
-    'account_connected'             => 'Account connected to external service.',
+    'account_connected'            => 'Account connected to external service.',
     'all_rights_reserved'          => 'All rights reserved.',
     'anonymous'                    => 'Anonymous',
     'author'                       => 'Author',
@@ -63,6 +63,7 @@ return [
     'send'                         => 'Send',
     'send_password_reset_link'     => 'Send password reset link',
     'send_reminder'                => 'Send reminder',
+    'set_email_to_edit_account'    => 'Set an email address to be able to edit your profile.',
     'set_password_to_login'        => 'Set password to be able to sign in using your email address.',
     'sorry'                        => 'Sorry!',
     'status'                       => 'Status',

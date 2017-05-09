@@ -18,9 +18,12 @@ class ComposerServiceProvider extends ServiceProvider {
             'account.menu',
             function ($view) {
                 $menu = app('gzero.menu.account');
+                $user = auth()->user();
                 /** @var $menu Register */
                 $menu->add(new Link(route('account'), trans('user.my_account'), 100));
-                $menu->add(new Link(route('account.oauth'), trans('user.oauth'), 200));
+                if ($user && $user->isSuperAdmin()) {
+                    $menu->add(new Link(route('account.oauth'), trans('user.oauth'), 200));
+                }
                 $view->with('menu', $menu->getMenu());
             }
         );
@@ -30,7 +33,7 @@ class ComposerServiceProvider extends ServiceProvider {
             function ($view) {
                 $data = [];
                 $user = auth()->user();
-                if (!$user->isGuest()) {
+                if ($user && !$user->isGuest()) {
                     $data = [
                         "id"       => $user["id"],
                         "username" => $user->getPresenter()->displayName(),

@@ -12,9 +12,9 @@ class AccountController extends BaseController {
         return view('account.index');
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('account.edit');
+        return view('account.edit', ['isUserEmailSet' => strpos($request->user()->email, '@')]);
     }
 
     public function welcome(Request $request)
@@ -28,8 +28,13 @@ class AccountController extends BaseController {
         return redirect()->route('home');
     }
 
-    public function oauth()
+    public function oauth(Request $request)
     {
+
+        if (!$request->user()->isSuperAdmin()) {
+            return abort(404);
+        }
+
         return view('account.oauth');
     }
 }

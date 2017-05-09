@@ -52,12 +52,12 @@
             <img class="img-responsive"
                  title="{{($thumbTranslation)? $thumbTranslation->title : ''}}"
                  src="{{croppaUrl($content->thumb->getFullPath(),
-                  config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
+                  config('gzero.image.thumb.width'), config('gzero.image.thumb.height'), ['resize'])}}"
                  alt="{{($thumbTranslation)? $thumbTranslation->title : ''}}">
         </div>
     @endif
     {!! $activeTranslation->body !!}
-    @include('includes.gallery', ['images' => $images])
+    @include('includes.gallery', ['images' => $images, 'thumb' => $content->thumb])
     @if(config('disqus.enabled') && $content->isCommentAllowed)
         <div class="text-center">
             @include('includes.disqus.disqus', ['contentId' => $content->id, 'url' => $url])
