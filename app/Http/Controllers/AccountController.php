@@ -28,13 +28,8 @@ class AccountController extends BaseController {
         return redirect()->route('home');
     }
 
-    public function oauth(Request $request)
+    public function oauth()
     {
-
-        if (!$request->user()->isSuperAdmin()) {
-            return abort(404);
-        }
-
         return view('account.oauth');
     }
 }

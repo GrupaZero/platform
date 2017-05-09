@@ -35,16 +35,5 @@ class AccountCest
         $I->click('My Account', '.nav');
         $I->canSeeInCurrentUrl('/en/account');
     }
-
-    public function onlySuperAdminUsersCanAccessOAuthPage(FunctionalTester $I)
-    {
-        $I->wantTo('only super admin users can access OAuth page');
-        $I->login('john@doe.com', 'test123');
-        $I->click('Edit Account', '.user-nav');
-        $I->canSeeInCurrentUrl('/en/account/edit');
-        $I->cantSee('OAuth');
-        $I->amOnRoute('account.oauth');
-        $I->seeResponseCodeIs(404);
-    }
 }
 
