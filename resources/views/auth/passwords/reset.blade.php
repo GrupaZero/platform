@@ -33,7 +33,7 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
                 @if ($errors->has('password_confirmation'))
-                    <p class="help-block">{{ $errors->first('password_confirmation') }}/p>
+                    <p class="help-block">{{ $errors->first('password_confirmation') }}</p>
                 @endif
             </div>
             <div class="form-group">

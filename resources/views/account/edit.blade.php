@@ -15,7 +15,7 @@
         <div class="col-md-5">
             <form id="edit-account-form" action="#" method="POST" role="form">
                 <div class="form-group{{ $errors->first('nick') ? ' has-error' : '' }}">
-                    <label class="control-label" for="firstName">@lang('common.nick')</label>
+                    <label class="control-label" for="nick">@lang('common.nick')</label>
                     <input type="text" id="nick" name="nick" class="form-control"
                            value="{{ $user->nick }}"
                            placeholder="@lang('common.nick')">
