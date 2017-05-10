@@ -60,7 +60,7 @@
                                 <img class="img-responsive"
                                      title="{{($thumbTranslation)? $thumbTranslation->title : ''}}"
                                      src="{{croppaUrl($child->thumb->getFullPath(),
-                                    config('gzero.image.thumb.width'), config('gzero.image.thumb.height'))}}"
+                                    config('gzero.image.thumb.width'), config('gzero.image.thumb.height'), ['resize'])}}"
                                      alt="{{($thumbTranslation)? $thumbTranslation->title : ''}}">
                             </div>
                         @endif

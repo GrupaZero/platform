@@ -30,7 +30,7 @@ class ComposerServiceProvider extends ServiceProvider {
             function ($view) {
                 $data = [];
                 $user = auth()->user();
-                if (!$user->isGuest()) {
+                if ($user && !$user->isGuest()) {
                     $data = [
                         "id"       => $user["id"],
                         "username" => $user->getPresenter()->displayName(),

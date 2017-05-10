@@ -8,7 +8,7 @@
     <div class="col-md-4 col-md-offset-4">
         <h1 class="page-header">@lang('common.password_reset')</h1>
 
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('post.password.reset') }}">
+        <form role="form" method="POST" action="{{ route('post.password.reset') }}">
             {{ csrf_field() }}
             <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

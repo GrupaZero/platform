@@ -12,9 +12,9 @@ class AccountController extends BaseController {
         return view('account.index');
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('account.edit');
+        return view('account.edit', ['isUserEmailSet' => strpos($request->user()->email, '@')]);
     }
 
     public function welcome(Request $request)

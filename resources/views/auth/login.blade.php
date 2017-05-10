@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="checkbox text-right">
-                            <a href="{{ route('password.reset') }}">@lang('common.forgot_password')</a>
+                            <a href="{{ route('password.request') }}">@lang('common.forgot_password')</a>
                         </div>
                     </div>
                 </div>

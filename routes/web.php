@@ -28,22 +28,22 @@ Route::group(
                 $router->get('account/edit', 'AccountController@edit')->name('account.edit');
                 $router->get('account/welcome', 'AccountController@welcome')->name('account.welcome');
                 $router->get('account/oauth', 'AccountController@oauth')->name('account.oauth');
+                $router->get('logout', 'Auth\LoginController@logout')->name('logout');
             }
         );
         // START Laravel Auth routes
         // Authentication Routes...
         $router->get('login', 'Auth\LoginController@showLoginForm')->name('login');
         $router->post('login', 'Auth\LoginController@login')->name('post.login');
-        $router->post('logout', 'Auth\LoginController@logout')->name('logout');
 
         // Registration Routes...
         $router->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
         $router->post('register', 'Auth\RegisterController@register')->name('post.register');
 
         // Password Reset Routes...
-        $router->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+        $router->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         $router->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('post.password.email');
-        $router->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset.token');
+        $router->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
         $router->post('password/reset', 'Auth\ResetPasswordController@reset')->name('post.password.reset');
         // END Laravel Auth routes
 
