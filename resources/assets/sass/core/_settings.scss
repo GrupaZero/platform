@@ -25,10 +25,10 @@ $fonts : (
       font-family : map-get($type, 'group');
     }
 
-    src : url('../fonts/#{$font-file}.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/#{$font-file}.woff') format('woff'),
-    url('../fonts/#{$font-file}.ttf') format('truetype'),
-    url('../fonts/#{$font-file}.svg##{$font-file}') format('svg');
+    src : url('/fonts/#{$font-file}.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/#{$font-file}.woff') format('woff'),
+    url('/fonts/#{$font-file}.ttf') format('truetype'),
+    url('/fonts/#{$font-file}.svg##{$font-file}') format('svg');
 
     @if map-has-key($type, font-weight) {
       font-weight : map-get($type, font-weight);
