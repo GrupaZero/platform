@@ -25,7 +25,7 @@ test:
     - redis:3-alpine
   script:
     - composer install --prefer-dist --no-interaction --no-suggest --no-progress
-    - "php vendor/bin/codecept run -c codeception.yml -o \"settings: lint: false\" --env platform"
+    - "php vendor/bin/codecept run -c codeception.yml -o \"settings: lint: false\" --env platform,ml_disabled"
     - npm -s install
     - npm -s run lint
     - npm -s test -- --verbose

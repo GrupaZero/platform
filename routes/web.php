@@ -47,8 +47,8 @@ Route::group(
         $router->post('password/reset', 'Auth\ResetPasswordController@reset')->name('post.password.reset');
         // END Laravel Auth routes
 
-        $router->get('/', 'HomeController@index')->name('home');
-        $router->get('{path?}', 'ContentController@dynamicRouter')->where('path', '.*');
+        $router->get('/', 'HomeController@index')->middleware('check.pager')->name('home');
+        $router->get('{path?}', 'ContentController@dynamicRouter')->middleware('check.pager')->where('path', '.*');
     }
 );
 
