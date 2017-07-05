@@ -5,9 +5,13 @@
 @endif
 @if(!empty($paginator) && $paginator->hasPages())
     @if($paginator->previousPageUrl())
-        <link rel="prev" href="{{$paginator->previousPageUrl()}}"/>
+        @if($paginator->currentPage() - 1 == 1)
+            <link rel="prev" href="{{preg_replace('/\?page=1$|page=1&|&page=1/', '' , $paginator->previousPageUrl())}}"/>
+        @else
+            <link rel="prev" href="{{$paginator->previousPageUrl()}}"/>
+        @endif
     @endif
     @if($paginator->hasMorePages())
-        <link rel="next" href="{{$paginator->nextPageUrl()}}">
+        <link rel="next" href="{{$paginator->nextPageUrl()}}"/>
     @endif
 @endif
