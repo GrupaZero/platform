@@ -21,7 +21,7 @@
               - git
       tags: [zsh]
     - role: angstwad.docker_ubuntu
-      docker_pkg_name: docker-engine=1.13.1-0~ubuntu-xenial
+      uninstall_previous_docker_versions: true
       tags: [docker]
     - role: kamaln7.swapfile
       swapfile_use_dd: true
@@ -30,10 +30,7 @@
       swapfile_vfs_cache_pressure: 50
       swapfile_location: /swapfile
       tags: [swap]
-    - role: holms.fqdn
-      fqdn: "{{ ansible_fqdn }}"
-      hostname: "{{ inventory_hostname_short }}"
-      when: ansible_fqdn is defined
+    - role: ANXS.hostname
       tags: [fqdn]
     - role: adriagalin.motd
       tags: [motd]
@@ -51,6 +48,34 @@
       tags: [postgres]
 
   tasks:
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+    - name: Add FQDN to zsh
+      lineinfile:
+        dest: /root/.zshrc
+        regexp: "^HOST="
+        line: "HOST=$(hostname -f)"
+        state: present
+    - name: Use FQDN in oh my zsh theme
+      replace:
+        path: .oh-my-zsh/themes/gianu.zsh-theme
+        regexp: '}%m%{'
+        replace: '}%M%{'
+    - name: Disable APT::Periodic::Unattended-Upgrade
+      lineinfile:
+        dest: /etc/apt/apt.conf.d/20auto-upgrades
+        regexp: "^APT::Periodic::Unattended-Upgrade"
+        line: 'APT::Periodic::Unattended-Upgrade "0";'
+        state: present
+    - name: Enable some kernel modules for Docker
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: "^GRUB_CMDLINE_LINUX="
+        line: 'GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"'
+        state: present
+    - name: 'Update GRUB config'
+      shell: update-grub
     - name: 'Install common stuff'
       apt:
         name: htop 

@@ -1,6 +1,6 @@
-kamaln7.swapfile,master
-holms.fqdn,1.1
-angstwad.docker_ubuntu,v2.2
-adriagalin.motd,1.1.1
-gantsign.oh-my-zsh,1.2.0
-ANXS.postgresql,v1.7.1
+- kamaln7.swapfile, master
+- angstwad.docker_ubuntu, v3.2.0
+- adriagalin.motd, 1.1.1
+- gantsign.oh-my-zsh, 1.2.1
+- ANXS.hostname, v1.1.0
+- ANXS.postgresql, v1.9.0
