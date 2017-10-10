@@ -1,2 +1,2 @@
 [webservers]
-web1 ansible_host=app1.grupazero.pl ansible_fqdn=app1.grupazero.pl
+test1.grupazero.pl ansible_host=vps261700.grupazero.pl
