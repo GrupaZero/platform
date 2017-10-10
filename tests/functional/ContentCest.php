@@ -28,7 +28,7 @@ class ContentCest {
                 'type'         => 'category',
                 'is_active'    => 1,
                 'translations' => [
-                    'title'     => 'lorem ipsum',
+                    'title'     => 'Lorem Ipsum',
                     'lang_code' => 'en',
                     'is_active' => 1
                 ]
