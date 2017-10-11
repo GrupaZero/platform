@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Gzero\Core\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class ResetPasswordController extends BaseController
+class ResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -20,7 +20,12 @@ class ResetPasswordController extends BaseController
 
     use ResetsPasswords;
 
-    protected $redirectTo = '/';
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.

@@ -1,2 +1,0 @@
-[webservers]
-test1.grupazero.pl ansible_host=vps261700.grupazero.pl

@@ -86,6 +86,6 @@ return [
     |
     */
 
-    'prefix' => 'gzero',
+    'prefix' => 'laravel',
 
 ];

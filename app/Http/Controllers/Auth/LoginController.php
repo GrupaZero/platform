@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Gzero\Core\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends BaseController
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ class LoginController extends BaseController
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -34,6 +34,6 @@ class LoginController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest')->except('logout');
     }
 }

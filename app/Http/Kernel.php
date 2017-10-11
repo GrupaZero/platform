@@ -4,7 +4,8 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel {
+class Kernel extends HttpKernel
+{
     /**
      * The application's global HTTP middleware stack.
      *
@@ -13,13 +14,11 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $middleware = [
-        \Gzero\Core\Middleware\Init::class,
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        // @TODO It Fixes Codeception tests, pls remove it after CORS service provider fix
-        \Barryvdh\Cors\HandlePreflight::class
+        \App\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -32,12 +31,10 @@ class Kernel extends HttpKernel {
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
-            \App\Http\Middleware\ViewShareUser::class,
-            \App\Http\Middleware\ViewShareLangs::class
         ],
 
         'api' => [
@@ -54,12 +51,11 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'       => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'   => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can'        => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'      => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'check.pager' => \App\Http\Middleware\CheckPager::class
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }
