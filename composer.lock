@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fab7d1126b15569d4086805af05b6258",
+    "content-hash": "dd919c72a87ab107761e554c5a21f493",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -642,22 +642,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/base.git",
-                "reference": "97a63f0bcc1ef688f8f6c0c53bdd42bc183de102"
+                "reference": "a3baf01874bed086faba29951d089caca2737b9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/base/zipball/97a63f0bcc1ef688f8f6c0c53bdd42bc183de102",
-                "reference": "97a63f0bcc1ef688f8f6c0c53bdd42bc183de102",
+                "url": "https://api.github.com/repos/GrupaZero/base/zipball/a3baf01874bed086faba29951d089caca2737b9a",
+                "reference": "a3baf01874bed086faba29951d089caca2737b9a",
                 "shasum": ""
             },
             "require": {
+                "barryvdh/laravel-cors": "^0.9.3",
                 "gzero/eloquent-tree": "3.*",
                 "illuminate/contracts": "5.5.*",
                 "illuminate/routing": "5.5.*",
                 "illuminate/support": "5.5.*",
                 "laravel/passport": "^4.0",
+                "league/fractal": "^0.17.0",
                 "php": ">=7.1.0",
-                "robclancy/presenter": "1.3.2"
+                "robclancy/presenter": "1.3.2",
+                "themsaid/laravel-langman": "^1.3"
             },
             "require-dev": {
                 "codeception/codeception": "^2.3",
@@ -692,7 +695,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2017-10-12 13:49:32"
+            "time": "2017-10-12 18:19:30"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -2974,16 +2977,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "2faa791b66bac33ca40031d8bce03b7dc8143490"
+                "reference": "c8664b92a6d5bc229e48b0923486c097e45a7877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/2faa791b66bac33ca40031d8bce03b7dc8143490",
-                "reference": "2faa791b66bac33ca40031d8bce03b7dc8143490",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/c8664b92a6d5bc229e48b0923486c097e45a7877",
+                "reference": "c8664b92a6d5bc229e48b0923486c097e45a7877",
                 "shasum": ""
             },
             "require": {
@@ -3022,7 +3025,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2017-09-13T14:47:08+00:00"
+            "time": "2017-10-12T15:24:51+00:00"
         }
     ],
     "packages-dev": [
@@ -4705,7 +4708,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.1.0"
     },
     "platform-dev": []
 }
