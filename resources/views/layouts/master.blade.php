@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ isset($lang) ? $lang->code : app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}">
 <head>
     @include('includes.head')
 </head>

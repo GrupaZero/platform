@@ -9,10 +9,14 @@
                 entirely.
             </p>
             <p>
-                <a href="#" class="btn btn-primary">Main call to action</a>
-                <a href="#" class="btn btn-secondary">Secondary action</a>
+                <a href="{{route('login')}}" class="btn btn-primary">@lang('common.login')</a>
+                <a href="{{route('register')}}" class="btn btn-secondary"> @lang('common.register')</a>
             </p>
         </div>
+
+        @unless (Auth::check())
+            You are not signed in.
+        @endunless
     </section>
 @stop
 

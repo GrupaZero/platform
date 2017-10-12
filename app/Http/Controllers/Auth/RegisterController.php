@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Jobs\SendWelcomeEmail;
+use Gzero\Base\Service\UserService;
+use Gzero\Base\Validator\BaseUserValidator;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -18,54 +22,89 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
+    | This is our implementation of native Illuminate\Foundation\Auth\RegistersUsers;
+    |
     */
 
-    use RegistersUsers;
+    use RedirectsUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param UserService       $userService
+     * @param BaseUserValidator $validator
      */
-    public function __construct()
+    public function __construct(UserService $userService, BaseUserValidator $validator)
     {
+        $this->userRepo  = $userService;
+        $this->validator = $validator;
         $this->middleware('guest');
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Show the application registration form.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Http\Response
      */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+        return view('auth.register');
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Handle a registration request for the application.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        // Preventing spamer registration
+        if ($request->input('account_intent')) {
+            return redirect()->route('home');
+        }
+
+        $this->validator->setData($request->all());
+        $input = $this->validator->validate('register');
+        $user  = $this->userRepo->create($input);
+
+        event(new Registered($user));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user) ?: redirect($this->redirectPath());
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed                    $user
+     *
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        dispatch(new SendWelcomeEmail($user));
+        session()->put('showWelcomePage', true);
+        return redirect()->route('account.welcome', ['method' => 'Signup form']);
     }
 }
