@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('en/', function () {
+    $blocks = [
+        ['title' => 'First Block', 'body' => 'First block body text'],
+        ['title' => 'Second Block', 'body' => 'Second block body text']
+    ];
+
+    return view('home', ['blocks' => $blocks]);
+})->name('home');

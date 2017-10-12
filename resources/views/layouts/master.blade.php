@@ -10,7 +10,11 @@
         <div id="main-container" class="container">
             <div class="row">
                 @yield('asideLeft')
-                @yield('mainContent')
+                @section('mainContent')
+                    @component('sections.content', ['class'=> 'col-sm-12'])
+                        @yield('content')
+                    @endcomponent
+                @show
                 @yield('asideRight')
             </div>
         </div>

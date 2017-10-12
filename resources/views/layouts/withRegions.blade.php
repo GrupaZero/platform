@@ -1,19 +1,17 @@
 @extends('layouts.master')
 
-
 @isset($blocks)
-    @component('sidebarLeft', ['blocks' => $blocks])
+    @component('sections.sidebarLeft', ['blocks' => $blocks])
         @yield('sidebarLeft')
     @endcomponent
 @endisset
 
-
-@component('content', ['class'=> isset($blocks) ? 'col-sm-4' : 'col-sm-12'])
+@component('sections.content', ['class'=> isset($blocks) ? 'col-sm-4' : 'col-sm-12'])
     @yield('content')
 @endcomponent
 
 @isset($blocks)
-    @component('sidebarRight')
+    @component('sections.sidebarRight')
         @yield('sidebarRight')
     @endcomponent
 @endisset

@@ -1,30 +1,42 @@
-@if(isProviderLoaded('Gzero\Base\ServiceProvider'))
-    @extends('gzero-base::layouts.default')
-@endif
-@section('content')
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+@extends('layouts.master')
 
-            <div class="content">
-                <h1 class="title m-b-md">
-                    Laravel
-                </h1>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+@section('header')
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Album example</h1>
+            <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
+                entirely.
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary">Main call to action</a>
+                <a href="#" class="btn btn-secondary">Secondary action</a>
+            </p>
+        </div>
+    </section>
 @stop
+
+
+{{--@component('sections.sidebarLeft', ['blocks' => $blocks, 'class' => 'col-sm-6'])--}}
+    {{--MY CUSTOM SIDEBAR FROM HOME--}}
+{{--@endcomponent--}}
+
+{{--@component('sections.content', ['class' => 'col-sm-6'])--}}
+    {{--MY CUSTOM CONTENT FROM HOME--}}
+{{--@endcomponent--}}
+
+@section('sidebarLeft')
+    HOME LEFT
+@stop
+
+@section('content')
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur corporis cupiditate dignissimos distinctio
+    dolorem dolores error est eum, explicabo illo in iste laboriosam nemo provident quam quia reprehenderit saepe
+    tenetur?
+@stop
+
+@section('sidebarRight')
+    HOME RIGHT
+@stop
+
+
