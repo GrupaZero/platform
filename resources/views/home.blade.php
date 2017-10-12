@@ -8,15 +8,27 @@
                 creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
                 entirely.
             </p>
+            @guest
             <p>
                 <a href="{{route('login')}}" class="btn btn-primary">@lang('common.login')</a>
                 <a href="{{route('register')}}" class="btn btn-secondary"> @lang('common.register')</a>
             </p>
+            @endguest
         </div>
 
         @unless (Auth::check())
             You are not signed in.
         @endunless
+
+        @auth
+        <p>
+            {{ Auth::user()->name }}
+        </p>
+        <p>
+            <a href="{{route('logout')}}" class="btn btn-secondary">@lang('common.logout')</a>
+        </p>
+        @endauth
+
     </section>
 @stop
 

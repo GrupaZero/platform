@@ -11,6 +11,10 @@
 |
 */
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+});
+
 // START Laravel Auth routes
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
