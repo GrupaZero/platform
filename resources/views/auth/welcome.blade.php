@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('gaEvent')
-    ga('send', 'event', '{{config('gaEvents.user.category')}}', '{{config('gaEvents.user.signUpAction')}}', '{{ $method }}');
-@stop
-
 @section('title')
     @lang('common.welcome')
 @stop

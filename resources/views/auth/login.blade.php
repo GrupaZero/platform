@@ -12,24 +12,23 @@
             <form role="form" method="POST" action="{{ route('post.login') }}">
                 {{ csrf_field() }}
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="email">@choice('common.email', 1)</label>
-                    <input id="email" type="email" class="form-control" name="email"
-                           value="{{ old('email') }}"
-                           placeholder="@choice('common.email', 1)"
-                           required autofocus>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}"
+                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                           placeholder="@choice('common.email', 1)" required autofocus>
                     @if ($errors->has('email'))
-                        <p class="help-block">{{ $errors->first('email') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label for="password" class="control-label">@lang('common.password')</label>
-                    <input id="password" type="password" class="form-control" name="password"
-                           placeholder="@lang('common.password')"
-                           required>
+                    <input id="password" type="password" name="password"
+                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                           placeholder="@lang('common.password')" required>
                     @if ($errors->has('password'))
-                        <p class="help-block">{{ $errors->first('password') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                     @endif
                 </div>
                 <div class="form-group">

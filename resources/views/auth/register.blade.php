@@ -11,50 +11,49 @@
 
             <form id="register-account-form" method="POST" role="form" action="{{ route('register') }}">
                 {{ csrf_field() }}
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="email">@choice('common.email', 1)</label>
-                    <input id="email" type="email" class="form-control" name="email"
-                           value="{{ old('email') }}"
-                           placeholder="@choice('common.email', 1)"
-                           required autofocus>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}"
+                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                           placeholder="@choice('common.email', 1)" required autofocus>
                     @if ($errors->has('email'))
-                        <p class="help-block">{{ $errors->first('email') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('nick') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="nick">@lang('common.nick')</label>
-                    <input id="nick" type="text" class="form-control" name="nick"
-                           value="{{old('nick')}}"
-                           placeholder="@lang('common.nick')"
-                           required>
+                    <input id="nick" type="text" name="nick" value="{{old('nick')}}"
+                           class="form-control{{ $errors->has('nick') ? ' is-invalid' : '' }}"
+                           placeholder="@lang('common.nick')" required>
                     @if($errors->has('nick'))
-                        <p class="help-block">{{ $errors->first('nick') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('nick') }}</div>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="first_name">@lang('common.first_name')</label>
-                    <input id="first_name" type="text" class="form-control" name="first_name"
-                           value="{{old('first_name')}}"
+                    <input id="first_name" type="text" name="first_name" value="{{old('first_name')}}"
+                           class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
                            placeholder="@lang('common.first_name') (@lang('common.optional'))">
                     @if($errors->has('first_name'))
-                        <p class="help-block">{{ $errors->first('first_name') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('first_name') }}</div>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="last_name">@lang('common.last_name')</label>
-                    <input id="last_name" type="text" class="form-control" name="last_name"
-                           value="{{old('last_name')}}"
+                    <input id="last_name" type="text" name="last_name" value="{{old('last_name')}}"
+                           class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                            placeholder="@lang('common.last_name') (@lang('common.optional'))">
                     @if($errors->has('last_name'))
-                        <p class="help-block">{{ $errors->first('last_name') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('last_name') }}</div>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="control-label" for="password">@lang('common.password')</label>
-                    <input id="password" type="password" class="form-control" name="password"
+                    <input id="password" type="password" name="password"
+                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                            placeholder="@lang('common.password')" required>
                     @if($errors->has('password'))
-                        <p class="help-block">{{ $errors->first('password') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                     @endif
                 </div>
                 <div class="form-group">

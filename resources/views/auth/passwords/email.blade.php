@@ -18,11 +18,12 @@
             <form role="form" method="POST" action="{{ route('post.password.email') }}">
                 {{ csrf_field() }}
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label for="email" class="control-label">@choice('common.email', 1)</label>
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                    name="email" value="{{ old('email') }}" required>
                     @if ($errors->has('email'))
-                        <p class="help-block">{{ $errors->first('email') }}</p>
+                        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                     @endif
                 </div>
 
