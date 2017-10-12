@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('en/', function () {
+Route::get('/', function () {
     $blocks = [
         ['title' => 'First Block', 'body' => 'First block body text'],
         ['title' => 'Second Block', 'body' => 'Second block body text']
