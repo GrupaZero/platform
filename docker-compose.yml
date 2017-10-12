@@ -71,11 +71,6 @@ networks:
   gznet:
     driver: "bridge"
     enable_ipv6: false
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.20.0.0/24
-        gateway: 172.20.0.1
 volumes:
   dbdata:
     driver: "local"
