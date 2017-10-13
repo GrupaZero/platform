@@ -43,7 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct(UserService $userService, BaseUserValidator $validator)
     {
-        $this->userRepo  = $userService;
+        $this->userService  = $userService;
         $this->validator = $validator;
         $this->middleware('guest');
     }
@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
         $this->validator->setData($request->all());
         $input = $this->validator->validate('register');
-        $user  = $this->userRepo->create($input);
+        $user  = $this->userService->create($input);
 
         event(new Registered($user));
 
