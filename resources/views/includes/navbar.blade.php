@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('app.name') }}">
+    <a class="navbar-brand" href="{{ routeMl('home') }}" title="{{ config('app.name') }}">
         <img src="{{ asset('/images/logo.png') }}" alt="{{ config('app.name') }}">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -8,10 +8,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
-            <li class="nav-item{{ (URL::full() ==  route('home')) ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">
+            <li class="nav-item{{ (URL::full() ==  routeMl('home')) ? ' active' : '' }}">
+                <a class="nav-link" href="{{ routeMl('home') }}">
                     @lang('common.home')
-                    @if((URL::full() ==  route('home')))
+                    @if((URL::full() ==  routeMl('home')))
                         <span class="sr-only">(@lang('common.current'))</span>
                     @endif
                 </a>

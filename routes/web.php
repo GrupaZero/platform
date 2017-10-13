@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Router;
+
 Route::middleware(['auth'])->group(function () {
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
@@ -31,11 +33,15 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('post.password.reset');
 // END Laravel Auth routes
 
-Route::get('/', function () {
-    $blocks = [
-        ['title' => 'First Block', 'body' => 'First block body text'],
-        ['title' => 'Second Block', 'body' => 'Second block body text']
-    ];
+addMultiLanguageRoutes(function ($router, $language) {
+    /** @var Router $router */
+    $router->get('/', function () {
+        $blocks = [
+            ['title' => 'First Block', 'body' => 'First block body text'],
+            ['title' => 'Second Block', 'body' => 'Second block body text']
+        ];
 
-    return view('home', ['blocks' => $blocks]);
-})->name('home');
+        return view('home', ['blocks' => $blocks]);
+    })->name(mlSuffix('home', $language));
+});
+
