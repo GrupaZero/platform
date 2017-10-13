@@ -8,10 +8,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
-            <li class="nav-item{{ (URL::full() ==  routeMl('home')) ? ' active' : '' }}">
+            <li class="nav-item{{ (URL::full() == routeMl('home')) ? ' active' : '' }}">
                 <a class="nav-link" href="{{ routeMl('home') }}">
                     @lang('common.home')
-                    @if((URL::full() ==  routeMl('home')))
+                    @if((URL::full() == routeMl('home')))
                         <span class="sr-only">(@lang('common.current'))</span>
                     @endif
                 </a>
@@ -41,10 +41,10 @@
                     {{ $user->displayName() }}
                 </a>
                 <div class="dropdown-menu user-nav dropdown-menu-right" aria-labelledby="navbarUserNav">
-                    @if ($user->isSuperAdmin())
-                        {{--<a href="{{ route('admin') }}" target="_blank" class="dropdown-item">--}}
-                        {{--@lang('user.admin_panel') <i class="fa fa-cogs pull-right" aria-hidden="true"></i>--}}
-                        {{--</a>--}}
+                    @if ($user->isSuperAdmin() && isProviderLoaded('Gzero\Admin\ServiceProvider'))
+                        <a href="{{ route('admin') }}" target="_blank" class="dropdown-item">
+                            @lang('user.admin_panel') <i class="fa fa-cogs pull-right" aria-hidden="true"></i>
+                        </a>
                     @endif
                     <a href="{{ route('account') }}" class="dropdown-item">
                         @lang('user.my_account') <i class="fa fa-user pull-right" aria-hidden="true"></i>

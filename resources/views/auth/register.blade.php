@@ -21,12 +21,12 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="nick">@lang('common.nick')</label>
-                    <input id="nick" type="text" name="nick" value="{{old('nick')}}"
-                           class="form-control{{ $errors->has('nick') ? ' is-invalid' : '' }}"
+                    <label class="control-label" for="name">@lang('common.nick')</label>
+                    <input id="name" type="text" name="name" value="{{old('name')}}"
+                           class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                            placeholder="@lang('common.nick')" required>
-                    @if($errors->has('nick'))
-                        <div class="invalid-feedback">{{ $errors->first('nick') }}</div>
+                    @if($errors->has('name'))
+                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                     @endif
                 </div>
                 <div class="form-group">
