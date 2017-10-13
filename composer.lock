@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b75dcffc6713e4948f8a15ad3d692df6",
+    "content-hash": "86eceebeb903dee109e3894a437879b5",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -637,17 +637,70 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
+            "name": "gzero/admin",
+            "version": "dev-4_refactoring",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrupaZero/admin.git",
+                "reference": "d9058bf6de784c98e4cdf492ccbd97bba01016e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/d9058bf6de784c98e4cdf492ccbd97bba01016e1",
+                "reference": "d9058bf6de784c98e4cdf492ccbd97bba01016e1",
+                "shasum": ""
+            },
+            "require": {
+                "gzero/base": "dev-master",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gzero\\Admin\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-4": {
+                    "Gzero\\": "src/Gzero"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Skierniewski",
+                    "email": "adrian.skierniewski@gmail.com"
+                }
+            ],
+            "description": "Gzero Admin Panel",
+            "keywords": [
+                "admin panel",
+                "gzero cms",
+                "laravel"
+            ],
+            "time": "2017-10-13T15:04:39+00:00"
+        },
+        {
             "name": "gzero/base",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/base.git",
-                "reference": "a405f3e97cef43e9b0efcba357ec2f72c8b4fdc6"
+                "reference": "523afcc03b15c21a929333307554e866e830fab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/base/zipball/a405f3e97cef43e9b0efcba357ec2f72c8b4fdc6",
-                "reference": "a405f3e97cef43e9b0efcba357ec2f72c8b4fdc6",
+                "url": "https://api.github.com/repos/GrupaZero/base/zipball/523afcc03b15c21a929333307554e866e830fab8",
+                "reference": "523afcc03b15c21a929333307554e866e830fab8",
                 "shasum": ""
             },
             "require": {
@@ -695,7 +748,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2017-10-13 08:13:12"
+            "time": "2017-10-13 14:52:07"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -5257,7 +5310,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/base": 20
+        "gzero/base": 20,
+        "gzero/admin": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

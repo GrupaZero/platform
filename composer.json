@@ -12,9 +12,10 @@
     "type": "project",
     "require": {
         "php": ">=7.1.0",
+        "laravel/framework": "5.5.*",
         "fideloper/proxy": "~3.3",
         "gzero/base": "dev-master",
-        "laravel/framework": "5.5.*",
+        "gzero/admin": "dev-4_refactoring",
         "predis/predis": "^1.1"
     },
     "require-dev": {
@@ -53,6 +54,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=public --force --provider=\"Gzero\\Admin\\ServiceProvider\""
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
