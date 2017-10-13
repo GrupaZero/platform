@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ route('home') }}" title="{{ config('app.name') }}">
         <img src="{{ asset('/images/logo.png') }}" alt="{{ config('app.name') }}">
     </a>
@@ -8,7 +8,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
-            <li class="nav-item{{ (URL::full() ==  route('home')) ? 'active' : '' }}">
+            <li class="nav-item{{ (URL::full() ==  route('home')) ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('home') }}">
                     @lang('common.home')
                     @if((URL::full() ==  route('home')))
@@ -59,6 +59,5 @@
             </li>
         </ul>
         @endauth
-        </ul>
     </div>
 </nav>
