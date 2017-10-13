@@ -27,6 +27,9 @@
         <p>
             <a href="{{route('logout')}}" class="btn btn-secondary">@lang('common.logout')</a>
         </p>
+        <p>
+            <a href="{{route('account')}}" class="btn btn-secondary">@lang('common.account')</a>
+        </p>
         @endauth
 
     </section>
