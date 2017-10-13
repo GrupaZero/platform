@@ -6,6 +6,7 @@
 <body class="@yield('bodyClass')">
 <div id="root" class="page">
     <div class="wrapper">
+        @include('includes.navbar')
         @yield('header')
         <div id="main-container" class="container">
             <div class="row">

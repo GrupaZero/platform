@@ -17,6 +17,7 @@ return [
     'contents_list'                => 'Contents list',
     'cookies_info_link_text'       => 'read more about our cookies policy',
     'cookies_info_text'            => 'We use cookies and similar technologies. By using this site you consent to the use of cookies.',
+    'current'                      => 'current',
     'edit'                         => 'Edit',
     'email'                        => 'E-mail|Emails',
     'email_already_in_use_message' => 'This email is already registered.',

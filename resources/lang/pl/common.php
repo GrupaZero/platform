@@ -17,6 +17,7 @@ return [
     'contents_list'                => 'Lista Zawartości',
     'cookies_info_link_text'       => 'dowiedz się więcej o polityce cookies',
     'cookies_info_text'            => 'Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie.',
+    'current'                      => 'obecny',
     'edit'                         => 'Edytuj',
     'email'                        => 'E-mail|Emaile',
     'email_already_in_use_message' => 'Ten e-mail jest już zarejestrowany.',
