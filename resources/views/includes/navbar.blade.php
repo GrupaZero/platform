@@ -18,7 +18,7 @@
             </li>
         </ul>
         @guest
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">
                 <a href="{{ route('login') }}" class="btn btn-outline-success my-2 my-sm-0"
                    title="@lang('common.login')">
@@ -34,13 +34,13 @@
         </ul>
         @endguest
         @auth
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-md-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#"
                    id="navbarUserNav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ $user->displayName() }}
                 </a>
-                <div class="dropdown-menu user-nav dropdown-menu-left" aria-labelledby="navbarUserNav">
+                <div class="dropdown-menu user-nav dropdown-menu-right" aria-labelledby="navbarUserNav">
                     @if ($user->isSuperAdmin())
                         {{--<a href="{{ route('admin') }}" target="_blank" class="dropdown-item">--}}
                         {{--@lang('user.admin_panel') <i class="fa fa-cogs pull-right" aria-hidden="true"></i>--}}
@@ -52,6 +52,7 @@
                     <a href="{{ route('account.edit') }}" class="dropdown-item">
                         @lang('user.edit_account') <i class="fa fa-pencil pull-right" aria-hidden="true"></i>
                     </a>
+                    <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item">
                         @lang('common.logout') <i class="fa fa-sign-out fa-fw pull-right" aria-hidden="true"></i>
                     </a>
