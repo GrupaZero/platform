@@ -33,8 +33,17 @@
             </li>
         </ul>
         @endguest
-        @auth
         <ul class="navbar-nav ml-md-auto">
+            @foreach(['en', 'pl'] as $language)
+                <li class="nav-item">
+                    <a href="{{ routeMl('home', $language) }}"
+                       class="nav-link{{ (URL::full() == routeMl('home', $language)) ? ' active' : '' }}"
+                       title="{{$language}}">
+                        {{strtoupper($language)}}
+                    </a>
+                </li>
+            @endforeach
+            @auth
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#"
                    id="navbarUserNav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,7 +67,7 @@
                     </a>
                 </div>
             </li>
+            @endauth
         </ul>
-        @endauth
     </div>
 </nav>
