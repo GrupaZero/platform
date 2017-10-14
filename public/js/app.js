@@ -18559,9 +18559,9 @@ new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
             "your_applications_authorization_callback_url": "Your application's authorization callback URL."
         },
         "cookie_law": {
-            "link_text": "read more about our cookies policy.",
+            "link_text": " Read more about our cookies policy.",
             "button_text": "Ok",
-            "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies, "
+            "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies."
         }
     },
     "pl": {
@@ -18595,9 +18595,9 @@ new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
             "your_applications_authorization_callback_url": "URL do metody autoryzacyjnej twojej aplikacji."
         },
         "cookie_law": {
-            "link_text": "dowiedz się więcej o polityce cookies.",
+            "link_text": " Dowiedz się więcej o polityce cookies.",
             "button_text": "Ok",
-            "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie, "
+            "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie."
         }
     }
 });
@@ -33550,8 +33550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var Component = {
     props: {
         policyUrl: {
-            type: String,
-            required: true
+            type: String
         }
     },
     _getCookiesInstance: function _getCookiesInstance() {
@@ -33769,14 +33768,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { appear: "", name: "slideFromBottom" } }, [
     _vm.isOpen
-      ? _c("div", { staticClass: "cookies-info container" }, [
+      ? _c("div", { staticClass: "cookies-info" }, [
           _c("div", { staticClass: "cookies-info-message" }, [
             _vm._v(
               "\n      " + _vm._s(_vm.$t("cookie_law.message")) + "\n      "
             ),
-            _c("a", { attrs: { href: _vm.policyUrl } }, [
-              _vm._v(_vm._s(_vm.$t("cookie_law.link_text")))
-            ])
+            _vm.policyUrl
+              ? _c("a", { attrs: { href: _vm.policyUrl } }, [
+                  _vm._v(_vm._s(_vm.$t("cookie_law.link_text")))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c(

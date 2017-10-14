@@ -23,10 +23,10 @@
 
 <template>
   <transition appear name="slideFromBottom">
-    <div class="cookies-info container" v-if="isOpen">
+    <div class="cookies-info" v-if="isOpen">
       <div class="cookies-info-message">
         {{ $t('cookie_law.message') }}
-        <a :href="policyUrl">{{ $t('cookie_law.link_text') }}</a>
+        <a v-if="policyUrl" :href="policyUrl">{{ $t('cookie_law.link_text') }}</a>
       </div>
       <button class="btn btn-success btn-sm" @click="accept">{{ $t('cookie_law.button_text') }}</button>
     </div>
@@ -39,8 +39,7 @@
     const Component = {
         props: {
             policyUrl: {
-                type: String,
-                required: true
+                type: String
             }
         },
         _getCookiesInstance(){
