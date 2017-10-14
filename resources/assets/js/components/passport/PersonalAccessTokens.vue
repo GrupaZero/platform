@@ -18,7 +18,7 @@
                             {{ $t('passport.personal_access_tokens') }}
                         </span>
 
-                        <a class="card-link" @click="showCreateTokenForm">
+                        <a class="card-link" href="#" @click="showCreateTokenForm">
                             {{ $t('passport.create_new_token') }}
                         </a>
                     </div>
@@ -31,8 +31,8 @@
                     </p>
 
                     <!-- Personal Access Tokens -->
-                    <table class="table table-striped" v-if="tokens.length > 0">
-                        <thead>
+                    <table class="table" v-if="tokens.length > 0">
+                        <thead class="thead-inverse">
                             <tr>
                                 <th>{{ $t('passport.name') }}</th>
                                 <th></th>

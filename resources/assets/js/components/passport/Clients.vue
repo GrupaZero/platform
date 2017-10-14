@@ -17,7 +17,7 @@
                        {{ $t('passport.oauth_clients') }}
                     </span>
 
-                    <a class="card-link" @click="showCreateClientForm">
+                    <a class="card-link" href="#" @click="showCreateClientForm">
                         {{ $t('passport.create_new_client') }}
                     </a>
                 </div>
@@ -29,8 +29,8 @@
                     {{ $t('passport.you_have_not_created_any_oauth_clients') }}
                 </p>
 
-                <table class="table table-striped" v-if="clients.length > 0">
-                    <thead>
+                <table class="table" v-if="clients.length > 0">
+                    <thead class="thead-inverse">
                         <tr>
                             <th>{{ $t('passport.client_id') }}</th>
                             <th>{{ $t('passport.name') }}</th>

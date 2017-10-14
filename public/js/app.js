@@ -31773,6 +31773,7 @@ var render = function() {
               "a",
               {
                 staticClass: "card-link",
+                attrs: { href: "#" },
                 on: { click: _vm.showCreateClientForm }
               },
               [
@@ -31801,8 +31802,8 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.clients.length > 0
-          ? _c("table", { staticClass: "table table-striped" }, [
-              _c("thead", [
+          ? _c("table", { staticClass: "table" }, [
+              _c("thead", { staticClass: "thead-inverse" }, [
                 _c("tr", [
                   _c("th", [_vm._v(_vm._s(_vm.$t("passport.client_id")))]),
                   _vm._v(" "),
@@ -32528,14 +32529,14 @@ var render = function() {
   return _c("div", [
     _vm.tokens.length > 0
       ? _c("div", [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
+          _c("div", { staticClass: "card mb4" }, [
+            _c("div", { staticClass: "card-header" }, [
               _vm._v(_vm._s(_vm.$t("passport.authorized_applications")))
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("table", { staticClass: "table table-borderless m-b-none" }, [
-                _c("thead", [
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("thead", { staticClass: "thead-inverse" }, [
                   _c("tr", [
                     _c("th", [_vm._v(_vm._s(_vm.$t("passport.name")))]),
                     _vm._v(" "),
@@ -33069,6 +33070,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "card-link",
+                  attrs: { href: "#" },
                   on: { click: _vm.showCreateTokenForm }
                 },
                 [
@@ -33099,8 +33101,8 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _vm.tokens.length > 0
-            ? _c("table", { staticClass: "table table-striped" }, [
-                _c("thead", [
+            ? _c("table", { staticClass: "table" }, [
+                _c("thead", { staticClass: "thead-inverse" }, [
                   _c("tr", [
                     _c("th", [_vm._v(_vm._s(_vm.$t("passport.name")))]),
                     _vm._v(" "),
