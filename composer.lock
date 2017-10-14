@@ -695,12 +695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/base.git",
-                "reference": "523afcc03b15c21a929333307554e866e830fab8"
+                "reference": "5ad4c3b0063fcfe1114d2a4a4b625a0a083680e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/base/zipball/523afcc03b15c21a929333307554e866e830fab8",
-                "reference": "523afcc03b15c21a929333307554e866e830fab8",
+                "url": "https://api.github.com/repos/GrupaZero/base/zipball/5ad4c3b0063fcfe1114d2a4a4b625a0a083680e0",
+                "reference": "5ad4c3b0063fcfe1114d2a4a4b625a0a083680e0",
                 "shasum": ""
             },
             "require": {
@@ -748,7 +748,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2017-10-13 14:52:07"
+            "time": "2017-10-14T11:47:59+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -4981,16 +4981,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.3.1",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "fa24b6aec8a2bcc419df0958a6df29c1ee2b77ef"
+                "reference": "b873ee78d46863b271c767413130352451206a89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/fa24b6aec8a2bcc419df0958a6df29c1ee2b77ef",
-                "reference": "fa24b6aec8a2bcc419df0958a6df29c1ee2b77ef",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/b873ee78d46863b271c767413130352451206a89",
+                "reference": "b873ee78d46863b271c767413130352451206a89",
                 "shasum": ""
             },
             "type": "library",
@@ -5034,7 +5034,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2017-10-02T22:24:39+00:00"
+            "time": "2017-10-14T04:52:23+00:00"
         },
         {
             "name": "symfony/class-loader",

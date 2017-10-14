@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('gzero-base::layouts.master')
 
 @section('header')
     <section class="jumbotron text-center">
