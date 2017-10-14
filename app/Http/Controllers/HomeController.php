@@ -5,15 +5,19 @@ use Gzero\Base\Http\Controller\Controller;
 class HomeController extends Controller {
 
     /**
-     * Show account main page
+     * Show the application's home page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\Viewz
      */
     public function index()
     {
         $blocks = [
-            ['title' => 'First Block', 'body' => 'First block body text'],
-            ['title' => 'Second Block', 'body' => 'Second block body text']
+            'sidebarLeft'  => [
+                ['title' => 'First Block', 'body' => 'First block body text'],
+            ],
+            'sidebarRight' => [
+                ['title' => 'Second Block', 'body' => 'Second block body text']
+            ]
         ];
 
         return view('home', ['blocks' => $blocks]);

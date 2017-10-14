@@ -1,4 +1,4 @@
-@extends('gzero-base::layouts.master')
+@extends('gzero-base::layouts.withRegions')
 
 @section('header')
     <section class="jumbotron text-center">
@@ -25,28 +25,17 @@
             {{ Auth::user()->name }}
         </p>
         <p>
+            <a href="{{route('account')}}" class="btn btn-primary">@lang('common.account')</a>
             <a href="{{route('logout')}}" class="btn btn-secondary">@lang('common.logout')</a>
-        </p>
-        <p>
-            <a href="{{route('account')}}" class="btn btn-secondary">@lang('common.account')</a>
         </p>
         @endauth
 
     </section>
 @stop
 
-
-{{--@component('sections.sidebarLeft', ['blocks' => $blocks, 'class' => 'col-sm-6'])--}}
-    {{--MY CUSTOM SIDEBAR FROM HOME--}}
-{{--@endcomponent--}}
-
-{{--@component('sections.content', ['class' => 'col-sm-6'])--}}
-    {{--MY CUSTOM CONTENT FROM HOME--}}
-{{--@endcomponent--}}
-
-@section('sidebarLeft')
-    HOME LEFT
-@stop
+{{--@section('sidebarLeft')--}}
+    {{--HOME LEFT--}}
+{{--@stop--}}
 
 @section('content')
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur corporis cupiditate dignissimos distinctio
@@ -54,8 +43,8 @@
     tenetur?
 @stop
 
-@section('sidebarRight')
-    HOME RIGHT
-@stop
+{{--@section('sidebarRight')--}}
+    {{--HOME RIGHT--}}
+{{--@stop--}}
 
 
