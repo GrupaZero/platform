@@ -10,8 +10,8 @@
             </p>
             @guest
             <p>
-                <a href="{{route('login')}}" class="btn btn-primary">@lang('common.login')</a>
-                <a href="{{route('register')}}" class="btn btn-secondary"> @lang('common.register')</a>
+                <a href="{{route('login')}}" class="btn btn-primary">@lang('gzero-base::common.login')</a>
+                <a href="{{route('register')}}" class="btn btn-secondary"> @lang('gzero-base::common.register')</a>
             </p>
             @endguest
         </div>
@@ -25,8 +25,8 @@
             {{ Auth::user()->name }}
         </p>
         <p>
-            <a href="{{route('account')}}" class="btn btn-primary">@lang('common.account')</a>
-            <a href="{{route('logout')}}" class="btn btn-secondary">@lang('common.logout')</a>
+            <a href="{{route('account')}}" class="btn btn-primary">@lang('gzero-base::common.account')</a>
+            <a href="{{route('logout')}}" class="btn btn-secondary">@lang('gzero-base::common.logout')</a>
         </p>
         @endauth
 

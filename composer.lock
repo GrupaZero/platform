@@ -695,12 +695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/base.git",
-                "reference": "f0770266bbb5903886824a30a2ac0ec04ab63d31"
+                "reference": "ca299a08a9dba634e6472715f3502eda2e93aa2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/base/zipball/f0770266bbb5903886824a30a2ac0ec04ab63d31",
-                "reference": "f0770266bbb5903886824a30a2ac0ec04ab63d31",
+                "url": "https://api.github.com/repos/GrupaZero/base/zipball/ca299a08a9dba634e6472715f3502eda2e93aa2e",
+                "reference": "ca299a08a9dba634e6472715f3502eda2e93aa2e",
                 "shasum": ""
             },
             "require": {
@@ -748,7 +748,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2017-10-14 16:14:31"
+            "time": "2017-10-15T11:57:15+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
