@@ -28,7 +28,7 @@ class ContentCest {
                 'type'         => 'category',
                 'is_active'    => 1,
                 'translations' => [
-                    'title'     => 'lorem ipsum',
+                    'title'     => 'Przykładowa kategoria.',
                     'lang_code' => 'en',
                     'is_active' => 1
                 ]
@@ -39,7 +39,7 @@ class ContentCest {
 
         $contentRoute  = '/' . $content->route->translations[0]['lang_code'] . '/' . $content->route->translations[0]['url'];
         $categoryRoute = '/' . $category->route->translations[0]['lang_code'] . '/' . $category->route->translations[0]['url'];
-        $linkName      = ucwords($category->translations[0]->title);
+        $linkName      = $category->translations[0]->title;
 
         $I->wantTo('use breadcrumbs to go back to category view from article');
         $I->amOnPage($contentRoute);
