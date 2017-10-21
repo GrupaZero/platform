@@ -14,8 +14,9 @@
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "fideloper/proxy": "~3.3",
-        "gzero/base": "dev-master",
         "gzero/admin": "dev-4_refactoring",
+        "gzero/cms": "dev-4_refactoring",
+        "gzero/base": "@dev",
         "predis/predis": "^1.1"
     },
     "require-dev": {
