@@ -1,7 +1,7 @@
 @extends('layouts.withoutBlocks')
 
-@section('gaEvent')
-    ga('send', 'event', '{{config('gaEvents.user.category')}}', '{{config('gaEvents.user.signUpAction')}}', '{{ $method }}');
+@section('dataLayer')
+    dataLayer.push({'signUpMethod': '{{ $method }}'});
 @stop
 
 @section('title')

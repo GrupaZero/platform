@@ -4,6 +4,7 @@
     @include('includes.head')
 </head>
 <body class="@yield('bodyClass') sidebar-right">
+@include('includes.googleTagManagerScript')
 <div id="root" class="page">
     <?php $sidebarClass = 'col-md-3'; ?>
     <?php $contentClass = 12 - (1 * substr($sidebarClass, -1)); ?>

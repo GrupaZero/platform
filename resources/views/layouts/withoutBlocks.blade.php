@@ -4,6 +4,7 @@
     @include('includes.head')
 </head>
 <body class="@yield('bodyClass')">
+@include('includes.googleTagManagerScript')
 <div id="root" class="page">
     <div class="wrapper">
         <header>
