@@ -15,7 +15,7 @@
 
 </script>
 
-@if(env('APP_ENV') === 'production')
+@if(option('seo', 'google_tag_manager_id') && env('APP_ENV') === 'production')
     <script>
         dataLayer = [];
         @if(!$user->isGuest())
@@ -28,7 +28,7 @@
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PFDSRQC');</script>
+        })(window,document,'script','dataLayer', '{{ option('seo', 'google_tag_manager_id') }}');</script>
     <!-- End Google Tag Manager -->
 @endif
 
