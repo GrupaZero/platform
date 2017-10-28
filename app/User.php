@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Gzero\Base\Model\User as BaseUser;
+use Gzero\Base\Models\User as BaseUser;
 
 class User extends BaseUser
 {
