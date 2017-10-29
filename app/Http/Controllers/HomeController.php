@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Gzero\Base\Http\Controller\Controller;
+use Gzero\Base\Http\Controllers\Controller;
 
 class HomeController extends Controller {
 
