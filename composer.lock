@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3843e87210f8bfc7e7ac1f27a8628645",
+    "content-hash": "70e13efdd5ffa704175b4035a7ed299c",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -744,84 +744,23 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
-            "name": "gzero/base",
-            "version": "dev-more_refactor",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrupaZero/base.git",
-                "reference": "4b281e2796e1e94af3585f215fb184d84882db88"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/base/zipball/4b281e2796e1e94af3585f215fb184d84882db88",
-                "reference": "4b281e2796e1e94af3585f215fb184d84882db88",
-                "shasum": ""
-            },
-            "require": {
-                "barryvdh/laravel-cors": "^0.9.3",
-                "gzero/eloquent-tree": "3.*",
-                "illuminate/contracts": "5.5.*",
-                "illuminate/routing": "5.5.*",
-                "illuminate/support": "5.5.*",
-                "laravel/passport": "^4.0",
-                "php": ">=7.1.0",
-                "robclancy/presenter": "1.3.2"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.3",
-                "flow/jsonpath": "^0.3.4",
-                "fzaninotto/faker": "~1.6",
-                "gzero/testing": "dev-master",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^3.5",
-                "phpmd/phpmd": "^2.6",
-                "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "^3.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Gzero\\Base\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "classmap": [],
-                "psr-4": {
-                    "Gzero\\": "src/Gzero"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrian Skierniewski",
-                    "email": "adrian.skierniewski@gmail.com"
-                }
-            ],
-            "time": "2017-11-11T12:36:34+00:00"
-        },
-        {
             "name": "gzero/cms",
             "version": "dev-4_refactoring",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "f35bb4f7c9c30f51a5b14219a8e82e43cd12e198"
+                "reference": "dc568e864b954b22bf5c3e427898b5c6915377d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/f35bb4f7c9c30f51a5b14219a8e82e43cd12e198",
-                "reference": "f35bb4f7c9c30f51a5b14219a8e82e43cd12e198",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/dc568e864b954b22bf5c3e427898b5c6915377d2",
+                "reference": "dc568e864b954b22bf5c3e427898b5c6915377d2",
                 "shasum": ""
             },
             "require": {
                 "bkwld/croppa": "~4.0",
                 "davejamesmiller/laravel-breadcrumbs": "3.0.*",
-                "gzero/base": "dev-more_refactor",
+                "gzero/core": "dev-master",
                 "php": ">=7.1.0"
             },
             "require-dev": {
@@ -862,7 +801,68 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-11-11T12:55:24+00:00"
+            "time": "2017-11-12T13:15:43+00:00"
+        },
+        {
+            "name": "gzero/core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrupaZero/core.git",
+                "reference": "ea7811a9edec95af9d24cf89bac1cb870be3c0e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrupaZero/core/zipball/ea7811a9edec95af9d24cf89bac1cb870be3c0e5",
+                "reference": "ea7811a9edec95af9d24cf89bac1cb870be3c0e5",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/laravel-cors": "^0.9.3",
+                "gzero/eloquent-tree": "3.*",
+                "illuminate/contracts": "5.5.*",
+                "illuminate/routing": "5.5.*",
+                "illuminate/support": "5.5.*",
+                "laravel/passport": "^4.0",
+                "php": ">=7.1.0",
+                "robclancy/presenter": "1.3.2"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.3",
+                "flow/jsonpath": "^0.3.4",
+                "fzaninotto/faker": "~1.6",
+                "gzero/testing": "dev-master",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^3.5",
+                "phpmd/phpmd": "^2.6",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gzero\\Core\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-4": {
+                    "Gzero\\": "src/Gzero"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Skierniewski",
+                    "email": "adrian.skierniewski@gmail.com"
+                }
+            ],
+            "time": "2017-11-12T13:11:43+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -5398,7 +5398,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "gzero/cms": 20,
-        "gzero/base": 20
+        "gzero/core": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

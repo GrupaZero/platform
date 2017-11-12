@@ -3,7 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
-use Gzero\Base\Exceptions\Handler as ExceptionHandler;
+use Gzero\Core\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
