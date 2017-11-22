@@ -1,4 +1,4 @@
-@extends('gzero-base::layouts.withRegions')
+@extends('gzero-core::layouts.withRegions')
 
 @section('header')
     <section class="jumbotron text-center">
@@ -9,10 +9,10 @@
                 entirely.
             </p>
             @guest
-            <p>
-                <a href="{{route('login')}}" class="btn btn-primary">@lang('gzero-base::common.login')</a>
-                <a href="{{route('register')}}" class="btn btn-secondary"> @lang('gzero-base::common.register')</a>
-            </p>
+                <p>
+                    <a href="{{route('login')}}" class="btn btn-primary">@lang('gzero-core::common.login')</a>
+                    <a href="{{route('register')}}" class="btn btn-secondary"> @lang('gzero-core::common.register')</a>
+                </p>
             @endguest
         </div>
 
@@ -21,20 +21,20 @@
         @endunless
 
         @auth
-        <p>
-            {{ Auth::user()->name }}
-        </p>
-        <p>
-            <a href="{{route('account')}}" class="btn btn-primary">@lang('gzero-base::common.account')</a>
-            <a href="{{route('logout')}}" class="btn btn-secondary">@lang('gzero-base::common.logout')</a>
-        </p>
+            <p>
+                {{ Auth::user()->name }}
+            </p>
+            <p>
+                <a href="{{route('account')}}" class="btn btn-primary">@lang('gzero-core::common.account')</a>
+                <a href="{{route('logout')}}" class="btn btn-secondary">@lang('gzero-core::common.logout')</a>
+            </p>
         @endauth
 
     </section>
 @stop
 
 {{--@section('sidebarLeft')--}}
-    {{--HOME LEFT--}}
+{{--HOME LEFT--}}
 {{--@stop--}}
 
 @section('content')
@@ -44,7 +44,7 @@
 @stop
 
 {{--@section('sidebarRight')--}}
-    {{--HOME RIGHT--}}
+{{--HOME RIGHT--}}
 {{--@stop--}}
 
 
