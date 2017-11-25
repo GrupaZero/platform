@@ -7,7 +7,7 @@ class HomeController extends Controller {
     /**
      * Show the application's home page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\Viewz
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
