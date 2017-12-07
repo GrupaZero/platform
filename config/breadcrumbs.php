@@ -2,6 +2,6 @@
 
 return [
 
-	'view' => 'gzero-core::includes.breadcrumbs',
+    'view' => 'gzero-core::layouts._breadcrumbs',
 
 ];
