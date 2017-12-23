@@ -1,9 +1,11 @@
 @extends('gzero-core::layouts.withRegions')
 
+@section('bodyClass', 'home')
+
 @section('header')
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Album example</h1>
+            <h1 class="jumbotron-heading">Page example</h1>
             <p class="lead text-muted">Something short and leading about the collection below—its contents, the
                 creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
                 entirely.
@@ -33,18 +35,27 @@
     </section>
 @stop
 
-{{--@section('sidebarLeft')--}}
-{{--HOME LEFT--}}
-{{--@stop--}}
-
-@section('content')
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur corporis cupiditate dignissimos distinctio
-    dolorem dolores error est eum, explicabo illo in iste laboriosam nemo provident quam quia reprehenderit saepe
-    tenetur?
+@section('mainContent')
+    @if(!empty($blocks['homepage']))
+        <section id="homepage-region" class="block-region clearfix container-fluid mb-4">
+            <div class="row">
+                @foreach($blocks['homepage'] as $index => $block)
+                    {!! $block->view !!}
+                @endforeach
+            </div>
+        </section>
+    @endif
+    @parent
 @stop
 
-{{--@section('sidebarRight')--}}
-{{--HOME RIGHT--}}
-{{--@stop--}}
+@section('content')
+    @if(!empty($contents))
+        @foreach($contents as $index => $content)
+            @include('gzero-cms::contents._article', ['child' => $content])
+        @endforeach
+        {!! $contents->render() !!}
+    @endif
+    <div class="w-100 my-4"></div>
+@stop
 
 
