@@ -753,12 +753,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "2d336146f5867753a7647dda810a9e7f83dd77f7"
+                "reference": "e14d9161c3ff4fbee0e2774d13a14e6ff8469fba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/2d336146f5867753a7647dda810a9e7f83dd77f7",
-                "reference": "2d336146f5867753a7647dda810a9e7f83dd77f7",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/e14d9161c3ff4fbee0e2774d13a14e6ff8469fba",
+                "reference": "e14d9161c3ff4fbee0e2774d13a14e6ff8469fba",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +809,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-12-24 08:16:30"
+            "time": "2017-12-28 10:39:01"
         },
         {
             "name": "gzero/core",
@@ -817,12 +817,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/core.git",
-                "reference": "9acf58e5c6aa5509879d357edd7c5bb041801ff5"
+                "reference": "5110e4ccb82ccf6e0a1751022782121dfb0ab042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/core/zipball/9acf58e5c6aa5509879d357edd7c5bb041801ff5",
-                "reference": "9acf58e5c6aa5509879d357edd7c5bb041801ff5",
+                "url": "https://api.github.com/repos/GrupaZero/core/zipball/5110e4ccb82ccf6e0a1751022782121dfb0ab042",
+                "reference": "5110e4ccb82ccf6e0a1751022782121dfb0ab042",
                 "shasum": ""
             },
             "require": {
@@ -871,7 +871,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2017-12-24 08:17:31"
+            "time": "2017-12-28 10:01:29"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -923,16 +923,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.27",
+            "version": "v5.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b4fb6eeb227b7327b4ca7f92263b693ec9ac9875"
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b4fb6eeb227b7327b4ca7f92263b693ec9ac9875",
-                "reference": "b4fb6eeb227b7327b4ca7f92263b693ec9ac9875",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cfafae1f2043208390a7c984e3070696f4969605",
+                "reference": "cfafae1f2043208390a7c984e3070696f4969605",
                 "shasum": ""
             },
             "require": {
@@ -1053,7 +1053,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-12-20 15:43:48"
+            "time": "2017-12-26 16:24:40"
         },
         {
             "name": "laravel/passport",
