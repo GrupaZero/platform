@@ -40,7 +40,7 @@
         <section id="homepage-region" class="block-region clearfix container-fluid mb-4">
             <div class="row">
                 @foreach($blocks['homepage'] as $index => $block)
-                    {!! $block->getView() !!}
+                    {!! $block->view() !!}
                 @endforeach
             </div>
         </section>
