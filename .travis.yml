@@ -26,9 +26,8 @@ before_script:
   - docker-compose version
   - docker-compose up -d
   - docker-compose run --rm -w /var/www node_server npm -s install
-  - ./develop exec phpdismod xdebug # disabling xdebug to speed up composer
+  - ./develop exec-root phpdismod xdebug # disabling xdebug to speed up composer
   - ./develop composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
-  - ./develop exec phpenmod xdebug # enabling xdebug for code coverage
   - ./develop artisan passport:keys
 
 script:

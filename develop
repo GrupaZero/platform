@@ -23,6 +23,11 @@ if [ $# -gt 0 ];then
     ${COMPOSE} exec --user $(id -u):www-data \
       web_server "$ARGS"
 
+  elif [ "$1" == "exec-root" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec web_server "$ARGS"
+
   elif [ "$1" == "test" ]; then
     shift 1
     ARGS="$@"
