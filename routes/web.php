@@ -15,6 +15,6 @@ use Illuminate\Routing\Router;
 
 addMultiLanguageRoutes(function ($router, $language) {
     /** @var Router $router */
-    $router->get('/', 'HomeController@index')->name(mlSuffix('home', $language));
+    $router->get('/', '\Gzero\Cms\Http\Controllers\HomeController@index')->name(mlSuffix('home', $language));
 });
 
