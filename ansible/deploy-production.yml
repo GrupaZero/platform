@@ -1,0 +1,109 @@
+---
+- hosts: all
+  remote_user: root
+  pre_tasks:
+      - assert:
+          that:
+            - "APP_KEY != ''"
+            - "DOCKER_APP_IMAGE  != ''"
+            - "DOMAIN != ''"
+            - "LETSENCRYPT_EMAIL != ''"
+            - "MAIL_HOST != ''"
+            - "MAIL_PORT != ''"
+            - "MAIL_PASSWORD != ''"
+            - "MAIL_USERNAME != ''"
+            - "MAIL_FROM_NAME != ''"
+            - "MAIL_FROM_ADDRESS != ''"
+            - "POSTGRES_DATABASE != ''"
+            - "POSTGRES_PASSWORD != ''"
+            - "POSTGRES_PASSWORD != ''"
+            - "POSTGRES_USER != ''"
+  tasks:
+    - name: Create directories
+      file:
+        path: "{{ item.path }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: 0755
+      with_items:
+        - { path: '/root/backups'}
+        - { path: '/root/backups/deployment'}
+        - { path: '/root/production'}
+        - { path: '/root/production/volumes'}
+        - { path: '/root/production/volumes/certs'}
+        - { path: '/root/production/volumes/conf.d'}
+        - { path: '/root/production/volumes/vhost.d'}
+        - { path: '/root/production/volumes/templates'}
+    - name: 'Ensure that database exists'
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: "{{ POSTGRES_DATABASE }}"
+        encoding: UTF-8
+        lc_collate: pl_PL.UTF-8
+        lc_ctype: pl_PL.UTF-8
+        template: template0
+    - name: 'Ensure that database user exists'
+      become: true
+      become_user: postgres
+      postgresql_user:
+        db: "{{ POSTGRES_DATABASE }}"
+        name: "{{ POSTGRES_USER }}"
+        password: "{{ POSTGRES_PASSWORD }}"
+        priv: "ALL"
+    - name: Register backup timestamp
+      shell: date +%Y%m%d_%H%M
+      register: backup_timestamp
+    - name: Backup database
+      become: true
+      become_user: postgres
+      shell: >
+        pg_dump --clean --if-exists {{ POSTGRES_DATABASE }} |
+        gzip > {{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
+    - name: Move backup to backups dir
+      shell: >
+        mv /var/lib/postgresql/{{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
+        /root/backups/deployment/{{ POSTGRES_DATABASE }}_{{ backup_timestamp.stdout }}.sql.gz
+    - name: Copy nginx proxy template file
+      copy:
+        src: ./templates/nginx-proxy.tmpl
+        dest: /root/production/volumes/templates/nginx.tmpl
+        owner: www-data
+        group: www-data
+        mode: 0644
+    - name: Copy docker-compose file
+      template:
+        src: ../templates/production-compose.yml
+        dest: /root/production/docker-compose.yml
+        force: yes
+    - name: Copy env file
+      template:
+        src: ../templates/env.j2
+        dest: /root/production/env
+        force: yes
+    - name: Stop existing containers
+      docker_service:
+        project_src: production
+        state: absent
+        remove_images: local
+        remove_volumes: true
+    - name: Run docker & docker-compose commands
+      shell: "{{ item.command }}"
+      args:
+        chdir: /root/production
+      with_items:
+        - { command: 'docker-compose pull'}
+        - { command: 'docker-compose up -d --remove-orphans'}
+        - { command: 'docker volume ls -qf dangling=true | xargs -r docker volume rm'} # Remove unused volumes
+        - { command: 'docker images -q --no-trunc | xargs -r docker rmi || true'} # Remove unused images
+    - name: Wait for docker containers
+      wait_for:
+          port: 443
+          delay: 15
+          state: drained
+          timeout: 300
+    - name: Run migrations
+      shell: docker-compose exec -T web_server php /var/www/artisan migrate --force
+      args:
+        chdir: /root/production

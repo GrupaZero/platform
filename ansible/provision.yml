@@ -1,0 +1,157 @@
+---
+- hosts: all
+  name: Making sure that server have python2 installed
+  gather_facts: false
+  pre_tasks:
+    - name: install python2
+      raw: apt-get update && apt-get install -qq python-simplejson
+    - name: add pl_PL.UTF-8 locale
+      shell: locale-gen pl_PL.UTF-8
+
+- hosts: all
+  name: Provisioning server
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: root
+          oh_my_zsh:
+            theme: gianu
+            plugins:
+              - git
+      tags: [zsh]
+    - role: angstwad.docker_ubuntu
+      uninstall_previous_docker_versions: true
+      tags: [docker]
+    - role: kamaln7.swapfile
+      swapfile_use_dd: true
+      swapfile_size: 2048
+      swapfile_swappiness: 10
+      swapfile_vfs_cache_pressure: 50
+      swapfile_location: /swapfile
+      tags: [swap]
+    - role: ANXS.hostname
+      tags: [fqdn]
+    - role: adriagalin.motd
+      tags: [motd]
+    - role: ANXS.postgresql
+      postgresql_version: 9.6
+      postgresql_locale: 'en_GB.UTF-8'
+      postgresql_ctype: 'en_GB.UTF-8'
+      postgresql_default_auth_method: 'md5'
+      postgresql_listen_addresses:
+        - "{{ ansible_default_ipv4.address }}"
+      postgresql_pg_hba_default:
+        - { type: local, database: all, user: '{{ postgresql_admin_user }}', address: '', method: 'peer', comment: '' }
+        - { type: local, database: all, user: all, address: '',             method: 'md5', comment: '"local" is for Unix domain socket connections only' }
+        - { type: host,  database: all, user: all, address: 'all', method: 'md5', comment: 'IPv4 local connections:' }
+      tags: [postgres]
+
+  tasks:
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+    - name: Add FQDN to zsh
+      lineinfile:
+        dest: /root/.zshrc
+        regexp: "^HOST="
+        line: "HOST=$(hostname -f)"
+        state: present
+    - name: Use FQDN in oh my zsh theme
+      replace:
+        path: .oh-my-zsh/themes/gianu.zsh-theme
+        regexp: '}%m%{'
+        replace: '}%M%{'
+    - name: Disable APT::Periodic::Unattended-Upgrade
+      lineinfile:
+        dest: /etc/apt/apt.conf.d/20auto-upgrades
+        regexp: "^APT::Periodic::Unattended-Upgrade"
+        line: 'APT::Periodic::Unattended-Upgrade "0";'
+        state: present
+    - name: Enable some kernel modules for Docker
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: "^GRUB_CMDLINE_LINUX="
+        line: 'GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"'
+        state: present
+    - name: 'Update GRUB config'
+      shell: update-grub
+    - name: 'Install common stuff'
+      apt:
+        name: htop 
+        state: present
+    - name: Install awscli
+      pip:
+       name: awscli
+    - name: Create .aws dir
+      file:
+        path: "~/.aws"
+        state: directory
+    - name: Disallow password authentication
+      lineinfile: 
+        dest: /etc/ssh/sshd_config 
+        regexp: "^PasswordAuthentication"
+        line: "PasswordAuthentication no"
+        state: present
+      notify: Restart sshd
+    - name: Disallow root password authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin without-password"
+        state: present
+      notify: Restart sshd
+    - name: "Setup alternate SSH port to {{ custom_ssh_port }}"
+      lineinfile:
+        dest: "/etc/ssh/sshd_config"
+        regexp: "^Port"
+        line: "Port {{ custom_ssh_port }}"
+        state: present
+      when: custom_ssh_port is defined
+      notify: Restart sshd
+    - name: Reset ufw firewall
+      ufw:
+        state: reset
+    - name: Ensure SSH is reloaded if need be
+      meta: flush_handlers
+    - name: Set inventory ssh port
+      set_fact:
+        ansible_port: "{{ custom_ssh_port }}"
+      when: custom_ssh_port is defined
+    - name: Get ssh port from cfg
+      shell: grep Port /etc/ssh/sshd_config | sed 's/Port\| \| ;//g'
+      register: ssh_port_grep_result
+    - name: Set rate limit for ssh port
+      ufw:
+        rule: limit
+        port: "{{ ssh_port_grep_result.stdout }}"
+        proto: tcp
+    - name: UFW allow http
+      ufw:
+        rule: allow
+        port: http
+        proto: tcp
+    - name: UFW allow https
+      ufw:
+        rule: allow
+        port: https
+        proto: tcp
+    - name: UFW allow ssh
+      ufw:
+        rule: allow
+        port: "{{ ssh_port_grep_result.stdout }}"
+        proto: tcp
+    - name: UFW allow postgres access from docker containers
+      ufw:
+        rule: allow
+        src: "172.20.0.0/24"
+        port: 5432
+    - name: Enable ufw
+      ufw:
+        state: enabled
+        policy: deny
+  handlers:
+    - name: Restart sshd
+      service:
+        name: ssh
+        state: restarted

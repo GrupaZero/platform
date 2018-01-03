@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: root
+  pre_tasks:
+      - assert:
+          that:
+            - "S3_BUCKET != ''"
+  tasks:
+    - name: 'Ensure that it can establish connection to specific bucket'
+      command: /usr/local/bin/aws s3 ls s3://{{ S3_BUCKET }}/backups/
+    - name: 'Ensure that backup to S3 cron task exists'
+      cron:
+        name: "Sync backups with S3"
+        minute: "0"
+        hour: "2"
+        job: "/usr/local/bin/aws s3 sync /root/backups s3://{{ S3_BUCKET }}/backups/ --storage-class STANDARD_IA >/dev/null 2>&1"
