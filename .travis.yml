@@ -13,7 +13,7 @@ services:
   - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.16.0
+  DOCKER_COMPOSE_VERSION: 1.18.0
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -26,15 +26,15 @@ before_script:
   - docker-compose version
   - docker-compose up -d
   - docker-compose run --rm -w /var/www node_server npm -s install
-  - docker-compose exec web_server phpdismod xdebug # disabling xdebug to speed up composer
-  - docker-compose exec web_server composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
-  - docker-compose exec web_server phpenmod xdebug # enabling xdebug for code coverage
+  - ./develop exec phpdismod xdebug # disabling xdebug to speed up composer
+  - ./develop composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
+  - ./develop exec phpenmod xdebug # enabling xdebug for code coverage
   - ./develop artisan passport:keys
 
 script:
   - docker-compose run --rm -w /var/www node_server npm -s run lint
   - docker-compose run --rm -w /var/www node_server npm -s test -- --verbose
-  - "docker-compose exec web_server php /var/www/vendor/bin/codecept run -c /var/www/codeception.yml -o \"settings: lint:false\" --env platform"
+  - ./develop test
 
 matrix:
   fast_finish: true

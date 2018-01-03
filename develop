@@ -17,7 +17,13 @@ function die () {
 
 if [ $# -gt 0 ];then
 
-  if [ "$1" == "test" ]; then
+  if [ "$1" == "exec" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server "$ARGS"
+
+  elif [ "$1" == "test" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
