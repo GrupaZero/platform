@@ -29,6 +29,7 @@ before_script:
   - docker-compose exec web_server phpdismod xdebug # disabling xdebug to speed up composer
   - docker-compose exec web_server composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
   - docker-compose exec web_server phpenmod xdebug # enabling xdebug for code coverage
+  - ./develop artisan passport:keys
 
 script:
   - docker-compose run --rm -w /var/www node_server npm -s run lint

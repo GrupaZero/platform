@@ -22,7 +22,7 @@ if [ $# -gt 0 ];then
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
       web_server bash -c  \
-      "cd /var/www && vendor/bin/codecept run --env platform,ml_disabled $ARGS"
+      "cd /var/www && vendor/bin/codecept run --env platform $ARGS"
 
   elif [ "$1" == "frontend-test" ]; then
     shift 1
