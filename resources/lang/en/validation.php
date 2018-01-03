@@ -121,7 +121,7 @@ return [
         'firstName'             => 'first name',
         'lastName'              => 'last name',
         'password'              => 'password',
-        'password_confirmation' => 'confirm password',
+        'password_confirmation' => 'password confirmation',
     ],
 
 ];
