@@ -15,6 +15,7 @@ coverage:
         - app/Http/Kernel.php
 include:
     - vendor/gzero/core
+    - vendor/gzero/cms
 settings:
     bootstrap: _bootstrap.php
     lint: true
