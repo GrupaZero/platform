@@ -11,13 +11,13 @@
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $t('passport.authorized_applications') }}</div>
+            <div class="card mb4">
+                <div class="card-header">{{ $t('passport.authorized_applications') }}</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     <!-- Authorized Tokens -->
-                    <table class="table table-borderless m-b-none">
-                        <thead>
+                    <table class="table">
+                        <thead class="thead-inverse">
                             <tr>
                                 <th>{{ $t('passport.name') }}</th>
                                 <th>{{ $t('passport.scopes') }}</th>

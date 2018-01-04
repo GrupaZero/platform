@@ -1,4 +1,4 @@
-const {mix} = require('laravel-mix')
+let mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,17 +13,8 @@ const {mix} = require('laravel-mix')
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie'])
-    .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/app.scss', 'public/css');
 
 if (mix.config.inProduction) {
     mix.version()
 }
-
-// If you want to use BrowserSync you'd need to proxy requests to docker container, but then you'd need
-// to remember that requests to api won't work due to auth cookie mismatch.
-// A known workaround for this is to add same laravel_token cookie for api.dev.gzero.pl domain as for localhost:3000.
-// mix.browserSync({
-//     proxy: {
-//         target: "https://dev.gzero.pl"
-//     }
-// });

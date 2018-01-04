@@ -7,30 +7,4 @@
 /*
  * Main content
  */
-.img-avatar {
-  margin-bottom : 5px;
-}
 
-.pagination {
-  margin-bottom : 0;
-}
-
-header {
-  .user-nav {
-    .dropdown-toggle {
-      padding-top    : 7px;
-      padding-bottom : 7px;
-    }
-  }
-}
-
-.like-buttons {
-  height: 21px;
-  overflow: hidden;
-}
-
-@media (max-width : 769px) {
-  #sidebarLeft, #sidebarRight {
-    padding-bottom : 20px;
-  }
-}

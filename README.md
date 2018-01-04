@@ -92,7 +92,7 @@ Starting platform_web_server_1
 - You can also seed database with example data using this command
  
 ```
-./develop artisan db:seed --class='Gzero\\Core\\CMSSeeder'
+./develop artisan db:seed --class='Gzero\\Cms\\CMSSeeder'
 ```
 
 - You may want to publish vendor assets as well

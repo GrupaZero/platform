@@ -17,12 +17,18 @@ function die () {
 
 if [ $# -gt 0 ];then
 
-  if [ "$1" == "test" ]; then
+  if [ "$1" == "exec" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  "$ARGS"
+
+  elif [ "$1" == "test" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
       web_server bash -c  \
-      "cd /var/www && vendor/bin/codecept run --env platform,ml_disabled $ARGS"
+      "cd /var/www && vendor/bin/codecept run --env platform $ARGS"
 
   elif [ "$1" == "frontend-test" ]; then
     shift 1
@@ -71,6 +77,13 @@ if [ $# -gt 0 ];then
     [ ! -z $1 ] || die "Please specify database name"
     [ ! -z $2 ] || die "Please specify dump path"
     ${COMPOSE} exec db_server sh -c "gunzip -c /$2 | psql -U postgres --single-transaction -a $1"
+
+  elif [ "$1" == "generate-api-docs" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      "cd /var/www && php artisan l5-swagger:generate"
 
   elif [ "$1" == "generate-cert" ]; then
     shift 1

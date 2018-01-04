@@ -30,9 +30,9 @@ export default {
             "your_applications_authorization_callback_url": "Your application's authorization callback URL."
         },
         "cookie_law": {
-            "link_text": "read more about our cookies policy.",
+            "link_text": " Read more about our cookies policy.",
             "button_text": "Ok",
-            "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies, "
+            "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies."
         }
     },
     "pl": {
@@ -66,9 +66,9 @@ export default {
             "your_applications_authorization_callback_url": "URL do metody autoryzacyjnej twojej aplikacji."
         },
         "cookie_law": {
-            "link_text": "dowiedz się więcej o polityce cookies.",
+            "link_text": " Dowiedz się więcej o polityce cookies.",
             "button_text": "Ok",
-            "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie, "
+            "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie."
         }
     }
 }

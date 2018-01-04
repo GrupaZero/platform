@@ -1,5 +1,10 @@
-actor: Tester
-namespace: Platform
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
 coverage:
     enabled: true
     remote: false
@@ -9,13 +14,8 @@ coverage:
     exclude:
         - app/Http/Kernel.php
 include:
-    - vendor/gzero/api
-paths:
-    data: tests/_data
-    envs: tests/_envs
-    log: tests/_output
-    support: tests/_support
-    tests: tests
+    - vendor/gzero/core
+    - vendor/gzero/cms
 settings:
     bootstrap: _bootstrap.php
     lint: true

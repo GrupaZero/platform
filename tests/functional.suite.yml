@@ -1,15 +1,12 @@
-class_name: FunctionalTester
+# Codeception Test Suite Configuration
+#
+# Suite for functional tests
+# Emulate web requests and make application process them
+# Include one of framework modules (Symfony2, Yii2, Laravel5) to use it
+# Remove this suite if you don't use frameworks
+
+actor: FunctionalTester
 modules:
     enabled:
-        - Db
-        - Platform\Helper\Functional
-        - Asserts
-        - Laravel5:
-              cleanup: false
-              disable_events: false
-              disable_exception_handling: false
-              disable_middleware: false
-              disable_model_events: false
-              environment_file: .env.testing
-        - REST:
-            depends: Laravel5
+        # add a framework module here
+        - \Helper\Functional

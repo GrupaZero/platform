@@ -70,6 +70,7 @@ services:
 networks:
   gznet:
     driver: "bridge"
+    enable_ipv6: false
 volumes:
   dbdata:
     driver: "local"

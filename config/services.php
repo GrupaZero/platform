@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Models\User::class,
+        'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
@@ -54,5 +54,4 @@ return [
         'access_token' => env('ROLLBAR_TOKEN'),
         'level'        => env('ROLLBAR_LEVEL'),
     ],
-
 ];

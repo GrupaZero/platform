@@ -11,28 +11,28 @@
 <template>
     <div>
         <div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card mb-4">
+                <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
                             {{ $t('passport.personal_access_tokens') }}
                         </span>
 
-                        <a class="action-link" @click="showCreateTokenForm">
+                        <a class="card-link" href="#" @click="showCreateTokenForm">
                             {{ $t('passport.create_new_token') }}
                         </a>
                     </div>
                 </div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     <!-- No Tokens Notice -->
                     <p class="m-b-none" v-if="tokens.length === 0">
                         {{ $t('passport.you_have_not_created_any_personal_access_tokens') }}
                     </p>
 
                     <!-- Personal Access Tokens -->
-                    <table class="table table-borderless m-b-none" v-if="tokens.length > 0">
-                        <thead>
+                    <table class="table" v-if="tokens.length > 0">
+                        <thead class="thead-inverse">
                             <tr>
                                 <th>{{ $t('passport.name') }}</th>
                                 <th></th>
@@ -64,11 +64,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
+                        <h5 class="modal-title">
                             {{ $t('passport.create_token') }}
-                        </h4>
+                        </h5>
+                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
                     <div class="modal-body">
@@ -87,28 +86,24 @@
                         <form class="form-horizontal" role="form" @submit.prevent="store">
                             <!-- Name -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ $t('passport.name') }}</label>
+                                <label class="form-control-label">{{ $t('passport.name') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
-                                </div>
+                                <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
                             </div>
 
                             <!-- Scopes -->
                             <div class="form-group" v-if="scopes.length > 0">
-                                <label class="col-md-4 control-label">{{ $t('passport.scopes') }}</label>
+                                <label class="form-control-label">{{ $t('passport.scopes') }}</label>
 
-                                <div class="col-md-6">
-                                    <div v-for="scope in scopes">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"
-                                                    @click="toggleScope(scope.id)"
-                                                    :checked="scopeIsAssigned(scope.id)">
+                                <div v-for="scope in scopes">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                @click="toggleScope(scope.id)"
+                                                :checked="scopeIsAssigned(scope.id)">
 
-                                                    {{ scope.id }}
-                                            </label>
-                                        </div>
+                                                {{ scope.id }}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -132,11 +127,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
+                        <h5 class="modal-title">
                             {{ $t('passport.personal_access_token') }}
-                        </h4>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
                     <div class="modal-body">
@@ -144,7 +138,7 @@
                             {{ $t('passport.new_personal_token_info') }}
                         </p>
 
-                        <pre><code>{{ accessToken }}</code></pre>
+                        <pre class="pre-scrollable"><code>{{ accessToken }}</code></pre>
                     </div>
 
                     <!-- Modal Actions -->

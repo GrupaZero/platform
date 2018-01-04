@@ -9,18 +9,20 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | such as the size rules. Feel free to tweak each of these messages.
+    | as the size rules. Feel free to tweak each of these messages here.
     |
     */
 
     'accepted'             => ':attribute musi zostać zaakceptowany.',
     'active_url'           => ':attribute jest nieprawidłowym adresem URL.',
     'after'                => ':attribute musi być datą późniejszą od :date.',
+    'after_or_equal'       => ':attribute musi być datą późniejszą lub równą z :date.',
     'alpha'                => ':attribute może zawierać jedynie litery.',
     'alpha_dash'           => ':attribute może zawierać jedynie litery, cyfry i myślniki.',
     'alpha_num'            => ':attribute może zawierać jedynie litery i cyfry.',
     'array'                => ':attribute musi być tablicą.',
     'before'               => ':attribute musi być datą wcześniejszą od :date.',
+    'before_or_equal'      => ':attribute musi być datą wcześniejszą lub równą z :date.',
     'between'              => [
         'numeric' => ':attribute musi zawierać się w granicach :min - :max.',
         'file'    => ':attribute musi zawierać się w granicach :min - :max kilobajtów.',
@@ -45,6 +47,8 @@ return [
     'in_array'             => ':attribute nie znajduje się w :other.',
     'integer'              => ':attribute musi być liczbą całkowitą.',
     'ip'                   => ':attribute musi być prawidłowym adresem IP.',
+    'ipv4'                 => ':attribute musi być prawidłowym adresem IPv4.',
+    'ipv6'                 => ':attribute musi być prawidłowym adresem IPv6.',
     'json'                 => ':attribute musi być poprawnym ciągiem znaków JSON.',
     'max'                  => [
         'numeric' => ':attribute nie może być większy niż :max.',

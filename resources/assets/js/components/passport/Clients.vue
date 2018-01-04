@@ -10,27 +10,27 @@
 
 <template>
     <div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card mb-4">
+            <div class="card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span>
                        {{ $t('passport.oauth_clients') }}
                     </span>
 
-                    <a class="action-link" @click="showCreateClientForm">
+                    <a class="card-link" href="#" @click="showCreateClientForm">
                         {{ $t('passport.create_new_client') }}
                     </a>
                 </div>
             </div>
 
-            <div class="panel-body">
+            <div class="card-body">
                 <!-- Current Clients -->
                 <p class="m-b-none" v-if="clients.length === 0">
                     {{ $t('passport.you_have_not_created_any_oauth_clients') }}
                 </p>
 
-                <table class="table table-borderless m-b-none" v-if="clients.length > 0">
-                    <thead>
+                <table class="table" v-if="clients.length > 0">
+                    <thead class="thead-inverse">
                         <tr>
                             <th>{{ $t('passport.client_id') }}</th>
                             <th>{{ $t('passport.name') }}</th>
@@ -81,11 +81,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
+                        <h5 class="modal-title">
                             {{ $t('passport.create_client') }}
-                        </h4>
+                        </h5>
+                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
                     <div class="modal-body">
@@ -104,30 +103,26 @@
                         <form class="form-horizontal" role="form">
                             <!-- Name -->
                             <div class="form-group">
-                                <label class="col-md-3 control-label">{{ $t('passport.name') }}</label>
+                                <label class="form-control-label" for="create-client-name">{{ $t('passport.name') }}</label>
 
-                                <div class="col-md-7">
-                                    <input id="create-client-name" type="text" class="form-control"
-                                                                @keyup.enter="store" v-model="createForm.name">
+                                <input id="create-client-name" type="text" class="form-control"
+                                        @keyup.enter="store" v-model="createForm.name">
 
-                                    <span class="help-block">
-                                        {{ $t('passport.something_your_users_will_recognize_and_trust') }}
-                                    </span>
-                                </div>
+                                <small class="form-text text-muted">
+                                    {{ $t('passport.something_your_users_will_recognize_and_trust') }}
+                                </small>
                             </div>
 
                             <!-- Redirect URL -->
                             <div class="form-group">
-                                <label class="col-md-3 control-label">{{ $t('passport.redirect_url') }}</label>
+                                <label class="form-control-label">{{ $t('passport.redirect_url') }}</label>
 
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="redirect"
-                                                    @keyup.enter="store" v-model="createForm.redirect">
+                                <input type="text" class="form-control" name="redirect"
+                                                @keyup.enter="store" v-model="createForm.redirect">
 
-                                    <span class="help-block">
-                                        {{ $t('passport.your_applications_authorization_callback_url') }}
-                                    </span>
-                                </div>
+                                <small class="form-text text-muted">
+                                    {{ $t('passport.your_applications_authorization_callback_url') }}
+                                </small>
                             </div>
                         </form>
                     </div>
