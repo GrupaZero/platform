@@ -35,4 +35,23 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+        'client_id'     => env('OAUTH_GOOGLE_CLIENT_ID'),
+        'client_secret' => env('OAUTH_GOOGLE_CLIENT_SECRET'),
+    ],
+
+    'facebook' => [
+        'client_id'     => env('OAUTH_FB_CLIENT_ID'),
+        'client_secret' => env('OAUTH_FB_CLIENT_SECRET'),
+    ],
+
+    'twitter' => [
+        'client_id'     => env('OAUTH_TWITTER_CLIENT_ID'),
+        'client_secret' => env('OAUTH_TWITTER_CLIENT_SECRET'),
+    ],
+
+    'rollbar' => [
+        'access_token' => env('ROLLBAR_TOKEN'),
+        'level'        => env('ROLLBAR_LEVEL'),
+    ],
 ];

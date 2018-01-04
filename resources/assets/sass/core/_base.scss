@@ -1,0 +1,23 @@
+// -------------------------------------
+//   Base
+// -------------------------------------
+// ----- Global defaults for Base-level tags (body, p, etc.)
+// -------------------------------------
+
+// ----- Uncomment if project will be using rems ----- //
+// html {
+//   font-size: 62.5%;
+// }
+
+/*
+* Base structure
+*/
+
+html,
+body {
+  overflow-x : hidden; /* Prevent scroll on narrow devices */
+}
+
+html {
+  height : 100%;
+}

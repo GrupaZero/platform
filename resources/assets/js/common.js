@@ -143,6 +143,4 @@ $(function() {
     if (lang !== 'en') {
         $.getScript('/js/vendor/jquery-colorbox/i18n/jquery.colorbox-' + lang + '.js')
     }
-    // jquery.matchHeight.js
-    $('.mh-column').matchHeight({property: 'min-height'})
 })
