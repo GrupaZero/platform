@@ -1,4 +1,6 @@
 {
+  "name": "platform",
+  "version": "",
   "private": true,
   "scripts": {
     "dev": "npm run development",
