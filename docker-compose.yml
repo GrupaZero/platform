@@ -14,8 +14,11 @@ services:
   web_server:
     image: gzero/platform-container:v3
     restart: "no"
+    ports:
+      - "8080:80"
     depends_on:
       - db_server
+      - db_tests_server
       - redis_server
     environment:
       OVERRIDE_UMASK: "002"
