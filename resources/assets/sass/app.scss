@@ -2,9 +2,13 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+// Functions
+@import "~bootstrap/scss/functions";
+
 // Variables
 @import "libs/library-variable-overrides";
 
+// jQuery colorbox styles
 @import "libs/jquery-colorbox/jquery-colorbox";
 
 // Bootstrap
