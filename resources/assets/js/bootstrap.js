@@ -12,6 +12,12 @@ window.$ = window.jQuery = require('jquery')
 require('./vendor/responsive-paginate')
 
 /**
+ * We'll load jQuery colorbox plugin.
+ */
+
+window.colorbox = require('jquery-colorbox')
+
+/**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
@@ -38,7 +44,15 @@ if (token) {
 /**
  * We need to pass cookie to api subdomain
  */
+
 window.axios.defaults.withCredentials = true
+
+/**
+ * We need to require Popper.js, then Bootstrap JS.
+ */
+
+require('tooltip.js')
+require('bootstrap/dist/js/bootstrap')
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
