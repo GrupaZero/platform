@@ -33,6 +33,7 @@ services:
       - "db_server:{{ ansible_default_ipv4.address }}" # we use host postgres server
     volumes:
       - ./env:/var/www/.env # Pass all credentials to laravel
+      - ./volumes/uploads/staging:/var/www/uploads # Save uploads outside the container
     networks:
       - gznet
   redis_server:

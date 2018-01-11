@@ -35,6 +35,7 @@
         - { path: '/root/production/volumes/conf.d'}
         - { path: '/root/production/volumes/vhost.d'}
         - { path: '/root/production/volumes/templates'}
+        - { path: '/root/production/volumes/uploads'}
     - name: 'Ensure that database exists'
       become: true
       become_user: postgres

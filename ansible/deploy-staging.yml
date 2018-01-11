@@ -35,6 +35,8 @@
         - { path: '/root/staging/volumes/htpasswd'}
         - { path: '/root/staging/volumes/vhost.d'}
         - { path: '/root/staging/volumes/templates'}
+        - { path: '/root/staging/volumes/uploads'}
+        - { path: '/root/staging/volumes/uploads/staging'}
     - name: 'Ensure that database exists'
       become: true
       become_user: postgres
