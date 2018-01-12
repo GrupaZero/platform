@@ -13,8 +13,8 @@
     "require": {
         "php": ">=7.1.0",
         "fideloper/proxy": "~3.3",
-        "gzero/cms": "3.0.0-alpha1",
-        "gzero/core": "3.0.0-alpha1",
+        "gzero/cms": "3.0.0-alpha2",
+        "gzero/core": "3.0.0-alpha2",
         "predis/predis": "^1.1",
         "fzaninotto/faker": "~1.4"
     },
