@@ -15,6 +15,7 @@
         "fideloper/proxy": "~3.3",
         "gzero/cms": "3.0.0-alpha2",
         "gzero/core": "3.0.0-alpha2",
+        "gzero/admin": "dev-4_refactoring",
         "predis/predis": "^1.1",
         "fzaninotto/faker": "~1.4"
     },
