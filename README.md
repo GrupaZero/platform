@@ -145,6 +145,7 @@ To run tests use:
 
 ```
 ./develop test
+./develop test-debug # it runs xdebug
 ./develop frontend-test
 ```
 
