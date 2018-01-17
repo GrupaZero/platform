@@ -18,13 +18,13 @@ services:
       - "8080:80"
     depends_on:
       - db_server
-      - db_tests_server
       - redis_server
     environment:
       OVERRIDE_UMASK: "002"
       XDEBUG: "true"
       DEFAULT_HOST: "dev.gzero.pl"
       VIRTUAL_HOST: "dev.gzero.pl,api.dev.gzero.pl,www.dev.gzero.pl"
+      PHP_IDE_CONFIG: "serverName=dev.gzero.pl"
     volumes:
       - .:/var/www
     networks:

@@ -30,6 +30,13 @@ if [ $# -gt 0 ];then
       web_server bash -c  \
       "cd /var/www && vendor/bin/codecept run --env platform $ARGS"
 
+elif [ "$1" == "test-debug" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      'cd /var/www && export XDEBUG_CONFIG="idekey=PHPSTORM" && php -dxdebug.remote_host=$(/sbin/ip route|awk '\''/default/ {print $3 }'\'') vendor/bin/codecept run --env platform '$ARGS
+
   elif [ "$1" == "frontend-test" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
