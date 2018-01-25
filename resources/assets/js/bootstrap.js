@@ -51,7 +51,7 @@ window.axios.defaults.withCredentials = true
  * We need to require Popper.js, then Bootstrap JS.
  */
 
-require('tooltip.js')
+require('popper.js')
 require('bootstrap/dist/js/bootstrap')
 
 /**
