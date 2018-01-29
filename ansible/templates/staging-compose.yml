@@ -58,6 +58,7 @@ services:
       - gznet
     environment:
       NGINX_DOCKER_GEN_CONTAINER: staging_docker_gen_service
+      NGINX_PROXY_CONTAINER: staging_proxy_server
   docker_gen_service:
     image: jwilder/docker-gen:0.7.3
     container_name: staging_docker_gen_service
