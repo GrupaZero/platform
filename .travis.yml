@@ -7,7 +7,13 @@ cache:
   - node_modules # NPM packages
 
 php:
-  - '7.1'
+  - '7.2'
+
+addons:
+  chrome: stable
+  hosts:
+    - dev.gzero.pl
+    - api.dev.gzero.pl
 
 services:
   - docker
@@ -22,18 +28,29 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
+  - cp .env.example .env
+  - chmod 777 -R storage
   - docker version
   - docker-compose version
   - docker-compose up -d
-  - docker-compose run --rm -w /var/www node_server npm -s install
   - docker-compose exec web_server phpdismod xdebug # disabling xdebug to speed up composer
   - ./develop composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
+  - docker-compose run --rm -w /var/www node_server npm -s install
+  - ./develop artisan key:generate
   - ./develop artisan passport:keys
+  - ./develop artisan migrate:fresh
+  - ./tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" & pid1="$!"
 
 script:
   - docker-compose run --rm -w /var/www node_server npm -s run lint
   - docker-compose run --rm -w /var/www node_server npm -s test -- --verbose
-  - ./develop test
+  - ./develop test-ci
+
+after_script:
+ - kill $pid1 # shutdown chrome driver
+
+after_failure:
+  - ./develop logs web_server
 
 matrix:
   fast_finish: true

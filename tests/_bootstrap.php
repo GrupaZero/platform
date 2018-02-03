@@ -7,10 +7,10 @@ if (file_exists(dirname(__DIR__) . '/.env.testing')) {
     (new \Dotenv\Dotenv(dirname(__DIR__), '.env.testing'))->load();
 }
 
-$host     = env('DB_HOST', 'db_tests_server');
-$port     = env('DB_PORT', 5432);
-$dbName   = env('DB_DATABASE', 'gzero_cms');
-$user     = env('DB_USERNAME', 'gzero_cms');
+$host = env('DB_HOST', 'db_tests_server');
+$port = env('DB_PORT', 5432);
+$dbName = env('DB_DATABASE', 'gzero_cms');
+$user = env('DB_USERNAME', 'gzero_cms');
 $password = env('DB_PASSWORD', '');
 
 $sql = file_get_contents(__DIR__ . '/db/dump.sql');
@@ -28,4 +28,13 @@ $db->load($sql);
 
 // We want to save all output files in platform _output dir
 \Codeception\Configuration::$defaultConfig['paths'] = ['output' => __DIR__ . '/_output'];
+
+$dockerHostIp = exec("/sbin/ip route|awk '/default/ { print $3 }'");
+var_dump($dockerHostIp);
+\Codeception\Configuration::$defaultSuiteSettings['modules']['config'] =
+    [
+        'WebDriver' => [
+            'host' => $dockerHostIp
+        ]
+    ];
 

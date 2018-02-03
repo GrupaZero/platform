@@ -26,16 +26,25 @@ if [ $# -gt 0 ];then
   elif [ "$1" == "test" ]; then
     shift 1
     ARGS="$@"
+    ./tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" & pid1="$!" ;
     ${COMPOSE} exec --user $(id -u):www-data \
       web_server bash -c  \
-      "cd /var/www && vendor/bin/codecept run --env platform $ARGS"
+      "cd /var/www && vendor/bin/codecept run --env platform $ARGS" ;
+      kill $pid1
 
-elif [ "$1" == "test-debug" ]; then
+  elif [ "$1" == "test-debug" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
       web_server bash -c  \
       'cd /var/www && export XDEBUG_CONFIG="idekey=PHPSTORM" && php -dxdebug.remote_host=$(/sbin/ip route|awk '\''/default/ {print $3 }'\'') vendor/bin/codecept run --env platform '$ARGS
+
+  elif [ "$1" == "test-ci" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      "cd /var/www && vendor/bin/codecept run --env platform $ARGS" ;
 
   elif [ "$1" == "frontend-test" ]; then
     shift 1

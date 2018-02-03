@@ -1,4 +1,4 @@
-FROM gzero/platform-container:v3
+FROM gzero/platform-container:v4
 
 MAINTAINER Adrian Skierniewski <adrian.skierniewski@gmail.com>
 

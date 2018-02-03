@@ -1,0 +1,19 @@
+actor: AcceptanceTester
+modules:
+    config:
+      WebDriver:
+        browser: chrome
+        port: 9515 # ChromeDriver port
+        window_size: false
+        capabilities:
+          chromeOptions:
+            args: ["--headless", "--disable-gpu"]
+            binary: "/usr/bin/google-chrome"
+    enabled:
+        - WebDriver:
+            url: http://dev.gzero.pl:8080
+            browser: chrome
+        - \Helper\Acceptance
+        - Laravel5:
+            part: ORM
+            cleanup: true
