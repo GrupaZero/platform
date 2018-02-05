@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf940253baf3b05d1d0fcd884545e698",
+    "content-hash": "f7be94aa8fb519c38649ee7fb6ef7005",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -851,22 +851,22 @@
         },
         {
             "name": "gzero/cms",
-            "version": "v3.0.0-alpha4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "4c87331994ec7b6d520af12d0b5297b0c7cedd0b"
+                "reference": "a033b3d69f8748dbd36671196df708b3f20460a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/4c87331994ec7b6d520af12d0b5297b0c7cedd0b",
-                "reference": "4c87331994ec7b6d520af12d0b5297b0c7cedd0b",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/a033b3d69f8748dbd36671196df708b3f20460a1",
+                "reference": "a033b3d69f8748dbd36671196df708b3f20460a1",
                 "shasum": ""
             },
             "require": {
                 "bkwld/croppa": "~4.0",
                 "davejamesmiller/laravel-breadcrumbs": "3.0.*",
-                "gzero/core": "v3.0.0-alpha4",
+                "gzero/core": "dev-master",
                 "php": ">=7.1.0"
             },
             "require-dev": {
@@ -911,20 +911,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-02-02T20:32:29+00:00"
+            "time": "2018-02-05T13:59:47+00:00"
         },
         {
             "name": "gzero/core",
-            "version": "v3.0.0-alpha4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/core.git",
-                "reference": "cee468c5dd326f0ca86a74954126a288fafda42d"
+                "reference": "bd364e7e6d8e6f054f8a0799eb3a123818b09ca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/core/zipball/cee468c5dd326f0ca86a74954126a288fafda42d",
-                "reference": "cee468c5dd326f0ca86a74954126a288fafda42d",
+                "url": "https://api.github.com/repos/GrupaZero/core/zipball/bd364e7e6d8e6f054f8a0799eb3a123818b09ca9",
+                "reference": "bd364e7e6d8e6f054f8a0799eb3a123818b09ca9",
                 "shasum": ""
             },
             "require": {
@@ -974,7 +974,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2018-02-02T20:23:22+00:00"
+            "time": "2018-02-05T13:07:13+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -5989,8 +5989,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gzero/cms": 15,
-        "gzero/core": 15,
+        "gzero/cms": 20,
+        "gzero/core": 20,
         "gzero/admin": 20
     },
     "prefer-stable": false,
