@@ -167,7 +167,6 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Providers\GzeroServiceProvider::class,
 
         /*
          * Application Service Providers...
