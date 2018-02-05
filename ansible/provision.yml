@@ -62,6 +62,9 @@
         path: .oh-my-zsh/themes/gianu.zsh-theme
         regexp: '}%m%{'
         replace: '}%M%{'
+    - name: set timezone to Etc/UTC
+      timezone:
+        name: Etc/UTC
     - name: Disable APT::Periodic::Unattended-Upgrade
       lineinfile:
         dest: /etc/apt/apt.conf.d/20auto-upgrades
