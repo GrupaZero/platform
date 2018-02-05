@@ -855,12 +855,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "c3b2f42b0d55c3ee7064b0a0a4835784d18d0adf"
+                "reference": "a033b3d69f8748dbd36671196df708b3f20460a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/c3b2f42b0d55c3ee7064b0a0a4835784d18d0adf",
-                "reference": "c3b2f42b0d55c3ee7064b0a0a4835784d18d0adf",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/a033b3d69f8748dbd36671196df708b3f20460a1",
+                "reference": "a033b3d69f8748dbd36671196df708b3f20460a1",
                 "shasum": ""
             },
             "require": {
@@ -911,7 +911,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-02-05T12:48:39+00:00"
+            "time": "2018-02-05T13:59:47+00:00"
         },
         {
             "name": "gzero/core",
