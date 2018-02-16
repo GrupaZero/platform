@@ -14,7 +14,7 @@
         "php": ">=7.1.0",
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "~1.4",
-        "gzero/admin": "dev-4_refactoring",
+        "gzero/admin": "dev-master",
         "gzero/cms": "dev-master",
         "gzero/core": "dev-master",
         "laravel/horizon": "^1.1",
