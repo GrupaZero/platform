@@ -12,7 +12,7 @@ services:
     networks:
      - gznet
   web_server:
-    image: gzero/platform-container:v3
+    image: gzero/platform-container:v4
     restart: "no"
     ports:
       - "8080:80"
