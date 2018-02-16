@@ -30,7 +30,6 @@ $db->load($sql);
 \Codeception\Configuration::$defaultConfig['paths'] = ['output' => __DIR__ . '/_output'];
 
 $dockerHostIp = exec("/sbin/ip route|awk '/default/ { print $3 }'");
-var_dump($dockerHostIp);
 \Codeception\Configuration::$defaultSuiteSettings['modules']['config'] =
     [
         'WebDriver' => [
