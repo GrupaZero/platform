@@ -60,6 +60,13 @@ if [ $# -gt 0 ];then
       web_server bash -c  \
       "cd /var/www && php artisan $ARGS"
 
+  elif [ "$1" == "artisan-debug" ]; then
+    shift 1
+    ARGS="$@"
+    ${COMPOSE} exec --user $(id -u):www-data \
+      web_server bash -c  \
+      'cd /var/www && export XDEBUG_CONFIG="idekey=PHPSTORM" && php -dxdebug.remote_host=$(/sbin/ip route|awk '\''/default/ {print $3 }'\'') ./artisan '$ARGS
+
   elif [ "$1" == "composer" ]; then
     shift 1
     ARGS="$@"
