@@ -1,4 +1,4 @@
-image: gzero/platform-ci-runner:v1
+image: gzero/platform-ci-runner:v2
 
 stages:
   - test
@@ -11,31 +11,67 @@ cache:
     - vendor/
     - node_modules/
 
-test:
+unit & functional tests:
   stage: test
+  services:
+    - name: postgres:9.6-alpine
+      alias: db_tests_server
+    - name: redis:3-alpine
+      alias: redis_server
   variables:
     POSTGRES_PASSWORD: ""
     POSTGRES_USER: "gzero_cms"
     POSTGRES_DB: "gzero_cms"
-    DB_HOST: "postgres"
-    REDIS_HOST: "redis"
     REDIS_PORT: "6379" # Bug caused by env variable collision docker/laravel
-  services:
-    - postgres:9.6-alpine
-    - redis:3-alpine
+  artifacts:
+    when: on_failure
+    paths:
+    - tests/_output
+    - /tmp/laravel.log
+
   script:
+    - phpdismod xdebug # disabling xdebug to speed up composer
     - composer install --prefer-dist --no-interaction --no-suggest --no-progress
-    - "php vendor/bin/codecept run -c codeception.yml -o \"settings: lint: false\" --env platform,ml_disabled"
-    - npm -s install
+    - "php vendor/bin/codecept run -n -c codeception.yml -o \"settings: lint: false\" -s acceptance --env platform,ml_disabled"
+    - npm -s install # TODO Move frontend tests in to separate job
     - npm -s run lint
     - npm -s test -- --verbose
 
+acceptance tests:
+  stage: test
+  services:
+    - name: postgres:9.6-alpine
+      alias: db_server
+    - name: redis:3-alpine
+      alias: redis_server
+  variables:
+    DEFAULT_HOST: "dev.gzero.pl"
+    POSTGRES_PASSWORD: ""
+    POSTGRES_USER: "gzero_cms"
+    POSTGRES_DB: "gzero_cms"
+    REDIS_PORT: "6379" # Bug caused by env variable collision docker/laravel
+  artifacts:
+    when: on_failure
+    paths:
+    - tests/_output
+    - /tmp/laravel.log
+  before_script:
+    - rm -rf /var/www
+    - ln -s "$(pwd)" /var/www
+    - echo "127.0.0.1 dev.gzero.pl" >> /etc/hosts
+    - echo "127.0.0.1 api.dev.gzero.pl" >> /etc/hosts
+    - cp .env.example .env
+    - tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" &
+    - /start.sh &
+
+  script:
+    - phpdismod xdebug # disabling xdebug to speed up composer
+    - composer install --prefer-dist --no-interaction --no-suggest --no-progress
+    - php artisan migrate:fresh
+    - "CI_ACCEPTANCE_RUN=true php vendor/bin/codecept run -n -c codeception.yml -o \"settings: lint: false\" acceptance"
+
 build:
   stage: build
-  variables:
-    DOCKER_DRIVER: overlay
-  services:
-    - docker:1.12.5-dind
   script:
     - composer install --prefer-dist --no-interaction --no-dev --no-suggest --no-progress --optimize-autoloader
     - npm -s install

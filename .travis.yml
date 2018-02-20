@@ -44,7 +44,7 @@ before_script:
 script:
   - docker-compose run --rm -w /var/www node_server npm -s run lint
   - docker-compose run --rm -w /var/www node_server npm -s test -- --verbose
-  - ./develop test-ci
+  - ./develop test-travis
 
 after_script:
  - kill $pid1 # shutdown chrome driver
