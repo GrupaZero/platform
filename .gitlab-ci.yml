@@ -61,6 +61,7 @@ acceptance tests:
     - echo "127.0.0.1 dev.gzero.pl" >> /etc/hosts
     - echo "127.0.0.1 api.dev.gzero.pl" >> /etc/hosts
     - cp .env.example .env
+    - php artisan key:generate
     - tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" &
     - /start.sh &
 
