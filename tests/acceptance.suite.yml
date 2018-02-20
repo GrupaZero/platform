@@ -7,11 +7,11 @@ modules:
         window_size: false
         capabilities:
           chromeOptions:
-            args: ["--headless", "--disable-gpu"]
+            args: ["--no-sandbox", "--headless", "--disable-gpu"]
             binary: "/usr/bin/google-chrome"
     enabled:
         - WebDriver:
-            url: http://dev.gzero.pl:8080
+            url: http://dev.gzero.pl
             browser: chrome
         - \Helper\Acceptance
         - Laravel5:
