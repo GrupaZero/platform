@@ -88,8 +88,7 @@ if [ $# -gt 0 ];then
         node_server \
         npm -s "$@"
 
-  elif [ "$1" == "link" ]; then
-    shift 1
+  elif [ "$1" == "mount" ] || [ "$1" == "umount" ]; then
     ./scripts/link_package.sh "$@"
 
   elif [ "$1" == "clean" ]; then
