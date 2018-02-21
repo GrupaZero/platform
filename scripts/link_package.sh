@@ -19,49 +19,74 @@ function contains() {
 }
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PACKAGE_DIR="$(basename "$(dirname $SCRIPT_DIR)")"
+PLATFORM_DIR="$(dirname $SCRIPT_DIR)"
 PACKAGES=("core" "admin" "api" "cms" "social" "vanilla-integration")
 OPERATIONS=("mount" "umount")
-PACKAGE=$1
-OPERATION=$2
+OPERATION=$1
+PACKAGE=$2
 
-[ "$#" -eq 2 ] || die "2 argument required, $# provided"
-[ $(contains "${PACKAGES[@]}" $1) == "y" ] || die "Package must be one of (${PACKAGES[@]}), $PACKAGE provided"
-[ $(contains "${OPERATIONS[@]}" $2) == "y" ] || die "Operation must be one of (${OPERATIONS[@]}), $OPERATION provided"
+[ "$#" -ge 2 ] ||
+  die "2 argument required, $# provided"
+[ $(contains "${OPERATIONS[@]}" $OPERATION) == "y" ] ||
+  die "Operation must be one of (${OPERATIONS[@]}), $OPERATION provided"
+[ $(contains "${PACKAGES[@]}" $PACKAGE) == "y" ] || [ $PACKAGE == "ALL" ] ||
+  die "Package must be one of (${PACKAGES[@]}) or be ALL, $PACKAGE provided"
 
-if [ $OPERATION == "mount" ]; then
-  # Checking if package was mounted before
-  if grep -qs "$PACKAGE_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
-      echo -e "\e[1mUnmounting previously mounted package\e[0m"
-      sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
-      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
-      sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      sudo mount -o bind,remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      if [ $PACKAGE == "admin" ]; then
-          sudo umount "$SCRIPT_DIR/../public/gzero/$PACKAGE"
-          sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/public" "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-          sudo mount -o bind,remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-      fi
+
+function do_operation() {
+  OPERATION=$1
+  PACKAGE=$2
+
+  if [ $PACKAGE == "admin" ]; then
+    PACKAGE_DIR="$PLATFORM_DIR/../$PACKAGE/public"
+    MOUNT_DIR="$PLATFORM_DIR/public/gzero/$PACKAGE"
   else
-      echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
-      sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/" "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      sudo mount -o bind,remount,ro "$SCRIPT_DIR/../vendor/gzero/$PACKAGE/"
-      if [ $PACKAGE == "admin" ]; then
-          sudo mount --bind "$SCRIPT_DIR/../../$PACKAGE/public" "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-          sudo mount -o bind,remount,ro "$SCRIPT_DIR/../public/gzero/$PACKAGE/"
-      fi
+    PACKAGE_DIR="$PLATFORM_DIR/../$PACKAGE"
+    MOUNT_DIR="$PLATFORM_DIR/vendor/gzero/$PACKAGE"
   fi
-fi
 
-if [ $OPERATION == "umount" ]; then
+  ${OPERATION} $PACKAGE
+}
+
+function mount() {
+  PACKAGE=$1
+
+  if [ ! -d "${MOUNT_DIR}" ]; then
+    echo -e "The mount dir for \e[91m$PACKAGE\e[0m is not present"
+    return
+  fi
+
   # Checking if package was mounted before
-  if grep -qs "$PACKAGE_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
+  if grep -qs "$MOUNT_DIR" /proc/mounts; then
+      echo -e "\e[1mUnmounting previously mounted package \e[91m$PACKAGE\e[0m"
+      sudo umount "$MOUNT_DIR"
+  fi
+
+  if [ ! -d "${PACKAGE_DIR}" ]; then
+    echo -e "The project \e[91m$PACKAGE\e[0m is not present"
+    return
+  fi
+
+  echo -e "\e[1mMounting package \e[91m$PACKAGE\e[0m"
+  sudo mount --bind "$PACKAGE_DIR" "$MOUNT_DIR" && sudo mount -o bind,remount,ro "$MOUNT_DIR"
+}
+
+function umount() {
+  PACKAGE=$1
+
+  # Checking if package was mounted before
+  if grep -qs "$PLATFORM_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
     echo -e "\e[1mUnmounting package \e[91m$PACKAGE\e[0m"
-    sudo umount "$SCRIPT_DIR/../vendor/gzero/$PACKAGE"
-    if [ $PACKAGE == "admin" ]; then
-        sudo umount "$SCRIPT_DIR/../public/gzero/$PACKAGE"
-    fi
+    sudo umount "$MOUNT_DIR"
   else
-      echo -e "\e[1mPackage was not mounted \e[91m$PACKAGE\e[0m"
+    echo -e "The package \e[91m$PACKAGE\e[0m is not mounted"
   fi
+}
+
+if [ $PACKAGE == "ALL" ]; then
+  for package in ${PACKAGES[@]}; do
+    do_operation $OPERATION $package
+  done
+else
+  do_operation $OPERATION $PACKAGE
 fi
