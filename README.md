@@ -42,6 +42,12 @@ If you want develop using ssl connection you can generate self-signed cert using
 ./develop generate-cert dev.gzero.pl
 ```
 
+##### Generate application key
+
+```
+./develop artisan key:genarate
+```
+
 ##### Environment Configuration.
 
 Environment configuration is stored in .env file (copied from .env.example during create-project stage).

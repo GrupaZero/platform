@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2a6f9e8f37739aa36238dcd8a7abb03",
     "content-hash": "2195042d6f3cf8681962b6a54c54058d",
     "packages": [
         {
@@ -913,12 +912,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "f69e8e2b410171dc2ef7c251cd81fb71ae58315c"
+                "reference": "f8f165a608e071fd4a0d239010822e81e7896bc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/f69e8e2b410171dc2ef7c251cd81fb71ae58315c",
-                "reference": "f69e8e2b410171dc2ef7c251cd81fb71ae58315c",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/f8f165a608e071fd4a0d239010822e81e7896bc4",
+                "reference": "f8f165a608e071fd4a0d239010822e81e7896bc4",
                 "shasum": ""
             },
             "require": {
@@ -977,12 +976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/core.git",
-                "reference": "cba90687dd3fa30a8e91599f37c5263bb9aa59cc"
+                "reference": "f2c034020b59bb6447b81706bb23c0501ab431a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/core/zipball/cba90687dd3fa30a8e91599f37c5263bb9aa59cc",
-                "reference": "cba90687dd3fa30a8e91599f37c5263bb9aa59cc",
+                "url": "https://api.github.com/repos/GrupaZero/core/zipball/f2c034020b59bb6447b81706bb23c0501ab431a1",
+                "reference": "f2c034020b59bb6447b81706bb23c0501ab431a1",
                 "shasum": ""
             },
             "require": {
