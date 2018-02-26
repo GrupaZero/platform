@@ -14,6 +14,7 @@
 use Illuminate\Routing\Router;
 
 addMultiLanguageRoutes([
+    'domain' => config('gzero.domain'),
     'middleware' => ['web']
 ], function ($router, $language) {
     /** @var Router $router */
