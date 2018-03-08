@@ -1,6 +1,7 @@
 import Translations from './lang/locales.js'
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import VueRouter from 'vue-router'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -18,6 +19,7 @@ require('./common')
  */
 
 Vue.use(VueI18n)
+Vue.use(VueRouter)
 
 const i18n = new VueI18n({
     locale: document.documentElement.lang,
@@ -48,7 +50,39 @@ Vue.component(
   require('./components/cookie-law/CookieLaw.vue')
 )
 
+// new Vue({
+//     el: '#root',
+//     i18n: i18n
+// })
+
+const homeComponent = {
+    template: '<div>{{ message }}</div>',
+    data: () => ({
+        message: 'this is the home screen'
+    })
+}
+const featureComponent = {
+    template: '<div>{{ message }}</div>',
+    data: () => ({
+        message: 'this is the feature screen'
+    })
+}
 new Vue({
-    el: '#root',
-    i18n: i18n
+    el: '#app',
+    router: new VueRouter({
+        mode: 'history',
+        routes: [
+            {path: '/bartero', component: homeComponent},
+            {path: '/bartero/feature', component: featureComponent}
+        ]
+    }),
+    template: '<div>' +
+              '<div>{{ title }}</div>' +
+              '<div><router-link to="/bartero/feature">feature</router-link></div>' +
+              '<div><router-link to="/bartero">home</router-link></div>' +
+              '<router-view></router-view>' +
+              '</div>',
+    data() {
+        return {title: 'hot links'}
+    }
 })

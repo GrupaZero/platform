@@ -14,10 +14,15 @@
 use Illuminate\Routing\Router;
 
 addMultiLanguageRoutes([
-    'domain' => config('gzero.domain'),
+    'domain'     => config('gzero.domain'),
     'middleware' => ['web']
 ], function ($router, $language) {
     /** @var Router $router */
     $router->get('/', '\Gzero\Cms\Http\Controllers\HomeController@index')->name(mlSuffix('home', $language));
 });
 
+addRoutes([
+    'middleware' => ['web']
+], function ($router) {
+    $router->get('/bartero/{any?}', '\App\Http\Controllers\BarteroController@index');
+});

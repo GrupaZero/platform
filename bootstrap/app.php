@@ -52,21 +52,21 @@ $app->singleton(
 | Sending logs to named pipe (FIFO) so we can forward it to docker logs
 |
 */
-$app->configureMonologUsing(
-    function ($monolog) {
-        $levels = [
-            'debug'     => Logger::DEBUG,
-            'info'      => Logger::INFO,
-            'notice'    => Logger::NOTICE,
-            'warning'   => Logger::WARNING,
-            'error'     => Logger::ERROR,
-            'critical'  => Logger::CRITICAL,
-            'alert'     => Logger::ALERT,
-            'emergency' => Logger::EMERGENCY,
-        ];
-        $monolog->pushHandler(new StreamHandler('/tmp/laravel.log', $levels[config('app.log_level')]));
-    }
-);
+//$app->configureMonologUsing(
+//    function ($monolog) {
+//        $levels = [
+//            'debug'     => Logger::DEBUG,
+//            'info'      => Logger::INFO,
+//            'notice'    => Logger::NOTICE,
+//            'warning'   => Logger::WARNING,
+//            'error'     => Logger::ERROR,
+//            'critical'  => Logger::CRITICAL,
+//            'alert'     => Logger::ALERT,
+//            'emergency' => Logger::EMERGENCY,
+//        ];
+//        $monolog->pushHandler(new StreamHandler('/tmp/laravel.log', $levels[config('app.log_level')]));
+//    }
+//);
 
 /*
 |--------------------------------------------------------------------------
