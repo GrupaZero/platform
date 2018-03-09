@@ -48,6 +48,11 @@ Vue.component(
   require('./components/cookie-law/CookieLaw.vue')
 )
 
+Vue.component(
+  'gzero-youtube',
+   require('./components/gzero-youtube/GzeroYoutube.vue')
+)
+
 new Vue({
     el: '#root',
     i18n: i18n
