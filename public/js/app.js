@@ -1,4 +1,36 @@
-webpackJsonp([1],{
+webpackJsonp([2],{
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/AdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/AnotherAdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+
+exports.default = {
+    name: 'another-advanced-feature'
+};
+
+/***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/cookie-law/CookieLaw.vue":
 /***/ (function(module, exports, __webpack_require__) {
@@ -19602,6 +19634,29 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7c7a518d\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/AdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v("This is advanced feature screen with " + _vm._s(_vm.feature))
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7c7a518d", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-89c53f18\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19971,6 +20026,27 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-89c53f18", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9dc7bd30\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/AnotherAdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("This is another advanced feature screen")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9dc7bd30", module.exports)
   }
 }
 
@@ -22994,6 +23070,16 @@ var _vueRouter = __webpack_require__("./node_modules/vue-router/dist/vue-router.
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _AdvancedFeature = __webpack_require__("./resources/assets/js/components/AdvancedFeature.vue");
+
+var _AdvancedFeature2 = _interopRequireDefault(_AdvancedFeature);
+
+var _FithComponent = __webpack_require__("./resources/assets/js/components/FithComponent.js");
+
+var fithComponentWhole = _interopRequireWildcard(_FithComponent);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -23031,10 +23117,10 @@ _vue2.default.component('passport-personal-access-tokens', __webpack_require__("
 
 _vue2.default.component('cookie-law', __webpack_require__("./resources/assets/js/components/cookie-law/CookieLaw.vue"));
 
-// new Vue({
-//     el: '#root',
-//     i18n: i18n
-// })
+new _vue2.default({
+    el: '#root',
+    i18n: i18n
+});
 
 var homeComponent = {
     template: '<div>{{ message }}</div>',
@@ -23052,13 +23138,49 @@ var featureComponent = {
         };
     }
 };
+
+console.log('import of advanced feature component', _AdvancedFeature2.default);
+console.log('require of advanced feature component', __webpack_require__("./resources/assets/js/components/AdvancedFeature.vue"));
+
+console.log('fith component default', fithComponentWhole.default);
+
 new _vue2.default({
     el: '#app',
     router: new _vueRouter2.default({
         mode: 'history',
-        routes: [{ path: '/bartero', component: homeComponent }, { path: '/bartero/feature', component: featureComponent }]
+        routes: [{
+            path: '/bartero/home',
+            component: homeComponent
+        }, {
+            path: '/bartero/feature',
+            component: featureComponent
+        }, {
+            path: '/bartero/advanced-feature',
+            component: function component() {
+                return new Promise(function (resolve) {
+                    resolve(_AdvancedFeature2.default);
+                });
+            }
+        }, {
+            path: '/bartero/another-advanced-feature',
+            component: __webpack_require__("./resources/assets/js/components/AnotherAdvancedFeature.vue")
+        }, {
+            path: '/bartero/super-advanced-feature',
+            component: function component(resolve) {
+                __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/components/SuperAdvancedFeature.vue")]; ((function (component) {
+                    resolve(component);
+                }).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}).catch(__webpack_require__.oe);
+            }
+        }, {
+            path: '/bartero/another-super-advanced-feature',
+            component: function component(resolve) {
+                __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/components/AnotherSuperAdvancedFeature.vue")]; ((function (component) {
+                    resolve(component);
+                }).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}).catch(__webpack_require__.oe);
+            }
+        }]
     }),
-    template: '<div>' + '<div>{{ title }}</div>' + '<div><router-link to="/bartero/feature">feature</router-link></div>' + '<div><router-link to="/bartero">home</router-link></div>' + '<router-view></router-view>' + '</div>',
+    template: '<div>' + '<div>{{ title }}</div>' + '<div><router-link to="/bartero/home">home</router-link></div>' + '<div><router-link to="/bartero/feature">feature</router-link></div>' + '<div><router-link to="/bartero/advanced-feature">Advanced feature</router-link></div>' + '<div><router-link to="/bartero/another-advanced-feature">Another advanced feature</router-link></div>' + '<div><router-link to="/bartero/super-advanced-feature">Super advanced feature</router-link></div>' + '<div><router-link to="/bartero/another-super-advanced-feature">Another super advanced' + ' feature</router-link></div>' + '<router-view></router-view>' + '</div>',
     data: function data() {
         return { title: 'hot links' };
     }
@@ -23296,6 +23418,115 @@ $(function () {
         $.getScript('/js/vendor/jquery-colorbox/i18n/jquery.colorbox-' + lang + '.js');
     }
 });
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/AdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/AdvancedFeature.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7c7a518d\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/AdvancedFeature.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AdvancedFeature.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7c7a518d", Component.options)
+  } else {
+    hotAPI.reload("data-v-7c7a518d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/AnotherAdvancedFeature.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/AnotherAdvancedFeature.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9dc7bd30\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/AnotherAdvancedFeature.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AnotherAdvancedFeature.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9dc7bd30", Component.options)
+  } else {
+    hotAPI.reload("data-v-9dc7bd30", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/FithComponent.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports.domek = function () {
+    console.log('this is domek function');
+};
+module.exports = { template: "<div>This is third component</div>" };
 
 /***/ }),
 

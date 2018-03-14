@@ -12,9 +12,18 @@ let mix = require('laravel-mix')
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie'])
+    .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie', 'ramda'])
     .sass('resources/assets/sass/app.scss', 'public/css')
 
 if (mix.inProduction) {
     mix.version()
 }
+
+mix.webpackConfig({
+    output: {
+        chunkFilename: 'js/chunks/[name].[id].js',
+        publicPath: '/'
+        // filename: '[name].js'
+    }
+    // new webpack.optimize.CommonsChunkPlugin({}))
+})

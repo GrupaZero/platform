@@ -24,5 +24,5 @@ addMultiLanguageRoutes([
 addRoutes([
     'middleware' => ['web']
 ], function ($router) {
-    $router->get('/bartero/{any?}', '\App\Http\Controllers\BarteroController@index');
+    $router->get('/bartero/{name}', '\App\Http\Controllers\BarteroController@index')->where(['name' => '[a-z][a-z0-9-]*']);
 });
