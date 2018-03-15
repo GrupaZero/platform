@@ -52,81 +52,83 @@ Vue.component(
         require('./components/cookie-law/CookieLaw.vue')
 )
 
-// new Vue({
-//     el: '#root',
-//     i18n: i18n
-// })
+// @TODO Create separate file for SPA
+if (!$('#app').length) {
+    new Vue({
+        el: '#root',
+        i18n: i18n
+    })
+} else {
+    const router = new VueRouter({
+        mode: 'history',
+        linkActiveClass: 'active',
+        routes: []
+    })
 
-
-const router = new VueRouter({
-    mode: 'history',
-    linkActiveClass: 'active',
-    routes: []
-})
-
-const app = new Vue({
-    el: '#app',
-    i18n: i18n,
-    router: router,
-    components: {
-        'admin-panel': require('./components/AdminPanel')
-    },
-    data() {
-        return {
-            title: 'Admin Panel',
-            titlePrefix: 'Panel',
-            apps: []
-        }
-    },
-    created: function() {
-        const homeComponent = {
-            template: '<div>{{ message }}</div>',
-            data: () => ({
-                message: 'this is the home screen'
-            })
-        }
-
-        this.registerLauncher(
-                {
-                    path: 'home',
-                    label: 'Home'
-                }, homeComponent)
-
-        AdminPackage.register(this)
-    },
-    methods: {
-        updateTitle: function(title) {
-            window.document.title = title
+    const app = new Vue({
+        el: '#app',
+        i18n: i18n,
+        router: router,
+        components: {
+            'admin-panel': require('./components/AdminPanel')
         },
-        registerLauncher: function(manifest, component, children = []) {
-            const path = '/spa-demo/' + manifest.path
-            const label = manifest.label
+        data() {
+            return {
+                title: 'Admin Panel',
+                titlePrefix: 'Panel',
+                apps: []
+            }
+        },
+        created: function() {
+            const homeComponent = {
+                template: '<div>{{ message }}</div>',
+                data: () => ({
+                    message: 'this is the home screen'
+                })
+            }
 
-            router.addRoutes([
-                {
+            this.registerLauncher(
+                    {
+                        path: 'home',
+                        label: 'Home'
+                    }, homeComponent)
+
+            AdminPackage.register(this)
+        },
+        methods: {
+            updateTitle: function(title) {
+                window.document.title = title
+            },
+            registerLauncher: function(manifest, component, children = []) {
+                const path = '/spa-demo/' + manifest.path
+                const label = manifest.label
+
+                router.addRoutes([
+                    {
+                        path,
+                        component,
+                        children
+                    }
+                ])
+                this.apps.push({
                     path,
-                    component,
-                    children
-                }
-            ])
-            this.apps.push({
-                path,
-                label
-            })
+                    label
+                })
+            }
         }
-    }
-})
+    })
 
-window.app = app
+    window.app = app
 
-/**
- * Re-setting window title on each navigation
- */
-router.afterEach((to, from) => { // eslint-disable-line no-unused-vars
-    let component = to.matched[0].components.default
-    let name = app.$data['title']
-    if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
-        name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName()
-    }
-    app.updateTitle(name)
-})
+    /**
+     * Re-setting window title on each navigation
+     */
+    router.afterEach((to, from) => { // eslint-disable-line no-unused-vars
+        let component = to.matched[0].components.default
+        let name = app.$data['title']
+        if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
+            name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName()
+        }
+        app.updateTitle(name)
+    })
+}
