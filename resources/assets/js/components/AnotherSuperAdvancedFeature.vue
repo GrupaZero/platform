@@ -5,9 +5,10 @@
     </div>
 </template>
 <script>
-    import * as R from 'ramda'
-    module.exports.created = () => {
-        let quadruppled = R.map(x => 4 * x, [3, 234, -2])
-        console.log('quadruppled', quadruppled)
+    export default {
+        methods: {
+            getName: () => 'Another Super-Duper Advanced Feature',
+            getPath: () => 'another-super-advanced-feature'
+        }
     }
 </script>

@@ -5,7 +5,9 @@
 @stop
 
 @section('content')
-    <div id="app"></div>
+    <div id="app">
+        <admin-panel :register="registerApp" :apps="apps"></admin-panel>
+    </div>
 @stop
 
 @section('footerScripts')

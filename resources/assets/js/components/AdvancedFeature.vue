@@ -1,5 +1,5 @@
 <template>
-    <div>This is advanced feature screen with {{ feature }}</div>
+    <div>This is advanced feature screen</div>
 </template>
 
 <script>

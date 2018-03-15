@@ -5,10 +5,11 @@
     </div>
 </template>
 <script>
-    import * as R from 'ramda'
-    module.exports.created = () => {
-        let tripled = R.map(x => 3   * x, [3, 234, -2])
-        console.log('tripled', tripled)
+    export default {
+        methods: {
+            getName: () => 'Super Advanced Feature',
+            getPath: () => 'super-advanced-feature'
+        }
     }
 </script>
 

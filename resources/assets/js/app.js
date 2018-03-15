@@ -50,10 +50,10 @@ Vue.component(
         require('./components/cookie-law/CookieLaw.vue')
 )
 
-new Vue({
-    el: '#root',
-    i18n: i18n
-})
+// new Vue({
+//     el: '#root',
+//     i18n: i18n
+// })
 
 const homeComponent = {
     template: '<div>{{ message }}</div>',
@@ -61,77 +61,60 @@ const homeComponent = {
         message: 'this is the home screen'
     })
 }
-const featureComponent = {
-    template: '<div>{{ message }}</div>',
-    data: () => ({
-        message: 'this is the feature screen'
-    })
-}
 
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/bartero/home',
+            component: homeComponent
+        },
+    ]
+})
 
-import advancedFeatureComponent from './components/AdvancedFeature'
-
-console.log('import of advanced feature component', advancedFeatureComponent)
-console.log('require of advanced feature component', require('./components/AdvancedFeature'))
-
-
-import fithComponentDefault, * as fithComponentWhole from './components/FithComponent.js'
-
-console.log('fith component default', fithComponentDefault)
-
-new Vue({
+const app = new Vue({
     el: '#app',
-    router: new VueRouter({
-        mode: 'history',
-        routes: [
-            {
-                path: '/bartero/home',
-                component: homeComponent
-            },
-            {
-                path: '/bartero/feature',
-                component: featureComponent
-            },
-            {
-                path: '/bartero/advanced-feature',
-                component: () => new Promise(function(resolve) {
-                    resolve(advancedFeatureComponent)
-                })
-            },
-            {
-                path: '/bartero/another-advanced-feature',
-                component: require('./components/AnotherAdvancedFeature')
-            },
-            {
-                path: '/bartero/super-advanced-feature',
-                component: function(resolve) {
-                    require(['./components/SuperAdvancedFeature'], function(component) {
-                        resolve(component)
-                    })
-                }
-            },
-            {
-                path: '/bartero/another-super-advanced-feature',
-                component: function(resolve) {
-                    require(['./components/AnotherSuperAdvancedFeature.vue'], function(component) {
-                        resolve(component)
-                    })
-                }
-            }
-        ]
-    }),
-    template: '<div>' +
-              '<div>{{ title }}</div>' +
-              '<div><router-link to="/bartero/home">home</router-link></div>' +
-              '<div><router-link to="/bartero/feature">feature</router-link></div>' +
-              '<div><router-link to="/bartero/advanced-feature">Advanced feature</router-link></div>' +
-              '<div><router-link to="/bartero/another-advanced-feature">Another advanced feature</router-link></div>' +
-              '<div><router-link to="/bartero/super-advanced-feature">Super advanced feature</router-link></div>' +
-              '<div><router-link to="/bartero/another-super-advanced-feature">Another super advanced' +
-              ' feature</router-link></div>' +
-              '<router-view></router-view>' +
-              '</div>',
+    router: router,
+    components: {
+        'admin-panel': require('./components/AdminPanel')
+    },
     data() {
-        return {title: 'hot links'}
+        return {
+            title: 'Admin Panel',
+            titlePrefix: 'Panel',
+            apps: []
+        }
+    },
+    methods: {
+        updateTitle: function(title) {
+            window.document.title = title
+        },
+        registerApp: function(manifest, component) {
+            const path = '/bartero/' + manifest.path
+            const label = manifest.label
+
+            router.addRoutes([{
+                path,
+                component
+            }])
+            this.apps.push({
+                path,
+                label
+            })
+        }
     }
+})
+
+window.app = app
+
+/**
+ * Re-setting window title on each navigation
+ */
+router.afterEach((to, from) => {
+    let component = to.matched[0].components.default
+    let name = app.$data['title']
+    if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
+        name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName()
+    }
+    app.updateTitle(name)
 })
