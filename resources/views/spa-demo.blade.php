@@ -1,7 +1,7 @@
 @extends('gzero-core::layouts.master')
 
 @section('title')
-    Bartero app
+    SPA Demo app
 @stop
 
 @section('content')

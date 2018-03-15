@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            The Admin Panelik
+            The Admin Panel
         </h1>
         <div v-for="app in apps">
             <router-link :to="app.path">{{ app.label }}</router-link>

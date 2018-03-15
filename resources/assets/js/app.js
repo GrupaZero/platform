@@ -98,7 +98,7 @@ const app = new Vue({
             window.document.title = title
         },
         registerLauncher: function(manifest, component, children = []) {
-            const path = '/bartero/' + manifest.path
+            const path = '/spa-demo/' + manifest.path
             const label = manifest.label
 
             router.addRoutes([
