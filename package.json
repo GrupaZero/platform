@@ -100,7 +100,7 @@
     }
   },
   "devDependencies": {
-    "@gzero/admin-module-test": "^1.0.8",
+    "@gzero/admin-module-test": "^1.0.9",
     "ava": "^0.25.0",
     "avoriaz": "^6.3.0",
     "axios": "^0.18",
