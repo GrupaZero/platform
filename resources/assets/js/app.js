@@ -100,11 +100,13 @@ const app = new Vue({
         registerLauncher: function(manifest, component) {
             const path = '/bartero/' + manifest.path
             const label = manifest.label
+            const children = manifest.children || []
 
             router.addRoutes([
                 {
                     path,
-                    component
+                    component,
+                    children
                 }
             ])
             this.apps.push({
