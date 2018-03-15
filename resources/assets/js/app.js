@@ -60,6 +60,7 @@ Vue.component(
 
 const router = new VueRouter({
     mode: 'history',
+    linkActiveClass: 'active',
     routes: []
 })
 

@@ -34,7 +34,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		4: 0
+/******/ 		3: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -83,7 +83,7 @@
 /******/ 		// start chunk loading
 /******/ 		var head = document.getElementsByTagName('head')[0];
 /******/ 		var script = document.createElement('script');
-/******/ 		script.type = 'text/javascript';
+/******/ 		script.type = "text/javascript";
 /******/ 		script.charset = 'utf-8';
 /******/ 		script.async = true;
 /******/ 		script.timeout = 120000;
@@ -91,7 +91,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/chunks/" + ({"2":"/js/app","3":"/js/vendor"}[chunkId]||chunkId) + "." + chunkId + ".js";
+/******/ 		script.src = __webpack_require__.p + "js/chunks/" + ({"0":"admin-module-test"}[chunkId]||chunkId) + "." + chunkId + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {

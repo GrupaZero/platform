@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ "./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue":
+/***/ "./node_modules/@gzero/admin-module-test/lib/components/Settings.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/@gzero/admin-module-test/lib/components/Settings.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-244de5f5\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-35190f9f\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/@gzero/admin-module-test/lib/components/Settings.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue"
+Component.options.__file = "node_modules/@gzero/admin-module-test/lib/components/Settings.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-244de5f5", Component.options)
+    hotAPI.createRecord("data-v-35190f9f", Component.options)
   } else {
-    hotAPI.reload("data-v-244de5f5", Component.options)
+    hotAPI.reload("data-v-35190f9f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,53 +48,80 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue":
+/***/ "./node_modules/@gzero/admin-module-test/locales.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+    en: {settings: 'Settings', general: 'General settings'},
+    pl: {settings: 'Ustawienia', general: 'Ustawienia ogólne'}
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/@gzero/admin-module-test/lib/components/Settings.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-//
-//
-//
-//
-//
-//
 
-exports.default = {};
+var _locales = __webpack_require__("./node_modules/@gzero/admin-module-test/locales.js");
+
+var _locales2 = _interopRequireDefault(_locales);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    i18n: {
+        messages: _locales2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-244de5f5\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-35190f9f\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/@gzero/admin-module-test/lib/components/Settings.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("This is super advanced feature screen")]),
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Settings")]),
       _vm._v(" "),
-      _c("p", [_vm._v("This is a paragraph of super advanced feature")])
-    ])
-  }
-]
+      _c("p", [_vm._v("This is a paragraph of super advanced feature")]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: { name: "general-settings" } } }, [
+        _vm._v("General Settings")
+      ]),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-244de5f5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-35190f9f", module.exports)
   }
 }
 
