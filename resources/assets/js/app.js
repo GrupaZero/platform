@@ -97,10 +97,9 @@ const app = new Vue({
         updateTitle: function(title) {
             window.document.title = title
         },
-        registerLauncher: function(manifest, component) {
+        registerLauncher: function(manifest, component, children = []) {
             const path = '/bartero/' + manifest.path
             const label = manifest.label
-            const children = manifest.children || []
 
             router.addRoutes([
                 {
