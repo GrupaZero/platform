@@ -65,6 +65,7 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
+    i18n: i18n,
     router: router,
     components: {
         'admin-panel': require('./components/AdminPanel')
