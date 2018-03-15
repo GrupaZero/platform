@@ -120,7 +120,7 @@ window.app = app
 /**
  * Re-setting window title on each navigation
  */
-router.afterEach((to, from) => {
+router.afterEach((to, from) => { // eslint-disable-line no-unused-vars
     let component = to.matched[0].components.default
     let name = app.$data['title']
     if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
