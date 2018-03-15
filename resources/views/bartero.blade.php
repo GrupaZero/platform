@@ -6,7 +6,7 @@
 
 @section('content')
     <div id="app">
-        <admin-panel :register="registerApp" :apps="apps"></admin-panel>
+        <admin-panel :apps="apps"></admin-panel>
     </div>
 @stop
 

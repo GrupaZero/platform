@@ -3,6 +3,8 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 
+import AdminPackage from '@gzero/admin-module-test'
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -81,28 +83,20 @@ const app = new Vue({
                 message: 'this is the home screen'
             })
         }
-        this.registerApp(
+
+        this.registerLauncher(
                 {
                     path: 'home',
                     label: 'Home'
                 }, homeComponent)
-        this.registerApp(
-                {
-                    path: 'another-super-advanced-feature',
-                    label: 'Another Super-Duper Advanced Feature'
-                }, resolve => require(['./components/AnotherSuperAdvancedFeature.vue'], resolve))
 
-        this.registerApp(
-                {
-                    path: 'super-advanced-feature',
-                    label: 'Super-Duper Advanced Feature'
-                }, resolve => require(['./components/SuperAdvancedFeature.vue'], resolve))
+        AdminPackage.register(this)
     },
     methods: {
         updateTitle: function(title) {
             window.document.title = title
         },
-        registerApp: function(manifest, component) {
+        registerLauncher: function(manifest, component) {
             const path = '/bartero/' + manifest.path
             const label = manifest.label
 

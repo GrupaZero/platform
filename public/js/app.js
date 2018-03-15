@@ -1,5 +1,28 @@
 webpackJsonp([2],{
 
+/***/ "./node_modules/@gzero/admin-module-test/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+    register: (app) => {
+        console.log('Registering Service Provider: Admin Module Test')
+
+        app.registerLauncher({
+            path: 'super-advanced-feature',
+            label: 'Super-Duper Advanced Feature'
+        }, resolve => __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe))
+
+        app.registerLauncher({
+            path: 'another-super-advanced-feature',
+            label: 'Another Super-Duper Advanced Feature'
+        }, resolve => __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./node_modules/@gzero/admin-module-test/lib/components/AnotherSuperAdvancedFeature.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe))
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/AdminPanel.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23106,6 +23129,10 @@ var _vueRouter = __webpack_require__("./node_modules/vue-router/dist/vue-router.
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _adminModuleTest = __webpack_require__("./node_modules/@gzero/admin-module-test/index.js");
+
+var _adminModuleTest2 = _interopRequireDefault(_adminModuleTest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -23177,29 +23204,19 @@ var app = new _vue2.default({
                 };
             }
         };
-        this.registerApp({
+
+        this.registerLauncher({
             path: 'home',
             label: 'Home'
         }, homeComponent);
-        this.registerApp({
-            path: 'another-super-advanced-feature',
-            label: 'Another Super-Duper Advanced Feature'
-        }, function (resolve) {
-            return __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/components/AnotherSuperAdvancedFeature.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-        });
 
-        this.registerApp({
-            path: 'super-advanced-feature',
-            label: 'Super-Duper Advanced Feature'
-        }, function (resolve) {
-            return __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/components/SuperAdvancedFeature.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-        });
+        _adminModuleTest2.default.register(this);
     },
     methods: {
         updateTitle: function updateTitle(title) {
             window.document.title = title;
         },
-        registerApp: function registerApp(manifest, component) {
+        registerLauncher: function registerLauncher(manifest, component) {
             var path = '/bartero/' + manifest.path;
             var label = manifest.label;
 
