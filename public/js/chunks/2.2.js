@@ -1,0 +1,10 @@
+webpackJsonp([2],{
+
+/***/ "./node_modules/@gzero/admin-module-test/lib/components/Example.vue":
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: \n\nVue packages version mismatch:\n\n- vue@2.5.16\n- vue-template-compiler@2.5.13\n\nThis may cause things to work incorrectly. Make sure to use the same version for both.\nIf you are using vue-loader@>=10.0, simply update vue-template-compiler.\nIf you are using vue-loader@<10.0 or vueify, re-installing vue-loader/vueify should bump vue-template-compiler to the latest.\n\n    at Object.<anonymous> (/var/www/node_modules/vue-template-compiler/index.js:8:9)\n    at Module._compile (module.js:577:32)\n    at Object.Module._extensions..js (module.js:586:10)\n    at Module.load (module.js:494:32)\n    at tryModuleLoad (module.js:453:12)\n    at Function.Module._load (module.js:445:3)\n    at Module.require (module.js:504:17)\n    at require (internal/module.js:20:19)\n    at Object.<anonymous> (/var/www/node_modules/vue-loader/lib/parser.js:1:80)\n    at Module._compile (module.js:577:32)\n    at Object.Module._extensions..js (module.js:586:10)\n    at Module.load (module.js:494:32)\n    at tryModuleLoad (module.js:453:12)\n    at Function.Module._load (module.js:445:3)\n    at Module.require (module.js:504:17)\n    at require (internal/module.js:20:19)\n    at Object.<anonymous> (/var/www/node_modules/vue-loader/lib/loader.js:3:15)\n    at Module._compile (module.js:577:32)\n    at Object.Module._extensions..js (module.js:586:10)\n    at Module.load (module.js:494:32)\n    at tryModuleLoad (module.js:453:12)\n    at Function.Module._load (module.js:445:3)\n    at Module.require (module.js:504:17)\n    at require (internal/module.js:20:19)\n    at Object.<anonymous> (/var/www/node_modules/vue-loader/index.js:1:80)\n    at Module._compile (module.js:577:32)\n    at Object.Module._extensions..js (module.js:586:10)\n    at Module.load (module.js:494:32)\n    at tryModuleLoad (module.js:453:12)\n    at Function.Module._load (module.js:445:3)");
+
+/***/ })
+
+});

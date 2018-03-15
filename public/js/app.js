@@ -60,10 +60,24 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 exports.default = {
     name: 'admin-panel',
-    props: ['apps']
+    props: ['apps'],
+    data: function data() {
+        return { locale: 'en' };
+    },
+
+    watch: {
+        locale: function locale(val) {
+            this.$i18n.locale = val;
+        }
+    }
 };
 
 /***/ }),
@@ -4892,7 +4906,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -19165,39 +19179,78 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", { staticClass: "mt-4" }, [
-      _vm._v("\n        The Admin Panel\n    ")
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
     _c(
-      "ul",
-      { staticClass: "nav nav-pills" },
-      _vm._l(_vm.apps, function(app) {
-        return _c(
-          "li",
-          { staticClass: "nav-item" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "flex-sm-fill text-sm-center nav-link",
-                attrs: { to: app.path }
-              },
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-light bg-light mb-4" },
+      [
+        _c("div", { staticClass: "navbar-brand" }, [_vm._v("The Admin Panel")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "navbar-nav mr-auto" },
+          _vm._l(_vm.apps, function(app) {
+            return _c(
+              "li",
+              { staticClass: "nav-item" },
               [
-                _vm._v(
-                  "\n                " + _vm._s(app.label) + "\n            "
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "flex-sm-fill text-sm-center nav-link",
+                    attrs: { to: app.path }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(app.label) +
+                        "\n                "
+                    )
+                  ]
                 )
-              ]
+              ],
+              1
             )
-          ],
-          1
-        )
-      })
+          })
+        ),
+        _vm._v(" "),
+        _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.locale,
+                  expression: "locale"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.locale = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", [_vm._v("en")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("pl")])
+            ]
+          )
+        ])
+      ]
     ),
-    _vm._v(" "),
-    _c("hr"),
     _vm._v(" "),
     _c("div", { staticClass: "card mb-4" }, [
       _c("div", { staticClass: "card-body" }, [_c("router-view")], 1)
