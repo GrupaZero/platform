@@ -12,7 +12,7 @@ let mix = require('laravel-mix')
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie', 'ramda'])
+    .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie'])
     .sass('resources/assets/sass/app.scss', 'public/css')
 
 if (mix.inProduction) {

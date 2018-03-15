@@ -55,21 +55,10 @@ Vue.component(
 //     i18n: i18n
 // })
 
-const homeComponent = {
-    template: '<div>{{ message }}</div>',
-    data: () => ({
-        message: 'this is the home screen'
-    })
-}
 
 const router = new VueRouter({
     mode: 'history',
-    routes: [
-        {
-            path: '/bartero/home',
-            component: homeComponent
-        },
-    ]
+    routes: []
 })
 
 const app = new Vue({
@@ -85,6 +74,30 @@ const app = new Vue({
             apps: []
         }
     },
+    created: function() {
+        const homeComponent = {
+            template: '<div>{{ message }}</div>',
+            data: () => ({
+                message: 'this is the home screen'
+            })
+        }
+        this.registerApp(
+                {
+                    path: 'home',
+                    label: 'Home'
+                }, homeComponent)
+        this.registerApp(
+                {
+                    path: 'another-super-advanced-feature',
+                    label: 'Another Super-Duper Advanced Feature'
+                }, resolve => require(['./components/AnotherSuperAdvancedFeature.vue'], resolve))
+
+        this.registerApp(
+                {
+                    path: 'super-advanced-feature',
+                    label: 'Super-Duper Advanced Feature'
+                }, resolve => require(['./components/SuperAdvancedFeature.vue'], resolve))
+    },
     methods: {
         updateTitle: function(title) {
             window.document.title = title
@@ -93,10 +106,12 @@ const app = new Vue({
             const path = '/bartero/' + manifest.path
             const label = manifest.label
 
-            router.addRoutes([{
-                path,
-                component
-            }])
+            router.addRoutes([
+                {
+                    path,
+                    component
+                }
+            ])
             this.apps.push({
                 path,
                 label

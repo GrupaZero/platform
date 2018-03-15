@@ -6,9 +6,5 @@
 </template>
 <script>
     export default {
-        methods: {
-            getName: () => 'Another Super-Duper Advanced Feature',
-            getPath: () => 'another-super-advanced-feature'
-        }
     }
 </script>
