@@ -15,6 +15,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue', 'vue-i18n', 'axios', 'bluebird', 'lodash', 'js-cookie'])
     .sass('resources/assets/sass/app.scss', 'public/css')
 
+mix.js('resources/assets/js/admin.js', 'public/js')
+
 if (mix.inProduction) {
     mix.version()
 }
@@ -23,7 +25,5 @@ mix.webpackConfig({
     output: {
         chunkFilename: 'js/chunks/[name].[id].js',
         publicPath: '/'
-        // filename: '[name].js'
     }
-    // new webpack.optimize.CommonsChunkPlugin({}))
 })

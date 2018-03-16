@@ -11,5 +11,13 @@
 @stop
 
 @section('footerScripts')
-    @parent
+    @if (file_exists(public_path('/js/manifest.js')))
+        <script src="{{ mix('/js/manifest.js') }}"></script>
+    @endif
+    @if (file_exists(public_path('/js/vendor.js')))
+        <script src="{{ mix('/js/vendor.js') }}"></script>
+    @endif
+    @if (file_exists(public_path('/js/admin.js')))
+        <script src="{{ mix('/js/admin.js') }}"></script>
+    @endif
 @stop

@@ -167,10 +167,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             title: 'Settings',
             descr: 'Settings description',
             childComponent: 'Child component'
-        },
-        child: {
-            title: 'Child component',
-            descr: 'Child description'
         }
     },
     pl: {
@@ -190,10 +186,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             title: 'Ustawienia',
             descr: 'Opis ustawień',
             childComponent: 'Zagnieżdzony komponent'
-        },
-        child: {
-            title: 'Komponent dziecko',
-            descr: 'Opis komponentu'
         }
     }
 });
@@ -219,6 +211,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     i18n: {
+        fallbackLocale: 'en',
         messages: _locales2.default
     }
 }; //
@@ -322,6 +315,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     i18n: {
+        fallbackLocale: 'en',
         messages: _locales2.default
     }
 }; //
@@ -383,9 +377,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v(_vm._s(_vm.$t("child.title")))]),
+    _c("h3", [_vm._v("This is a child component")]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.$t("child.descr")))])
+    _c("p", [
+      _vm._v(
+        "This is a paragraph of this nested component " +
+          _vm._s(_vm.$t("settings.descr"))
+      )
+    ])
   ])
 }
 var staticRenderFns = []

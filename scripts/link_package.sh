@@ -97,7 +97,7 @@ function prepare_operation_parameters() {
       PACKAGE_DIR="$PLATFORM_DIR/../$PACKAGE"
       MOUNT_DIR="$PLATFORM_DIR/vendor/gzero/$PACKAGE"
     fi
-  else
+  else # MODE == npm
     PACKAGE_DIR="$PLATFORM_DIR/../node_projects/$PACKAGE"
     MOUNT_DIR="$PLATFORM_DIR/node_modules/$PACKAGE"
   fi
@@ -106,9 +106,9 @@ function prepare_operation_parameters() {
 if [ $MODE == composer ] && [ $PACKAGE == ALL ]; then
   for PACKAGE in ${PACKAGES[@]}; do
     prepare_operation_parameters
-      ${OPERATION}
+    ${OPERATION}
   done
 else
   prepare_operation_parameters
-    ${OPERATION}
+  ${OPERATION}
 fi

@@ -3,8 +3,6 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
 
-import AdminPackage from '@gzero/admin-module-test'
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -53,83 +51,7 @@ Vue.component(
 )
 
 // @TODO Create separate file for SPA
-if (!$('#app').length) {
-    new Vue({
-        el: '#root',
-        i18n: i18n
-    })
-} else {
-    const router = new VueRouter({
-        mode: 'history',
-        base: '/spa-demo/',
-        linkActiveClass: 'active',
-        routes: []
-    })
-
-    const app = new Vue({
-        el: '#app',
-        i18n: i18n,
-        router: router,
-        components: {
-            'admin-panel': require('./components/AdminPanel')
-        },
-        data() {
-            return {
-                title: 'Admin Panel',
-                titlePrefix: 'Panel',
-                apps: []
-            }
-        },
-        created: function() {
-            const homeComponent = {
-                template: '<div>{{ message }}</div>',
-                data: () => ({
-                    message: 'this is the home screen'
-                })
-            }
-
-            this.registerLauncher(
-                    {
-                        path: '/home',
-                        label: 'Home'
-                    }, homeComponent)
-
-            AdminPackage.register(this)
-        },
-        methods: {
-            updateTitle: function(title) {
-                window.document.title = title
-            },
-            registerLauncher: function(manifest, component, children = []) {
-                const path = manifest.path
-                const label = manifest.label
-
-                router.addRoutes([
-                    {
-                        path,
-                        component,
-                        children
-                    }
-                ])
-                this.apps.push({
-                    path,
-                    label
-                })
-            }
-        }
-    })
-
-    window.app = app
-
-    /**
-     * Re-setting window title on each navigation
-     */
-    router.afterEach((to, from) => { // eslint-disable-line no-unused-vars
-        let component = to.matched[0].components.default
-        let name = app.$data['title']
-        if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
-            name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName()
-        }
-        app.updateTitle(name)
-    })
-}
+new Vue({
+    el: '#root',
+    i18n: i18n
+})
