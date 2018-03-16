@@ -61,6 +61,7 @@ if (!$('#app').length) {
 } else {
     const router = new VueRouter({
         mode: 'history',
+        base: '/spa-demo/',
         linkActiveClass: 'active',
         routes: []
     })
@@ -89,7 +90,7 @@ if (!$('#app').length) {
 
             this.registerLauncher(
                     {
-                        path: 'home',
+                        path: '/home',
                         label: 'Home'
                     }, homeComponent)
 
@@ -100,7 +101,7 @@ if (!$('#app').length) {
                 window.document.title = title
             },
             registerLauncher: function(manifest, component, children = []) {
-                const path = '/spa-demo/' + manifest.path
+                const path = manifest.path
                 const label = manifest.label
 
                 router.addRoutes([

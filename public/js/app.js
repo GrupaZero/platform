@@ -10,18 +10,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log('Registering Service Provider: Admin Module Test')
 
       app.registerLauncher({
-          path: 'super-advanced-feature',
-          label: 'Super-Duper Advanced Feature'
-      }, () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./node_modules/@gzero/admin-module-test/lib/components/SuperAdvancedFeature.vue")))
+          path: '/languages',
+          label: 'Languages'
+      }, () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./node_modules/@gzero/admin-module-test/lib/components/Languages.vue")))
 
       app.registerLauncher({
-          path: 'another-super-advanced-feature',
-          label: 'Another Super-Duper Advanced Feature'
+          path: '/settings',
+          label: 'Settings'
       },
-      () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./node_modules/@gzero/admin-module-test/lib/components/AnotherSuperAdvancedFeature.vue")),
+      () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./node_modules/@gzero/admin-module-test/lib/components/Settings.vue")),
       [{
           path: 'child-component',
-          name: 'child-component',
           component: () => __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./node_modules/@gzero/admin-module-test/lib/components/ChildComponent.vue"))
       }])
   }
@@ -23473,87 +23472,90 @@ _vue2.default.component('passport-personal-access-tokens', __webpack_require__("
 
 _vue2.default.component('cookie-law', __webpack_require__("./resources/assets/js/components/cookie-law/CookieLaw.vue"));
 
-// new Vue({
-//     el: '#root',
-//     i18n: i18n
-// })
+// @TODO Create separate file for SPA
+if (!$('#app').length) {
+    new _vue2.default({
+        el: '#root',
+        i18n: i18n
+    });
+} else {
+    var router = new _vueRouter2.default({
+        mode: 'history',
+        base: '/spa-demo/',
+        linkActiveClass: 'active',
+        routes: []
+    });
 
-
-var router = new _vueRouter2.default({
-    mode: 'history',
-    linkActiveClass: 'active',
-    routes: []
-});
-
-var app = new _vue2.default({
-    el: '#app',
-    i18n: i18n,
-    router: router,
-    components: {
-        'admin-panel': __webpack_require__("./resources/assets/js/components/AdminPanel.vue")
-    },
-    data: function data() {
-        return {
-            title: 'Admin Panel',
-            titlePrefix: 'Panel',
-            apps: []
-        };
-    },
-
-    created: function created() {
-        var homeComponent = {
-            template: '<div>{{ message }}</div>',
-            data: function data() {
-                return {
-                    message: 'this is the home screen'
-                };
-            }
-        };
-
-        this.registerLauncher({
-            path: 'home',
-            label: 'Home'
-        }, homeComponent);
-
-        _adminModuleTest2.default.register(this);
-    },
-    methods: {
-        updateTitle: function updateTitle(title) {
-            window.document.title = title;
+    var app = new _vue2.default({
+        el: '#app',
+        i18n: i18n,
+        router: router,
+        components: {
+            'admin-panel': __webpack_require__("./resources/assets/js/components/AdminPanel.vue")
         },
-        registerLauncher: function registerLauncher(manifest, component) {
-            var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+        data: function data() {
+            return {
+                title: 'Admin Panel',
+                titlePrefix: 'Panel',
+                apps: []
+            };
+        },
 
-            var path = '/spa-demo/' + manifest.path;
-            var label = manifest.label;
+        created: function created() {
+            var homeComponent = {
+                template: '<div>{{ message }}</div>',
+                data: function data() {
+                    return {
+                        message: 'this is the home screen'
+                    };
+                }
+            };
 
-            router.addRoutes([{
-                path: path,
-                component: component,
-                children: children
-            }]);
-            this.apps.push({
-                path: path,
-                label: label
-            });
+            this.registerLauncher({
+                path: '/home',
+                label: 'Home'
+            }, homeComponent);
+
+            _adminModuleTest2.default.register(this);
+        },
+        methods: {
+            updateTitle: function updateTitle(title) {
+                window.document.title = title;
+            },
+            registerLauncher: function registerLauncher(manifest, component) {
+                var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+                var path = manifest.path;
+                var label = manifest.label;
+
+                router.addRoutes([{
+                    path: path,
+                    component: component,
+                    children: children
+                }]);
+                this.apps.push({
+                    path: path,
+                    label: label
+                });
+            }
         }
-    }
-});
+    });
 
-window.app = app;
+    window.app = app;
 
-/**
- * Re-setting window title on each navigation
- */
-router.afterEach(function (to, from) {
-    // eslint-disable-line no-unused-vars
-    var component = to.matched[0].components.default;
-    var name = app.$data['title'];
-    if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
-        name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName();
-    }
-    app.updateTitle(name);
-});
+    /**
+     * Re-setting window title on each navigation
+     */
+    router.afterEach(function (to, from) {
+        // eslint-disable-line no-unused-vars
+        var component = to.matched[0].components.default;
+        var name = app.$data['title'];
+        if (component.hasOwnProperty('methods') && component.methods.hasOwnProperty('getName')) {
+            name = app.$data['titlePrefix'] + ' :: ' + component.methods.getName();
+        }
+        app.updateTitle(name);
+    });
+}
 
 /***/ }),
 
