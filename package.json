@@ -100,7 +100,7 @@
     }
   },
   "devDependencies": {
-    "@gzero/admin-module-test": "^1.0.9",
+    "@gzero/admin-module-test": "^1.0.10",
     "ava": "^0.25.0",
     "avoriaz": "^6.3.0",
     "axios": "^0.18",
@@ -117,7 +117,7 @@
     "jquery": "^3.2.1",
     "jquery-colorbox": "^1.6.4",
     "js-cookie": "^2.1.4",
-    "laravel-mix": "^2.0",
+    "laravel-mix": "^2.1.2",
     "lodash": "^4.17.4",
     "npm-run-all": "^4.1.2",
     "popper.js": "^1.12.9",
