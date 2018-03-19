@@ -1,11 +1,11 @@
 import test from 'ava'
 import {vueMount} from '../../utils/test'
-import GzeroYoutube from './GzeroYoutube.vue'
+import YoutubeEmbed from './YoutubeEmbed.vue'
 
 test.serial('Should render thumbnail image', t => {
     t.plan(3)
 
-    const wrapper = vueMount(GzeroYoutube, {
+    const wrapper = vueMount(YoutubeEmbed, {
         propsData: {
             videoId: 'aP_-P_BS6KY'
         }
@@ -19,7 +19,7 @@ test.serial('Should render thumbnail image', t => {
 test.serial('Should render youtube video inside iframe element', t => {
     t.plan(3)
 
-    const wrapper = vueMount(GzeroYoutube, {
+    const wrapper = vueMount(YoutubeEmbed, {
         propsData: {
             videoId: 'aP_-P_BS6KY'
         }

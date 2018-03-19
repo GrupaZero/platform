@@ -49,8 +49,8 @@ Vue.component(
 )
 
 Vue.component(
-  'gzero-youtube',
-   require('./components/gzero-youtube/GzeroYoutube.vue')
+  'youtube-embed',
+   require('./components/youtube-embed/YoutubeEmbed.vue')
 )
 
 new Vue({
