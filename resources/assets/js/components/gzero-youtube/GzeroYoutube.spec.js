@@ -12,7 +12,7 @@ test.serial('Should render thumbnail image', t => {
     })
 
     t.true(wrapper.isVueComponent)
-    t.false(wrapper.data().isPlaying)
+    t.false(wrapper.data().queuedToPlay)
     t.snapshot(wrapper.html())
 })
 
@@ -28,6 +28,6 @@ test.serial('Should render youtube video inside iframe element', t => {
     t.true(wrapper.isVueComponent)
     wrapper.vm.play()
     wrapper.update()
-    t.true(wrapper.data().isPlaying)
+    t.true(wrapper.data().queuedToPlay)
     t.snapshot(wrapper.html())
 })
