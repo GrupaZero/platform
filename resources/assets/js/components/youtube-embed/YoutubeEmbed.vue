@@ -53,7 +53,7 @@
 <template>
     <div class="youtube-player">
         <template v-if="queuedToPlay">
-            <iframe :id="playerId" :src="videoSource" frameborder="0" allow="autoplay; encrypted-media"
+            <iframe :id="playerId" :src="videoSource" ref="ytiframe" frameborder="0" allow="autoplay; encrypted-media"
                     allowfullscreen></iframe>
         </template>
         <template v-else>
@@ -108,8 +108,7 @@
                         let tag = document.createElement('script');
                         tag.src = 'https://www.youtube.com/iframe_api';
 
-                        let ytiframe = document.getElementById(this.playerId);
-                        ytiframe.parentNode.insertBefore(tag, ytiframe);
+                        this.$refs.ytiframe.insertAdjacentElement('beforebegin', tag);
                     })
                 }
             }
