@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-    .youtube-player {
+    .yt-player {
         position: relative;
         padding-bottom: 56%;
         /* Use 75% for 4:3 videos */
@@ -15,7 +15,7 @@
             z-index: 100;
             background: transparent;
         }
-        img {
+        img.yt-thumbnail {
             bottom: 0;
             display: block;
             left: 0;
@@ -51,13 +51,13 @@
 </style>
 
 <template>
-    <div class="youtube-player">
+    <div class="yt-player">
         <template v-if="queuedToPlay">
-            <iframe :id="playerId" :src="videoSource" ref="ytiframe" frameborder="0" allow="autoplay; encrypted-media"
+            <iframe :id="playerId" :src="videoSource" frameborder="0" allow="autoplay; encrypted-media"
                     allowfullscreen></iframe>
         </template>
         <template v-else>
-            <img :src="thumbSource">
+            <img class="yt-thumbnail" :src="thumbSource" ref="ytthumbnail" @click="play">
             <div class="yt-play-button" @click="play"></div>
         </template>
     </div>
@@ -73,44 +73,39 @@
         },
         data() {
             return {
-                queuedToPlay: false,
                 player: null,
-                playerId: `ytplayer-${this.videoId}`,
+                playerId: `yt-player-${this.videoId}`,
+                thumbSource: `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`,
                 videoSource: `https://www.youtube.com/embed/${this.videoId}?autoplay=1&amp;enablejsapi=1`,
-                thumbSource: `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`
+                queuedToPlay: false
+            }
+        },
+        mounted: function() {
+            // We need YouTube Player API as a tag.
+            if (typeof YT === 'undefined') {
+                let tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                this.$refs.ytthumbnail.insertAdjacentElement('beforebegin', tag);
             }
         },
         methods: {
             play: function() {
                 this.queuedToPlay = true;
 
-                this.getIframeApi();
-
                 let makeYtPlayerInterval = setInterval(() => {
                     if (typeof YT !== 'undefined') {
-                        this.player = new YT.Player(this.playerId);
-                        // Without setTimeout, playVideo() is not a function, but why?
-                        setTimeout(() => {
-                            this.player.playVideo();
-                        }, 1000);
-                        clearInterval(makeYtPlayerInterval);
+                        this.player = new YT.Player(this.playerId, {
+                            events: {
+                                'onReady': onYtPlayerReady
+                            }
+                        });
+
+                        function onYtPlayerReady(event) {
+                            event.target.playVideo();
+                            clearInterval(makeYtPlayerInterval);
+                        }
                     }
                 }, 100)
-            },
-            getIframeApi: function() {
-                // We need to change template to show iframe.
-                // Tried to use axios.get but get:
-                // Failed to load https://www.youtube.com/iframe_api: Response to preflight request doesn't pass access control
-                // check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-                // Origin 'https://dev.gzero.pl' is therefore not allowed access. The response had HTTP status code 405.
-                if (typeof YT === 'undefined') {
-                    this.$nextTick(function() {
-                        let tag = document.createElement('script');
-                        tag.src = 'https://www.youtube.com/iframe_api';
-
-                        this.$refs.ytiframe.insertAdjacentElement('beforebegin', tag);
-                    })
-                }
             }
         },
     }
