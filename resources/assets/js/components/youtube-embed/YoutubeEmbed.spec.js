@@ -3,7 +3,7 @@ import {vueMount} from '../../utils/test'
 import YoutubeEmbed from './YoutubeEmbed.vue'
 
 test.serial('Should render thumbnail image', t => {
-    t.plan(4)
+    t.plan(3)
 
     const wrapper = vueMount(YoutubeEmbed, {
         propsData: {
@@ -13,7 +13,6 @@ test.serial('Should render thumbnail image', t => {
 
     t.true(wrapper.isVueComponent)
     t.false(wrapper.data().queuedToPlay)
-    t.true(wrapper.data().ytIframeTagMounted)
     t.snapshot(wrapper.html())
 })
 
@@ -28,6 +27,7 @@ test.serial('Should render youtube video inside iframe element', t => {
 
     wrapper.vm.play()
     wrapper.update()
+
     t.true(wrapper.data().queuedToPlay)
     t.snapshot(wrapper.html())
 })

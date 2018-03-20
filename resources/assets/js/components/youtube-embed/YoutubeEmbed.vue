@@ -81,7 +81,7 @@
                 ytIframeTagMounted: false
             }
         },
-        mounted: function() {
+        updated: function() {
             // We need YouTube Player API as a tag.
             if (typeof YT === 'undefined') {
                 let tag = document.createElement('script');
