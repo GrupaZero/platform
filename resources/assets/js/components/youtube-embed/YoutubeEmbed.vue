@@ -86,7 +86,7 @@
             if (typeof YT === 'undefined') {
                 let tag = document.createElement('script');
                 tag.src = 'https://www.youtube.com/iframe_api';
-                document.getElementsByTagName('head')[0].appendChild(tag);
+                document.getElementsByTagName('body')[0].appendChild(tag);
 
                 this.ytIframeTagMounted = true;
                 this.$emit('ytIframeTagMounted', {
