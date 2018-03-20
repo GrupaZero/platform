@@ -57,7 +57,7 @@
                     allowfullscreen></iframe>
         </template>
         <template v-else>
-            <img class="yt-thumbnail" :src="thumbSource" ref="ytthumbnail" @click="play">
+            <img class="yt-thumbnail" :src="thumbSource" @click="play">
             <div class="yt-play-button" @click="play"></div>
         </template>
     </div>
@@ -77,7 +77,8 @@
                 playerId: `yt-player-${this.videoId}`,
                 thumbSource: `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`,
                 videoSource: `https://www.youtube.com/embed/${this.videoId}?autoplay=1&amp;enablejsapi=1`,
-                queuedToPlay: false
+                queuedToPlay: false,
+                ytIframeTagMounted: false
             }
         },
         mounted: function() {
@@ -85,7 +86,12 @@
             if (typeof YT === 'undefined') {
                 let tag = document.createElement('script');
                 tag.src = 'https://www.youtube.com/iframe_api';
-                this.$refs.ytthumbnail.insertAdjacentElement('beforebegin', tag);
+                document.getElementsByTagName('head')[0].appendChild(tag);
+
+                this.ytIframeTagMounted = true;
+                this.$emit('ytIframeTagMounted', {
+                    'videoId': this.videoId
+                });
             }
         },
         methods: {
