@@ -60,14 +60,14 @@ acceptance tests:
     - ln -s "$(pwd)" /var/www
     - echo "127.0.0.1 dev.gzero.pl" >> /etc/hosts
     - echo "127.0.0.1 api.dev.gzero.pl" >> /etc/hosts
-    - cp .env.example .env
-    - php artisan key:generate
     - tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" &
     - /start.sh &
 
   script:
     - phpdismod xdebug # disabling xdebug to speed up composer
     - composer install --prefer-dist --no-interaction --no-suggest --no-progress
+    - cp .env.example .env
+    - php artisan key:generate
     - php artisan migrate:fresh
     - "CI_ACCEPTANCE_RUN=true php vendor/bin/codecept run -n -c codeception.yml -o \"settings: lint: false\" acceptance"
 
