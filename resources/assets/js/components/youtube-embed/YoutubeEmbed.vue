@@ -82,8 +82,9 @@
             }
         },
         mounted: function() {
+            let apiScript = document.querySelector('script[src$="https://www.youtube.com/iframe_api"]');
             // We need YouTube Player API as a tag.
-            if (typeof YT === 'undefined') {
+            if (typeof YT === 'undefined' && apiScript === null) {
                 let tag = document.createElement('script');
                 tag.src = 'https://www.youtube.com/iframe_api';
                 document.getElementsByTagName('body')[0].appendChild(tag);
@@ -98,7 +99,7 @@
             play: function() {
                 this.queuedToPlay = true;
 
-                let makeYtPlayerInterval = setInterval(() => {
+                setTimeout(() => {
                     if (typeof YT !== 'undefined') {
                         this.player = new YT.Player(this.playerId, {
                             events: {
@@ -108,10 +109,9 @@
 
                         function onYtPlayerReady(event) {
                             event.target.playVideo();
-                            clearInterval(makeYtPlayerInterval);
                         }
                     }
-                }, 100)
+                });
             }
         },
     }
