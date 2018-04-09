@@ -48,6 +48,11 @@ Vue.component(
   require('./components/cookie-law/CookieLaw.vue')
 )
 
+Vue.component(
+  'youtube-embed',
+   require('./components/youtube-embed/YoutubeEmbed.vue')
+)
+
 new Vue({
     el: '#root',
     i18n: i18n
