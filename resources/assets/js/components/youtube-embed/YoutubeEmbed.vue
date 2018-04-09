@@ -53,7 +53,7 @@
 <template>
     <div class="yt-player">
         <template v-if="queuedToPlay">
-            <iframe :id="playerId" :src="videoSource" frameborder="0" allow="autoplay; encrypted-media"
+            <iframe :id="playerId" :src="videoSource" frameborder="0" allow="encrypted-media"
                     allowfullscreen></iframe>
         </template>
         <template v-else>
@@ -76,12 +76,12 @@
                 player: null,
                 playerId: `yt-player-${this.videoId}`,
                 thumbSource: `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`,
-                videoSource: `https://www.youtube.com/embed/${this.videoId}?autoplay=1&amp;enablejsapi=1`,
+                videoSource: `https://www.youtube.com/embed/${this.videoId}?enablejsapi=1`,
                 queuedToPlay: false,
                 ytIframeTagMounted: false
             }
         },
-        updated: function() {
+        mounted: function() {
             // We need YouTube Player API as a tag.
             if (typeof YT === 'undefined') {
                 let tag = document.createElement('script');
