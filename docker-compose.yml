@@ -15,7 +15,7 @@ services:
      - gzero-net
 
   web:
-    image: gzero/platform-web-container:latest
+    image: gzero/platform-web-container:v5.0.0-rc
     restart: "no"
     ports:
       - "8080:80"
@@ -37,7 +37,7 @@ services:
      - gzero-net
 
   worker:
-    image: gzero/platform-worker-container:latest
+    image: gzero/platform-worker-container:v5.0.0-rc
     restart: "no"
     depends_on:
       - db
@@ -53,7 +53,7 @@ services:
      - gzero-net
 
   cron:
-    image: gzero/platform-worker-container:latest
+    image: gzero/platform-worker-container:v5.0.0-rc
     restart: "no"
     depends_on:
       - db
