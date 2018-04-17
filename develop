@@ -21,20 +21,20 @@ if [ $# -gt 0 ];then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  "$ARGS"
+      web bash -c  "$ARGS"
 
   elif [ "$1" == "test" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && vendor/bin/codecept run -s acceptance --env platform $ARGS" ;
 
   elif [ "$1" == "test-debug" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       'cd /var/www && export XDEBUG_CONFIG="idekey=PHPSTORM" && php -dxdebug.remote_host=$(/sbin/ip route|awk '\''/default/ {print $3 }'\'') vendor/bin/codecept run -s acceptance --env platform '$ARGS
 
   elif [ "$1" == "test-acceptance" ]; then
@@ -42,7 +42,7 @@ if [ $# -gt 0 ];then
     ARGS="$@"
     ./tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" & pid1="$!" ;
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && vendor/bin/codecept run acceptance $ARGS" ;
       kill $pid1
 
@@ -50,42 +50,42 @@ if [ $# -gt 0 ];then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && vendor/bin/codecept run --env platform $ARGS" ;
 
   elif [ "$1" == "test-frontend" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
         -u $(id -u):www-data \
-        node_server \
+        node \
         npm -s start "$@"
 
   elif [ "$1" == "artisan" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && php artisan $ARGS"
 
   elif [ "$1" == "artisan-debug" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       'cd /var/www && export XDEBUG_CONFIG="idekey=PHPSTORM" && php -dxdebug.remote_host=$(/sbin/ip route|awk '\''/default/ {print $3 }'\'') ./artisan '$ARGS
 
   elif [ "$1" == "composer" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && composer $ARGS"
 
   elif [ "$1" == "npm" ]; then
     shift 1
     ${COMPOSE} run --rm -w /var/www \
         -u $(id -u):www-data \
-        node_server \
+        node \
         npm -s "$@"
 
   elif [ "$1" == "mount" ] || [ "$1" == "umount" ]; then
@@ -99,25 +99,25 @@ if [ $# -gt 0 ];then
   elif [ "$1" == "db-dump" ]; then
     shift 1
     [ ! -z $1 ] || die "Please specify database name"
-    ${COMPOSE} exec --user $(id -u) db_server sh -c "pg_dump -U postgres --clean --if-exists --no-owner -n public $1 | gzip > /backups/$1_$(date +%Y%m%d_%H%M).sql.gz"
+    ${COMPOSE} exec --user $(id -u) db sh -c "pg_dump -U postgres --clean --if-exists --no-owner -n public $1 | gzip > /backups/$1_$(date +%Y%m%d_%H%M).sql.gz"
 
   elif [ "$1" == "db-restore" ]; then
     shift 1
     [ ! -z $1 ] || die "Please specify database name"
     [ ! -z $2 ] || die "Please specify dump path"
-    ${COMPOSE} exec --user $(id -u) db_server sh -c "gunzip -c /$2 | psql -U postgres --single-transaction -a $1"
+    ${COMPOSE} exec --user $(id -u) db sh -c "gunzip -c /$2 | psql -U postgres --single-transaction -a $1"
 
   elif [ "$1" == "db-dump-tests" ]; then
     shift 1
     [ ! -z $1 ] || die "Please specify database name"
-    ${COMPOSE} exec --user $(id -u) db_server sh -c "pg_dump -U postgres --clean --if-exists --no-owner -n public $1 > /backups/dump.sql"
+    ${COMPOSE} exec --user $(id -u) db sh -c "pg_dump -U postgres --clean --if-exists --no-owner -n public $1 > /backups/dump.sql"
     mv backups/dump.sql tests/db/dump.sql
 
   elif [ "$1" == "generate-api-docs" ]; then
     shift 1
     ARGS="$@"
     ${COMPOSE} exec --user $(id -u):www-data \
-      web_server bash -c  \
+      web bash -c  \
       "cd /var/www && php artisan l5-swagger:generate"
 
   elif [ "$1" == "generate-cert" ]; then

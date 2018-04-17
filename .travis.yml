@@ -19,7 +19,7 @@ services:
   - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.18.0
+  DOCKER_COMPOSE_VERSION: 1.21.0
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -33,24 +33,24 @@ before_script:
   - docker version
   - docker-compose version
   - docker-compose up -d
-  - docker-compose exec web_server phpdismod xdebug # disabling xdebug to speed up composer
+  - docker-compose exec web phpdismod xdebug # disabling xdebug to speed up composer
   - ./develop composer install -d /var/www/ --prefer-dist --no-interaction --no-suggest --no-progress || true
-  - docker-compose run --rm -w /var/www node_server npm -s install
+  - docker-compose run --rm -w /var/www node npm -s install
   - ./develop artisan key:generate
   - ./develop artisan passport:keys
   - ./develop artisan migrate:fresh
   - ./tests/chromedriver --url-base=/wd/hub --whitelisted-ips="" & pid1="$!"
 
 script:
-  - docker-compose run --rm -w /var/www node_server npm -s run lint
-  - docker-compose run --rm -w /var/www node_server npm -s test -- --verbose
+  - docker-compose run --rm -w /var/www node npm -s run lint
+  - docker-compose run --rm -w /var/www node npm -s test -- --verbose
   - ./develop test-travis
 
 after_script:
  - kill $pid1 # shutdown chrome driver
 
 after_failure:
-  - ./develop logs web_server
+  - ./develop logs web
 
 matrix:
   fast_finish: true

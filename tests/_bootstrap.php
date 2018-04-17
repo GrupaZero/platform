@@ -7,7 +7,7 @@ if (file_exists(dirname(__DIR__) . '/.env.testing') && !getenv('CI_ACCEPTANCE_RU
     (new \Dotenv\Dotenv(dirname(__DIR__), '.env.testing'))->load();
 }
 
-$host = env('DB_HOST', env('DB_HOST', 'db_server'));
+$host = env('DB_HOST', env('DB_HOST', 'db'));
 $port = env('DB_PORT', env('DB_PORT', 5432));
 $dbName = env('DB_DATABASE', env('DB_DATABASE', 'gzero_cms'));
 $user = env('DB_USERNAME', env('DB_USERNAME', 'gzero_cms'));
@@ -35,7 +35,7 @@ if (!getenv('CI_ACCEPTANCE_RUN')) {
         [
             'WebDriver' => [
                 'host' => $dockerHostIp, // Docker host ip
-                'url' => 'http://dev.gzero.pl:8080' // We're binding web_server to 8080
+                'url' => 'http://dev.gzero.pl:8080' // We're binding web server to 8080
             ]
         ];
 }
