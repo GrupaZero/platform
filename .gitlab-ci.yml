@@ -17,7 +17,7 @@ unit & functional tests:
     - name: postgres:9.6-alpine
       alias: db_tests_server
     - name: redis:3-alpine
-      alias: redis_server
+      alias: redis
   variables:
     POSTGRES_PASSWORD: ""
     POSTGRES_USER: "gzero_cms"
@@ -41,9 +41,9 @@ acceptance tests:
   stage: test
   services:
     - name: postgres:9.6-alpine
-      alias: db_server
+      alias: db
     - name: redis:3-alpine
-      alias: redis_server
+      alias: redis
   variables:
     DEFAULT_HOST: "dev.gzero.pl"
     POSTGRES_PASSWORD: ""

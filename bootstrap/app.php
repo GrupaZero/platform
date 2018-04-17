@@ -49,7 +49,7 @@ $app->singleton(
 | Override Monolog setup
 |--------------------------------------------------------------------------
 |
-| Sending logs to named pipe (FIFO) so we can forward it to docker logs
+| Sending logs to stderr stream so we can see it in docker logs
 |
 */
 $app->configureMonologUsing(
@@ -64,7 +64,7 @@ $app->configureMonologUsing(
             'alert'     => Logger::ALERT,
             'emergency' => Logger::EMERGENCY,
         ];
-        $monolog->pushHandler(new StreamHandler('/tmp/laravel.log', $levels[config('app.log_level')]));
+        $monolog->pushHandler(new \Monolog\Handler\StreamHandler(config('logging.stream'), $levels[config('app.log_level')]));
     }
 );
 

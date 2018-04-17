@@ -1,0 +1,31 @@
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+ [entryPoints.dashboard]
+   address=":8443"
+    [entryPoints.dashboard.tls]
+   [entryPoints.dashboard.auth]
+     [entryPoints.dashboard.auth.basic]
+       users = [
+         "gzero:$apr1$qbHju4Ur$Lsj1oIAgL1tHrnP1yiJ5Q.",
+       ]
+
+[api]
+entrypoint="dashboard"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "dev.gzero.pl"
+watch = true
+swarmmode = false
+exposedByDefault = false

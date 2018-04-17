@@ -50,7 +50,7 @@ after_script:
  - kill $pid1 # shutdown chrome driver
 
 after_failure:
-  - ./develop logs web_server
+  - ./develop logs web
 
 matrix:
   fast_finish: true

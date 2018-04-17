@@ -83,10 +83,10 @@ After Installing Docker Engine you need to start docker containers, go to projec
 This will run all application containers (give some time to ssl certs to generate)
  
 ```
-Starting platform_db_server_1
-Starting platform_redis_server_1
-Starting platform_db_tests_server_1
-Starting platform_web_server_1
+Starting platform_db_1
+Starting platform_redis_1
+Starting platform_db_tests_1
+Starting platform_web_1
 ```
  
 - Create database schema and required data
@@ -119,10 +119,10 @@ If you want to stop docker containers just run:
 This will stop all running application containers
  
 ```
-Stopping platform_web_server_1 ... done
-Stopping platform_db_tests_server_1 ... done
-Stopping platform_redis_server_1 ... done
-Stopping platform_db_server_1 ... done
+Stopping platform_web_1 ... done
+Stopping platform_db_tests_1 ... done
+Stopping platform_redis_1 ... done
+Stopping platform_db_1 ... done
 ```
  
 To remove stopped containers run:
@@ -135,7 +135,7 @@ To remove stopped containers run:
 If you want to view logs from docker you can run:
 
 ```
-./develop logs web_server
+./develop logs web
 ```
    
 #### Updating Docker container for platform

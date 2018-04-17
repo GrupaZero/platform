@@ -1,79 +1,119 @@
-version: '2.1'
+version: '3.6'
 services:
-  proxy_server:
-    image: jwilder/nginx-proxy:alpine
-    restart: "no"
+
+  proxy:
+    image: traefik:1.6
+    command: -c /treafik.toml
     ports:
       - "80:80"
       - "443:443"
+      - "8443:8443"
     volumes:
-    - ./.server/ssl:/etc/nginx/certs:ro
-    - /var/run/docker.sock:/tmp/docker.sock:ro
+      - .server/treafik.toml:/treafik.toml:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-     - gznet
-  web_server:
-    image: gzero/platform-container:v4
+     - gzero-net
+
+  web:
+    image: gzero/platform-web-container:latest
     restart: "no"
     ports:
       - "8080:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=web"
+      - "traefik.frontend.rule=Host:dev.gzero.pl,api.dev.gzero.pl,www.dev.gzero.pl"
     depends_on:
-      - db_server
-      - redis_server
+      - db
+      - redis
     environment:
       OVERRIDE_UMASK: "002"
       XDEBUG: "true"
       DEFAULT_HOST: "dev.gzero.pl"
-      VIRTUAL_HOST: "dev.gzero.pl,api.dev.gzero.pl,www.dev.gzero.pl"
       PHP_IDE_CONFIG: "serverName=dev.gzero.pl"
     volumes:
       - .:/var/www
     networks:
-     - gznet
-  db_server:
+     - gzero-net
+
+  worker:
+    image: gzero/platform-worker-container:latest
+    restart: "no"
+    depends_on:
+      - db
+      - redis
+    environment:
+      MODE: "horizon"
+      OVERRIDE_UMASK: "002"
+      XDEBUG: "true"
+      PHP_IDE_CONFIG: "serverName=dev.gzero.pl"
+    volumes:
+      - .:/var/www
+    networks:
+     - gzero-net
+
+  cron:
+    image: gzero/platform-worker-container:latest
+    restart: "no"
+    depends_on:
+      - db
+      - redis
+    environment:
+      MODE: "cron"
+      OVERRIDE_UMASK: "002"
+    volumes:
+      - .:/var/www
+    networks:
+     - gzero-net
+
+  redis:
+    image: redis:3-alpine
+    restart: "no"
+    volumes:
+     - redisdata:/data
+    ports:
+      - "6379:6379"
+    networks:
+     - gzero-net
+
+  db:
     image: postgres:9.6-alpine
     restart: "no"
-    networks:
-     - gznet
     volumes:
      - ./backups:/backups
      - dbdata:/var/lib/postgresql
-    networks:
-     - gznet
     ports:
       - "5433:5432"
     environment:
       POSTGRES_PASSWORD: "test"
       POSTGRES_USER: "gzero_cms"
       POSTGRES_DB: "gzero_cms"
-  db_tests_server:
+    networks:
+     - gzero-net
+
+  db_tests:
     image: postgres:9.6-alpine
     restart: "no"
-    networks:
-     - gznet
     ports:
       - "5434:5432"
     environment:
       POSTGRES_PASSWORD: ""
       POSTGRES_USER: "gzero_cms"
       POSTGRES_DB: "gzero_cms"
-  redis_server:
-    image: redis:3-alpine
-    restart: "no"
-    volumes:
-     - redisdata:/data
     networks:
-     - gznet
-    ports:
-      - "6379:6379"
-  node_server:
+     - gzero-net
+
+  node:
     image: node:8
     restart: "no"
     volumes:
       - .:/var/www
+    networks:
+     - gzero-net
+
 networks:
-  gznet:
-    driver: "bridge"
-    enable_ipv6: false
+  gzero-net:
+
 volumes:
   dbdata:
     driver: "local"
