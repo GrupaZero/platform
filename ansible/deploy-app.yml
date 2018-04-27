@@ -6,6 +6,7 @@
         that: 
           - "TAG != ''"
           - "APP_ENV != ''"
+          - "GITLAB_REPO != ''"
 
   vars:
     new_secret: app_env_{{ TAG }}_{{ timestamp }}
@@ -83,7 +84,7 @@
         --no-healthcheck 
         --restart-condition none 
         --secret src={{ new_secret }},target="/var/www/.env" 
-        registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         php /var/www/artisan migrate --force 
 
     - name: Waiting for migration to finish
@@ -103,7 +104,7 @@
       shell: >
         docker service update 
         --with-registry-auth 
-        --image registry.gitlab.com/grupazero/staging/web:{{ TAG }} 
+        --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/web:{{ TAG }}
         --secret-rm {{ current_secret_web.stdout }} 
         --secret-add source={{ new_secret }},target=/var/www/.env 
         app_web
@@ -112,7 +113,7 @@
       shell: >
         docker service update 
         --with-registry-auth 
-        --image registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         --secret-rm {{ current_secret_worker.stdout }} 
         --secret-add source={{ new_secret }},target=/var/www/.env 
         app_worker
@@ -120,7 +121,7 @@
     - name: Update cron service
       shell: >
         docker service update --with-registry-auth 
-        --image registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         --secret-rm {{ current_secret_cron.stdout }} 
         --secret-add source={{ new_secret }},target=/var/www/.env 
         app_cron

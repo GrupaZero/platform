@@ -6,7 +6,6 @@
 .vscode
 /.idea
 /node_modules
-/public/gzero/*
 /public/storage
 /tests/_output
 /vendor
