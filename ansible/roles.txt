@@ -2,5 +2,3 @@
 - angstwad.docker_ubuntu, v3.2.0
 - adriagalin.motd, 1.1.1
 - gantsign.oh-my-zsh, 1.2.1
-- ANXS.hostname, v1.1.0
-- ANXS.postgresql, v1.9.0

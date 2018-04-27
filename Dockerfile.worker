@@ -1,0 +1,5 @@
+FROM gzero/platform-worker-container:v5.0.0-rc3
+
+COPY . /var/www/
+
+RUN chown www-data:www-data -R /var/www

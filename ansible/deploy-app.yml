@@ -1,0 +1,131 @@
+---
+- hosts: all
+  remote_user: root
+  pre_tasks:
+    - assert:
+        that: 
+          - "TAG != ''"
+          - "APP_ENV != ''"
+
+  vars:
+    new_secret: app_env_{{ TAG }}_{{ timestamp }}
+    timestamp: '{{ ansible_date_time.epoch }}'
+
+  # @TODO
+  # - Check if at least one migration was executed
+  # - Revet db migration when app rollback occured
+  # - Serious error during database migration? How to handle this? Should we automatically restore backup?
+  # - Remove unused secrets? Is is safe to remove unused secrets? I'd need to check how it works during rollback 
+  #   docker secret rm $(docker secret ls --format {{.ID}})
+
+  tasks:
+
+    # BACKUPS
+
+    - name: Register backup timestamp
+      shell: date +%Y%m%d_%H%M
+      register: backup_timestamp
+    
+    - name: Find docker container with database
+      shell: docker ps --filter 'name=app_db' --format '{% raw %}{{.ID}}{% endraw %}'
+      register: app_db_id
+      failed_when: "app_db_id == ''"
+    
+    - name: Created database dump before running app_db_migrator
+      shell: >
+        docker exec -t {{ app_db_id.stdout }} sh -c "pg_dump -U postgres -Fc gzero_cms > /var/lib/postgresql/data/last.dump"
+    
+    - name: Create directory for deployment backup
+      file: path=/root/backups/deployments/{{ backup_timestamp.stdout }} state=directory
+
+    - name: Copy database & redis dumps
+      shell: >
+        cp /root/volumes/redis/dump.rdb /root/backups/deployments/{{ backup_timestamp.stdout }}/redis.rdb && 
+        cp /root/volumes/postgresql/last.dump /root/backups/deployments/{{ backup_timestamp.stdout }}/postgres.dump 
+
+    #  SECRETS
+
+    - name: Find current app_env secret for app_web
+      shell: >
+        docker service inspect app_web 
+        --format '{% raw %}{{json .Spec.TaskTemplate.ContainerSpec.Secrets}}{% endraw %}' | 
+        jq -r '.[] | .SecretName'
+      register: current_secret_web
+    
+    - name: Find current app_env secret for app_worker
+      shell: >
+        docker service inspect app_worker 
+        --format '{% raw %}{{json .Spec.TaskTemplate.ContainerSpec.Secrets}}{% endraw %}' | 
+        jq -r '.[] | .SecretName'
+      register: current_secret_worker
+    
+    - name: Find current app_env secret for app_cron
+      shell: >
+        docker service inspect app_cron 
+        --format '{% raw %}{{json .Spec.TaskTemplate.ContainerSpec.Secrets}}{% endraw %}' | 
+        jq -r '.[] | .SecretName'
+      register: current_secret_cron
+
+    - name: Create new app_env secret
+      docker_secret:
+          name: '{{ new_secret }}'
+          state: present
+          force: yes
+          data: '{{ APP_ENV }}'
+
+    # DATABASE MIGRATION
+
+    - name: Run database migration task
+      shell: >
+        docker service create --name app_db_migrator --network app_gzero-net 
+        --with-registry-auth 
+        --detach 
+        --no-healthcheck 
+        --restart-condition none 
+        --secret src={{ new_secret }},target="/var/www/.env" 
+        registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        php /var/www/artisan migrate --force 
+
+    - name: Waiting for migration to finish
+      shell: docker service ps app_db_migrator --format '{% raw %}{{json .}}{% endraw %}'
+      register: result
+      until: >
+        (result.stdout | from_json).DesiredState == 'Shutdown' and 
+        (result.stdout | from_json).Error == '' and 
+        (result.stdout | from_json).CurrentState is match("Complete *")
+      retries: 60
+      delay: 5
+      # ignore_errors: true
+
+    # SERVICES ROLLING UPDATE
+
+    - name: Update web service
+      shell: >
+        docker service update 
+        --with-registry-auth 
+        --image registry.gitlab.com/grupazero/staging/web:{{ TAG }} 
+        --secret-rm {{ current_secret_web.stdout }} 
+        --secret-add source={{ new_secret }},target=/var/www/.env 
+        app_web
+    
+    - name: Update worker service
+      shell: >
+        docker service update 
+        --with-registry-auth 
+        --image registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        --secret-rm {{ current_secret_worker.stdout }} 
+        --secret-add source={{ new_secret }},target=/var/www/.env 
+        app_worker
+    
+    - name: Update cron service
+      shell: >
+        docker service update --with-registry-auth 
+        --image registry.gitlab.com/grupazero/staging/worker:{{ TAG }} 
+        --secret-rm {{ current_secret_cron.stdout }} 
+        --secret-add source={{ new_secret }},target=/var/www/.env 
+        app_cron
+   
+    # CLEANUP   
+
+    - name: Remove migration service
+      shell: docker service rm app_db_migrator

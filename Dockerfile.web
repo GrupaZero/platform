@@ -1,6 +1,4 @@
-FROM gzero/platform-container:v4
-
-MAINTAINER Adrian Skierniewski <adrian.skierniewski@gmail.com>
+FROM gzero/platform-web-container:v5.0.0-rc3
 
 COPY . /var/www/
 COPY ./.server/nginx/site.conf /etc/nginx/conf.d/site.template
