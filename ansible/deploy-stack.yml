@@ -95,8 +95,8 @@
 
     - name: Copy Treafik configuration file
       template:
-        src: ../templates/treafik.j2
-        dest: /root/treafik.toml
+        src: ../templates/traefik.j2
+        dest: /root/traefik.toml
         force: yes
 
     - name: Create docker secret - db_password  

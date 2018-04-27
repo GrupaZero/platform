@@ -3,7 +3,7 @@ services:
 
   proxy:
     image: traefik:1.6
-    command: -c /treafik.toml
+    command: -c /traefik.toml
     deploy:
       replicas: 1
       mode: replicated
@@ -17,7 +17,7 @@ services:
       - "443:443"
       - "8443:8443"
     volumes:
-      - ./treafik.toml:/treafik.toml:ro
+      - ./traefik.toml:/traefik.toml:ro
       - ./volumes/letsencrypt:/etc/traefik/acme
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
