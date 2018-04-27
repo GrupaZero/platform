@@ -99,7 +99,7 @@
         dest: /root/traefik.toml
         force: yes
 
-    - name: Create docker secret - db_password  
+    - name: Create docker secret - db_password
       docker_secret:
           name: db_password_{{ timestamp }}
           state: present
@@ -122,6 +122,19 @@
           delay: 15
           timeout: 300
 
+    - name: Check if old SSH public key is present in authorized_keys
+      shell: cat /root/.ssh/id_rsa.pub 2>/dev/null
+      register: old_deployment_key
+      tags: [ssh_key]
+
+    - name: Remove old ssh public key from .ssh/authorized_keys
+      authorized_key:
+        user: root
+        state: absent
+        key: '{{ old_deployment_key.stdout }}'
+      when: old_deployment_key != ''
+      tags: [ssh_key]
+
     - name: Remove old SSH key if present
       file:
         path: '{{ item.path }}'
@@ -129,12 +142,27 @@
       with_items:
         - { path: '/root/.ssh/id_rsa'}
         - { path: '/root/.ssh/id_rsa.pub' }
+      tags: [ssh_key]
 
     - name: Generate deployment SSH key
       shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
+      tags: [ssh_key]
+
+    - name: Copy SSH public key
+      shell: cat /root/.ssh/id_rsa.pub
+      register: deployment_key
+      tags: [ssh_key]
+
+    - name: Add ssh publick key to .ssh/authorized_keys
+      authorized_key:
+        user: root
+        state: present
+        key: '{{ deployment_key.stdout }}'
+      tags: [ssh_key]
 
     - name: Fetching SSH key - add this deployment key as secret variable at GitLab.com
       fetch:
         src: /root/.ssh/id_rsa
         dest: deployment-ssh-key
         flat: yes
+      tags: [ssh_key]
