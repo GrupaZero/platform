@@ -42,7 +42,7 @@
       apt:
         upgrade: dist
 
-    - name: Something
+    - name: Make sure that /etc/hosts includes FQDN
       lineinfile:
         dest: /etc/hosts
         line: "127.0.1.1 {{ inventory_hostname }} {{ inventory_hostname_short }}"
