@@ -1,4 +1,0 @@
-- kamaln7.swapfile, master
-- angstwad.docker_ubuntu, v3.2.0
-- adriagalin.motd, 1.1.1
-- gantsign.oh-my-zsh, 1.2.1
