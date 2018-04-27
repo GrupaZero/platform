@@ -1,4 +1,4 @@
-logLevel = "DEBUG"
+logLevel = "ERROR"
 
 defaultEntryPoints = ["http", "https"]
 
@@ -12,7 +12,7 @@ defaultEntryPoints = ["http", "https"]
     [entryPoints.https.tls]
 
  [entryPoints.dashboard]
-   address=":8433"
+   address=":8443"
     [entryPoints.dashboard.tls]
    [entryPoints.dashboard.auth]
      [entryPoints.dashboard.auth.basic]
@@ -26,9 +26,10 @@ entrypoint="dashboard"
 # Enable ACME (Let's Encrypt): automatic SSL
 [acme]
 # Email address used for registration
-email = "test@traefik.io"
-storageFile = "/etc/traefik/acme/acme.json"
+email = "{{ LETSENCRYPT_EMAIL }}"
+storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
+acmeLogging = true
 onDemand = false
 OnHostRule = true
   # Use a HTTP-01 acme challenge rather than TLS-SNI-01 challenge
@@ -37,7 +38,7 @@ OnHostRule = true
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "dev.gzero.pl"
+domain = "{{ DOMAIN }}"
 watch = true
 swarmmode = false
 exposedByDefault = false

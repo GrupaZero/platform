@@ -34,14 +34,6 @@ sudo usermod -a -G www-data user
 
 ```
 
-##### Generating self-signed SSL cert
-
-If you want develop using ssl connection you can generate self-signed cert using:
-
-```
-./develop generate-cert dev.gzero.pl
-```
-
 ##### Generate application key
 
 ```
@@ -210,3 +202,24 @@ We're providing some boilerplate configs for travis & gitlab-ci so that you can 
 ## Deployment
 
 We're using Ansible as automation tool. We include some example playbooks.
+
+Some example usages:
+```
+ansible-playbook -i staging provision.yml 
+```
+```
+ansible-playbook -i staging deploy-stack.yml \
+ -e "APP_ENV='$(cat example.env)'"
+ -e DOMAIN=docker-test.example.com \
+ -e LETSENCRYPT_EMAIL=office@example.com \
+ -e DB_NAME=gzero_cms \
+ -e DB_USER=gzero_cms \
+ -e DB_PASSWORD=test \
+ -e GITLAB_REPO=example/project
+```
+```
+ansible-playbook -i staging deploy-app.yml \
+ -e TAG=0.0.5 \
+ -e GITLAB_REPO=example/project \
+ -e "APP_ENV='$(cat example.env)'"
+```

@@ -15,3 +15,8 @@ coverage
 Homestead.json
 Homestead.yaml
 tests/_output/*
+ansible/deployment-ssh-key
+ansible/deploy-app.retry
+ansible/deploy-stack.retry
+ansible/provision-ci.retry
+ansible/provision.retry

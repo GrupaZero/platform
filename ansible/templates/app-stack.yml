@@ -1,0 +1,156 @@
+version: '3.6'
+services:
+
+  proxy:
+    image: traefik:1.6
+    command: -c /traefik.toml
+    deploy:
+      replicas: 1
+      mode: replicated
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8443:8443"
+    volumes:
+      - ./traefik.toml:/traefik.toml:ro
+      - ./volumes/letsencrypt:/etc/traefik/acme
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+     - gzero-net
+
+  web:
+    image: 'registry.gitlab.com/{{ GITLAB_REPO }}/web:latest'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.backend=web"
+      - "traefik.frontend.rule=Host:{{ DOMAIN }},api.{{ DOMAIN }},www.{{ DOMAIN }}"
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: dnsrr
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        max_failure_ratio: .3
+        monitor: 30s
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        window: 10s
+    secrets:
+      - source: app_env_latest_{{ timestamp }}
+        target: /var/www/.env
+        uid: '100'
+    stop_grace_period: 60s
+    environment:
+      DEFAULT_HOST: "{{ DOMAIN }}"
+    networks:
+     - gzero-net
+
+  worker:
+    image: 'registry.gitlab.com/{{ GITLAB_REPO }}/worker:latest'
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        max_failure_ratio: .3
+        monitor: 30s
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        window: 10s
+    secrets:
+      - source: app_env_latest_{{ timestamp }}
+        target: /var/www/.env
+        uid: '100'
+    stop_grace_period: 60s
+    environment:
+      MODE: "horizon"
+    networks:
+     - gzero-net
+
+  cron:
+    image: 'registry.gitlab.com/{{ GITLAB_REPO }}/worker:latest'
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        max_failure_ratio: .3
+        monitor: 30s
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        window: 10s
+    secrets:
+      - source: app_env_latest_{{ timestamp }}
+        target: /var/www/.env
+        uid: '100'
+    tty: true
+    stop_grace_period: 10s
+    environment:
+      MODE: "cron"
+    networks:
+     - gzero-net
+
+  db:
+    image: postgres:9.6-alpine
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+    volumes:
+    - ./volumes/postgresql:/var/lib/postgresql/data
+    secrets:
+      - db_password_{{ timestamp }}
+    environment:
+      POSTGRES_PASSWORD_FILE: "/run/secrets/db_password_{{ timestamp }}"
+      POSTGRES_USER: "{{ DB_USER }}"
+      POSTGRES_DB: "{{ DB_NAME }}"
+    networks:
+     - gzero-net
+
+  redis:
+    image: redis:3-alpine
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+    command: redis-server
+    volumes:
+     - ./volumes/redis:/data
+    networks:
+     - gzero-net
+
+networks:
+  gzero-net:
+
+secrets:
+  app_env_latest_{{ timestamp }}:
+    external: true
+  db_password_{{ timestamp }}:
+    external: true

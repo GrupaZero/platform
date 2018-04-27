@@ -4,7 +4,7 @@
   gather_facts: false
   pre_tasks:
     - name: install python2
-      raw: apt-get update && apt-get install -qq python-simplejson
+      raw: apt-get update && apt-get install -qq python-simplejson jq
     - name: add pl_PL.UTF-8 locale
       shell: locale-gen pl_PL.UTF-8
 
@@ -22,6 +22,7 @@
       tags: [zsh]
 
     - role: angstwad.docker_ubuntu
+      pip_install_docker_compose: false
       uninstall_previous_docker_versions: true
       tags: [docker]
 
@@ -33,29 +34,19 @@
       swapfile_location: /swapfile
       tags: [swap]
 
-    - role: ANXS.hostname
-      tags: [fqdn]
-
     - role: adriagalin.motd
       tags: [motd]
-
-    - role: ANXS.postgresql
-      postgresql_version: 9.6
-      postgresql_locale: 'en_GB.UTF-8'
-      postgresql_ctype: 'en_GB.UTF-8'
-      postgresql_default_auth_method: 'md5'
-      postgresql_listen_addresses:
-        - "{{ ansible_default_ipv4.address }}"
-      postgresql_pg_hba_default:
-        - { type: local, database: all, user: '{{ postgresql_admin_user }}', address: '', method: 'peer', comment: '' }
-        - { type: local, database: all, user: all, address: '',             method: 'md5', comment: '"local" is for Unix domain socket connections only' }
-        - { type: host,  database: all, user: all, address: 'all', method: 'md5', comment: 'IPv4 local connections:' }
-      tags: [postgres]
 
   tasks:
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
+
+    - name: Make sure that /etc/hosts includes FQDN
+      lineinfile:
+        dest: /etc/hosts
+        line: "127.0.1.1 {{ inventory_hostname }} {{ inventory_hostname_short }}"
+        state: present
 
     - name: Add FQDN to zsh
       lineinfile:
@@ -183,12 +174,6 @@
         rule: allow
         port: "{{ ssh_port_grep_result.stdout }}"
         proto: tcp
-
-    - name: UFW allow postgres access from docker containers
-      ufw:
-        rule: allow
-        src: "172.20.0.0/24"
-        port: 5432
 
     - name: Enable ufw
       ufw:

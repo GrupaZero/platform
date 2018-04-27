@@ -3,19 +3,19 @@ services:
 
   proxy:
     image: traefik:1.6
-    command: -c /treafik.toml
+    command: -c /traefik.toml
     ports:
       - "80:80"
       - "443:443"
       - "8443:8443"
     volumes:
-      - .server/treafik.toml:/treafik.toml:ro
+      - .server/traefik.toml:/traefik.toml:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
      - gzero-net
 
   web:
-    image: gzero/platform-web-container:v5.0.0-rc
+    image: gzero/platform-web-container:v5.0.0-rc3
     restart: "no"
     ports:
       - "8080:80"
@@ -37,7 +37,7 @@ services:
      - gzero-net
 
   worker:
-    image: gzero/platform-worker-container:v5.0.0-rc
+    image: gzero/platform-worker-container:v5.0.0-rc3
     restart: "no"
     depends_on:
       - db
@@ -53,7 +53,7 @@ services:
      - gzero-net
 
   cron:
-    image: gzero/platform-worker-container:v5.0.0-rc
+    image: gzero/platform-worker-container:v5.0.0-rc3
     restart: "no"
     depends_on:
       - db
