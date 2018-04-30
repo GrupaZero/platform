@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2195042d6f3cf8681962b6a54c54058d",
+    "content-hash": "192ba0ee0be4d4d1a0034f527aff5060",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -856,16 +856,16 @@
         },
         {
             "name": "gzero/admin",
-            "version": "dev-master",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/admin.git",
-                "reference": "cf4ed7bb14815eeb502cb899852ec26018aaedeb"
+                "reference": "ca91d2a086d3f6cc99eee614934795ba91d30bc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/cf4ed7bb14815eeb502cb899852ec26018aaedeb",
-                "reference": "cf4ed7bb14815eeb502cb899852ec26018aaedeb",
+                "url": "https://api.github.com/repos/GrupaZero/admin/zipball/ca91d2a086d3f6cc99eee614934795ba91d30bc6",
+                "reference": "ca91d2a086d3f6cc99eee614934795ba91d30bc6",
                 "shasum": ""
             },
             "require": {
@@ -905,32 +905,32 @@
                 "gzero cms",
                 "laravel"
             ],
-            "time": "2018-02-16T09:49:56+00:00"
+            "time": "2018-04-30T12:44:52+00:00"
         },
         {
             "name": "gzero/cms",
-            "version": "dev-master",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/cms.git",
-                "reference": "b5c16ea45be8e2d370dc952567e3a2bd09743568"
+                "reference": "3c6122c767f7db2938f724e1db57fdc9744a2c50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/b5c16ea45be8e2d370dc952567e3a2bd09743568",
-                "reference": "b5c16ea45be8e2d370dc952567e3a2bd09743568",
+                "url": "https://api.github.com/repos/GrupaZero/cms/zipball/3c6122c767f7db2938f724e1db57fdc9744a2c50",
+                "reference": "3c6122c767f7db2938f724e1db57fdc9744a2c50",
                 "shasum": ""
             },
             "require": {
                 "bkwld/croppa": "~4.0",
-                "gzero/core": "dev-master",
+                "gzero/core": "^3.0.0",
                 "php": ">=7.1.0"
             },
             "require-dev": {
                 "codeception/codeception": "^2.3",
                 "flow/jsonpath": "^0.3.4",
                 "fzaninotto/faker": "~1.6",
-                "gzero/testing": "dev-master",
+                "gzero/testing": "^3.0.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^3.5",
                 "phpmd/phpmd": "^2.6",
@@ -968,20 +968,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-04-27T08:15:23+00:00"
+            "time": "2018-04-30T13:12:32+00:00"
         },
         {
             "name": "gzero/core",
-            "version": "dev-master",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrupaZero/core.git",
-                "reference": "850e0e85cf7d6062ae7f5d356cb55242e2fdd986"
+                "reference": "aa883f0941dfe6ab62190a72dba2ee6f4ed1be4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrupaZero/core/zipball/850e0e85cf7d6062ae7f5d356cb55242e2fdd986",
-                "reference": "850e0e85cf7d6062ae7f5d356cb55242e2fdd986",
+                "url": "https://api.github.com/repos/GrupaZero/core/zipball/aa883f0941dfe6ab62190a72dba2ee6f4ed1be4c",
+                "reference": "aa883f0941dfe6ab62190a72dba2ee6f4ed1be4c",
                 "shasum": ""
             },
             "require": {
@@ -1032,7 +1032,7 @@
                     "email": "adrian.skierniewski@gmail.com"
                 }
             ],
-            "time": "2018-04-27T10:06:23+00:00"
+            "time": "2018-04-30T12:19:33+00:00"
         },
         {
             "name": "gzero/eloquent-tree",
@@ -5653,16 +5653,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.13.6",
+            "version": "v3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "d981f0f26ecc793c68ee67e0ddb53ee642f2bc1c"
+                "reference": "7049de6201f11e0b16e04d5e1bc413776645665a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/d981f0f26ecc793c68ee67e0ddb53ee642f2bc1c",
-                "reference": "d981f0f26ecc793c68ee67e0ddb53ee642f2bc1c",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/7049de6201f11e0b16e04d5e1bc413776645665a",
+                "reference": "7049de6201f11e0b16e04d5e1bc413776645665a",
                 "shasum": ""
             },
             "type": "library",
@@ -5706,7 +5706,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2018-04-24T07:18:38+00:00"
+            "time": "2018-04-28T06:20:13+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -6152,11 +6152,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "gzero/admin": 20,
-        "gzero/cms": 20,
-        "gzero/core": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
