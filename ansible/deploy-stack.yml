@@ -123,7 +123,7 @@
           timeout: 300
 
     - name: Check if old SSH public key is present in authorized_keys
-      shell: cat /root/.ssh/id_rsa.pub 2>/dev/null
+      shell: test ! -e /root/.ssh/id_rsa.pub || cat /root/.ssh/id_rsa.pub
       register: old_deployment_key
       tags: [ssh_key]
 
