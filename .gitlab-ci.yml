@@ -128,7 +128,7 @@ deploy to production:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - "ansible-playbook -i ansible/staging
+    - "ansible-playbook -i ansible/production
       -e \"APP_ENV='$PRODUCTION_APP_ENV'\"
       -e TAG=${CI_COMMIT_TAG}
       -e GITLAB_REPO=${CI_PROJECT_PATH}
