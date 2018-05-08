@@ -51,6 +51,8 @@ services:
     stop_grace_period: 60s
     environment:
       DEFAULT_HOST: "{{ DOMAIN }}"
+    volumes:
+        - ./volumes/uploads:/var/www/uploads
     networks:
      - gzero-net
 
