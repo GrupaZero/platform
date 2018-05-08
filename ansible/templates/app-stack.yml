@@ -52,7 +52,7 @@ services:
     environment:
       DEFAULT_HOST: "{{ DOMAIN }}"
     volumes:
-        - ./volumes/uploads:/var/www/uploads
+     - ./volumes/uploads:/var/www/uploads
     networks:
      - gzero-net
 
