@@ -49,12 +49,14 @@ window.Loading = {
  * @return {void}
  */
 window.setFormValidationErrors = function(fieldName, message) {
-    var field = $('input[name=' + fieldName + ']').parent('.form-group') // get the field
+    var field = $('input[name=' + fieldName + ']').parent() // get the field
+    var input = field.find('input')
 
-    if (field.hasClass('has-error')) { // if already has error, then set new message
-        field.find('.help-block').text(message)
+    if (input.hasClass('is-invalid')) { // if already has error, then set new message
+        field.find('.invalid-feedback').text(message)
     } else { // append error with html
-        field.addClass('has-error').append('<p class="help-block">' + message + '</p>')
+        input.addClass('is-invalid')
+        field.append('<div class="invalid-feedback">' + message + '</div>')
     }
 }
 
