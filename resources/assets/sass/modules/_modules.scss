@@ -1,3 +1,55 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - modules
 // add new modules here
+
+.slider-block {
+  .carousel-caption,
+  .card-img-overlay {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+
+    @media (min-width : 1024px) {
+      max-width : 65%;
+    }
+
+    @media (max-width : 812px) {
+      .display-3 {
+        font-size : 2rem;
+      }
+    }
+  }
+
+  .carousel-caption {
+    position   : relative;
+    top        : 0;
+    left       : 0;
+    text-align : left;
+    height     : 100%;
+    padding    : 1.25rem;
+  }
+
+  .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+    display : flex;
+
+  }
+
+  .carousel-item {
+    min-height        : 530px;
+    background-repeat : no-repeat;
+    background-size   : cover;
+    align-items       : center;
+  }
+
+  @media (max-width : 812px) {
+    .carousel-item img {
+      width : initial !important;
+    }
+  }
+
+  @media (max-width : 767px) {
+    .card-img-overlay {
+      position : relative;
+    }
+  }
+}
