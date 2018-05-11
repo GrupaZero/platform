@@ -15,7 +15,7 @@ services:
      - gzero-net
 
   web:
-    image: gzero/platform-web-container:v5.0.0-rc3
+    image: gzero/platform-web-container:v5.0.0-rc4
     restart: "no"
     ports:
       - "8080:80"
