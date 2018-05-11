@@ -37,7 +37,7 @@ services:
      - gzero-net
 
   worker:
-    image: gzero/platform-worker-container:v5.0.0-rc3
+    image: gzero/platform-worker-container:v5.0.0-rc4
     restart: "no"
     depends_on:
       - db
@@ -53,7 +53,7 @@ services:
      - gzero-net
 
   cron:
-    image: gzero/platform-worker-container:v5.0.0-rc3
+    image: gzero/platform-worker-container:v5.0.0-rc4
     restart: "no"
     depends_on:
       - db

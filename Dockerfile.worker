@@ -1,4 +1,4 @@
-FROM gzero/platform-worker-container:v5.0.0-rc3
+FROM gzero/platform-worker-container:v5.0.0-rc4
 
 COPY . /var/www/
 
