@@ -144,7 +144,10 @@ To run tests use:
 ```
 ./develop test
 ./develop test-debug # it runs xdebug
-./develop test-frontend
+./develop test-frontend # it runs frontend tests using AVA framework
+./develop test-acceptance # it runs acceptance tests using local Google Chrome
+./develop test-profile # it runs xdebug profiler and saves output in storage dir
+
 ```
 
 ## Working on frontend
