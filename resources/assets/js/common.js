@@ -78,10 +78,10 @@ window.setGlobalMessage = function(code, message) {
  * @return {void}
  */
 window.clearFormValidationErrors = function() {
-    var error = $(".form-group.has-error")
+    var error = $(".form-control.is-invalid")
 
-    error.removeClass('has-error')
-    error.find('.help-block').remove()
+    error.removeClass('is-invalid')
+    error.parent().find('.invalid-feedback').remove()
 }
 
 /**

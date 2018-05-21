@@ -20669,6 +20669,24 @@ window.axios = __webpack_require__("./node_modules/axios/index.js");
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// Add a request interceptor
+window.axios.interceptors.request.use(function (config) {
+  // Show loading before request is sent
+  window.Loading.start('#main-container');
+  return config;
+});
+
+// Add a response interceptor
+window.axios.interceptors.response.use(function (response) {
+  // Hide loading on success
+  window.Loading.stop();
+  return response;
+}, function (error) {
+  // Hide loading on error
+  window.Loading.stop();
+  return Promise.reject(error);
+});
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -20800,10 +20818,10 @@ window.setGlobalMessage = function (code, message) {
  * @return {void}
  */
 window.clearFormValidationErrors = function () {
-    var error = $(".form-group.has-error");
+    var error = $(".form-control.is-invalid");
 
-    error.removeClass('has-error');
-    error.find('.help-block').remove();
+    error.removeClass('is-invalid');
+    error.parent().find('.invalid-feedback').remove();
 };
 
 /**
