@@ -4,7 +4,7 @@ modules:
       WebDriver:
         browser: chrome
         port: 9515 # ChromeDriver port
-        window_size: false
+        window_size: 1024x768
         capabilities:
           chromeOptions:
             args: ["--no-sandbox", "--headless", "--disable-gpu"]
