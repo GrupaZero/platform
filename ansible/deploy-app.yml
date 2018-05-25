@@ -9,7 +9,7 @@
           - "GITLAB_REPO != ''"
 
   vars:
-    new_secret: app_env_{{ TAG }}_{{ timestamp }}
+    app_env_secret: app_env_{{ TAG }}_{{ timestamp }}
     timestamp: '{{ ansible_date_time.epoch }}'
 
   # @TODO
@@ -69,7 +69,7 @@
 
     - name: Create new app_env secret
       docker_secret:
-          name: '{{ new_secret }}'
+          name: '{{ app_env_secret }}'
           state: present
           force: yes
           data: '{{ APP_ENV }}'
@@ -83,7 +83,7 @@
         --detach 
         --no-healthcheck 
         --restart-condition none 
-        --secret src={{ new_secret }},target="/var/www/.env" 
+        --secret src={{ app_env_secret }},target="/var/www/.env" 
         registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         php /var/www/artisan migrate --force 
 
@@ -106,7 +106,7 @@
         --with-registry-auth 
         --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/web:{{ TAG }}
         --secret-rm {{ current_secret_web.stdout }} 
-        --secret-add source={{ new_secret }},target=/var/www/.env 
+        --secret-add source={{ app_env_secret }},target=/var/www/.env 
         app_web
     
     - name: Update worker service
@@ -115,7 +115,7 @@
         --with-registry-auth 
         --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         --secret-rm {{ current_secret_worker.stdout }} 
-        --secret-add source={{ new_secret }},target=/var/www/.env 
+        --secret-add source={{ app_env_secret }},target=/var/www/.env 
         app_worker
     
     - name: Update cron service
@@ -123,7 +123,7 @@
         docker service update --with-registry-auth 
         --image registry.gitlab.com/{{ GITLAB_REPO | lower }}/worker:{{ TAG }}
         --secret-rm {{ current_secret_cron.stdout }} 
-        --secret-add source={{ new_secret }},target=/var/www/.env 
+        --secret-add source={{ app_env_secret }},target=/var/www/.env 
         app_cron
    
     # CLEANUP   
