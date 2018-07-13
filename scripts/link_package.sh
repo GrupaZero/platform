@@ -75,7 +75,7 @@ function umount() {
   PACKAGE=$1
 
   # Checking if package was mounted before
-  if grep -qs "$PLATFORM_DIR/vendor/gzero/$PACKAGE" /proc/mounts; then
+  if grep -qs "$MOUNT_DIR" /proc/mounts; then
     echo -e "\e[1mUnmounting package \e[91m$PACKAGE\e[0m"
     sudo umount "$MOUNT_DIR"
   else
