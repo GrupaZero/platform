@@ -25,7 +25,7 @@
       authorized_key:
         user: "{{ user_name.stdout }}"
         state: present
-        key: "{{ lookup('file', '/home/bart/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', user_public_key | default('~/.ssh/id_rsa.pub')) }}"
       when: user_password is defined
 
 - hosts: all
