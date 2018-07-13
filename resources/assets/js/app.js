@@ -49,6 +49,11 @@ Vue.component(
 )
 
 Vue.component(
+    'privacy-info',
+    require('./components/privacy-info/PrivacyInfo')
+)
+
+Vue.component(
   'youtube-embed',
    require('./components/youtube-embed/YoutubeEmbed.vue')
 )
