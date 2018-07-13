@@ -153,14 +153,14 @@
       register: deployment_key
       tags: [ssh_key]
 
-    - name: Add ssh publick key to .ssh/authorized_keys
+    - name: Add ssh public key to .ssh/authorized_keys
       authorized_key:
         user: root
         state: present
         key: '{{ deployment_key.stdout }}'
       tags: [ssh_key]
 
-    - name: Fetching SSH key - add this deployment key as secret variable at GitLab.com
+    - name: Fetching SSH key - add manually this deployment key as a secret variable at GitLab.com
       fetch:
         src: /root/.ssh/id_rsa
         dest: deployment-ssh-key
