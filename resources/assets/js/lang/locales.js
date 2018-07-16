@@ -29,10 +29,12 @@ export default {
             "you_have_not_created_any_personal_access_tokens": "You have not created any personal access tokens.",
             "your_applications_authorization_callback_url": "Your application's authorization callback URL."
         },
-        "cookie_law": {
-            "link_text": " Read more about our cookies policy.",
-            "button_text": "Ok",
-            "message": "We use cookies and similar technologies. By using the Site you agree to the use of cookies."
+        'privacy_policy': {
+            'it_conforms_to_eu_regulations': "We have conformed out Privacy Policy to the recent EU regulations" +
+                                             " about personal data protection.",
+            'by_using_the_site_you_accept': "By using the site you accept",
+            'our_privacy_policy': "our Privacy Policy",
+            "i_accept_privacy_policy": "I accept the Privacy Policy"
         }
     },
     "pl": {
@@ -65,10 +67,12 @@ export default {
             "you_have_not_created_any_personal_access_tokens": "Nie utworzono żadnych tokenów personalnego dostępu.",
             "your_applications_authorization_callback_url": "URL do metody autoryzacyjnej twojej aplikacji."
         },
-        "cookie_law": {
-            "link_text": " Dowiedz się więcej o polityce cookies.",
-            "button_text": "Ok",
-            "message": "Używamy cookies i podobnych technologii. Korzystajac z witryny zgadzasz się na użycie plików cookie."
+        'privacy_policy': {
+            'it_conforms_to_eu_regulations': "Dostosowaliśmy naszą Politykę Prywatności do nowych wymogów " +
+                                             "rozporządzenia Unii Europejskiej o ochronie danych osobowych.",
+            'by_using_the_site_you_accept': "Dalsze korzystanie z witryny zakłada, że akceptujesz",
+            'our_privacy_policy': "naszą Politykę Prywatności",
+            "i_accept_privacy_policy": "Akceptuję Politykę Prywatności"
         }
     }
 }

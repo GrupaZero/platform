@@ -1,33 +1,57 @@
 <template>
-    <privacy-info-logic>
-        <div class="block" v-if="toShow" slot-scope="{ toShow, accept }">
-            <div class="message">
-                Dostosowaliśmy naszą Politykę Prywatności do nowych wymogów rozporządzenia Unii Europejskiej o ochronie
-                danych osobowych.
-                <br>
-                Dalsze korzystanie z witryny zakłada, że akceptujesz naszą
+    <div class="block" v-if="toShow">
+        <div class="message">
+            {{ $t('privacy_policy.it_conforms_to_eu_regulations') }}
+            <br>
+            {{ $t('privacy_policy.by_using_the_site_you_accept') }}
 
-                <a v-if="privacyPolicyUrl" :href="privacyPolicyUrl">
-                    Politykę prywatności
-                </a>
-            </div>
-            <button class="btn btn-success" @click="accept">
-                Akceptuję Politykę Prywatności
-            </button>
+            <a v-if="privacyPolicyUrl" :href="privacyPolicyUrl">
+                {{ $t('privacy_policy.our_privacy_policy') }}
+            </a>
+            <span v-else>
+                {{ $t('privacy_policy.our_privacy_policy') }}
+            </span>
         </div>
-    </privacy-info-logic>
+        <button class="btn btn-success" @click="accept">
+            {{ $t('privacy_policy.i_accept_privacy_policy') }}
+        </button>
+    </div>
 
 </template>
 
 <script>
-    export default {
+    import Cookies from 'js-cookie'
+
+    const Component = {
         props: {
             privacyPolicyUrl: String
         },
-        components: {
-            'privacy-info-logic': require('./PrivacyInfoLogic')
+        data() {
+            return {
+                toShow: false
+            }
+        },
+        created() {
+            this.toShow = !this.isAccepted()
+        },
+        methods: {
+            isAccepted() {
+                return Cookies.get('cookies_policy') === 'accepted'
+            },
+            accept() {
+                Cookies.set('cookies_policy', 'accepted', {expires: 365})
+                this.toShow = false
+            }
+        },
+        render() {
+            return this.$scopedSlots.default({
+                toShow: this.toShow,
+                accept: this.accept
+            })
         }
     }
+
+    export default Component
 </script>
 
 <style scoped>
