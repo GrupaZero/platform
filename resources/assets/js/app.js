@@ -44,8 +44,8 @@ Vue.component(
 )
 
 Vue.component(
-  'cookie-law',
-  require('./components/cookie-law/CookieLaw.vue')
+    'privacy-info',
+    require('./components/privacy-info/PrivacyInfo')
 )
 
 Vue.component(

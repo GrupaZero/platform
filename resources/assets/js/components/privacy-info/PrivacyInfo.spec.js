@@ -1,33 +1,35 @@
 import test from 'ava'
 import Vue from 'vue'
 import sinion from 'sinon'
-import CookieLaw from './CookieLaw.vue'
+import PrivacyInfo from './PrivacyInfo'
+import Cookies from 'js-cookie'
 
 test.serial('Should hide cookies info after accept', t => {
     t.plan(2)
 
-    // Mocking
-    let CookiesMock = sinion.mock(CookieLaw._getCookiesInstance())
 
-    CookiesMock
+    // Mocking
+    let PrivacyInfoMock = sinion.mock(Cookies)
+
+    PrivacyInfoMock
         .expects('get')
         .once()
         .withArgs('cookies_policy')
         .returns(false)
-    CookiesMock
+    PrivacyInfoMock
         .expects('set')
         .once()
         .withArgs('cookies_policy', 'accepted', {expires: 365})
 
-    let N = Vue.extend(CookieLaw)
-    let vm = new N({propsData: {policyUrl: 'url'}})
+    let N = Vue.extend(PrivacyInfo)
+    let vm = new N({propsData: {privacyPolicyUrl: 'url'}})
 
-    t.is(vm.isOpen, true)
+    t.is(vm.toShow, true)
 
     vm.accept()
 
-    t.is(vm.isOpen, false)
+    t.is(vm.toShow, false)
 
-    CookiesMock.verify()
+    PrivacyInfoMock.verify()
 
 })
